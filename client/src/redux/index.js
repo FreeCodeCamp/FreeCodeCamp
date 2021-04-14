@@ -3,6 +3,8 @@ import { uniqBy } from 'lodash';
 import store from 'store';
 
 import { createTypes, createAsyncTypes } from '../utils/createTypes';
+import { actionTypes as challengeTypes } from '../templates/Challenges/redux/action-types';
+import { CURRENT_CHALLENGE_KEY } from '../templates/Challenges/redux/current-challenge-saga';
 import { createFetchUserSaga } from './fetch-user-saga';
 import { createAcceptTermsSaga } from './accept-terms-saga';
 import { createAppMountSaga } from './app-mount-saga';
@@ -17,9 +19,6 @@ import failedUpdatesEpic from './failed-updates-epic';
 import updateCompleteEpic from './update-complete-epic';
 
 import { types as settingsTypes } from './settings';
-import { types as challengeTypes } from '../templates/Challenges/redux/';
-// eslint-disable-next-line max-len
-import { CURRENT_CHALLENGE_KEY } from '../templates/Challenges/redux/current-challenge-saga';
 
 export const ns = 'app';
 

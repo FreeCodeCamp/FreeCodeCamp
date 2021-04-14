@@ -15,6 +15,16 @@ import escape from 'lodash/escape';
 import i18next from 'i18next';
 
 import {
+  buildChallenge,
+  canBuildChallenge,
+  getTestRunner,
+  challengeHasPreview,
+  updatePreview,
+  isJavaScriptChallenge,
+  isLoopProtected
+} from '../utils/build';
+import { actionTypes } from './action-types';
+import {
   challengeDataSelector,
   challengeMetaSelector,
   challengeTestsSelector,
@@ -26,19 +36,8 @@ import {
   updateTests,
   openModal,
   isBuildEnabledSelector,
-  disableBuildOnError,
-  types
+  disableBuildOnError
 } from './';
-
-import {
-  buildChallenge,
-  canBuildChallenge,
-  getTestRunner,
-  challengeHasPreview,
-  updatePreview,
-  isJavaScriptChallenge,
-  isLoopProtected
-} from '../utils/build';
 
 // How long before bailing out of a preview.
 const previewTimeout = 2500;
@@ -52,7 +51,7 @@ export function* executeCancellableChallengeSaga(payload) {
   const task = yield fork(executeChallengeSaga, payload);
   previewTask = yield fork(previewChallengeSaga, { flushLogs: false });
 
-  yield take(types.cancelTests);
+  yield take(actionTypes.cancelTests);
   yield cancel(task);
 }
 

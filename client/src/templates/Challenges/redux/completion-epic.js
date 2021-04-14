@@ -11,15 +11,6 @@ import { ofType } from 'redux-observable';
 import { navigate } from 'gatsby';
 
 import {
-  projectFormValuesSelector,
-  types,
-  challengeMetaSelector,
-  challengeTestsSelector,
-  closeModal,
-  challengeFilesSelector,
-  updateSolutionFormValues
-} from './';
-import {
   userSelector,
   isSignedInSelector,
   submitComplete,
@@ -29,6 +20,15 @@ import {
 
 import postUpdate$ from '../utils/postUpdate$';
 import { challengeTypes, submitTypes } from '../../../../utils/challengeTypes';
+import { actionTypes } from './action-types';
+import {
+  projectFormValuesSelector,
+  challengeMetaSelector,
+  challengeTestsSelector,
+  closeModal,
+  challengeFilesSelector,
+  updateSolutionFormValues
+} from './';
 
 function postChallenge(update, username) {
   const saveChallenge = postUpdate$(update).pipe(
@@ -55,11 +55,11 @@ function submitModern(type, state) {
     challengeType === 11 ||
     (tests.length > 0 && tests.every(test => test.pass && !test.err))
   ) {
-    if (type === types.checkChallenge) {
+    if (type === actionTypes.checkChallenge) {
       return of({ type: 'this was a check challenge' });
     }
 
-    if (type === types.submitChallenge) {
+    if (type === actionTypes.submitChallenge) {
       const { id } = challengeMetaSelector(state);
       const files = challengeFilesSelector(state);
       const { username } = userSelector(state);
@@ -78,7 +78,7 @@ function submitModern(type, state) {
 }
 
 function submitProject(type, state) {
-  if (type === types.checkChallenge) {
+  if (type === actionTypes.checkChallenge) {
     return empty();
   }
 
@@ -102,7 +102,7 @@ function submitProject(type, state) {
 function submitBackendChallenge(type, state) {
   const tests = challengeTestsSelector(state);
   if (tests.length > 0 && tests.every(test => test.pass && !test.err)) {
-    if (type === types.submitChallenge) {
+    if (type === actionTypes.submitChallenge) {
       const { id } = challengeMetaSelector(state);
       const { username } = userSelector(state);
       const {
@@ -129,7 +129,7 @@ const submitters = {
 
 export default function completionEpic(action$, state$) {
   return action$.pipe(
-    ofType(types.submitChallenge),
+    ofType(actionTypes.submitChallenge),
     switchMap(({ type }) => {
       const state = state$.value;
       const meta = challengeMetaSelector(state);

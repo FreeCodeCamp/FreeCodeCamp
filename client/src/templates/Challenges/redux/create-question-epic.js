@@ -1,14 +1,14 @@
 import dedent from 'dedent';
 import { ofType } from 'redux-observable';
+import { tap, mapTo } from 'rxjs/operators';
+import envData from '../../../../../config/env.json';
+import { actionTypes } from './action-types';
 import {
-  types,
   closeModal,
   challengeFilesSelector,
   challengeMetaSelector,
   projectFormValuesSelector
-} from '../redux';
-import { tap, mapTo } from 'rxjs/operators';
-import envData from '../../../../../config/env.json';
+} from './';
 
 const { forumLocation } = envData;
 
@@ -27,7 +27,7 @@ function filesToMarkdown(files = {}) {
 
 function createQuestionEpic(action$, state$, { window }) {
   return action$.pipe(
-    ofType(types.createQuestion),
+    ofType(actionTypes.createQuestion),
     tap(() => {
       const state = state$.value;
       const files = challengeFilesSelector(state);
