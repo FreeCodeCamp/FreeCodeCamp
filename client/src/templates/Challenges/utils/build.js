@@ -1,4 +1,7 @@
+// the config files are created during the build, but not before linting
+// eslint-disable-next-line import/no-unresolved
 import frameRunnerData from '../../../../../config/client/frame-runner.json';
+// eslint-disable-next-line import/no-unresolved
 import testEvaluatorData from '../../../../../config/client/test-evaluator.json';
 import { challengeTypes } from '../../../../utils/challengeTypes';
 import { cssToHtml, jsToHtml, concatHtml } from '../rechallenge/builders.js';
@@ -9,10 +12,6 @@ import {
   createMainFramer
 } from './frame';
 import createWorker from './worker-executor';
-
-// the config files are created during the build, but not before linting
-// eslint-disable-next-line import/no-unresolved
-// eslint-disable-next-line import/no-unresolved
 
 const { filename: runner } = frameRunnerData;
 const { filename: testEvaluator } = testEvaluatorData;
