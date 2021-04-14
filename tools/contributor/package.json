@@ -44,12 +44,10 @@
   },
   "devDependencies": {
     "dotenv": "8.2.0",
-    "eslint": "5.16.0",
     "joi": "14.3.1",
     "lerna": "3.22.1",
     "mocha": "5.2.0",
     "nodemon": "1.19.4",
-    "npm-run-all": "4.1.5",
-    "prettier": "1.19.1"
+    "npm-run-all": "4.1.5"
   }
 }
