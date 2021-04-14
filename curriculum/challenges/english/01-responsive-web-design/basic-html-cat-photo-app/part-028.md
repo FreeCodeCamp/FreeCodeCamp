@@ -7,7 +7,7 @@ dashedName: part-28
 
 # --description--
 
-Inside the `figure` element you just added, nest an `img` element with a `src` attribute set to `https://bit.ly/fcc-cats`.
+Inside the `figure` element you just added, nest an `img` element with a `src` attribute set to `https://freecodecamp.s3.amazonaws.com/cats.jpg`.
 
 # --hints--
 
@@ -35,24 +35,24 @@ You should have a third `img` element nested in the `figure` element.
 const catsImg = document.querySelectorAll('figure > img')[1];
 assert(
   catsImg &&
-    catsImg.getAttribute('src').toLowerCase() === 'https://bit.ly/fcc-cats'
+    catsImg.getAttribute('src').toLowerCase() === 'https://freecodecamp.s3.amazonaws.com/cats.jpg'
 );
 ```
 
-The third image should have an `src` attribute set to `https://bit.ly/fcc-cats`.
+The third image should have an `src` attribute set to `https://freecodecamp.s3.amazonaws.com/cats.jpg`.
 
 ```js
 const catsImg = document.querySelectorAll('figure > img')[1];
 assert(
   catsImg &&
-    catsImg.getAttribute('src').toLowerCase() === 'https://bit.ly/fcc-cats'
+    catsImg.getAttribute('src').toLowerCase() === 'https://freecodecamp.s3.amazonaws.com/cats.jpg'
 );
 ```
 
 Although you have set the new image's `src` to the correct URL, it is recommended to always surround the value of an attribute with quotation marks.
 
 ```js
-assert(!/\<img\s+.+\s+src\s*=\s*https:\/\/bit\.ly\/fcc-cats/.test(code));
+assert(!/\<img\s+.+\s+src\s*=\s*https:\/\/freecodecamp\.s3\.amazonaws\.com\/cats\.jpg/.test(code));
 ```
 
 # --seed--
@@ -68,7 +68,7 @@ assert(!/\<img\s+.+\s+src\s*=\s*https:\/\/bit\.ly\/fcc-cats/.test(code));
         <h2>Cat Photos</h2>
         <!-- TODO: Add link to cat photos -->
         <p>Click here to view more <a target="_blank" href="https://freecatphotoapp.com">cat photos</a>.</p>
-        <a href="https://freecatphotoapp.com"><img src="https://bit.ly/fcc-relaxing-cat" alt="A cute orange cat lying on its back."></a>
+        <a href="https://freecatphotoapp.com"><img src="https://freecodecamp.s3.amazonaws.com/relaxing-cat.jpg" alt="A cute orange cat lying on its back."></a>
       </section>
       <section>
         <h2>Cat Lists</h2>
@@ -79,7 +79,7 @@ assert(!/\<img\s+.+\s+src\s*=\s*https:\/\/bit\.ly\/fcc-cats/.test(code));
           <li>lasagna</li>
         </ul>
         <figure>
-          <img src="https://bit.ly/fcc-lasagna" alt="A slice of lasagna on a plate.">
+          <img src="https://freecodecamp.s3.amazonaws.com/lasagna.jpg" alt="A slice of lasagna on a plate.">
           <figcaption>Cats <em>love</em> lasagna.</figcaption>  
         </figure>
         <h3>Top 3 things cats hate:</h3>

@@ -71,7 +71,7 @@ assert(
 --fcc-editable-region--
       <p>Click here to view more cat photos.</p>
 --fcc-editable-region--
-      <img src="https://bit.ly/fcc-relaxing-cat" alt="A cute orange cat lying on its back.">
+      <img src="https://freecodecamp.s3.amazonaws.com/relaxing-cat.jpg" alt="A cute orange cat lying on its back.">
     </main>
   </body>
 </html>

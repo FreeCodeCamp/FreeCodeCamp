@@ -49,7 +49,7 @@ assert(
 --fcc-editable-region--
       <a href="https://freecatphotoapp.com"></a>
 --fcc-editable-region--
-      <img src="https://bit.ly/fcc-relaxing-cat" alt="A cute orange cat lying on its back.">
+      <img src="https://freecodecamp.s3.amazonaws.com/relaxing-cat.jpg" alt="A cute orange cat lying on its back.">
     </main>
   </body>
 </html>

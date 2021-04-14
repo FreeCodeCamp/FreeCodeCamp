@@ -58,7 +58,7 @@ assert(pText.match(/click here to view more cat photos\.?$/));
       <p>Click here to view more cat photos.</p>
       <a href="https://freecatphotoapp.com">cat photos</a>
 --fcc-editable-region--
-      <img src="https://bit.ly/fcc-relaxing-cat" alt="A cute orange cat lying on its back.">
+      <img src="https://freecodecamp.s3.amazonaws.com/relaxing-cat.jpg" alt="A cute orange cat lying on its back.">
     </main>
   </body>
 </html>
