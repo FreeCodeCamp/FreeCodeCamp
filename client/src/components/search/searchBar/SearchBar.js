@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
+import { isEqual } from 'lodash';
 import PropTypes from 'prop-types';
+import React, { Component } from 'react';
+import { HotKeys, ObserveKeys } from 'react-hotkeys';
+import { withTranslation } from 'react-i18next';
+import { SearchBox } from 'react-instantsearch-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { createSelector } from 'reselect';
-import { SearchBox } from 'react-instantsearch-dom';
-import { HotKeys, ObserveKeys } from 'react-hotkeys';
-import { isEqual } from 'lodash';
-import { withTranslation } from 'react-i18next';
 import { searchPageUrl } from '../../../utils/algolia-locale-setup';
 
 import {

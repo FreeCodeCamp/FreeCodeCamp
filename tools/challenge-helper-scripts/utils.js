@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
-const matter = require('gray-matter');
 const ObjectID = require('bson-objectid');
+const matter = require('gray-matter');
 const { parseMDSync } = require('../challenge-parser/parser');
 
 const padWithLeadingZeros = originalNum => {

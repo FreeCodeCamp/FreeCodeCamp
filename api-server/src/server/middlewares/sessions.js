@@ -1,5 +1,5 @@
-import session from 'express-session';
 import MongoStoreFactory from 'connect-mongo';
+import session from 'express-session';
 
 const MongoStore = MongoStoreFactory(session);
 const sessionSecret = process.env.SESSION_SECRET;

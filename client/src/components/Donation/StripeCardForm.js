@@ -1,13 +1,3 @@
-import React, { useState } from 'react';
-import {
-  CardNumberElement,
-  CardExpiryElement,
-  useStripe,
-  useElements
-} from '@stripe/react-stripe-js';
-import PropTypes from 'prop-types';
-import isEmail from 'validator/lib/isEmail';
-
 import {
   Row,
   Col,
@@ -19,7 +9,16 @@ import {
   FormControl,
   Alert
 } from '@freecodecamp/react-bootstrap';
+import {
+  CardNumberElement,
+  CardExpiryElement,
+  useStripe,
+  useElements
+} from '@stripe/react-stripe-js';
+import PropTypes from 'prop-types';
+import React, { useState } from 'react';
 import { withTranslation } from 'react-i18next';
+import isEmail from 'validator/lib/isEmail';
 
 const initialPaymentInfoValidityState = {
   cardNumber: {

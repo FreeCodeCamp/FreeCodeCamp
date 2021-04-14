@@ -1,6 +1,6 @@
 // this ensures node understands the future
-const _ = require('lodash');
 const createDebugger = require('debug');
+const _ = require('lodash');
 
 const log = createDebugger('fcc:server:production-start');
 const startTime = Date.now();

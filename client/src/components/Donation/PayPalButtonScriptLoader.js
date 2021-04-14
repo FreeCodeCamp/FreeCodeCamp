@@ -1,11 +1,11 @@
 /* eslint-disable camelcase */
 
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import PropTypes from 'prop-types';
 
-import { scriptLoader, scriptRemover } from '../../utils/scriptLoaders';
 import { Loader } from '../../components/helpers';
+import { scriptLoader, scriptRemover } from '../../utils/scriptLoaders';
 
 export class PayPalButtonScriptLoader extends Component {
   state = { isSdkLoaded: window.paypal && true, isSubscription: true };

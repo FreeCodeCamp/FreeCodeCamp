@@ -1,15 +1,15 @@
 import React from 'react';
-import ResponsiveDesign from './ResponsiveDesign';
-import JavaScriptIcon from './JavaScriptIcon';
-import ReactIcon from './ReactIcon';
-import D3Icon from './D3Icon';
 import APIIcon from './APIIcon';
-import Clipboard from './Clipboard';
-import PythonIcon from './PythonIcon';
+import Algorithm from './Algorithm';
 import Analytics from './Analytics';
+import Clipboard from './Clipboard';
+import D3Icon from './D3Icon';
+import JavaScriptIcon from './JavaScriptIcon';
+import PythonIcon from './PythonIcon';
+import ReactIcon from './ReactIcon';
+import ResponsiveDesign from './ResponsiveDesign';
 import Shield from './Shield';
 import TensorflowIcon from './TensorflowIcon';
-import Algorithm from './Algorithm';
 
 const generateIconComponent = (superBlock, className) => {
   const iconMap = {

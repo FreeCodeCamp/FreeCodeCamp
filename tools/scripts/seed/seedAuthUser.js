@@ -1,10 +1,8 @@
-const fullyCertifiedUser = require('./certifiedUserData');
-
 const path = require('path');
+const debug = require('debug');
 require('dotenv').config({ path: path.resolve(__dirname, '../../../.env') });
 const MongoClient = require('mongodb').MongoClient;
 const ObjectId = require('mongodb').ObjectID;
-const debug = require('debug');
 
 const envVariables = process.argv;
 
@@ -12,6 +10,7 @@ const log = debug('fcc:tools:seedLocalAuthUser');
 const { MONGOHQ_URL } = process.env;
 
 const defaultUserImage = require('../../../config/misc').defaultUserImage;
+const fullyCertifiedUser = require('./certifiedUserData');
 
 function handleError(err, client) {
   if (err) {

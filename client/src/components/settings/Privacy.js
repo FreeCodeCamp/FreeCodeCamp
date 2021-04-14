@@ -1,18 +1,18 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import { createSelector } from 'reselect';
 import { Button, Form } from '@freecodecamp/react-bootstrap';
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 import { withTranslation } from 'react-i18next';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { createSelector } from 'reselect';
 
 import { userSelector } from '../../redux';
 import { submitProfileUI } from '../../redux/settings';
 
 import FullWidthRow from '../helpers/FullWidthRow';
 import Spacer from '../helpers/Spacer';
-import ToggleSetting from './ToggleSetting';
 import SectionHeader from './SectionHeader';
+import ToggleSetting from './ToggleSetting';
 
 const mapStateToProps = createSelector(userSelector, user => ({
   user

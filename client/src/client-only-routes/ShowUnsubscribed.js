@@ -1,12 +1,12 @@
-import React, { Fragment } from 'react';
-import PropTypes from 'prop-types';
 import { Grid, Panel, Button } from '@freecodecamp/react-bootstrap';
+import PropTypes from 'prop-types';
+import React, { Fragment } from 'react';
 import Helmet from 'react-helmet';
 import { useTranslation } from 'react-i18next';
 
 import envData from '../../../config/env.json';
-import FullWidthRow from '../components/helpers/FullWidthRow';
 import { Spacer } from '../components/helpers';
+import FullWidthRow from '../components/helpers/FullWidthRow';
 
 const { apiLocation } = envData;
 

@@ -1,7 +1,7 @@
 /* global describe it expect */
+import jwt from 'jsonwebtoken';
 import sinon from 'sinon';
 import { mockReq as mockRequest, mockRes } from 'sinon-express-mock';
-import jwt from 'jsonwebtoken';
 
 import { homeLocation } from '../../../../config/env';
 import createRequestAuthorization, {

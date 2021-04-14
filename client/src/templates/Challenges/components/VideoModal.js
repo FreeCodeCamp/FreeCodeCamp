@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
 import { Modal } from '@freecodecamp/react-bootstrap';
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 import { withTranslation } from 'react-i18next';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
-import { closeModal, isVideoModalOpenSelector } from '../redux';
 import { executeGA } from '../../../redux';
+import { closeModal, isVideoModalOpenSelector } from '../redux';
 
 import './video-modal.css';
 

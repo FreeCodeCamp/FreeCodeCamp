@@ -1,7 +1,7 @@
 // this exists purely to redirect legacy challenge paths to /learn
-import React from 'react';
 import { Router } from '@reach/router';
 import { navigate, withPrefix } from 'gatsby';
+import React from 'react';
 
 import toLearnPath from '../utils/to-learn-path';
 

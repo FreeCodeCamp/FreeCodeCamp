@@ -1,15 +1,15 @@
-import React, { Component, Fragment } from 'react';
-import PropTypes from 'prop-types';
 import { TabPane, Tabs } from '@freecodecamp/react-bootstrap';
+import i18next from 'i18next';
+import PropTypes from 'prop-types';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 
-import ToolPanel from '../components/Tool-Panel';
-import { createStructuredSelector } from 'reselect';
-import { currentTabSelector, moveToTab } from '../redux';
 import { bindActionCreators } from 'redux';
-import EditorTabs from './EditorTabs';
+import { createStructuredSelector } from 'reselect';
 import envData from '../../../../../config/env.json';
-import i18next from 'i18next';
+import ToolPanel from '../components/Tool-Panel';
+import { currentTabSelector, moveToTab } from '../redux';
+import EditorTabs from './EditorTabs';
 
 const { showUpcomingChanges } = envData;
 

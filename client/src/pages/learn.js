@@ -1,16 +1,16 @@
-import React from 'react';
 import { Grid, Row, Col } from '@freecodecamp/react-bootstrap';
-import PropTypes from 'prop-types';
-import { createSelector } from 'reselect';
 import { graphql } from 'gatsby';
+import PropTypes from 'prop-types';
+import React from 'react';
 import Helmet from 'react-helmet';
-import { connect } from 'react-redux';
 import { useTranslation } from 'react-i18next';
+import { connect } from 'react-redux';
+import { createSelector } from 'reselect';
 
+import Intro from '../components/Intro';
+import Map from '../components/Map';
 import { Spacer } from '../components/helpers';
 import LearnLayout from '../components/layouts/Learn';
-import Map from '../components/Map';
-import Intro from '../components/Intro';
 import {
   userFetchStateSelector,
   isSignedInSelector,

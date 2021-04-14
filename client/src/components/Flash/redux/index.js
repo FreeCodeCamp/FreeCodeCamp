@@ -1,5 +1,5 @@
-import { createAction, handleActions } from 'redux-actions';
 import { nanoid } from 'nanoid';
+import { createAction, handleActions } from 'redux-actions';
 
 import { createTypes } from '../../../utils/createTypes';
 

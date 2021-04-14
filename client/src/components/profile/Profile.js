@@ -1,17 +1,17 @@
-import React, { Fragment } from 'react';
-import PropTypes from 'prop-types';
 import { Grid, Row, Button } from '@freecodecamp/react-bootstrap';
+import PropTypes from 'prop-types';
+import React, { Fragment } from 'react';
 import Helmet from 'react-helmet';
-import Link from '../helpers/Link';
 import { useTranslation } from 'react-i18next';
-
+import envData from '../../../../config/env.json';
 import { CurrentChallengeLink, FullWidthRow, Spacer } from '../helpers';
+import Link from '../helpers/Link';
+
 import Camper from './components/Camper';
-import HeatMap from './components/HeatMap';
 import Certifications from './components/Certifications';
+import HeatMap from './components/HeatMap';
 import Portfolio from './components/Portfolio';
 import Timeline from './components/TimeLine';
-import envData from '../../../../config/env.json';
 
 const { apiLocation } = envData;
 

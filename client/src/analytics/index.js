@@ -1,9 +1,9 @@
 import ReactGA from 'react-ga';
-import envData from '../../../config/env.json';
 import {
   devAnalyticsId,
   prodAnalyticsId
 } from '../../../config/analytics-settings';
+import envData from '../../../config/env.json';
 
 const { deploymentEnv } = envData;
 

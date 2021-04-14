@@ -1,9 +1,9 @@
 /* global expect */
 
-import React from 'react';
 import { render } from '@testing-library/react';
-import TimeLine from './TimeLine';
 import { useStaticQuery } from 'gatsby';
+import React from 'react';
+import TimeLine from './TimeLine';
 
 beforeEach(() => {
   useStaticQuery.mockImplementationOnce(() => ({

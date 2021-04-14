@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import { isEmpty } from 'lodash';
 import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 import sanitizeHtml from 'sanitize-html';
 
 import './output.css';
-import { isEmpty } from 'lodash';
 
 const propTypes = {
   defaultOutput: PropTypes.string,

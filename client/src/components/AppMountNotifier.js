@@ -1,7 +1,7 @@
-import { Component } from 'react';
 import PropTypes from 'prop-types';
-import { bindActionCreators } from 'redux';
+import { Component } from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 import { appMount } from '../redux';
 

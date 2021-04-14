@@ -1,25 +1,25 @@
 /* global describe it expect beforeEach */
-const isArray = require('lodash/isArray');
 
-const simpleAST = require('../__fixtures__/ast-simple.json');
-const withEditableAST = require('../__fixtures__/ast-with-markers.json');
-const withSeedKeysAST = require('../__fixtures__/ast-seed-keys.json');
-const withExtraLinesAST = require('../__fixtures__/ast-with-extra-lines.json');
-const orphanKeyAST = require('../__fixtures__/ast-orphan-key.json');
+const { isObject } = require('lodash');
+const isArray = require('lodash/isArray');
 const adjacentKeysAST = require('../__fixtures__/ast-adjacent-keys.json');
 const withBeforeAfterAST = require('../__fixtures__/ast-before-after.json');
-const emptyBeforeAST = require('../__fixtures__/ast-empty-before.json');
+const cCodeAST = require('../__fixtures__/ast-c-code.json');
+const doubleMarkerAST = require('../__fixtures__/ast-double-marker.json');
 const emptyAfterAST = require('../__fixtures__/ast-empty-after.json');
+const emptyBeforeAST = require('../__fixtures__/ast-empty-before.json');
+const emptyContentAST = require('../__fixtures__/ast-empty-contents.json');
 const emptyCSSAST = require('../__fixtures__/ast-empty-css.json');
 const emptyHTMLAST = require('../__fixtures__/ast-empty-html.json');
-const doubleMarkerAST = require('../__fixtures__/ast-double-marker.json');
-const jsxSeedAST = require('../__fixtures__/ast-jsx-seed.json');
-const cCodeAST = require('../__fixtures__/ast-c-code.json');
 const explodedMarkerAST = require('../__fixtures__/ast-exploded-marker.json');
-const emptyContentAST = require('../__fixtures__/ast-empty-contents.json');
+const jsxSeedAST = require('../__fixtures__/ast-jsx-seed.json');
+const orphanKeyAST = require('../__fixtures__/ast-orphan-key.json');
+const withSeedKeysAST = require('../__fixtures__/ast-seed-keys.json');
+const simpleAST = require('../__fixtures__/ast-simple.json');
+const withExtraLinesAST = require('../__fixtures__/ast-with-extra-lines.json');
+const withEditableAST = require('../__fixtures__/ast-with-markers.json');
 
 const addSeed = require('./add-seed');
-const { isObject } = require('lodash');
 
 describe('add-seed plugin', () => {
   const plugin = addSeed();

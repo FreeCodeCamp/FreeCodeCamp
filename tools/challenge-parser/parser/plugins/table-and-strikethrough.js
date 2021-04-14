@@ -1,8 +1,8 @@
 'use strict';
 
+var fromMarkdown = require('mdast-util-gfm/from-markdown');
 var strikethrough = require('micromark-extension-gfm-strikethrough');
 var table = require('micromark-extension-gfm-table');
-var fromMarkdown = require('mdast-util-gfm/from-markdown');
 
 module.exports = tableAndStrikethrough;
 

@@ -1,14 +1,13 @@
-import React, { Fragment } from 'react';
-import PropTypes from 'prop-types';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import { useTranslation } from 'react-i18next';
-
 import {
   Button,
   DropdownButton,
   MenuItem
 } from '@freecodecamp/react-bootstrap';
+import PropTypes from 'prop-types';
+import React, { Fragment } from 'react';
+import { useTranslation } from 'react-i18next';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 import './tool-panel.css';
 import { openModal, executeChallenge } from '../redux';

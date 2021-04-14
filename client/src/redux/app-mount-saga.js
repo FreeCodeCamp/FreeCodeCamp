@@ -1,5 +1,5 @@
-import { put, takeEvery } from 'redux-saga/effects';
 import qs from 'query-string';
+import { put, takeEvery } from 'redux-saga/effects';
 import { createFlashMessage } from '../components/Flash/redux';
 
 function* parseMessagesSaga() {

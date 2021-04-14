@@ -1,5 +1,5 @@
-import { Observable } from 'rx';
 import debug from 'debug';
+import { Observable } from 'rx';
 
 import { reportError } from '../middlewares/sentry-error-handler.js';
 import InMemoryCache from '../utils/in-memory-cache';

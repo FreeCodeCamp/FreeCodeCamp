@@ -1,11 +1,11 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 
-import { ImageLoader } from '../../helpers';
-import shawnImg from '../../../assets/images/landing/Shawn.png';
-import sarahImg from '../../../assets/images/landing/Sarah.png';
-import emmaImg from '../../../assets/images/landing/Emma.png';
 import { Trans, useTranslation } from 'react-i18next';
+import emmaImg from '../../../assets/images/landing/Emma.png';
+import sarahImg from '../../../assets/images/landing/Sarah.png';
+import shawnImg from '../../../assets/images/landing/Shawn.png';
+import { ImageLoader } from '../../helpers';
 
 const propTypes = {
   page: PropTypes.string

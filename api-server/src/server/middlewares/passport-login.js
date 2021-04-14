@@ -1,6 +1,6 @@
 import _ from 'lodash';
-import { Observable } from 'rx';
 import { login } from 'passport/lib/http/request';
+import { Observable } from 'rx';
 
 // make login polymorphic
 // if supplied callback it works as normal

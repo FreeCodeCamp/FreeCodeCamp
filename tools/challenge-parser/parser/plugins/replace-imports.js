@@ -1,11 +1,11 @@
 const path = require('path');
+const { isEmpty } = require('lodash');
+const remark = require('remark');
 const { read } = require('to-vfile');
 const modifyChildren = require('unist-util-modify-children');
-const remark = require('remark');
 const remove = require('unist-util-remove');
-const visit = require('unist-util-visit');
 const { selectAll } = require('unist-util-select');
-const { isEmpty } = require('lodash');
+const visit = require('unist-util-visit');
 
 const { editableRegionMarker } = require('./add-seed');
 const tableAndStrikeThrough = require('./table-and-strikethrough');

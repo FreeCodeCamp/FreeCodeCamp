@@ -1,8 +1,8 @@
 const gulp = require('gulp');
 const through2 = require('through2');
 
-const { testedLang } = require('./utils');
 const lintMarkdown = require('../tools/scripts/lint');
+const { testedLang } = require('./utils');
 
 /**
  * Tasks

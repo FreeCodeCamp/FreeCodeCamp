@@ -1,10 +1,10 @@
-const visitChildren = require('unist-util-visit-children');
 const { root } = require('mdast-builder');
+const visitChildren = require('unist-util-visit-children');
 
+const { editableRegionMarker } = require('./add-seed');
+const getAllBetween = require('./utils/between-headings');
 const { getFileVisitor } = require('./utils/get-file-visitor');
 const { splitOnThematicBreak } = require('./utils/split-on-thematic-break');
-const getAllBetween = require('./utils/between-headings');
-const { editableRegionMarker } = require('./add-seed');
 
 function validateMarkers({ value }) {
   const lines = value.split('\n');

@@ -1,5 +1,5 @@
-import { throwError } from 'rxjs';
 import axios from 'axios';
+import { throwError } from 'rxjs';
 
 // value used to break browser ajax caching
 const cacheBreakerValue = Math.random();

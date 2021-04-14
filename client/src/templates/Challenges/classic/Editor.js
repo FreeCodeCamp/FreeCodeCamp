@@ -1,9 +1,11 @@
-import React, { Component, Suspense } from 'react';
+import Loadable from '@loadable/component';
 import PropTypes from 'prop-types';
+import React, { Component, Suspense } from 'react';
 import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
-import Loadable from '@loadable/component';
 
+import { Loader } from '../../../components/helpers';
+import { userSelector, isDonationModalOpenSelector } from '../../../redux';
 import {
   canFocusEditorSelector,
   consoleOutputSelector,
@@ -16,8 +18,6 @@ import {
   challengeTestsSelector,
   submitChallenge
 } from '../redux';
-import { userSelector, isDonationModalOpenSelector } from '../../../redux';
-import { Loader } from '../../../components/helpers';
 
 import './editor.css';
 

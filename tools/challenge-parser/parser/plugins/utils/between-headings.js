@@ -1,7 +1,7 @@
-const between = require('unist-util-find-all-between');
 const find = require('unist-util-find');
 const findAfter = require('unist-util-find-after');
 const findAllAfter = require('unist-util-find-all-after');
+const between = require('unist-util-find-all-between');
 
 function getAllBetween(tree, marker) {
   const start = find(tree, {

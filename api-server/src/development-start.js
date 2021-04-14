@@ -1,9 +1,9 @@
 const path = require('path');
 require('dotenv').config({ path: path.resolve(__dirname, '../../.env') });
 
+const createDebugger = require('debug');
 const nodemon = require('nodemon');
 const SmeeClient = require('smee-client');
-const createDebugger = require('debug');
 
 const log = createDebugger('fcc:start:development');
 

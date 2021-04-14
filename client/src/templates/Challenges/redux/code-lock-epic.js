@@ -1,5 +1,5 @@
-import { map } from 'rxjs/operators';
 import { ofType } from 'redux-observable';
+import { map } from 'rxjs/operators';
 import { actionTypes } from './action-types';
 import { unlockCode } from './';
 

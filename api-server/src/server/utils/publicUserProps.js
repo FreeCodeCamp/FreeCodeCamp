@@ -1,11 +1,11 @@
 import { isURL } from 'validator';
 
-import { addPlaceholderImage } from './';
 import {
   prepUniqueDaysByHours,
   calcCurrentStreak,
   calcLongestStreak
 } from '../utils/user-stats';
+import { addPlaceholderImage } from './';
 
 export const publicUserProps = [
   'about',

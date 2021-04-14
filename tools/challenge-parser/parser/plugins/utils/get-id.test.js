@@ -1,9 +1,9 @@
 /* global expect*/
-const getId = require('./get-id');
 const idNode = require('./__fixtures__/id-node.json');
 const imageNode = require('./__fixtures__/image-node.json');
 const multipleChildrenNode = require('./__fixtures__/multiple-children.json');
 const nonIdNode = require('./__fixtures__/non-id-node.json');
+const getId = require('./get-id');
 
 describe('get-id', () => {
   it('should return a string', () => {

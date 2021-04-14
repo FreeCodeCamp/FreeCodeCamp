@@ -1,8 +1,3 @@
-import React, { Component, Fragment } from 'react';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
-import { withTranslation } from 'react-i18next';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faCheck,
   faCheckSquare,
@@ -10,11 +5,16 @@ import {
   faSquare,
   faExternalLinkAlt
 } from '@fortawesome/free-solid-svg-icons';
-import { Link } from '../../helpers';
-import { updateUserFlag } from '../../../redux/settings';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import PropTypes from 'prop-types';
+import React, { Component, Fragment } from 'react';
+import { withTranslation } from 'react-i18next';
+import { connect } from 'react-redux';
 import envData from '../../../../../config/env.json';
-import createLanguageRedirect from '../../createLanguageRedirect';
+import { updateUserFlag } from '../../../redux/settings';
 import createExternalRedirect from '../../createExternalRedirects';
+import createLanguageRedirect from '../../createLanguageRedirect';
+import { Link } from '../../helpers';
 
 const { clientLocale, radioLocation, apiLocation } = envData;
 

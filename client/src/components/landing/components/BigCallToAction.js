@@ -1,7 +1,7 @@
-import React from 'react';
 import PropTypes from 'prop-types';
-import Login from '../../Header/components/Login';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
+import Login from '../../Header/components/Login';
 
 const propTypes = {
   page: PropTypes.string

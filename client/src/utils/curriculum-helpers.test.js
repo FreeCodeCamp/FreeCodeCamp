@@ -1,11 +1,11 @@
 /* global describe it expect */
 
-import __testHelpers from './curriculum-helpers';
-import jsTestValues from './__fixtures/curriculum-helpers-javascript';
 import cssTestValues from './__fixtures/curriculum-helpers-css';
 import htmlTestValues from './__fixtures/curriculum-helpers-html';
+import jsTestValues from './__fixtures/curriculum-helpers-javascript';
 /* eslint-disable max-len */
 import whiteSpaceTestValues from './__fixtures/curriculum-helpers-remove-white-space';
+import __testHelpers from './curriculum-helpers';
 /* eslint-enable max-len */
 
 const {

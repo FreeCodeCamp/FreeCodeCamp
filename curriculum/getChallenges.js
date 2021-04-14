@@ -1,10 +1,14 @@
+const fs = require('fs');
 const path = require('path');
+const util = require('util');
+const yaml = require('js-yaml');
 const { findIndex, reduce, toString } = require('lodash');
 const readDirP = require('readdirp');
-const yaml = require('js-yaml');
+const { helpCategoryMap } = require('../client/utils/challengeTypes');
+const {
+  curriculum: curriculumLangs
+} = require('../config/i18n/all-langs').availableLangs;
 const { parseMD } = require('../tools/challenge-parser/parser');
-const fs = require('fs');
-const util = require('util');
 /* eslint-disable max-len */
 const {
   translateCommentsInChallenge
@@ -12,12 +16,8 @@ const {
 /* eslint-enable max-len*/
 
 const { isAuditedCert } = require('../utils/is-audited');
-const { dasherize } = require('../utils/slugs');
 const { createPoly } = require('../utils/polyvinyl');
-const { helpCategoryMap } = require('../client/utils/challengeTypes');
-const {
-  curriculum: curriculumLangs
-} = require('../config/i18n/all-langs').availableLangs;
+const { dasherize } = require('../utils/slugs');
 
 const access = util.promisify(fs.access);
 

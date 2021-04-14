@@ -1,10 +1,10 @@
-import React, { Fragment, Component } from 'react';
-import PropTypes from 'prop-types';
-import Helmet from 'react-helmet';
-import { connect } from 'react-redux';
-import { Index } from 'react-instantsearch-dom';
 import { Grid, Row, Col } from '@freecodecamp/react-bootstrap';
+import PropTypes from 'prop-types';
+import React, { Fragment, Component } from 'react';
+import Helmet from 'react-helmet';
 import { withTranslation } from 'react-i18next';
+import { Index } from 'react-instantsearch-dom';
+import { connect } from 'react-redux';
 
 import { updateSearchQuery } from '../components/search/redux';
 import SearchPageHits from '../components/search/searchPage/SearchPageHits';

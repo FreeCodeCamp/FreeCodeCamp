@@ -1,8 +1,8 @@
 /* global describe it expect */
-const mockAST = require('../__fixtures__/ast-simple.json');
 // eslint-disable-next-line max-len
 const incorrectMarkersAST = require('../__fixtures__/ast-incorrect-markers.json');
 const realisticAST = require('../__fixtures__/ast-realistic.json');
+const mockAST = require('../__fixtures__/ast-simple.json');
 const addText = require('./add-text');
 
 describe('add-text', () => {

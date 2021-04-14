@@ -1,5 +1,5 @@
-import { parse } from '@babel/parser';
 import generate from '@babel/generator';
+import { parse } from '@babel/parser';
 
 const removeHtmlComments = str => str.replace(/<!--.*?-->/gs, '');
 

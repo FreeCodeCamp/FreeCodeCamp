@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { Button, Panel } from '@freecodecamp/react-bootstrap';
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
+import { withTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { withTranslation } from 'react-i18next';
 
-import { FullWidthRow, ButtonSpacer, Spacer } from '../helpers';
 import { deleteAccount, resetProgress } from '../../redux/settings';
+import { FullWidthRow, ButtonSpacer, Spacer } from '../helpers';
 import DeleteModal from './DeleteModal';
 import ResetModal from './ResetModal';
 

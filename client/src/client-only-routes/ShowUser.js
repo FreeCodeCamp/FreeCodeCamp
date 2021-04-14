@@ -1,7 +1,3 @@
-import React, { Component, Fragment } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { createSelector } from 'reselect';
 import {
   Panel,
   FormControl,
@@ -11,18 +7,22 @@ import {
   Col,
   Row
 } from '@freecodecamp/react-bootstrap';
+import PropTypes from 'prop-types';
+import React, { Component, Fragment } from 'react';
 import Helmet from 'react-helmet';
 import { Trans, withTranslation } from 'react-i18next';
+import { connect } from 'react-redux';
+import { createSelector } from 'reselect';
 
 import Login from '../components/Header/components/Login';
 
+import { Spacer, Loader, FullWidthRow } from '../components/helpers';
 import {
   isSignedInSelector,
   userFetchStateSelector,
   userSelector,
   reportUser
 } from '../redux';
-import { Spacer, Loader, FullWidthRow } from '../components/helpers';
 
 const propTypes = {
   email: PropTypes.string,

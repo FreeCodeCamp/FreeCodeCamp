@@ -2,8 +2,8 @@
 import React from 'react';
 import ShallowRenderer from 'react-test-renderer/shallow';
 
-import IndexPage from '../../pages';
 import mockChallengeNodes from '../../__mocks__/challenge-nodes';
+import IndexPage from '../../pages';
 
 jest.mock('../../analytics');
 

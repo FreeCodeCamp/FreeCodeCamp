@@ -1,9 +1,3 @@
-import React, { Component, Fragment } from 'react';
-import PropTypes from 'prop-types';
-import { Link } from 'gatsby';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import { createSelector } from 'reselect';
 import {
   Form,
   FormGroup,
@@ -14,10 +8,16 @@ import {
   Col,
   Button
 } from '@freecodecamp/react-bootstrap';
-import Helmet from 'react-helmet';
-import isEmail from 'validator/lib/isEmail';
+import { Link } from 'gatsby';
 import { isString } from 'lodash';
+import PropTypes from 'prop-types';
+import React, { Component, Fragment } from 'react';
+import Helmet from 'react-helmet';
 import { withTranslation } from 'react-i18next';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { createSelector } from 'reselect';
+import isEmail from 'validator/lib/isEmail';
 
 import { Spacer } from '../components/helpers';
 import './update-email.css';

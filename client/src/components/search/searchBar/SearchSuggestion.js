@@ -1,5 +1,5 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 import { Highlight } from 'react-instantsearch-dom';
 
 const Suggestion = ({ hit, handleMouseEnter, handleMouseLeave }) => {

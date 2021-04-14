@@ -1,6 +1,6 @@
-import React from 'react';
 import { withPrefix } from 'gatsby';
 import i18next from 'i18next';
+import React from 'react';
 
 export const getheadTagComponents = () => {
   const socialImage =

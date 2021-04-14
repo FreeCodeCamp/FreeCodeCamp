@@ -1,13 +1,13 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import { createSelector } from 'reselect';
 import { Button, Modal } from '@freecodecamp/react-bootstrap';
+import PropTypes from 'prop-types';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { createSelector } from 'reselect';
 
-import { isResetModalOpenSelector, closeModal, resetChallenge } from '../redux';
 import { executeGA } from '../../../redux';
+import { isResetModalOpenSelector, closeModal, resetChallenge } from '../redux';
 
 import './reset-modal.css';
 

@@ -1,13 +1,13 @@
-import React from 'react';
 import PropTypes from 'prop-types';
-import { Link, Spacer, Loader, FullWidthRow } from '../helpers';
+import React from 'react';
+import { Trans, useTranslation } from 'react-i18next';
 import { randomQuote } from '../../utils/get-words';
+import Login from '../Header/components/Login';
+import { Link, Spacer, Loader, FullWidthRow } from '../helpers';
 import CurrentChallengeLink from '../helpers/CurrentChallengeLink';
 import IntroDescription from './components/IntroDescription';
-import { Trans, useTranslation } from 'react-i18next';
 
 import './intro.css';
-import Login from '../Header/components/Login';
 
 const propTypes = {
   complete: PropTypes.bool,

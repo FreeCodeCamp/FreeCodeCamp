@@ -1,10 +1,10 @@
+import { Link } from 'gatsby';
 import React from 'react';
 import Helmet from 'react-helmet';
-import { Spacer } from '../../components/helpers';
-import { Link } from 'gatsby';
 import { useTranslation } from 'react-i18next';
-
 import notFoundLogo from '../../assets/images/freeCodeCamp-404.svg';
+import { Spacer } from '../../components/helpers';
+
 import { randomQuote } from '../../utils/get-words';
 
 import './404.css';

@@ -1,8 +1,8 @@
 import chai from 'chai';
 import '@babel/polyfill';
 import __toString from 'lodash/toString';
-import { format as __format } from '../../utils/format';
 import curriculumHelpers from '../../utils/curriculum-helpers';
+import { format as __format } from '../../utils/format';
 
 const __utils = (() => {
   const MAX_LOGS_SIZE = 64 * 1024;

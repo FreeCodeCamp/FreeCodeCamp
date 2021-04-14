@@ -1,5 +1,5 @@
-const path = require('path');
 const fs = require('fs');
+const path = require('path');
 
 // PIPELINE_ENV  is 'true' in the build pipeline
 if (process.env.PIPELINE_ENV !== 'true') {

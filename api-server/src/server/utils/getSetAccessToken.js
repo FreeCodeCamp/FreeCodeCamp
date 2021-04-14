@@ -1,5 +1,5 @@
-import jwt from 'jsonwebtoken';
 import { isBefore } from 'date-fns';
+import jwt from 'jsonwebtoken';
 
 import { jwtSecret as _jwtSecret } from '../../../../config/secrets';
 

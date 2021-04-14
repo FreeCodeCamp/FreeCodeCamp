@@ -1,9 +1,9 @@
-import React from 'react';
 import { Router } from '@reach/router';
 import { withPrefix } from 'gatsby';
+import React from 'react';
 
-import RedirectHome from '../components/RedirectHome';
 import ShowSettings from '../client-only-routes/ShowSettings';
+import RedirectHome from '../components/RedirectHome';
 
 function Settings() {
   return (

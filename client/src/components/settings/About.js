@@ -1,16 +1,16 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import {
   FormGroup,
   ControlLabel,
   FormControl
 } from '@freecodecamp/react-bootstrap';
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 
+import { withTranslation } from 'react-i18next';
 import { FullWidthRow, Spacer } from '../helpers';
+import BlockSaveButton from '../helpers/form/BlockSaveButton';
 import ThemeSettings from './Theme';
 import UsernameSettings from './Username';
-import BlockSaveButton from '../helpers/form/BlockSaveButton';
-import { withTranslation } from 'react-i18next';
 
 const propTypes = {
   about: PropTypes.string,

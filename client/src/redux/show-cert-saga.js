@@ -1,5 +1,5 @@
-import { put, takeEvery, call } from 'redux-saga/effects';
 import { navigate } from 'gatsby';
+import { put, takeEvery, call } from 'redux-saga/effects';
 
 import { createFlashMessage } from '../components/Flash/redux';
 import { getShowCert } from '../utils/ajax';

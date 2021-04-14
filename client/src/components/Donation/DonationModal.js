@@ -1,23 +1,23 @@
 /* eslint-disable max-len */
-import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import { createSelector } from 'reselect';
 import { Modal, Button, Col, Row } from '@freecodecamp/react-bootstrap';
-import { Spacer } from '../helpers';
-import Heart from '../../assets/icons/Heart';
-import Cup from '../../assets/icons/Cup';
-import DonateForm from './DonateForm';
-import { modalDefaultDonation } from '../../../../config/donation-settings';
+import PropTypes from 'prop-types';
+import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { createSelector } from 'reselect';
+import { modalDefaultDonation } from '../../../../config/donation-settings';
+import Cup from '../../assets/icons/Cup';
+import Heart from '../../assets/icons/Heart';
 import {
   closeDonationModal,
   isDonationModalOpenSelector,
   recentlyClaimedBlockSelector,
   executeGA
 } from '../../redux';
+import { Spacer } from '../helpers';
+
+import DonateForm from './DonateForm';
 
 import './Donation.css';
 

@@ -1,9 +1,9 @@
-import React from 'react';
+import i18next from 'i18next';
 import PropTypes from 'prop-types';
+import React from 'react';
 import { Link } from '../../../components/helpers/index';
 
 import './challenge-title.css';
-import i18next from 'i18next';
 
 const propTypes = {
   block: PropTypes.string,

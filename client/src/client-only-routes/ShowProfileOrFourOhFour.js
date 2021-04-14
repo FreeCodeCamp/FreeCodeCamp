@@ -1,18 +1,18 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 import { isEmpty } from 'lodash';
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
+import { isBrowser } from '../../utils/index';
+import FourOhFour from '../components/FourOhFour';
 import Loader from '../components/helpers/Loader';
+import Profile from '../components/profile/Profile';
 import {
   userByNameSelector,
   userProfileFetchStateSelector,
   fetchProfileForUser,
   usernameSelector
 } from '../redux';
-import FourOhFour from '../components/FourOhFour';
-import Profile from '../components/profile/Profile';
-import { isBrowser } from '../../utils/index';
 
 const propTypes = {
   fetchProfileForUser: PropTypes.func.isRequired,

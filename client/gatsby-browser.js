@@ -1,11 +1,11 @@
-import React from 'react';
 import PropTypes from 'prop-types';
-import { Provider } from 'react-redux';
+import React from 'react';
 import { I18nextProvider } from 'react-i18next';
+import { Provider } from 'react-redux';
 
 import i18n from './i18n/config';
-import { createStore } from './src/redux/createStore';
 import AppMountNotifier from './src/components/AppMountNotifier';
+import { createStore } from './src/redux/createStore';
 import layoutSelector from './utils/gatsby/layoutSelector';
 
 const store = createStore();

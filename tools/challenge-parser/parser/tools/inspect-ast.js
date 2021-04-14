@@ -1,7 +1,7 @@
-const { read } = require('to-vfile');
+const { inspect } = require('util');
 const remark = require('remark');
 const html = require('remark-html');
-const { inspect } = require('util');
+const { read } = require('to-vfile');
 
 (async () => {
   const path = './example.md';

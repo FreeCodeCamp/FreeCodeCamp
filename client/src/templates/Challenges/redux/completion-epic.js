@@ -1,3 +1,5 @@
+import { navigate } from 'gatsby';
+import { ofType } from 'redux-observable';
 import { of, empty } from 'rxjs';
 import {
   switchMap,
@@ -7,9 +9,8 @@ import {
   filter,
   tap
 } from 'rxjs/operators';
-import { ofType } from 'redux-observable';
-import { navigate } from 'gatsby';
 
+import { challengeTypes, submitTypes } from '../../../../utils/challengeTypes';
 import {
   userSelector,
   isSignedInSelector,
@@ -19,7 +20,6 @@ import {
 } from '../../../redux';
 
 import postUpdate$ from '../utils/postUpdate$';
-import { challengeTypes, submitTypes } from '../../../../utils/challengeTypes';
 import { actionTypes } from './action-types';
 import {
   projectFormValuesSelector,

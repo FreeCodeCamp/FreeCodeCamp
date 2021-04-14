@@ -1,10 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import { Image } from '@freecodecamp/react-bootstrap';
-import DefaultAvatar from '../../assets/icons/DefaultAvatar';
-import { defaultUserImage } from '../../../../config/misc';
-import { borderColorPicker } from '../helpers';
+import PropTypes from 'prop-types';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
+import { defaultUserImage } from '../../../../config/misc';
+import DefaultAvatar from '../../assets/icons/DefaultAvatar';
+import { borderColorPicker } from '../helpers';
 
 const propTypes = {
   isDonating: PropTypes.bool,

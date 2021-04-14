@@ -1,6 +1,6 @@
-const YAML = require('js-yaml');
 const fs = require('fs');
 const path = require('path');
+const YAML = require('js-yaml');
 const argv = require('yargs').argv;
 const linter = require('./linter');
 

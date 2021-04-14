@@ -1,9 +1,9 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { Spacer } from '../../../components/helpers';
 import { generateIconComponent } from '../../../assets/icons';
+import { Spacer } from '../../../components/helpers';
 
 const propTypes = {
   superBlock: PropTypes.string

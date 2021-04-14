@@ -1,9 +1,9 @@
-import React from 'react';
+import { Button, Modal } from '@freecodecamp/react-bootstrap';
 import PropTypes from 'prop-types';
+import React from 'react';
 import { Trans, useTranslation } from 'react-i18next';
 
 import { ButtonSpacer } from '../helpers';
-import { Button, Modal } from '@freecodecamp/react-bootstrap';
 
 import './danger-zone.css';
 

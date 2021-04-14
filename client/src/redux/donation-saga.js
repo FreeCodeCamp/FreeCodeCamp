@@ -9,6 +9,11 @@ import {
 } from 'redux-saga/effects';
 
 import {
+  addDonation,
+  postChargeStripe,
+  postCreateStripeSession
+} from '../utils/ajax';
+import {
   openDonationModal,
   preventBlockDonationRequests,
   shouldRequestDonationSelector,
@@ -20,12 +25,6 @@ import {
   postChargeStripeError,
   types as appTypes
 } from './';
-
-import {
-  addDonation,
-  postChargeStripe,
-  postCreateStripeSession
-} from '../utils/ajax';
 
 const defaultDonationError = `Something is not right. Please contact donors@freecodecamp.org`;
 

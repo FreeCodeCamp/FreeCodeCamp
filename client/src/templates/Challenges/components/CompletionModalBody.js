@@ -1,8 +1,8 @@
-import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
 import BezierEasing from 'bezier-easing';
-import GreenPass from '../../../assets/icons/GreenPass';
+import PropTypes from 'prop-types';
+import React, { PureComponent } from 'react';
 import { withTranslation } from 'react-i18next';
+import GreenPass from '../../../assets/icons/GreenPass';
 
 const propTypes = {
   block: PropTypes.string,

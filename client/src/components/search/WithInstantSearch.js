@@ -1,12 +1,14 @@
-import React, { Component, Fragment } from 'react';
 import { Location } from '@reach/router';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { InstantSearch, Configure } from 'react-instantsearch-dom';
-import qs from 'query-string';
-import { navigate } from 'gatsby';
-import Media from 'react-responsive';
 import algoliasearch from 'algoliasearch/lite';
+import { navigate } from 'gatsby';
+import PropTypes from 'prop-types';
+import qs from 'query-string';
+import React, { Component, Fragment } from 'react';
+import { InstantSearch, Configure } from 'react-instantsearch-dom';
+import { connect } from 'react-redux';
+import Media from 'react-responsive';
+import { createSelector } from 'reselect';
+import envData from '../../../../config/env.json';
 import { newsIndex } from '../../utils/algolia-locale-setup';
 
 import {
@@ -15,9 +17,6 @@ import {
   toggleSearchDropdown,
   updateSearchQuery
 } from './redux';
-import envData from '../../../../config/env.json';
-
-import { createSelector } from 'reselect';
 
 const { algoliaAppId, algoliaAPIKey } = envData;
 

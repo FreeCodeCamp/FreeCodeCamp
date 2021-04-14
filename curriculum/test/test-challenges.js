@@ -1,10 +1,30 @@
 /* eslint-disable no-loop-func */
 const path = require('path');
+const { inspect } = require('util');
+const vm = require('vm');
+const { assert, AssertionError } = require('chai');
+const jsdom = require('jsdom');
 const liveServer = require('live-server');
-const stringSimilarity = require('string-similarity');
-const { isAuditedCert } = require('../../utils/is-audited');
-
+const { flatten, isEmpty, cloneDeep, isEqual } = require('lodash');
+const Mocha = require('mocha');
 const spinner = require('ora')();
+const puppeteer = require('puppeteer');
+const stringSimilarity = require('string-similarity');
+const {
+  buildDOMChallenge,
+  buildJSChallenge
+} = require('../../client/src/templates/Challenges/utils/build');
+
+const {
+  default: createWorker
+} = require('../../client/src/templates/Challenges/utils/worker-executor');
+const { challengeTypes } = require('../../client/utils/challengeTypes');
+// the config files are created during the build, but not before linting
+// eslint-disable-next-line import/no-unresolved
+const testEvaluator = require('../../config/client/test-evaluator.json')
+  .filename;
+const { getLines } = require('../../utils/get-lines');
+const { isAuditedCert } = require('../../utils/is-audited');
 
 const clientPath = path.resolve(__dirname, '../../client');
 require('@babel/polyfill');
@@ -17,53 +37,24 @@ require('@babel/register')({
   only: [clientPath]
 });
 
-const createPseudoWorker = require('./utils/pseudo-worker');
-const {
-  default: createWorker
-} = require('../../client/src/templates/Challenges/utils/worker-executor');
-
-const { assert, AssertionError } = require('chai');
-const Mocha = require('mocha');
-const { flatten, isEmpty, cloneDeep, isEqual } = require('lodash');
-const { getLines } = require('../../utils/get-lines');
-
-const jsdom = require('jsdom');
-
-const vm = require('vm');
-
-const puppeteer = require('puppeteer');
-
+const { toSortedArray } = require('../../utils/sort-files');
 const {
   getChallengesForLang,
   getMetaForBlock,
   getTranslatableComments
 } = require('../getChallenges');
-
-const MongoIds = require('./utils/mongoIds');
-const ChallengeTitles = require('./utils/challengeTitles');
 const { challengeSchemaValidator } = require('../schema/challengeSchema');
-const { challengeTypes } = require('../../client/utils/challengeTypes');
-
-const { toSortedArray } = require('../../utils/sort-files');
-
 const { testedLang } = require('../utils');
 
-const {
-  buildDOMChallenge,
-  buildJSChallenge
-} = require('../../client/src/templates/Challenges/utils/build');
+const ChallengeTitles = require('./utils/challengeTitles');
+const MongoIds = require('./utils/mongoIds');
+const createPseudoWorker = require('./utils/pseudo-worker');
 
 const { sortChallenges } = require('./utils/sort-challenges');
 
 const TRANSLATABLE_COMMENTS = getTranslatableComments(
   path.resolve(__dirname, '..', 'dictionaries')
 );
-
-// the config files are created during the build, but not before linting
-// eslint-disable-next-line import/no-unresolved
-const testEvaluator = require('../../config/client/test-evaluator.json')
-  .filename;
-const { inspect } = require('util');
 
 const commentExtractors = {
   html: require('./utils/extract-html-comments'),

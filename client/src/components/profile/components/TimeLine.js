@@ -1,6 +1,3 @@
-import React, { Component, useMemo } from 'react';
-import PropTypes from 'prop-types';
-import { reverse, sortBy } from 'lodash';
 import {
   Button,
   Modal,
@@ -9,23 +6,26 @@ import {
   MenuItem
 } from '@freecodecamp/react-bootstrap';
 import { useStaticQuery, graphql } from 'gatsby';
+import { reverse, sortBy } from 'lodash';
+import PropTypes from 'prop-types';
+import React, { Component, useMemo } from 'react';
 import { withTranslation } from 'react-i18next';
 
 import './timeline.css';
-import TimelinePagination from './TimelinePagination';
-import { FullWidthRow, Link } from '../../helpers';
-import SolutionViewer from '../../SolutionViewer/SolutionViewer';
+import envData from '../../../../../config/env.json';
+import { langCodes } from '../../../../../config/i18n/all-langs';
 import {
   getCertIds,
   getPathFromID,
   getTitleFromId
 } from '../../../../../utils';
 
-import { maybeUrlRE } from '../../../utils';
 import CertificationIcon from '../../../assets/icons/CertificationIcon';
+import { maybeUrlRE } from '../../../utils';
 
-import { langCodes } from '../../../../../config/i18n/all-langs';
-import envData from '../../../../../config/env.json';
+import SolutionViewer from '../../SolutionViewer/SolutionViewer';
+import { FullWidthRow, Link } from '../../helpers';
+import TimelinePagination from './TimelinePagination';
 
 const { clientLocale } = envData;
 

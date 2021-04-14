@@ -1,13 +1,14 @@
 /* eslint-disable react/jsx-sort-props */
-import React, { useState } from 'react';
+import { find, first } from 'lodash';
 import PropTypes from 'prop-types';
-import '../components/layouts/project-links.css';
-import { maybeUrlRE } from '../utils';
+import React, { useState } from 'react';
+import { Trans, useTranslation } from 'react-i18next';
+import ProjectModal from '../components/SolutionViewer/ProjectModal';
 import { Spacer, Link } from '../components/helpers';
 import { projectMap, legacyProjectMap } from '../resources/certAndProjectMap';
-import ProjectModal from '../components/SolutionViewer/ProjectModal';
-import { find, first } from 'lodash';
-import { Trans, useTranslation } from 'react-i18next';
+import { maybeUrlRE } from '../utils';
+
+import '../components/layouts/project-links.css';
 
 const propTypes = {
   certName: PropTypes.string,

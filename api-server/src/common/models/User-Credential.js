@@ -1,11 +1,11 @@
-import { Observable } from 'rx';
 import debug from 'debug';
+import { Observable } from 'rx';
 
-import { observeMethod, observeQuery } from '../../server/utils/rx';
 import {
   createUserUpdatesFromProfile,
   getSocialProvider
 } from '../../server/utils/auth';
+import { observeMethod, observeQuery } from '../../server/utils/rx';
 
 const log = debug('fcc:models:UserCredential');
 module.exports = function (UserCredential) {

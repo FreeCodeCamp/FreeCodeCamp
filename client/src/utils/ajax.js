@@ -1,7 +1,7 @@
-import envData from '../../../config/env.json';
 import axios from 'axios';
-import Tokens from 'csrf';
 import cookies from 'browser-cookies';
+import Tokens from 'csrf';
+import envData from '../../../config/env.json';
 
 const { apiLocation } = envData;
 

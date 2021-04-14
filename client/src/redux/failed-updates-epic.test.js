@@ -1,10 +1,10 @@
 /* global expect jest */
 
-import { Subject } from 'rxjs';
 import { ActionsObservable, StateObservable } from 'redux-observable';
+import { Subject } from 'rxjs';
+import store from 'store';
 import failedUpdatesEpic from './failed-updates-epic';
 import { types } from './';
-import store from 'store';
 
 jest.mock('../analytics');
 

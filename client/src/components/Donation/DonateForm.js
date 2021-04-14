@@ -1,9 +1,4 @@
 /* eslint-disable no-nested-ternary */
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { createSelector } from 'reselect';
-import { Elements } from '@stripe/react-stripe-js';
 import {
   Button,
   Col,
@@ -13,7 +8,12 @@ import {
   ToggleButton,
   ToggleButtonGroup
 } from '@freecodecamp/react-bootstrap';
+import { Elements } from '@stripe/react-stripe-js';
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 import { withTranslation } from 'react-i18next';
+import { connect } from 'react-redux';
+import { createSelector } from 'reselect';
 
 import {
   amountsConfig,
@@ -24,11 +24,6 @@ import {
   modalDefaultDonation
 } from '../../../../config/donation-settings';
 import envData from '../../../../config/env.json';
-import { stripeScriptLoader } from '../../utils/scriptLoaders';
-import Spacer from '../helpers/Spacer';
-import PaypalButton from './PaypalButton';
-import DonateCompletion from './DonateCompletion';
-import StripeCardForm from './StripeCardForm';
 import {
   isSignedInSelector,
   signInLoadingSelector,
@@ -41,6 +36,11 @@ import {
   defaultDonationFormState,
   userSelector
 } from '../../redux';
+import { stripeScriptLoader } from '../../utils/scriptLoaders';
+import Spacer from '../helpers/Spacer';
+import DonateCompletion from './DonateCompletion';
+import PaypalButton from './PaypalButton';
+import StripeCardForm from './StripeCardForm';
 
 import './Donation.css';
 

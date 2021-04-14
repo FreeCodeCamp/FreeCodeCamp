@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 import { withTranslation } from 'react-i18next';
 
-import { Form } from '../../../components/formHelpers';
 import {
   backend,
   backEndProject,
   frontEndProject,
   pythonProject
 } from '../../../../utils/challengeTypes';
+import { Form } from '../../../components/formHelpers';
 
 const propTypes = {
   challengeType: PropTypes.number,

@@ -1,7 +1,3 @@
-import React from 'react';
-import { kebabCase } from 'lodash';
-import normalizeUrl from 'normalize-url';
-import PropTypes from 'prop-types';
 import {
   Alert,
   Col,
@@ -10,6 +6,10 @@ import {
   FormGroup,
   HelpBlock
 } from '@freecodecamp/react-bootstrap';
+import { kebabCase } from 'lodash';
+import normalizeUrl from 'normalize-url';
+import PropTypes from 'prop-types';
+import React from 'react';
 import { Field } from 'react-final-form';
 import {
   editorValidator,

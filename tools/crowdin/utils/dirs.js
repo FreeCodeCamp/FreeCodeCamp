@@ -1,6 +1,6 @@
-const makeRequest = require('./make-request');
-const delay = require('./delay');
 const authHeader = require('./auth-header');
+const delay = require('./delay');
+const makeRequest = require('./make-request');
 
 const getDirs = async projectId => {
   let headers = { ...authHeader };

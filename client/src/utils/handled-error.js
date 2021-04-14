@@ -1,9 +1,8 @@
 import { has } from 'lodash';
 
-import standardErrorMessage from './standardErrorMessage';
-import reportedErrorMessage from './reportedErrorMessage';
-
 import { reportClientSideError } from './report-error';
+import reportedErrorMessage from './reportedErrorMessage';
+import standardErrorMessage from './standardErrorMessage';
 
 export const handledErrorSymbol = Symbol('handledError');
 

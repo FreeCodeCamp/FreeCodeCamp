@@ -1,12 +1,23 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { Grid, Col, Row } from '@freecodecamp/react-bootstrap';
-import { createSelector } from 'reselect';
-import { connect } from 'react-redux';
 import { graphql } from 'gatsby';
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 import Helmet from 'react-helmet';
 import { withTranslation } from 'react-i18next';
+import { connect } from 'react-redux';
+import { createSelector } from 'reselect';
 
+import Spacer from '../../../../components/helpers/Spacer';
+import LearnLayout from '../../../../components/layouts/Learn';
+import { isSignedInSelector } from '../../../../redux';
+import { ChallengeNode } from '../../../../redux/propTypes';
+import ChallengeDescription from '../../components/Challenge-Description';
+import ChallengeTitle from '../../components/Challenge-Title';
+import CompletionModal from '../../components/CompletionModal';
+import HelpModal from '../../components/HelpModal';
+import Hotkeys from '../../components/Hotkeys';
+import Output from '../../components/Output';
+import TestSuite from '../../components/Test-Suite';
 import {
   executeChallenge,
   challengeMounted,
@@ -19,20 +30,8 @@ import {
   updateSolutionFormValues
 } from '../../redux';
 import { getGuideUrl } from '../../utils';
-
-import LearnLayout from '../../../../components/layouts/Learn';
-import ChallengeTitle from '../../components/Challenge-Title';
-import ChallengeDescription from '../../components/Challenge-Description';
-import TestSuite from '../../components/Test-Suite';
-import Output from '../../components/Output';
-import CompletionModal from '../../components/CompletionModal';
-import HelpModal from '../../components/HelpModal';
-import ProjectToolPanel from '../Tool-Panel';
 import SolutionForm from '../SolutionForm';
-import Spacer from '../../../../components/helpers/Spacer';
-import { ChallengeNode } from '../../../../redux/propTypes';
-import { isSignedInSelector } from '../../../../redux';
-import Hotkeys from '../../components/Hotkeys';
+import ProjectToolPanel from '../Tool-Panel';
 
 import '../../components/test-frame.css';
 

@@ -1,11 +1,12 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Link } from '../../../components/helpers/index';
 import i18next from 'i18next';
+import PropTypes from 'prop-types';
+import React from 'react';
+import GreenPass from '../../../assets/icons/GreenPass';
+import { Link } from '../../../components/helpers/index';
+
+import BreadCrumb from './BreadCrumb';
 
 import './challenge-title.css';
-import GreenPass from '../../../assets/icons/GreenPass';
-import BreadCrumb from './BreadCrumb';
 
 const propTypes = {
   block: PropTypes.string,

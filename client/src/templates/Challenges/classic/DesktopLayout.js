@@ -1,10 +1,10 @@
+import { first } from 'lodash';
+import PropTypes from 'prop-types';
 import React, { Component, Fragment } from 'react';
 import { ReflexContainer, ReflexSplitter, ReflexElement } from 'react-reflex';
-import PropTypes from 'prop-types';
-import { first } from 'lodash';
-import EditorTabs from './EditorTabs';
-import ActionRow from './ActionRow';
 import envData from '../../../../../config/env.json';
+import ActionRow from './ActionRow';
+import EditorTabs from './EditorTabs';
 
 const { showUpcomingChanges } = envData;
 

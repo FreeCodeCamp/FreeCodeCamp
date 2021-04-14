@@ -1,6 +1,6 @@
+const { isEmpty } = require('lodash');
 const is = require('unist-util-is');
 const position = require('unist-util-position');
-const { isEmpty } = require('lodash');
 
 const getId = require('./get-id');
 

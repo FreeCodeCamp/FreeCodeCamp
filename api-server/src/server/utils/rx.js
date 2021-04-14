@@ -1,6 +1,6 @@
-import Rx, { AsyncSubject, Observable } from 'rx';
-import moment from 'moment';
 import debugFactory from 'debug';
+import moment from 'moment';
+import Rx, { AsyncSubject, Observable } from 'rx';
 
 const debug = debugFactory('fcc:rxUtils');
 

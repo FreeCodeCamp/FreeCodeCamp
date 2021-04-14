@@ -1,3 +1,6 @@
+import i18next from 'i18next';
+import escape from 'lodash/escape';
+import { channel } from 'redux-saga';
 import {
   delay,
   put,
@@ -10,9 +13,6 @@ import {
   take,
   cancel
 } from 'redux-saga/effects';
-import { channel } from 'redux-saga';
-import escape from 'lodash/escape';
-import i18next from 'i18next';
 
 import {
   buildChallenge,

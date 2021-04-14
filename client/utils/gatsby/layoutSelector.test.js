@@ -3,11 +3,11 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import ShallowRenderer from 'react-test-renderer/shallow';
 
-import layoutSelector from './layoutSelector';
-import { createStore } from '../../src/redux/createStore';
 import FourOhFourPage from '../../src/pages/404';
-import Learn from '../../src/pages/learn';
 import Certification from '../../src/pages/certification';
+import Learn from '../../src/pages/learn';
+import { createStore } from '../../src/redux/createStore';
+import layoutSelector from './layoutSelector';
 
 jest.mock('../../src/analytics');
 

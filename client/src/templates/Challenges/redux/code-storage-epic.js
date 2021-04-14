@@ -1,13 +1,12 @@
+import { combineEpics, ofType } from 'redux-observable';
 import { of } from 'rxjs';
 import { filter, switchMap, map, tap, ignoreElements } from 'rxjs/operators';
-import { combineEpics, ofType } from 'redux-observable';
 import store from 'store';
 
+import { setContent, isPoly } from '../../../../../utils/polyvinyl';
+import { createFlashMessage } from '../../../components/Flash/redux';
 import { types as appTypes } from '../../../redux';
 
-import { setContent, isPoly } from '../../../../../utils/polyvinyl';
-
-import { createFlashMessage } from '../../../components/Flash/redux';
 import { actionTypes } from './action-types';
 import {
   storedCodeFound,

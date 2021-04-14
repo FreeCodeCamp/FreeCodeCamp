@@ -1,12 +1,12 @@
 /* global describe it expect */
+import jwt from 'jsonwebtoken';
+import { mockReq, mockRes } from 'sinon-express-mock';
 import {
   getAccessTokenFromRequest,
   errorTypes,
   setAccessTokenToResponse,
   removeCookies
 } from './getSetAccessToken';
-import { mockReq, mockRes } from 'sinon-express-mock';
-import jwt from 'jsonwebtoken';
 
 describe('getSetAccessToken', () => {
   const validJWTSecret = 'this is a super secret string';

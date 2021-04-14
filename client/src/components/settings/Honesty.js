@@ -1,11 +1,11 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import { Button, Panel } from '@freecodecamp/react-bootstrap';
+import PropTypes from 'prop-types';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 
+import HonestyPolicy from '../../resources/honesty-policy';
 import { FullWidthRow } from '../helpers';
 import SectionHeader from './SectionHeader';
-import HonestyPolicy from '../../resources/honesty-policy';
 
 import './honesty.css';
 

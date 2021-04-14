@@ -1,8 +1,8 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 
-import GreenPass from '../../../assets/icons/GreenPass';
 import Fail from '../../../assets/icons/Fail';
+import GreenPass from '../../../assets/icons/GreenPass';
 import Initial from '../../../assets/icons/Initial';
 
 import './test-suite.css';

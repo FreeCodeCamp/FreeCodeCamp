@@ -1,12 +1,12 @@
-import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
-import { connectStateResults, connectHits } from 'react-instantsearch-dom';
 import isEmpty from 'lodash/isEmpty';
+import PropTypes from 'prop-types';
+import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import { connectStateResults, connectHits } from 'react-instantsearch-dom';
 import { searchPageUrl } from '../../../utils/algolia-locale-setup';
 
-import Suggestion from './SearchSuggestion';
 import NoHitsSuggestion from './NoHitsSuggestion';
+import Suggestion from './SearchSuggestion';
 
 const CustomHits = connectHits(
   ({

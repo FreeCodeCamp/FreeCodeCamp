@@ -1,8 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import { Alert, Button } from '@freecodecamp/react-bootstrap';
-import Spinner from 'react-spinkit';
+import PropTypes from 'prop-types';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
+import Spinner from 'react-spinkit';
 
 import './Donation.css';
 

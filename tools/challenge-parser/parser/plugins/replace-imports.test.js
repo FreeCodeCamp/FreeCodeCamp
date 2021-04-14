@@ -4,12 +4,12 @@ const cloneDeep = require('lodash/cloneDeep');
 const toVfile = require('to-vfile');
 const selectAll = require('unist-util-select').selectAll;
 
-const addImports = require('./replace-imports');
-const originalImportsAST = require('../__fixtures__/ast-imports.json');
-const originalImportsTwoAST = require('../__fixtures__/ast-imports-two.json');
 const originalImportsExtraAST = require('../__fixtures__/ast-imports-extra.json');
-const originalSimpleAST = require('../__fixtures__/ast-simple.json');
+const originalImportsTwoAST = require('../__fixtures__/ast-imports-two.json');
+const originalImportsAST = require('../__fixtures__/ast-imports.json');
 const originalMarkerAST = require('../__fixtures__/ast-marker-imports.json');
+const originalSimpleAST = require('../__fixtures__/ast-simple.json');
+const addImports = require('./replace-imports');
 
 describe('replace-imports', () => {
   let importsAST;
