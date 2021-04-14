@@ -163,7 +163,6 @@
     "operator-assignment": 0,
     "padded-blocks": 0,
     "prefer-object-spread/prefer-object-spread": 2,
-    "prettier/prettier": "error",
     "quote-props": [2, "as-needed"],
     "quotes": [2, "single", "avoid-escape"],
     "radix": 2,

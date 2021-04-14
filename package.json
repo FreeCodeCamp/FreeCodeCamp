@@ -115,7 +115,6 @@
     "eslint-plugin-import": "2.22.1",
     "eslint-plugin-jsx-a11y": "6.4.1",
     "eslint-plugin-prefer-object-spread": "1.2.1",
-    "eslint-plugin-prettier": "3.3.1",
     "eslint-plugin-react": "7.23.2",
     "eslint-plugin-react-hooks": "2.5.1",
     "execa": "4.0.3",

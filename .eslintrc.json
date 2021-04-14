@@ -15,7 +15,6 @@
     "react",
     "import",
     "prefer-object-spread",
-    "prettier",
     "react-hooks",
     "jsx-a11y"
   ],
