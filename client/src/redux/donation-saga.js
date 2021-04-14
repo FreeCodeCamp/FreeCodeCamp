@@ -13,6 +13,7 @@ import {
   postChargeStripe,
   postCreateStripeSession
 } from '../utils/ajax';
+import { actionTypes as appTypes } from './action-types';
 import {
   openDonationModal,
   preventBlockDonationRequests,
@@ -22,8 +23,7 @@ import {
   addDonationComplete,
   addDonationError,
   postChargeStripeComplete,
-  postChargeStripeError,
-  types as appTypes
+  postChargeStripeError
 } from './';
 
 const defaultDonationError = `Something is not right. Please contact donors@freecodecamp.org`;

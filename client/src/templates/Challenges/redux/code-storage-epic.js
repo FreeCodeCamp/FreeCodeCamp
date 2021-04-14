@@ -5,7 +5,7 @@ import store from 'store';
 
 import { setContent, isPoly } from '../../../../../utils/polyvinyl';
 import { createFlashMessage } from '../../../components/Flash/redux';
-import { types as appTypes } from '../../../redux';
+import { actionTypes as appTypes } from '../../../redux/action-types';
 
 import { actionTypes } from './action-types';
 import {

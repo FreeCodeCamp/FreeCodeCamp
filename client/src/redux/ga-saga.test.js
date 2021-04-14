@@ -2,8 +2,8 @@
 
 import { expectSaga } from 'redux-saga-test-plan';
 import ga from '../analytics';
+import { actionTypes } from './action-types';
 import { createGaSaga } from './ga-saga';
-import { types } from '.';
 
 jest.mock('../analytics');
 
@@ -18,12 +18,12 @@ describe('ga-saga', () => {
       }
     };
     return (
-      expectSaga(createGaSaga, types)
+      expectSaga(createGaSaga, actionTypes)
         // Assert that the `call` with expected pramater will eventually happen.
         .call(GaTypes.event, mockEventPayload.data)
 
         // Dispatch any actions that the saga will `take`.
-        .dispatch({ type: types.executeGA, payload: mockEventPayload })
+        .dispatch({ type: actionTypes.executeGA, payload: mockEventPayload })
 
         // Start the test.
         .run()
