@@ -59,7 +59,7 @@
     "hooks:uninstall": "node node_modules/husky/husky.js uninstall",
     "lint": "npm-run-all ensure-env -p lint:*",
     "lint:challenges": "cd ./curriculum && npm run lint",
-    "lint:css": "npm run prettier -- --check",
+    "lint:formatting": "prettier \"**/*.{js,css}\" --check",
     "lint:js": "eslint .",
     "lint:js:fix": "eslint --fix .",
     "lint:translations": "cd ./client && npm run lint",
