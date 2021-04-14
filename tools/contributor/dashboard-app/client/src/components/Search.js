@@ -11,7 +11,7 @@ class Search extends Component {
     searchValue: '',
     selectedOption: 'pr',
     results: [],
-    message: '',
+    message: ''
   };
 
   clearObj = { searchValue: '', results: [] };
@@ -90,20 +90,26 @@ class Search extends Component {
       handleOptionChange,
       state
     } = this;
-    const { searchValue, message, results, selectedOption, rateLimitMessage } = state;
+    const {
+      searchValue,
+      message,
+      results,
+      selectedOption,
+      rateLimitMessage
+    } = state;
 
     return (
       <>
         <div>
           <SearchOption
-            value="pr"
+            value='pr'
             onOptionChange={handleOptionChange}
             selectedOption={selectedOption}
           >
             PR #
           </SearchOption>
           <SearchOption
-            value="filename"
+            value='filename'
             onOptionChange={handleOptionChange}
             selectedOption={selectedOption}
           >
@@ -118,10 +124,18 @@ class Search extends Component {
         <button onClick={handleButtonClick}>Search</button>
         {message}
         {selectedOption === 'pr' && (
-          <PrResults searchValue={searchValue} results={results} rateLimitMessage={rateLimitMessage} />
+          <PrResults
+            searchValue={searchValue}
+            results={results}
+            rateLimitMessage={rateLimitMessage}
+          />
         )}
         {selectedOption === 'filename' && (
-          <FilenameResults searchValue={searchValue} results={results} rateLimitMessage={rateLimitMessage} />
+          <FilenameResults
+            searchValue={searchValue}
+            results={results}
+            rateLimitMessage={rateLimitMessage}
+          />
         )}
       </>
     );

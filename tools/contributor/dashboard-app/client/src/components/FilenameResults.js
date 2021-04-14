@@ -24,7 +24,7 @@ const FilenameResults = ({ searchValue, results, rateLimitMessage }) => {
     return (
       <Result key={filename}>
         <span style={filenameTitle}>{filename}</span>{' '}
-        <a href={fileOnMain} rel="noopener noreferrer" target="_blank">
+        <a href={fileOnMain} rel='noopener noreferrer' target='_blank'>
           (File on Main)
         </a>
         <List>{prs}</List>
@@ -33,17 +33,16 @@ const FilenameResults = ({ searchValue, results, rateLimitMessage }) => {
   });
   const showResults = () => {
     if (!rateLimitMessage) {
-      return (results.length ? <h3>Results for: {searchValue}</h3> : null) && elements;
+      return (
+        (results.length ? <h3>Results for: {searchValue}</h3> : null) &&
+        elements
+      );
     } else {
       return rateLimitMessage;
     }
   };
-  
-  return (
-    <FullWidthDiv>
-      {showResults()}
-    </FullWidthDiv>
-  );
+
+  return <FullWidthDiv>{showResults()}</FullWidthDiv>;
 };
 
 export default FilenameResults;

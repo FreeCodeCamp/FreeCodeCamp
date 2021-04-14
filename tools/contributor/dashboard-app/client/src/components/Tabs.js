@@ -36,18 +36,22 @@ const Tab = styled.div`
 const Tabs = ({ view, onViewChange }) => {
   return (
     <Container>
-      <Tab id="tabs-search" onClick={onViewChange} active={view === 'search'}>
+      <Tab id='tabs-search' onClick={onViewChange} active={view === 'search'}>
         Search
       </Tab>
-      <Tab id="tabs-reports" onClick={onViewChange} active={view === 'reports'}>
+      <Tab id='tabs-reports' onClick={onViewChange} active={view === 'reports'}>
         Pareto
       </Tab>
-      <Tab id="tabs-boilerplates" onClick={onViewChange} active={view === 'boilerplates'}>
+      <Tab
+        id='tabs-boilerplates'
+        onClick={onViewChange}
+        active={view === 'boilerplates'}
+      >
         Boilerplate PRs
       </Tab>
-      <Tab id="tabs-other" onClick={onViewChange} active={view === 'other'}>
+      <Tab id='tabs-other' onClick={onViewChange} active={view === 'other'}>
         Other Repos' PRs
-      </Tab>        
+      </Tab>
     </Container>
   );
 };

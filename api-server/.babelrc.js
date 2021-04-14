@@ -10,9 +10,9 @@ module.exports = {
       require.resolve('@babel/preset-env'),
       {
         targets: {
-          node: '10',
-        },
-      },
-    ],
-  ],
+          node: '10'
+        }
+      }
+    ]
+  ]
 };

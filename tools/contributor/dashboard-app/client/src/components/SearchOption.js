@@ -3,8 +3,8 @@ import React from 'react';
 const SearchOption = ({ children, value, selectedOption, onOptionChange }) => (
   <label>
     <input
-      name="searchType"
-      type="radio"
+      name='searchType'
+      type='radio'
       value={value}
       checked={selectedOption === value}
       onChange={onOptionChange}
