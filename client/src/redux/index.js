@@ -16,7 +16,7 @@ import hardGoToEpic from './hard-go-to-epic';
 import { createNightModeSaga } from './night-mode-saga';
 import { createReportUserSaga } from './report-user-saga';
 
-import { types as settingsTypes } from './settings';
+import { actionTypes as settingsTypes } from './settings/action-types';
 import { createShowCertSaga } from './show-cert-saga';
 import updateCompleteEpic from './update-complete-epic';
 
