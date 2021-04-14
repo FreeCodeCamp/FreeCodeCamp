@@ -54,18 +54,16 @@
     "e2e:prd:run": "npm run build && start-test ':3000/status/ping|8000' cypress:dev:run",
     "e2e:prd:watch": "npm run build && start-test ':3000/status/ping|8000' cypress:dev:watch",
     "ensure-env": "cross-env DEBUG=fcc:* node ./tools/scripts/build/ensure-env.js",
-    "format": "npm-run-all -p format:*",
-    "format:css": "npm run prettier -- --write",
-    "format:js": "npm run lint:js -- --fix",
+    "format": "prettier \"**/*.{js,css}\" --write",
     "hooks:install": "node node_modules/husky/husky.js install",
     "hooks:uninstall": "node node_modules/husky/husky.js uninstall",
     "lint": "npm-run-all ensure-env -p lint:*",
     "lint:challenges": "cd ./curriculum && npm run lint",
     "lint:css": "npm run prettier -- --check",
     "lint:js": "eslint .",
+    "lint:js:fix": "eslint --fix .",
     "lint:translations": "cd ./client && npm run lint",
     "postinstall": "npm run bootstrap",
-    "prettier": "prettier \"**/*.css\"",
     "seed": "cross-env DEBUG=fcc:* node ./tools/scripts/seed/seedAuthUser",
     "seed:certified-user": "cross-env DEBUG=fcc:* node ./tools/scripts/seed/seedAuthUser certUser",
     "serve:client": "cd ./client && npm run serve",
@@ -94,6 +92,7 @@
       ],
       "*.js": [
         "eslint --fix",
+        "prettier --write",
         "git add"
       ],
       "./curriculum/challenges/**/*.md": "node ./tools/scripts/lint/index.js"
