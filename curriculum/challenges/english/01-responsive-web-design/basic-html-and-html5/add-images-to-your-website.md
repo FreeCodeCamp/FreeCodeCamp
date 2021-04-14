@@ -37,7 +37,7 @@ Let's try to add an image to our website:
 
 Within the existing `main` element, insert an `img` element before the existing `p` elements.
 
-Now set the `src` attribute so that it points to the url `https://bit.ly/fcc-relaxing-cat`
+Now set the `src` attribute so that it points to the url `https://freecodecamp.s3.amazonaws.com/relaxing-cat.jpg`
 
 Finally, don't forget to give your `img` element an `alt` attribute with applicable text.
 
@@ -52,7 +52,7 @@ assert($('img').length);
 Your image should have a `src` attribute that points to the kitten image.
 
 ```js
-assert(/^https:\/\/bit\.ly\/fcc-relaxing-cat$/i.test($('img').attr('src')));
+assert(/^https:\/\/freecodecamp\.s3\.amazonaws\.com\/relaxing-cat\.jpg$/i.test($('img').attr('src')));
 ```
 
 Your image element's `alt` attribute should not be empty.
@@ -86,7 +86,7 @@ assert(
 ```html
 <h2>CatPhotoApp</h2>
 <main>
-  <a href="#"><img src="https://bit.ly/fcc-relaxing-cat" alt="A cute orange cat lying on its back."></a>
+  <a href="#"><img src="https://freecodecamp.s3.amazonaws.com/relaxing-cat.jpg" alt="A cute orange cat lying on its back."></a>
   <p>Kitty ipsum dolor sit amet, shed everywhere shed everywhere stretching attack your ankles chase the red dot, hairball run catnip eat the grass sniff.</p>
   <p>Purr jump eat the grass rip the couch scratched sunbathe, shed everywhere rip the couch sleep in the sink fluffy fur catnip scratched.</p>
 </main>
