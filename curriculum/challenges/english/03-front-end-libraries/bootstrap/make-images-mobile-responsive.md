@@ -8,7 +8,7 @@ dashedName: make-images-mobile-responsive
 
 # --description--
 
-First, add a new image below the existing one. Set its `src` attribute to `https://bit.ly/fcc-running-cats`.
+First, add a new image below the existing one. Set its `src` attribute to `https://freecodecamp.s3.amazonaws.com/running-cats.jpg`.
 
 It would be great if this image could be exactly the width of our phone's screen.
 
@@ -34,10 +34,10 @@ Your new image should not have the class `smaller-image`.
 assert(!$('img:eq(1)').hasClass('smaller-image'));
 ```
 
-Your new image should have a `src` of `https://bit.ly/fcc-running-cats`.
+Your new image should have a `src` of `https://freecodecamp.s3.amazonaws.com/running-cats.jpg`.
 
 ```js
-assert($('img:eq(1)').attr('src') === 'https://bit.ly/fcc-running-cats');
+assert($('img:eq(1)').attr('src') === 'https://freecodecamp.s3.amazonaws.com/running-cats.jpg');
 ```
 
 Your new `img` element should have a closing angle bracket.
@@ -87,7 +87,7 @@ assert(
 
   <p>Click here for <a href="#">cat photos</a>.</p>
 
-  <a href="#"><img class="smaller-image thick-green-border" src="https://bit.ly/fcc-relaxing-cat" alt="A cute orange cat lying on its back."></a>
+  <a href="#"><img class="smaller-image thick-green-border" src="https://freecodecamp.s3.amazonaws.com/relaxing-cat.jpg" alt="A cute orange cat lying on its back."></a>
 
   <p>Things cats love:</p>
   <ul>
@@ -148,8 +148,8 @@ assert(
 
   <p>Click here for <a href="#">cat photos</a>.</p>
 
-  <a href="#"><img class="smaller-image thick-green-border" src="https://bit.ly/fcc-relaxing-cat" alt="A cute orange cat lying on its back."></a>
-  <img src="https://bit.ly/fcc-running-cats" class="img-responsive">
+  <a href="#"><img class="smaller-image thick-green-border" src="https://freecodecamp.s3.amazonaws.com/relaxing-cat.jpg" alt="A cute orange cat lying on its back."></a>
+  <img src="https://freecodecamp.s3.amazonaws.com/running-cats.jpg" class="img-responsive">
 
   <p>Things cats love:</p>
   <ul>
