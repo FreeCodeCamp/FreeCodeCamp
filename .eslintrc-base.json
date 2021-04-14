@@ -32,6 +32,7 @@
     "import/newline-after-import": 2,
     "import/no-duplicates": 2,
     "import/no-unresolved": [2, { "commonjs": true }],
+    "import/order": [2, { "alphabetize": { "order": "asc" } }],
     "import/unambiguous": 2,
     "import/no-anonymous-default-export": 2,
     "jsx-quotes": [2, "prefer-single"],
