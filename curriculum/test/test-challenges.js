@@ -1,5 +1,17 @@
 /* eslint-disable no-loop-func */
+require('@babel/polyfill');
 const path = require('path');
+
+const clientPath = path.resolve(__dirname, '../../client');
+require('@babel/register')({
+  root: clientPath,
+  babelrc: false,
+  presets: ['@babel/preset-env'],
+  plugins: ['dynamic-import-node'],
+  ignore: [/node_modules/],
+  only: [clientPath]
+});
+
 const { inspect } = require('util');
 const vm = require('vm');
 const { assert, AssertionError } = require('chai');
@@ -25,17 +37,6 @@ const testEvaluator = require('../../config/client/test-evaluator.json')
   .filename;
 const { getLines } = require('../../utils/get-lines');
 const { isAuditedCert } = require('../../utils/is-audited');
-
-const clientPath = path.resolve(__dirname, '../../client');
-require('@babel/polyfill');
-require('@babel/register')({
-  root: clientPath,
-  babelrc: false,
-  presets: ['@babel/preset-env'],
-  plugins: ['dynamic-import-node'],
-  ignore: [/node_modules/],
-  only: [clientPath]
-});
 
 const { toSortedArray } = require('../../utils/sort-files');
 const {
