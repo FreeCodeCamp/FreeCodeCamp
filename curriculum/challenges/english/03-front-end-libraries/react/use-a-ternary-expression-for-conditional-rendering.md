@@ -161,7 +161,7 @@ Your code should not contain any `if/else` statements.
 ```js
 assert(
   new RegExp(/(\s|;)if(\s|\()/).test(
-    Enzyme.mount(React.createElement(CheckUserAge)).instance().render.toString()
+    code
   ) === false
 );
 ```
