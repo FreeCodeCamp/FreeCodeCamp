@@ -45,7 +45,7 @@
     "unist-util-is": "4.1.0",
     "unist-util-modify-children": "2.0.0",
     "unist-util-position": "3.1.0",
-    "unist-util-remove": "2.0.1",
+    "unist-util-remove": "2.1.0",
     "unist-util-visit": "2.0.3",
     "unist-util-visit-children": "1.1.4"
   },

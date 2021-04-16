@@ -23,7 +23,7 @@ You can call or <dfn>invoke</dfn> this function by using its name followed by pa
 
 # --instructions--
 
-<ol><li>Create a function called <code>reusableFunction</code> which prints <code>"Hi World"</code> to the dev console.</li><li>Call the function.</li></ol>
+<ol><li>Create a function called <code>reusableFunction</code> which prints <code>Hi World</code> to the dev console.</li><li>Call the function.</li></ol>
 
 # --hints--
 

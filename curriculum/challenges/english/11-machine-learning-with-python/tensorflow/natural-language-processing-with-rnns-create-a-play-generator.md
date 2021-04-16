@@ -18,7 +18,7 @@ char_dataset = tf.data.__A__.__B__(text_as_int)
 
 ## --answers--
 
-A: `DataSet`
+A: `Dataset`
 
 B: `from_tensor_slices`
 

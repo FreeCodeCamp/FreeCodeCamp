@@ -6,7 +6,7 @@ Un desafío de vídeo es una pequeña sección de un curso de vídeo completo so
 
 Las páginas de desafío de vídeo son creadas por miembros del equipo freeCodeCamp. Los vídeos de YouTube también son subidos por miembros del equipo freeCodeCamp. Muchos de los desafíos de video todavía no tienen preguntas asociadas con ellos.
 
-You can help by creating multiple-choice questions related to video sections and adding the questions to the markdown files for the video challenges.
+Puedes ayudar creando preguntas de selección múltiple relacionadas con las secciones de video y agregando las preguntas a los archivos markdown para los desafíos de video.
 
 
 ## Plantilla de desafío
@@ -54,22 +54,22 @@ Más respuestas
 
 ## --video-solution--
 
-The number for the correct answer goes here.
+El número para la respuesta correcta va aquí.
 
 ````
 
-## Creating questions for video challenges
+## Creando preguntas para los desafíos de video
 
-### Access the video challenge markdown files
+### Accede a los archivos markdown del desafío de video
 
-You can find the markdown files for video challenges at the following locations in the curriculum:
+Puedes encontrar los archivos markdown de los desafíos de video en las siguientes ubicaciones del currículum:
 
-- [Data Analysis with Python Course](https://github.com/freeCodeCamp/freeCodeCamp/tree/main/curriculum/challenges/english/08-data-analysis-with-python/data-analysis-with-python-course)
-- [TensorFlow 2.0 Course](https://github.com/freeCodeCamp/freeCodeCamp/tree/main/curriculum/challenges/english/11-machine-learning-with-python/tensorflow)
-- [Numpy Course](https://github.com/freeCodeCamp/freeCodeCamp/tree/main/curriculum/challenges/english/08-data-analysis-with-python/numpy)
-- [How Neural Networks Work Course](https://github.com/freeCodeCamp/freeCodeCamp/tree/main/curriculum/challenges/english/11-machine-learning-with-python/how-neural-networks-work)
+- [Curso de análisis de datos con Python](https://github.com/freeCodeCamp/freeCodeCamp/tree/main/curriculum/challenges/english/08-data-analysis-with-python/data-analysis-with-python-course)
+- [Curso de TensorFlow 2.0](https://github.com/freeCodeCamp/freeCodeCamp/tree/main/curriculum/challenges/english/11-machine-learning-with-python/tensorflow)
+- [Curso de Numpy](https://github.com/freeCodeCamp/freeCodeCamp/tree/main/curriculum/challenges/english/08-data-analysis-with-python/numpy)
+- [Curso de como funcionan las redes neuronales](https://github.com/freeCodeCamp/freeCodeCamp/tree/main/curriculum/challenges/english/11-machine-learning-with-python/how-neural-networks-work)
 
-Pick a challenge markdown file from the options above.
+Elige un archivo markdown de las opciones anteriores.
 
 ### Dale un vistazo al video asociado con el desafío y crea una pregunta de opción múltiple
 
@@ -94,7 +94,7 @@ Dale un vistazo al video de YouTube con ese videoId y piensa en una pregunta de 
 
 Puedes añadir la pregunta localmente o utilizando la interfaz de GitHub. Para añadir la pregunta localmente, necesitas [configurar freeCodeCamp localmente](how-to-setup-freecodecamp-locally.md). También puede encontrar el archivo en GitHub y hacer clic en el botón Editar para añadir la pregunta directamente en su navegador.
 
-If a question has not yet been added to a particular video challenge, it will have the following default question:
+Si aún no se ha agregado una pregunta a un desafío de video en particular, tendrá la siguiente pregunta predeterminada:
 
 ```md
 # --question--
@@ -126,7 +126,7 @@ Añade/Actualiza el texto de la pregunta debajo de la parte que muestra:
 
 ## --text--
 ```
-Add/Update answers (`Answer 1`, `Answer 2`, and so on) under `## --answers--`. Make sure to update the number under `## --video-solution--` with the correct answer number. You can add more possible answers using the same format. The question and answers can be surrounded with quotation marks.
+Añade/Actualiza las respuestas (`Answer 1`, `Answer 2`, y así) debajo de `## --answers--`. Asegúrate de actualizar el número debajo de ` ## --video-solution-- ` con el número de respuesta correcto. Puede añadir más respuestas posibles usando el mismo formato. La pregunta y las respuestas pueden estar rodeadas de comillas.
 
 ### Ejemplos de preguntas
 
@@ -134,22 +134,22 @@ Add/Update answers (`Answer 1`, `Answer 2`, and so on) under `## --answers--`. M
 # --question--
 
 ## --text--
-What does this JavaScript code log to the console?
+¿Qué imprime este código de JavaScript en la consola?
 ```js
 console.log('hello world');
 ````
 
 ## --answers--
 
-hello *world*
+hola *mundo*
 
 ---
 
-**hello** world
+**hola** mundo
 
 ---
 
-hello world
+hola mundo
 
 ---
 
@@ -163,7 +163,7 @@ hello world
 
 ## --text--
 
-What will print out after running this code:
+¿Qué se imprimirá después de ejecutar este código?:
 
 ```py
 width = 15
@@ -195,8 +195,8 @@ print(height/3)
 
 3 ````
 
-For more examples, you can look at the markdown files for the following video course. All the challenges already have questions: [Python for Everybody Course](https://github.com/freeCodeCamp/freeCodeCamp/tree/main/curriculum/challenges/english/07-scientific-computing-with-python/python-for-everybody)
+Para más ejemplos, puede ver los archivos de markdown para el siguiente curso de video. Todos los desafíos ya tienen preguntas: [Curso de Python para todos](https://github.com/freeCodeCamp/freeCodeCamp/tree/main/curriculum/challenges/english/07-scientific-computing-with-python/python-for-everybody)
 
-## Open a pull request
+## Abrir una pull request
 
-After creating one or more questions, you can commit the changes to a new branch and [open a pull request](how-to-open-a-pull-request.md).
+Después de crear una o más preguntas, puedes enviar los cambios a una nueva rama y [abrir una pull request](how-to-open-a-pull-request.md).

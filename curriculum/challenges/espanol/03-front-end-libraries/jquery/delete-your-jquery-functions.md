@@ -1,6 +1,6 @@
 ---
 id: bad87fee1348bd9aeda08726
-title: Delete Your jQuery Functions
+title: Elimina tus funciones jQuery
 challengeType: 6
 forumTopicId: 17561
 required:
@@ -11,37 +11,37 @@ dashedName: delete-your-jquery-functions
 
 # --description--
 
-These animations were cool at first, but now they're getting kind of distracting.
+Estas animaciones fueron geniales al principio, pero ahora distraen un poco.
 
-Delete all three of these jQuery functions from your `document ready function`, but leave your `document ready function` itself intact.
+Elimina las tres funciones de jQuery dentro de tu `document ready function`, pero deja intacta tu función `document ready function` en sí.
 
 # --hints--
 
-All three of your jQuery functions should be deleted from your `document ready function`.
+Las tres funciones de jQuery deben ser eliminadas de la función `document ready function`.
 
 ```js
 assert(code.match(/\{\s*\}\);/g));
 ```
 
-You should leave your `script` element intact.
+Debes dejar intacto tu elemento `script`.
 
 ```js
 assert(code.match(/<script>/g));
 ```
 
-You should leave your `$(document).ready(function() {` at the beginning of your `script` element.
+Debes dejar tu `$(document).ready(function() {` al principio de tu elemento `script`.
 
 ```js
 assert(code.match(/\$\(document\)\.ready\(function\(\)\s?\{/g));
 ```
 
-You should leave your "document ready function" closing `})` intact.
+Debes dejar intacto el cierre `})` de la función `document.ready`.
 
 ```js
 assert(code.match(/.*\s*\}\);/g));
 ```
 
-You should leave your `script` element closing tag intact.
+Debes dejar intacta la etiqueta de cierre del elemento `script`.
 
 ```js
 assert(

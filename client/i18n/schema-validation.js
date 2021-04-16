@@ -221,8 +221,8 @@ const introSchemaValidation = languages => {
     const filePath = path.join(__dirname, `/locales/${language}/intro.json`);
     const fileJson = require(filePath);
     const fileKeys = Object.keys(flattenAnObject(fileJson));
-    findMissingKeys(fileKeys, linksSchemaKeys, `${language}/intro.json`);
-    findExtraneousKeys(fileKeys, linksSchemaKeys, `${language}/intro.json`);
+    findMissingKeys(fileKeys, introSchemaKeys, `${language}/intro.json`);
+    findExtraneousKeys(fileKeys, introSchemaKeys, `${language}/intro.json`);
     const emptyKeys = noEmptyObjectValues(fileJson);
     if (emptyKeys.length) {
       console.warn(
@@ -264,8 +264,8 @@ const linksSchemaValidation = languages => {
     const filePath = path.join(__dirname, `/locales/${language}/links.json`);
     const fileJson = require(filePath);
     const fileKeys = Object.keys(flattenAnObject(fileJson));
-    findMissingKeys(fileKeys, introSchemaKeys, `${language}/links.json`);
-    findExtraneousKeys(fileKeys, introSchemaKeys, `${language}/links.json`);
+    findMissingKeys(fileKeys, linksSchemaKeys, `${language}/links.json`);
+    findExtraneousKeys(fileKeys, linksSchemaKeys, `${language}/links.json`);
     const emptyKeys = noEmptyObjectValues(fileJson);
     if (emptyKeys.length) {
       console.warn(
