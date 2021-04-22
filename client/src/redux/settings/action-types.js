@@ -10,7 +10,6 @@ export const actionTypes = createTypes(
     ...createAsyncTypes('updateMyEmail'),
     ...createAsyncTypes('updateLegacyCert'),
     ...createAsyncTypes('updateUserFlag'),
-    ...createAsyncTypes('updateUserFlagComplete'),
     ...createAsyncTypes('submitProfileUI'),
     ...createAsyncTypes('verifyCert'),
     ...createAsyncTypes('resetProgress'),
