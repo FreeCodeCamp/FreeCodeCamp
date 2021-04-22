@@ -15,7 +15,7 @@ There are other ways that you can override CSS. Do you remember inline styles?
 
 # --instructions--
 
-Use an inline style to try to make our `h1` element white. Remember, in line styles look like this:
+Use an inline style to try to make our `h1` element white. Remember, inline styles look like this:
 
 ```html
 <h1 style="color: green;">

@@ -24,7 +24,7 @@ Puedes ayudar a ampliar y mejorar el plan de estudios. También puedes actualiza
 
 We are localizing freeCodeCamp.org to major world languages. Some of the certifications are already live in [Chinese (中文)](https://chinese.freecodecamp.org/learn) and [Spanish (Español)](https://www.freecodecamp.org/espanol/learn/). We encourage you to read the [announcement here](https://www.freecodecamp.org/news/world-language-translation-effort) and share it your friends to get them excited about this.
 
-**If you're interested in translating, here's [how to translate freCodeCamp's resources](how-to-translate-files.md).**
+**If you're interested in translating, here's [how to translate freeCodeCamp's resources](how-to-translate-files.md).**
 
 ## Plataforma de aprendizaje
 

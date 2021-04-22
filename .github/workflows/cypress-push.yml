@@ -24,7 +24,7 @@ jobs:
         run: |
           echo "CYPRESS_RECORD_KEY=${{ secrets.CYPRESS_RECORD_KEY }}" >> $GITHUB_ENV
           echo "GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}" >> $GITHUB_ENV
-          echo "CYPRESS_INSTALL_BINARY=6.0.0" >> $GITHUB_ENV
+          echo "CYPRESS_INSTALL_BINARY=7.1.0" >> $GITHUB_ENV
 
       - name: Checkout Source Files
         uses: actions/checkout@v2
@@ -63,7 +63,7 @@ jobs:
         uses: cypress-io/github-action@v2
         with:
           parallel: ${{ env.CYPRESS_RECORD_KEY != 0 }}
-          group: ${{ matrix.browsers }} 
+          group: ${{ matrix.browsers }}
           record: ${{ env.CYPRESS_RECORD_KEY != 0 }}
           build: npm run build
           # this should mirror the production build, but for now we're using gatsby

@@ -22,7 +22,7 @@ jobs:
         run: |
           echo "CYPRESS_RECORD_KEY=${{ secrets.CYPRESS_RECORD_KEY }}" >> $GITHUB_ENV
           echo "GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}" >> $GITHUB_ENV
-          echo "CYPRESS_INSTALL_BINARY=6.0.0" >> $GITHUB_ENV
+          echo "CYPRESS_INSTALL_BINARY=7.1.0" >> $GITHUB_ENV
 
       - name: Checkout Source Files
         uses: actions/checkout@v2

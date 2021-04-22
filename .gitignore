@@ -1,6 +1,9 @@
 ### VisualStudioCode ###
 .vscode/*
 
+### WebStorm ###
+.idea/*
+
 ### VisualStudioCode Patch ###
 
 # Ignore all local history of files

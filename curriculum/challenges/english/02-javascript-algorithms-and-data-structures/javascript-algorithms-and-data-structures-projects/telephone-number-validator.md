@@ -180,6 +180,12 @@ assert(telephoneCheck('(555-555-5555') === false);
 assert(telephoneCheck('(555)5(55?)-5555') === false);
 ```
 
+`telephoneCheck("55 55-55-555-5")` should return `false`.
+
+```js
+assert(telephoneCheck('55 55-55-555-5') === false);
+```
+
 # --seed--
 
 ## --seed-contents--

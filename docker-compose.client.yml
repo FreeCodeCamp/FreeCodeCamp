@@ -1,0 +1,8 @@
+version: '3.7'
+services:
+  client:
+    image: fcc_client
+    restart: unless-stopped
+    ports:
+      - '${CLIENT_PORT:-8000}:${CLIENT_PORT:-8000}'
+    command: ["-l", "${CLIENT_PORT:-8000}"]

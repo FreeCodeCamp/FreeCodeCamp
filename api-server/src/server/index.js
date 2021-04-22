@@ -32,7 +32,7 @@ Rx.config.longStackSupport = process.env.NODE_DEBUG !== 'production';
 const app = loopback();
 
 app.set('state namespace', '__fcc__');
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.API_PORT || 3000);
 app.set('views', path.join(__dirname, 'views'));
 app.use(loopback.token());
 app.use(

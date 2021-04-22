@@ -84,7 +84,35 @@ async (getUserInput) => {
 You can send a POST request to `/api/threads/{board}` with form data including `text` and `delete_password`. The saved database record will have at least the fields `_id`, `text`, `created_on`(date & time), `bumped_on`(date & time, starts same as `created_on`), `reported` (boolean), `delete_password`, & `replies` (array).
 
 ```js
-
+async (getUserInput) => {
+  const date = new Date();
+  const text = `fcc_test_${date}`;
+  const deletePassword = 'delete_me';
+  const data = { text, delete_password: deletePassword };
+  const url = getUserInput('url');
+  const res = await fetch(url + '/api/threads/fcc_test', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data)
+  });
+  if (res.ok) {
+    const checkData = await fetch(url + '/api/threads/fcc_test');
+    const parsed = await checkData.json();
+    try {
+      assert.equal(parsed[0].text, text);
+      assert.isNotNull(parsed[0]._id);
+      assert.equal(new Date(parsed[0].created_on).toDateString(), date.toDateString());
+      assert.equal(parsed[0].bumped_on, parsed[0].created_on);
+      assert.isBoolean(parsed[0].reported);
+      assert.equal(parsed[0].delete_password, deletePassword);
+      assert.isArray(parsed[0].replies);
+    } catch (err) {
+      throw new Error(err.responseText || err.message);
+    }
+  } else {
+    throw new Error(`${res.status} ${res.statusText}`);
+  }
+};
 ```
 
 You can send a POST request to `/api/replies/{board}` with form data including `text`, `delete_password`, & `thread_id`. This will update the `bumped_on` date to the comment's date. In the thread's `replies` array, an object will be saved with at least the properties `_id`, `text`, `created_on`, `delete_password`, & `reported`.

@@ -1,0 +1,8 @@
+version: '3.7'
+services:
+  api:
+    env_file: .env
+    image: fcc_api
+    restart: unless-stopped
+    ports:
+      - '${API_PORT:-3000}:${API_PORT:-3000}'

@@ -23,7 +23,7 @@
   },
   "devDependencies": {
     "debug": "4.3.1",
-    "dotenv": "6.2.0",
+    "dotenv": "8.2.0",
     "jest": "26.0.0"
   }
 }

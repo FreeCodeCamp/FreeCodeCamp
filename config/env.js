@@ -1,13 +1,15 @@
-const fs = require('fs');
 const path = require('path');
 
-// PIPELINE_ENV  is 'true' in the build pipeline
-if (process.env.PIPELINE_ENV !== 'true') {
-  const envPath = path.resolve(__dirname, '../.env');
-  if (!fs.existsSync(envPath)) {
-    throw Error('.env not found, please copy sample.env to .env.');
+const envPath = path.resolve(__dirname, '../.env');
+const { error } = require('dotenv').config({ path: envPath });
+
+if (error) {
+  if (process.env.FREECODECAMP_NODE_ENV === 'development') {
+    console.warn('.env not found, please copy sample.env to .env');
+  } else {
+    console.warn(`.env not found. If env vars are not being set another way,
+this could be a problem.`);
   }
-  require('dotenv').config({ path: envPath });
 }
 
 const {

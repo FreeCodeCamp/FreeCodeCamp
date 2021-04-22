@@ -9,7 +9,7 @@ dashedName: standardize-times-with-the-html5-datetime-attribute
 
 # --description--
 
-Continuando con el tema de fechas, HTML5 también introdujo el elemento `time` junto con un atributo `datetime` para estandarizar las horas. El atributo `datetime` es un elemento en línea que puede envolver una fecha o hora en una página. Un atributo `datetime` contiene un formato válido para esa fecha. Este es el valor al que acceden los dispositivos de asistencia. Ayuda a evitar la confusión al declarar una versión estandarizada de un tiempo, incluso si está escrita informal o coloquialmente en el texto.
+Continuando con el tema de fechas, HTML5 también introdujo el elemento `time` junto con un atributo `datetime` para estandarizar las horas. El elemento `time` es un elemento en línea que puede ajustar una fecha u hora en una página. Un atributo `datetime` contiene un formato válido para esa fecha. Este es el valor al que acceden los dispositivos de asistencia. Ayuda a evitar la confusión al declarar una versión estandarizada de un tiempo, incluso si está escrita informal o coloquialmente en el texto.
 
 Aquí hay un ejemplo:
 

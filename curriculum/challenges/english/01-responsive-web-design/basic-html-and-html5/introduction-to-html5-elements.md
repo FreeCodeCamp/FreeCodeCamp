@@ -26,9 +26,9 @@ Example usage, a `main` element with two child elements nested inside it:
 
 # --instructions--
 
-Create a second `p` element after the existing `p` element with the following kitty ipsum text: `Purr jump eat the grass rip the couch scratched sunbathe, shed everywhere rip the couch sleep in the sink fluffy fur catnip scratched.`
+Create a second `p` element with the following kitty ipsum text: `Purr jump eat the grass rip the couch scratched sunbathe, shed everywhere rip the couch sleep in the sink fluffy fur catnip scratched.`
 
-Then, create a `main` element and nest the two `p` elements inside the `main` element.
+Then, create a `main` element and nest only the two `p` elements inside the `main` element.
 
 # --hints--
 

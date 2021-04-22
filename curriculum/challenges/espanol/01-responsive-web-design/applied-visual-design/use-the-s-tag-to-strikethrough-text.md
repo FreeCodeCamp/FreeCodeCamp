@@ -13,7 +13,7 @@ Para tachar el texto, que es cuando una línea horizontal atraviesa los caracter
 
 # --instructions--
 
-Envuelve la etiqueta `s` alrededor de `Google` dentro de la etiqueta `h4` y luego agregue la palabra `Alphabet` al lado, que no debería tienen el formato tachado.
+Envuelve la etiqueta `s` alrededor de `Google` dentro de la etiqueta `h4` y luego agrega la palabra `Alphabet` al lado, que no debería tener el formato tachado.
 
 # --hints--
 

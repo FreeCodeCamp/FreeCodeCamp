@@ -23,7 +23,14 @@ Puedes llamar o <dfn>invocar</dfn> esta función usando su nombre seguido por pa
 
 # --instructions--
 
-<ol><li>Crea una función llamada <code>reusableFunction</code> que imprima <code>"Hi World"</code> en la consola de desarrollo.</li><li>Llama a la función.</li></ol>
+<ol>
+  <li>
+    Crea una función llamada <code>reusableFunction</code> que imprima la cadena <code>Hi World</code> en la consola de desarrollo.
+  </li>
+  <li>
+    Llama a la función.
+  </li>
+</ol>
 
 # --hints--
 

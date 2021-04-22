@@ -2,13 +2,14 @@ import dedent from 'dedent';
 import { ofType } from 'redux-observable';
 import { tap, mapTo } from 'rxjs/operators';
 import envData from '../../../../../config/env.json';
-import { actionTypes } from './action-types';
 import {
   closeModal,
   challengeFilesSelector,
   challengeMetaSelector,
   projectFormValuesSelector
-} from './';
+} from '../redux';
+import { transformEditorLink } from '../utils';
+import { actionTypes } from './action-types';
 
 const { forumLocation } = envData;
 
@@ -54,6 +55,7 @@ function createQuestionEpic(action$, state$, { window }) {
 
       let textMessage = dedent(
         `**Tell us what's happening:**
+        Describe your issue in detail here.
 
         ${
           projectFormValues.length
@@ -62,7 +64,7 @@ function createQuestionEpic(action$, state$, { window }) {
         }
         ${
           projectFormValues
-            ?.map(([key, val]) => `${key}: ${val}\n`)
+            ?.map(([key, val]) => `${key}: ${transformEditorLink(val)}\n`)
             ?.join('') || filesToMarkdown(files)
         }
 

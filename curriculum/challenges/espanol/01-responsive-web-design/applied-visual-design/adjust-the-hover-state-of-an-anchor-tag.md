@@ -21,7 +21,7 @@ a:hover {
 
 # --instructions--
 
-El editor de código tiene una regla CSS para dar estilo a todas las etiquetas `a` negras. Añade una regla para que cuando el usuario pase sobre la etiqueta `a`, el color `` sea azul.
+El editor de código tiene una regla CSS para dar estilo a todas las etiquetas `a`  en negro. Añade una regla para que cuando el usuario pase sobre la etiqueta `a`, el color `` sea azul.
 
 # --hints--
 

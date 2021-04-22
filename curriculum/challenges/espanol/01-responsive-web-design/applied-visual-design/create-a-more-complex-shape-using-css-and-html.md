@@ -30,7 +30,7 @@ Para que los pseudo-elements `::before` y `::after` funcionen correctamente, deb
 
 Transforma el elemento en la pantalla en un corazón. En el selector `heart::after`, cambia `background-color` a `pink` y `border-radius` a 50%.
 
-A continuación, apunta el elemento con la clase `heart` (solo `heart`) y fill en la propiedad `transform`. Utiliza la función `rotate()` con -45 grados.
+A continuación, apunta el elemento con la clase `heart` (solo `heart`) y llena la propiedad `transform`. Utiliza la función `rotate()` con -45 grados.
 
 Finalmente, en el selector `heart::before`, establece su propiedad `content` en una cadena vacía.
 
