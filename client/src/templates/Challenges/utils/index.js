@@ -17,11 +17,11 @@ export function isGoodXHRStatus(status) {
 export function transformEditorLink(url) {
   return url
     .replace(
-      /(?<=\/\/)(?<projectname>[^.]+)\.(?<username>[^.]+)\.repl\.co\/?/,
-      'replit.com/@$<username>/$<projectname>'
+      /(\/\/)(?<projectname>[^.]+)\.(?<username>[^.]+)\.repl\.co\/?/,
+      '//replit.com/@$<username>/$<projectname>'
     )
     .replace(
-      /(?<=\/\/)(?<projectname>[^.]+)\.glitch\.me\/?/,
-      'glitch.com/edit/#!/$<projectname>'
+      /(\/\/)(?<projectname>[^.]+)\.glitch\.me\/?/,
+      '//glitch.com/edit/#!/$<projectname>'
     );
 }

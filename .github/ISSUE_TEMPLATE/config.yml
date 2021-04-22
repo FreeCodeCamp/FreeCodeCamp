@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Request programming help with coding challenges
+    url: https://forum.freecodecamp.org
+    about: Please visit this page for general support and programming help on coding challenges.
+  - name: Request technical support for your freeCodeCamp account
+    url: https://www.freecodecamp.org/support
+    about: Please visit this page for requesting technical support related to your freeCodeCamp account.

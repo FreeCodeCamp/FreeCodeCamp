@@ -1,7 +1,6 @@
 ---
-name: 'Feature request: Request a new feature for freeCodeCamp.org''s platforms'
-about: Suggest an idea for freeCodeCamp.org's News, Community Forum, Code Radio or
-  Coding platforms
+name: 'Request a new feature on freeCodeCamp.org''s platforms'
+about: Suggest an idea for freeCodeCamp.org's /learn, /news, Community Forum, Code Radio or other platforms
 title: ''
 labels: 'type: feature request'
 assignees: ''

@@ -1,5 +1,5 @@
 {
   "projectId": "ke77ns",
   "baseUrl": "http://localhost:8000",
-  "retries": 2
+  "retries": 4
 }

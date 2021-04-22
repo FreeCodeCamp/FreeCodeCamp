@@ -73,11 +73,11 @@ github:
     # add a check to pull requests (defaults to true)
     addCheck: false
     # add a "Review in Gitpod" button as a comment to pull requests (defaults to false)
-    addComment: false
+    addComment: true
     # add a "Review in Gitpod" button to the pull request's description (defaults to false)
     addBadge: false
     # add a label once the prebuild is ready to pull requests (defaults to false)
-    addLabel: ready-on-gitpod
+    addLabel: false
 
 vscode:
   extensions:

@@ -1,13 +1,13 @@
 ---
-name: 'Bug Report: Issues with /news or guide articles or documentation'
-about: Report issue with a specific article, like broken links, typos, missing parts, etc
+name: 'Report issues with content on /news, guide articles or documentation'
+about: Report issues with content on a specific article, like broken links, typos, missing parts, etc.
 title: ''
-labels: 'status: needs help for triage, type: bug'
+labels: 'type: bug, status: waiting triage'
 assignees: ''
 
 ---
 
-<!-- 
+<!--
 NOTE: If you want to become an author on freeCodeCamp, you can find everything here: https://www.freecodecamp.org/news/developer-news-style-guide/
 -->
 
