@@ -1,5 +1,5 @@
-import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
+import React, { Fragment } from 'react';
 
 import PrismFormatted from './PrismFormatted';
 import './challenge-description.css';

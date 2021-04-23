@@ -1,18 +1,17 @@
-import { getTransformers } from '../rechallenge/transformers';
-import { cssToHtml, jsToHtml, concatHtml } from '../rechallenge/builders.js';
-import { challengeTypes } from '../../../../utils/challengeTypes';
-import createWorker from './worker-executor';
-import {
-  createTestFramer,
-  runTestInTestFrame,
-  createMainFramer
-} from './frame';
-
 // the config files are created during the build, but not before linting
 // eslint-disable-next-line import/no-unresolved
 import frameRunnerData from '../../../../../config/client/frame-runner.json';
 // eslint-disable-next-line import/no-unresolved
 import testEvaluatorData from '../../../../../config/client/test-evaluator.json';
+import { challengeTypes } from '../../../../utils/challengeTypes';
+import { cssToHtml, jsToHtml, concatHtml } from '../rechallenge/builders.js';
+import { getTransformers } from '../rechallenge/transformers';
+import {
+  createTestFramer,
+  runTestInTestFrame,
+  createMainFramer
+} from './frame';
+import createWorker from './worker-executor';
 
 const { filename: runner } = frameRunnerData;
 const { filename: testEvaluator } = testEvaluatorData;

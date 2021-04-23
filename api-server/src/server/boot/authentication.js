@@ -1,20 +1,20 @@
-import passport from 'passport';
 import dedent from 'dedent';
 import { check } from 'express-validator';
-import { isEmail } from 'validator';
 import jwt from 'jsonwebtoken';
+import passport from 'passport';
+import { isEmail } from 'validator';
 
 import { jwtSecret } from '../../../../config/secrets';
 
+import { decodeEmail } from '../../common/utils';
 import {
   createPassportCallbackAuthenticator,
   devSaveResponseAuthCookies,
   devLoginRedirect
 } from '../component-passport';
-import { ifUserRedirectTo, ifNoUserRedirectHome } from '../utils/middleware';
 import { wrapHandledError } from '../utils/create-handled-error.js';
 import { removeCookies } from '../utils/getSetAccessToken';
-import { decodeEmail } from '../../common/utils';
+import { ifUserRedirectTo, ifNoUserRedirectHome } from '../utils/middleware';
 import { getRedirectParams } from '../utils/redirection';
 
 const isSignUpDisabled = !!process.env.DISABLE_SIGNUP;

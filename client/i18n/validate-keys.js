@@ -1,11 +1,11 @@
 const fs = require('fs');
 const path = require('path');
-const translationsObject = require('./locales/english/translations.json');
 const introObject = require('./locales/english/intro.json');
+const linksObject = require('./locales/english/links.json');
 const metaObject = require('./locales/english/meta-tags.json');
 const motivationObject = require('./locales/english/motivation.json');
+const translationsObject = require('./locales/english/translations.json');
 const trendingObject = require('./locales/english/trending.json');
-const linksObject = require('./locales/english/links.json');
 
 /**
  * Function to flatten a nested object. Written specifically for

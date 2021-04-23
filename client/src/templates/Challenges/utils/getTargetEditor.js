@@ -1,5 +1,5 @@
-import { toSortedArray } from '../../../../../utils/sort-files';
 import { isEmpty } from 'lodash';
+import { toSortedArray } from '../../../../../utils/sort-files';
 
 export function getTargetEditor(challengeFiles) {
   if (isEmpty(challengeFiles)) return null;

@@ -1,11 +1,11 @@
 const path = require('path');
 const { availableLangs } = require('../../config/i18n/all-langs');
+const introSchema = require('./locales/english/intro.json');
+const linksSchema = require('./locales/english/links.json');
+const metaTagsSchema = require('./locales/english/meta-tags.json');
+const motivationSchema = require('./locales/english/motivation.json');
 const translationsSchema = require('./locales/english/translations.json');
 const trendingSchema = require('./locales/english/trending.json');
-const motivationSchema = require('./locales/english/motivation.json');
-const introSchema = require('./locales/english/intro.json');
-const metaTagsSchema = require('./locales/english/meta-tags.json');
-const linksSchema = require('./locales/english/links.json');
 
 /**
  * Flattens a nested object structure into a single

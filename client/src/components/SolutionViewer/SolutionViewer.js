@@ -1,7 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import { Panel } from '@freecodecamp/react-bootstrap';
 import Prism from 'prismjs';
+import PropTypes from 'prop-types';
+import React from 'react';
 
 const prismLang = {
   css: 'css',

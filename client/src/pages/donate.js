@@ -1,13 +1,12 @@
+import { Grid, Row, Col, Alert } from '@freecodecamp/react-bootstrap';
+import PropTypes from 'prop-types';
 import React, { Component, Fragment } from 'react';
 import Helmet from 'react-helmet';
-import PropTypes from 'prop-types';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import { createSelector } from 'reselect';
-import { Grid, Row, Col, Alert } from '@freecodecamp/react-bootstrap';
 import { withTranslation } from 'react-i18next';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { createSelector } from 'reselect';
 
-import { Spacer, Loader } from '../components/helpers';
 import DonateForm from '../components/Donation/DonateForm';
 import {
   DonationText,
@@ -15,8 +14,9 @@ import {
   DonationOptionsText,
   DonationOptionsAlertText
 } from '../components/Donation/DonationTextComponents';
-import { signInLoadingSelector, userSelector, executeGA } from '../redux';
+import { Spacer, Loader } from '../components/helpers';
 import CampersImage from '../components/landing/components/CampersImage';
+import { signInLoadingSelector, userSelector, executeGA } from '../redux';
 
 const propTypes = {
   executeGA: PropTypes.func,

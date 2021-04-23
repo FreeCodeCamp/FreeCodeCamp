@@ -1,6 +1,6 @@
-import _ from 'lodash';
 import compareDesc from 'date-fns/compare_desc';
 import debug from 'debug';
+import _ from 'lodash';
 
 import { getLybsynFeed } from './lybsyn';
 

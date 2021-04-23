@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import { createSelector } from 'reselect';
 import { Link } from 'gatsby';
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 import { withTranslation } from 'react-i18next';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { createSelector } from 'reselect';
 
-import { completedChallengesSelector, executeGA } from '../../../redux';
-import GreenPass from '../../../assets/icons/GreenPass';
 import GreenNotCompleted from '../../../assets/icons/GreenNotCompleted';
+import GreenPass from '../../../assets/icons/GreenPass';
+import { completedChallengesSelector, executeGA } from '../../../redux';
 
 const mapStateToProps = state => {
   return createSelector(completedChallengesSelector, completedChallenges => ({

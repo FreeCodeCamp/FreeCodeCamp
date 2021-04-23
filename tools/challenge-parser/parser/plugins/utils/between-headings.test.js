@@ -1,11 +1,11 @@
 /* global expect*/
 const isArray = require('lodash/isArray');
-const find = require('unist-util-find');
 const { root } = require('mdast-builder');
+const find = require('unist-util-find');
 
-const getAllBetween = require('./between-headings');
-const simpleAst = require('../../__fixtures__/ast-simple.json');
 const extraHeadingAst = require('../../__fixtures__/ast-extra-heading.json');
+const simpleAst = require('../../__fixtures__/ast-simple.json');
+const getAllBetween = require('./between-headings');
 
 describe('between-headings', () => {
   it('should return an array', () => {

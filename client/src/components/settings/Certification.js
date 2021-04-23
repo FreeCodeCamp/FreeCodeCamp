@@ -1,8 +1,3 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import { find, first, values, isString } from 'lodash';
 import {
   Table,
   Button,
@@ -10,24 +5,28 @@ import {
   MenuItem
 } from '@freecodecamp/react-bootstrap';
 import { Link, navigate } from 'gatsby';
-import { createSelector } from 'reselect';
+import { find, first, values, isString } from 'lodash';
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 import { withTranslation } from 'react-i18next';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { createSelector } from 'reselect';
 
+import { updateLegacyCert } from '../../redux/settings';
 import {
   projectMap,
   legacyProjectMap
 } from '../../resources/certAndProjectMap';
 
-import SectionHeader from './SectionHeader';
-import ProjectModal from '../SolutionViewer/ProjectModal';
-import { FullWidthRow, Spacer } from '../helpers';
-import { Form } from '../formHelpers';
-
 import { maybeUrlRE } from '../../utils';
 import reallyWeirdErrorMessage from '../../utils/reallyWeirdErrorMessage';
+import ProjectModal from '../SolutionViewer/ProjectModal';
+import { Form } from '../formHelpers';
+import { FullWidthRow, Spacer } from '../helpers';
 
 import './certification.css';
-import { updateLegacyCert } from '../../redux/settings';
+import SectionHeader from './SectionHeader';
 
 const mapDispatchToProps = dispatch =>
   bindActionCreators({ updateLegacyCert }, dispatch);

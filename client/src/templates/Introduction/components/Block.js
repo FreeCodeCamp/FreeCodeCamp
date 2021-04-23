@@ -1,20 +1,20 @@
-import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import { createSelector } from 'reselect';
+import React, { Component } from 'react';
 import { withTranslation } from 'react-i18next';
+import { connect } from 'react-redux';
 import ScrollableAnchor from 'react-scrollable-anchor';
+import { bindActionCreators } from 'redux';
+import { createSelector } from 'reselect';
 
-import { makeExpandedBlockSelector, toggleBlock } from '../redux';
-import { completedChallengesSelector, executeGA } from '../../../redux';
-import Challenges from './Challenges';
-import Caret from '../../../assets/icons/Caret';
-import GreenPass from '../../../assets/icons/GreenPass';
-import GreenNotCompleted from '../../../assets/icons/GreenNotCompleted';
-import { isAuditedCert } from '../../../../../utils/is-audited';
 import envData from '../../../../../config/env.json';
+import { isAuditedCert } from '../../../../../utils/is-audited';
+import Caret from '../../../assets/icons/Caret';
+import GreenNotCompleted from '../../../assets/icons/GreenNotCompleted';
+import GreenPass from '../../../assets/icons/GreenPass';
 import { Link } from '../../../components/helpers/';
+import { completedChallengesSelector, executeGA } from '../../../redux';
+import { makeExpandedBlockSelector, toggleBlock } from '../redux';
+import Challenges from './Challenges';
 
 const { curriculumLocale } = envData;
 

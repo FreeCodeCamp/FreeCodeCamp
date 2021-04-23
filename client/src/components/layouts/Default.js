@@ -1,12 +1,19 @@
-import React, { Component } from 'react';
+import fontawesome from '@fortawesome/fontawesome';
 import PropTypes from 'prop-types';
+import React, { Component } from 'react';
+import Helmet from 'react-helmet';
+import { withTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { createSelector } from 'reselect';
-import Helmet from 'react-helmet';
-import fontawesome from '@fortawesome/fontawesome';
-import { withTranslation } from 'react-i18next';
 
+import latoBoldURL from '../../../static/fonts/lato/Lato-Bold.woff';
+import latoLightURL from '../../../static/fonts/lato/Lato-Light.woff';
+import latoRegularURL from '../../../static/fonts/lato/Lato-Regular.woff';
+import robotoBoldURL from '../../../static/fonts/roboto-mono/RobotoMono-Bold.woff';
+import robotoItalicURL from '../../../static/fonts/roboto-mono/RobotoMono-Italic.woff';
+import robotoRegularURL from '../../../static/fonts/roboto-mono/RobotoMono-Regular.woff';
+import { isBrowser } from '../../../utils';
 import {
   fetchUser,
   isSignedInSelector,
@@ -17,25 +24,17 @@ import {
   usernameSelector,
   executeGA
 } from '../../redux';
+import Flash from '../Flash';
 import { flashMessageSelector, removeFlashMessage } from '../Flash/redux';
 
-import { isBrowser } from '../../../utils';
-
-import WithInstantSearch from '../search/WithInstantSearch';
-import OfflineWarning from '../OfflineWarning';
-import Flash from '../Flash';
-import Header from '../Header';
 import Footer from '../Footer';
+import Header from '../Header';
+import OfflineWarning from '../OfflineWarning';
+import WithInstantSearch from '../search/WithInstantSearch';
 // preload common fonts
-import latoLightURL from '../../../static/fonts/lato/Lato-Light.woff';
-import latoRegularURL from '../../../static/fonts/lato/Lato-Regular.woff';
-import latoBoldURL from '../../../static/fonts/lato/Lato-Bold.woff';
 // eslint-disable-next-line max-len
-import robotoRegularURL from '../../../static/fonts/roboto-mono/RobotoMono-Regular.woff';
 // eslint-disable-next-line max-len
-import robotoBoldURL from '../../../static/fonts/roboto-mono/RobotoMono-Bold.woff';
 // eslint-disable-next-line max-len
-import robotoItalicURL from '../../../static/fonts/roboto-mono/RobotoMono-Italic.woff';
 
 import './fonts.css';
 import './global.css';

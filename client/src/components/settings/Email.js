@@ -1,8 +1,3 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import { Link } from 'gatsby';
 import {
   HelpBlock,
   Alert,
@@ -11,16 +6,21 @@ import {
   FormControl,
   Button
 } from '@freecodecamp/react-bootstrap';
-import isEmail from 'validator/lib/isEmail';
+import { Link } from 'gatsby';
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 import { Trans, withTranslation } from 'react-i18next';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import isEmail from 'validator/lib/isEmail';
 
 import { updateMyEmail } from '../../redux/settings';
 import { maybeEmailRE } from '../../utils';
 
 import FullWidthRow from '../helpers/FullWidthRow';
 import Spacer from '../helpers/Spacer';
-import SectionHeader from './SectionHeader';
 import BlockSaveButton from '../helpers/form/BlockSaveButton';
+import SectionHeader from './SectionHeader';
 import ToggleSetting from './ToggleSetting';
 
 const mapStateToProps = () => ({});

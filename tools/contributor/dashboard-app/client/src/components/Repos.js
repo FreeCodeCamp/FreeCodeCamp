@@ -18,11 +18,11 @@ const filenameTitle = { fontWeight: '600' };
 class Repos extends React.Component {
   constructor(props) {
     super(props);
- 
+
     this.state = {
       data: [],
       rateLimitMessage: ''
-    }
+    };
   }
 
   componentDidMount() {
@@ -48,9 +48,7 @@ class Repos extends React.Component {
         }
       })
       .catch(() => {
-        const repos = [
-          { repoName: 'No repos with open PRs', prs: [] }
-        ];
+        const repos = [{ repoName: 'No repos with open PRs', prs: [] }];
         this.setState(prevState => ({ data: repos }));
       });
   }
@@ -61,30 +59,40 @@ class Repos extends React.Component {
     const elements = rateLimitMessage
       ? rateLimitMessage
       : data.map(entry => {
-        const { _id: repoName, prs } = entry;
-        const prsList = prs.map(({ _id: number, username, title, prLink }) => {
-          return <ListItem key={number} number={number} username={username} prTitle={title} prLink={prLink} />;
-        });
+          const { _id: repoName, prs } = entry;
+          const prsList = prs.map(
+            ({ _id: number, username, title, prLink }) => {
+              return (
+                <ListItem
+                  key={number}
+                  number={number}
+                  username={username}
+                  prTitle={title}
+                  prLink={prLink}
+                />
+              );
+            }
+          );
 
-        return (
-          <Result key={repoName}>
-            <span style={filenameTitle}>{repoName}</span>
-            <br />
-            <details style={detailsStyle}>
-              <summary># of PRs: {prs.length}</summary>
-              <List>{prsList}</List>
-            </details>
-          </Result>
-        );
-      });
+          return (
+            <Result key={repoName}>
+              <span style={filenameTitle}>{repoName}</span>
+              <br />
+              <details style={detailsStyle}>
+                <summary># of PRs: {prs.length}</summary>
+                <List>{prsList}</List>
+              </details>
+            </Result>
+          );
+        });
 
     return (
       <FullWidthDiv>
         {rateLimitMessage
           ? rateLimitMessage
           : data.length
-            ? elements
-            : 'Report Loading...'}
+          ? elements
+          : 'Report Loading...'}
       </FullWidthDiv>
     );
   }

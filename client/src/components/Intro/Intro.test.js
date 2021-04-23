@@ -1,7 +1,7 @@
 /* global expect jest */
 import React from 'react';
-import renderer from 'react-test-renderer';
 import { Provider } from 'react-redux';
+import renderer from 'react-test-renderer';
 import { createStore } from '../../redux/createStore';
 
 import Intro from './';

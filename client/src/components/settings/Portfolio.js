@@ -1,6 +1,3 @@
-import React, { Component, Fragment } from 'react';
-import PropTypes from 'prop-types';
-import { nanoid } from 'nanoid';
 import {
   Button,
   FormGroup,
@@ -9,14 +6,17 @@ import {
   HelpBlock
 } from '@freecodecamp/react-bootstrap';
 import { findIndex, find, isEqual } from 'lodash';
-import isURL from 'validator/lib/isURL';
+import { nanoid } from 'nanoid';
+import PropTypes from 'prop-types';
+import React, { Component, Fragment } from 'react';
 import { withTranslation } from 'react-i18next';
+import isURL from 'validator/lib/isURL';
 
 import { hasProtocolRE } from '../../utils';
 
 import { FullWidthRow, ButtonSpacer, Spacer } from '../helpers';
-import SectionHeader from './SectionHeader';
 import BlockSaveButton from '../helpers/form/BlockSaveButton';
+import SectionHeader from './SectionHeader';
 
 const propTypes = {
   picture: PropTypes.string,

@@ -1,8 +1,8 @@
 /* eslint-disable react/sort-prop-types */
-import React from 'react';
-import { Link, borderColorPicker, AvatarRenderer } from '../../helpers';
 import PropTypes from 'prop-types';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
+import { Link, borderColorPicker, AvatarRenderer } from '../../helpers';
 
 import Login from '../components/Login';
 

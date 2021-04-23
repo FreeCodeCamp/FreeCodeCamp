@@ -1,5 +1,5 @@
-const findIndex = require('lodash/findIndex');
 const Joi = require('joi');
+const findIndex = require('lodash/findIndex');
 Joi.objectId = require('joi-objectid')(Joi);
 
 const schema = Joi.objectId();

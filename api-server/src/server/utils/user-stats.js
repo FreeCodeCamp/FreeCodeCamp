@@ -1,11 +1,11 @@
-import loopback from 'loopback';
+import { isEmpty } from 'lodash';
 import compose from 'lodash/fp/compose';
+import forEachRight from 'lodash/fp/forEachRight';
+import last from 'lodash/fp/last';
 import map from 'lodash/fp/map';
 import sortBy from 'lodash/fp/sortBy';
 import trans from 'lodash/fp/transform';
-import last from 'lodash/fp/last';
-import forEachRight from 'lodash/fp/forEachRight';
-import { isEmpty } from 'lodash';
+import loopback from 'loopback';
 import moment from 'moment-timezone';
 
 import { dayCount } from '../utils/date-utils';

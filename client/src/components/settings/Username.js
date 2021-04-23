@@ -1,24 +1,24 @@
-import React, { Component, Fragment } from 'react';
-import PropTypes from 'prop-types';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import { createSelector } from 'reselect';
 import {
   ControlLabel,
   FormControl,
   Alert,
   FormGroup
 } from '@freecodecamp/react-bootstrap';
+import PropTypes from 'prop-types';
+import React, { Component, Fragment } from 'react';
 import { withTranslation } from 'react-i18next';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { createSelector } from 'reselect';
 
+import { isValidUsername } from '../../../../utils/validate';
 import {
   validateUsername,
   usernameValidationSelector,
   submitNewUsername
 } from '../../redux/settings';
-import BlockSaveButton from '../helpers/form/BlockSaveButton';
 import FullWidthRow from '../helpers/FullWidthRow';
-import { isValidUsername } from '../../../../utils/validate';
+import BlockSaveButton from '../helpers/form/BlockSaveButton';
 
 const propTypes = {
   isValidUsername: PropTypes.bool,

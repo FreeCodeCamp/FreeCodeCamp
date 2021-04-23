@@ -1,10 +1,10 @@
-import React, { Fragment } from 'react';
-import PropTypes from 'prop-types';
-import { curry } from 'lodash';
-import { createSelector } from 'reselect';
-import { connect } from 'react-redux';
 import { Row, Col } from '@freecodecamp/react-bootstrap';
+import { curry } from 'lodash';
+import PropTypes from 'prop-types';
+import React, { Fragment } from 'react';
 import { useTranslation } from 'react-i18next';
+import { connect } from 'react-redux';
+import { createSelector } from 'reselect';
 
 import { certificatesByNameSelector } from '../../../redux';
 import { ButtonSpacer, FullWidthRow, Link, Spacer } from '../../helpers';

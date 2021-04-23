@@ -1,22 +1,22 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Col, Row } from '@freecodecamp/react-bootstrap';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faAward,
   faHeart,
   faCalendar
 } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Col, Row } from '@freecodecamp/react-bootstrap';
+import PropTypes from 'prop-types';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 
+import envData from '../../../../../config/env.json';
+import { langCodes } from '../../../../../config/i18n/all-langs';
 import { AvatarRenderer } from '../../helpers';
-import SocialIcons from './SocialIcons';
 import Link from '../../helpers/Link';
 
 import './camper.css';
 
-import { langCodes } from '../../../../../config/i18n/all-langs';
-import envData from '../../../../../config/env.json';
+import SocialIcons from './SocialIcons';
 
 const { clientLocale } = envData;
 const localeCode = langCodes[clientLocale];

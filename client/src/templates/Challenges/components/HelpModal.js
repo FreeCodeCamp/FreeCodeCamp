@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
 import { Button, Modal } from '@freecodecamp/react-bootstrap';
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 import { Trans, withTranslation } from 'react-i18next';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
-import { createQuestion, closeModal, isHelpModalOpenSelector } from '../redux';
-import { executeGA } from '../../../redux';
 import envData from '../../../../../config/env.json';
+import { executeGA } from '../../../redux';
+import { createQuestion, closeModal, isHelpModalOpenSelector } from '../redux';
 
 import './help-modal.css';
 

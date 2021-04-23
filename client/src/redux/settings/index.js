@@ -1,15 +1,11 @@
 import { createAction, handleActions } from 'redux-actions';
-
-import { createTypes, createAsyncTypes } from '../../utils/createTypes';
+import { actionTypes as types, ns } from './action-types';
 import { createDangerZoneSaga } from './danger-zone-saga';
 import { createSettingsSagas } from './settings-sagas';
 import { createUpdateMyEmailSaga } from './update-email-saga';
+import { createUpdateLegacyCertSaga } from './update-legacy-certificate-saga';
 
-// prettier-ignore
-import { createUpdateLegacyCertSaga } from
-'./update-legacy-certificate-saga';
-
-export const ns = 'settings';
+export { ns };
 
 const defaultFetchState = {
   pending: false,
@@ -24,22 +20,6 @@ const initialState = {
     fetchState: { ...defaultFetchState }
   }
 };
-
-export const types = createTypes(
-  [
-    ...createAsyncTypes('validateUsername'),
-    ...createAsyncTypes('submitNewAbout'),
-    ...createAsyncTypes('submitNewUsername'),
-    ...createAsyncTypes('updateMyEmail'),
-    ...createAsyncTypes('updateLegacyCert'),
-    ...createAsyncTypes('updateUserFlag'),
-    ...createAsyncTypes('submitProfileUI'),
-    ...createAsyncTypes('verifyCert'),
-    ...createAsyncTypes('resetProgress'),
-    ...createAsyncTypes('deleteAccount')
-  ],
-  ns
-);
 
 export const sagas = [
   ...createSettingsSagas(types),

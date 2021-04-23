@@ -1,5 +1,14 @@
 import { call, delay, put, takeLatest, takeEvery } from 'redux-saga/effects';
 
+import { createFlashMessage } from '../../components/Flash/redux';
+import {
+  getUsernameExists,
+  putUpdateMyAbout,
+  putUpdateMyProfileUI,
+  putUpdateMyUsername,
+  putUpdateUserFlag,
+  putVerifyCert
+} from '../../utils/ajax';
 import {
   updateUserFlagComplete,
   updateUserFlagError,
@@ -14,15 +23,6 @@ import {
   verifyCertComplete,
   verifyCertError
 } from './';
-import {
-  getUsernameExists,
-  putUpdateMyAbout,
-  putUpdateMyProfileUI,
-  putUpdateMyUsername,
-  putUpdateUserFlag,
-  putVerifyCert
-} from '../../utils/ajax';
-import { createFlashMessage } from '../../components/Flash/redux';
 
 function* submitNewAboutSaga({ payload }) {
   try {

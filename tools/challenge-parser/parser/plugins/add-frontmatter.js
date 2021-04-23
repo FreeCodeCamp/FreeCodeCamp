@@ -1,5 +1,5 @@
-const visit = require('unist-util-visit');
 const YAML = require('js-yaml');
+const visit = require('unist-util-visit');
 
 function plugin() {
   return transformer;

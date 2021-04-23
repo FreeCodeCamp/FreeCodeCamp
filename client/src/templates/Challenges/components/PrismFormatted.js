@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
 import Prism from 'prismjs';
 import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 
 const propTypes = {
   className: PropTypes.string,

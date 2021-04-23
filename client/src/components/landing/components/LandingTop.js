@@ -1,7 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import { Col, Row } from '@freecodecamp/react-bootstrap';
-import { Spacer } from '../../helpers';
+import PropTypes from 'prop-types';
+import React from 'react';
+import { useTranslation } from 'react-i18next';
 import {
   AmazonLogo,
   AppleLogo,
@@ -9,9 +9,9 @@ import {
   SpotifyLogo,
   GoogleLogo
 } from '../../../assets/images/components';
-import CampersImage from './CampersImage';
+import { Spacer } from '../../helpers';
 import BigCallToAction from './BigCallToAction';
-import { useTranslation } from 'react-i18next';
+import CampersImage from './CampersImage';
 
 const propTypes = {
   page: PropTypes.string

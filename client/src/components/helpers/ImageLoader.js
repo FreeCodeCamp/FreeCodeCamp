@@ -1,8 +1,8 @@
+import PropTypes from 'prop-types';
 import React, { useState } from 'react';
+import LazyLoad from 'react-lazy-load';
 
 import './image-loader.css';
-import LazyLoad from 'react-lazy-load';
-import PropTypes from 'prop-types';
 
 const propTypes = {
   alt: PropTypes.string,

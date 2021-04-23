@@ -1,5 +1,5 @@
-const makeRequest = require('./make-request');
 const authHeader = require('./auth-header');
+const makeRequest = require('./make-request');
 
 const addFile = async (projectId, filename, fileContent, directoryId) => {
   let headers = { ...authHeader };

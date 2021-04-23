@@ -62,7 +62,7 @@ class Pareto extends React.Component {
       });
   }
 
-  createOptions = (data) => {
+  createOptions = data => {
     const options = data.reduce((seen, { filename }) => {
       const { articleType, language } = this.getFilenameOptions(filename);
       if (articleType && language) {
@@ -74,7 +74,7 @@ class Pareto extends React.Component {
       return seen;
     }, {});
     return options;
-  }
+  };
 
   handleFileTypeOptionChange = changeEvent => {
     let { all, selectedLanguage, options } = this.state;
@@ -90,16 +90,17 @@ class Pareto extends React.Component {
         if (selectedLanguage === 'all') {
           condition = articleType === selectedFileType;
         } else if (!options[selectedFileType][selectedLanguage]) {
-          condition = articleType === selectedFileType
+          condition = articleType === selectedFileType;
           selectedLanguage = 'all';
         } else {
-          condition = articleType === selectedFileType && language === selectedLanguage
+          condition =
+            articleType === selectedFileType && language === selectedLanguage;
         }
       }
       return condition;
     });
     this.setState(prevState => ({ data, selectedFileType, selectedLanguage }));
-  }
+  };
 
   handleLanguageOptionChange = changeEvent => {
     const { all, selectedFileType } = this.state;
@@ -108,56 +109,71 @@ class Pareto extends React.Component {
       const { articleType, language } = this.getFilenameOptions(filename);
       let condition;
       if (selectedLanguage === 'all') {
-        condition = articleType === selectedFileType
+        condition = articleType === selectedFileType;
       } else {
-        condition = language === selectedLanguage && articleType === selectedFileType
+        condition =
+          language === selectedLanguage && articleType === selectedFileType;
       }
       return condition;
     });
     this.setState(prevState => ({ data, selectedLanguage }));
-  }
+  };
 
   getFilenameOptions = filename => {
     const filenameReplacement = filename.replace(
-      /^curriculum\/challenges\//, 'curriculum/'
+      /^curriculum\/challenges\//,
+      'curriculum/'
     );
     const regex = /^(docs|curriculum|guide)(?:\/)(english|arabic|chinese|portuguese|russian|spanish)?\/?/;
     // need an array to pass to labelsAdder
     // eslint-disable-next-line
     const [_, articleType, language] = filenameReplacement.match(regex) || [];
     return { articleType, language };
-  }
+  };
 
   render() {
-    const { data, options, selectedFileType, selectedLanguage, rateLimitMessage } = this.state;
+    const {
+      data,
+      options,
+      selectedFileType,
+      selectedLanguage,
+      rateLimitMessage
+    } = this.state;
     const elements = rateLimitMessage
       ? rateLimitMessage
       : data.map(entry => {
-        const { filename, count, prs } = entry;
-        const prsList = prs.map(({ number, username, title }) => {
-          return <ListItem key={number} number={number} username={username} prTitle={title} />;
+          const { filename, count, prs } = entry;
+          const prsList = prs.map(({ number, username, title }) => {
+            return (
+              <ListItem
+                key={number}
+                number={number}
+                username={username}
+                prTitle={title}
+              />
+            );
+          });
+          const fileOnMain = `https://github.com/freeCodeCamp/freeCodeCamp/blob/main/${filename}`;
+          return (
+            <Result key={filename}>
+              <span style={filenameTitle}>{filename}</span>{' '}
+              <a href={fileOnMain} rel='noopener noreferrer' target='_blank'>
+                (File on Main)
+              </a>
+              <br />
+              <details style={detailsStyle}>
+                <summary># of PRs: {count}</summary>
+                <List>{prsList}</List>
+              </details>
+            </Result>
+          );
         });
-        const fileOnMain = `https://github.com/freeCodeCamp/freeCodeCamp/blob/main/${filename}`;
-        return (
-          <Result key={filename}>
-            <span style={filenameTitle}>{filename}</span>{' '}
-            <a href={fileOnMain} rel="noopener noreferrer" target="_blank">
-              (File on Main)
-          </a>
-            <br />
-            <details style={detailsStyle}>
-              <summary># of PRs: {count}</summary>
-              <List>{prsList}</List>
-            </details>
-          </Result>
-        );
-      });
 
     let fileTypeOptions = Object.keys(options).map(articleType => articleType);
-    const typeOptions = ['all', ...fileTypeOptions].map((type) => (
+    const typeOptions = ['all', ...fileTypeOptions].map(type => (
       <FilterOption
         key={type}
-        name="filetype"
+        name='filetype'
         value={type}
         onOptionChange={this.handleFileTypeOptionChange}
         selectedOption={selectedFileType}
@@ -173,7 +189,7 @@ class Pareto extends React.Component {
       languageOptions = languages.map(language => (
         <FilterOption
           key={language}
-          name="language"
+          name='language'
           value={language}
           onOptionChange={this.handleLanguageOptionChange}
           selectedOption={selectedLanguage}
@@ -184,31 +200,28 @@ class Pareto extends React.Component {
     }
     return (
       <FullWidthDiv>
-        {fileTypeOptions.length > 0 &&
-          <strong>Filter Options</strong>
-        }
+        {fileTypeOptions.length > 0 && <strong>Filter Options</strong>}
         <Options>
-          {fileTypeOptions.length > 0 &&
+          {fileTypeOptions.length > 0 && (
             <>
               <fieldset>
                 <legend>File Type:</legend>
                 <div>{typeOptions}</div>
               </fieldset>
             </>
-          }
-          {
-            languageOptions &&
+          )}
+          {languageOptions && (
             <fieldset>
               <legend>Language:</legend>
               <div>{languageOptions}</div>
             </fieldset>
-          }
+          )}
         </Options>
         {rateLimitMessage
           ? rateLimitMessage
           : data.length
-            ? elements
-            : 'Report Loading...'}
+          ? elements
+          : 'Report Loading...'}
       </FullWidthDiv>
     );
   }

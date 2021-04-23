@@ -1,10 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { createSelector } from 'reselect';
 import { Link } from 'gatsby';
-import Spinner from 'react-spinkit';
+import PropTypes from 'prop-types';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
+import { connect } from 'react-redux';
+import Spinner from 'react-spinkit';
+import { createSelector } from 'reselect';
 
 import { isSignedInSelector, userFetchStateSelector } from '../../../redux';
 import Login from './Login';

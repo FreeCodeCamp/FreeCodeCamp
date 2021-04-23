@@ -1,6 +1,6 @@
 /* global expect */
-import toLearnPath from '../utils/to-learn-path';
 import { withPrefix } from 'gatsby';
+import toLearnPath from '../utils/to-learn-path';
 
 describe('toLearnPath', () => {
   it('should return a string', () => {

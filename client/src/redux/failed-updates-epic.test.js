@@ -1,10 +1,10 @@
 /* global expect jest */
 
-import { Subject } from 'rxjs';
 import { ActionsObservable, StateObservable } from 'redux-observable';
-import failedUpdatesEpic from './failed-updates-epic';
-import { types } from './';
+import { Subject } from 'rxjs';
 import store from 'store';
+import { actionTypes } from './action-types';
+import failedUpdatesEpic from './failed-updates-epic';
 
 jest.mock('../analytics');
 
@@ -15,7 +15,7 @@ describe('failed-updates-epic', () => {
     store.set(key, failedSubmissions);
 
     const action$ = ActionsObservable.of({
-      type: types.updateComplete
+      type: actionTypes.updateComplete
     });
     const state$ = new StateObservable(new Subject(), initialState);
     const epic$ = failedUpdatesEpic(action$, state$);

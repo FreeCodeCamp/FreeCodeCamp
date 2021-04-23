@@ -1,6 +1,6 @@
+const acorn = require('acorn');
 const { isEmpty } = require('lodash');
 const visit = require('unist-util-visit');
-const acorn = require('acorn');
 const { commentToData } = require('../comment-to-data');
 
 const parser = acorn.Parser;

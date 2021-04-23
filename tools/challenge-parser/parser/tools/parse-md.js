@@ -1,7 +1,7 @@
-const { read } = require('to-vfile');
 const remark = require('remark');
 const directives = require('remark-directive');
 const stringify = require('remark-stringify');
+const { read } = require('to-vfile');
 
 (async () => {
   const path = './example.md';

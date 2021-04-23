@@ -1,21 +1,21 @@
-import React, { Fragment, Component } from 'react';
-import PropTypes from 'prop-types';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   HelpBlock,
   FormControl,
   FormGroup,
   ControlLabel
 } from '@freecodecamp/react-bootstrap';
-import isURL from 'validator/lib/isURL';
+import PropTypes from 'prop-types';
+import React, { Fragment, Component } from 'react';
 import { withTranslation } from 'react-i18next';
+import isURL from 'validator/lib/isURL';
 
 import { maybeUrlRE } from '../../utils';
 
-import SectionHeader from './SectionHeader';
 import { FullWidthRow } from '../helpers';
 import BlockSaveButton from '../helpers/form/BlockSaveButton';
+import SectionHeader from './SectionHeader';
 
 const propTypes = {
   githubProfile: PropTypes.string,

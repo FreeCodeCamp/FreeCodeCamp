@@ -1,8 +1,9 @@
-const env = require('../config/env');
-const webpack = require('webpack');
-
 const { createFilePath } = require('gatsby-source-filesystem');
 const uniq = require('lodash/uniq');
+const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
+const webpack = require('webpack');
+
+const env = require('../config/env');
 
 const { blockNameify } = require('../utils/block-nameify');
 const {
@@ -175,8 +176,6 @@ exports.createPages = function createPages({ graphql, actions, reporter }) {
     );
   });
 };
-
-const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
 
 exports.onCreateWebpackConfig = ({ stage, plugins, actions }) => {
   const newPlugins = [

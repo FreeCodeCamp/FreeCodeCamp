@@ -1,8 +1,9 @@
-import React, { Fragment, Component } from 'react';
 import PropTypes from 'prop-types';
-import { createSelector } from 'reselect';
-import { connect } from 'react-redux';
+import React, { Fragment, Component } from 'react';
 import { Helmet } from 'react-helmet';
+import { connect } from 'react-redux';
+import { createSelector } from 'reselect';
+import createRedirect from '../../components/createRedirect';
 import { Loader } from '../../components/helpers';
 import {
   userSelector,
@@ -10,7 +11,6 @@ import {
   isSignedInSelector,
   tryToShowDonationModal
 } from '../../redux';
-import createRedirect from '../../components/createRedirect';
 import DonateModal from '../Donation/DonationModal';
 
 import './prism.css';

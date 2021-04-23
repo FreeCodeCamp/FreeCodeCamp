@@ -1,6 +1,6 @@
+var css = require('css');
 const { isEmpty } = require('lodash');
 const visit = require('unist-util-visit');
-var css = require('css');
 const { commentToData } = require('../comment-to-data');
 
 function visitComments(node, cb) {

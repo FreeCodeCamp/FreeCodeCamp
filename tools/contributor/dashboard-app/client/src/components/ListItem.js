@@ -25,8 +25,8 @@ const ListItem = ({ number, username, prTitle: title, prLink }) => {
       <a
         style={prNumStyle}
         href={prUrl}
-        rel="noopener noreferrer"
-        target="_blank"
+        rel='noopener noreferrer'
+        target='_blank'
       >
         #{number}
       </a>

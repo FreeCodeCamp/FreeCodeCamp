@@ -1,7 +1,7 @@
-const visit = require('unist-util-visit');
-const { matches } = require('unist-util-select');
 const directive = require('mdast-util-directive');
 var toMarkdown = require('mdast-util-to-markdown');
+const { matches } = require('unist-util-select');
+const visit = require('unist-util-visit');
 
 function plugin() {
   return transformer;

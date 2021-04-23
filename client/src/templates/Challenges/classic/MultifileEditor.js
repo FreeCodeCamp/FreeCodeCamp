@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { ReflexContainer, ReflexElement, ReflexSplitter } from 'react-reflex';
 import { createSelector } from 'reselect';
-import { getTargetEditor } from '../utils/getTargetEditor';
 import { isDonationModalOpenSelector, userSelector } from '../../../redux';
 import {
   canFocusEditorSelector,
@@ -16,6 +15,7 @@ import {
   visibleEditorsSelector,
   updateFile
 } from '../redux';
+import { getTargetEditor } from '../utils/getTargetEditor';
 import './editor.css';
 import Editor from './Editor';
 

@@ -1,6 +1,6 @@
 const hastToHTML = require('hast-util-to-html');
-const mdastToHast = require('mdast-util-to-hast');
 const { root } = require('mdast-builder');
+const mdastToHast = require('mdast-util-to-hast');
 
 function mdastToHTML(nodes) {
   if (!Array.isArray(nodes))

@@ -1,13 +1,13 @@
-import React, { Fragment } from 'react';
-import PropTypes from 'prop-types';
 import {
   ToggleButtonGroup as BSBG,
   ToggleButton as TB
 } from '@freecodecamp/react-bootstrap';
+import PropTypes from 'prop-types';
+import React, { Fragment } from 'react';
 
 import './toggle-button.css';
-import ToggleCheck from '../../assets/icons/ToggleCheck';
 import Spacer from '../../assets/icons/Spacer';
+import ToggleCheck from '../../assets/icons/ToggleCheck';
 
 const propTypes = {
   name: PropTypes.string.isRequired,

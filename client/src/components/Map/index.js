@@ -1,14 +1,15 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import { graphql, useStaticQuery } from 'gatsby';
 import i18next from 'i18next';
+import PropTypes from 'prop-types';
+import React from 'react';
+import envData from '../../../../config/env.json';
+import { isAuditedCert } from '../../../../utils/is-audited';
 import { generateIconComponent } from '../../assets/icons';
 
-import { Link, Spacer } from '../helpers';
 import LinkButton from '../../assets/icons/LinkButton';
+import { Link, Spacer } from '../helpers';
+
 import './map.css';
-import { isAuditedCert } from '../../../../utils/is-audited';
-import envData from '../../../../config/env.json';
 
 const { curriculumLocale } = envData;
 

@@ -2,11 +2,10 @@
 import React from 'react';
 import ShallowRenderer from 'react-test-renderer/shallow';
 
-import { UniversalNav } from './components/UniversalNav';
-import { NavLinks } from './components/NavLinks';
-import AuthOrProfile from './components/AuthOrProfile';
-
 import envData from '../../../../config/env.json';
+import AuthOrProfile from './components/AuthOrProfile';
+import { NavLinks } from './components/NavLinks';
+import { UniversalNav } from './components/UniversalNav';
 
 const { apiLocation, clientLocale } = envData;
 

@@ -1,28 +1,28 @@
-import React, { Component, Fragment } from 'react';
-import PropTypes from 'prop-types';
-import Helmet from 'react-helmet';
+import { Grid, Row, Col } from '@freecodecamp/react-bootstrap';
 import { graphql } from 'gatsby';
 import { uniq } from 'lodash';
-import { connect } from 'react-redux';
-import { createSelector } from 'reselect';
-import { bindActionCreators } from 'redux';
+import PropTypes from 'prop-types';
+import React, { Component, Fragment } from 'react';
+import Helmet from 'react-helmet';
 import { withTranslation } from 'react-i18next';
-import { Grid, Row, Col } from '@freecodecamp/react-bootstrap';
+import { connect } from 'react-redux';
 import { configureAnchors } from 'react-scrollable-anchor';
+import { bindActionCreators } from 'redux';
+import { createSelector } from 'reselect';
 
 import Login from '../../components/Header/components/Login';
 import Map from '../../components/Map';
-import CertChallenge from './components/CertChallenge';
-import SuperBlockIntro from './components/SuperBlockIntro';
-import Block from './components/Block';
 import { Spacer } from '../../components/helpers';
 import {
   currentChallengeIdSelector,
   userFetchStateSelector,
   isSignedInSelector
 } from '../../redux';
-import { resetExpansion, toggleBlock } from './redux';
 import { MarkdownRemark, AllChallengeNode } from '../../redux/propTypes';
+import Block from './components/Block';
+import CertChallenge from './components/CertChallenge';
+import SuperBlockIntro from './components/SuperBlockIntro';
+import { resetExpansion, toggleBlock } from './redux';
 
 import './intro.css';
 

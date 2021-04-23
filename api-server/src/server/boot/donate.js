@@ -1,13 +1,7 @@
-import Stripe from 'stripe';
 import debug from 'debug';
+import Stripe from 'stripe';
 import { isEmail, isNumeric } from 'validator';
 
-import {
-  getAsyncPaypalToken,
-  verifyWebHook,
-  updateUser,
-  verifyWebHookType
-} from '../utils/donation';
 import {
   durationKeysConfig,
   donationOneTimeConfig,
@@ -16,8 +10,14 @@ import {
   onetimeSKUConfig,
   donationUrls
 } from '../../../../config/donation-settings';
-import keys from '../../../../config/secrets';
 import { deploymentEnv } from '../../../../config/env';
+import keys from '../../../../config/secrets';
+import {
+  getAsyncPaypalToken,
+  verifyWebHook,
+  updateUser,
+  verifyWebHookType
+} from '../utils/donation';
 
 const log = debug('fcc:boot:donate');
 

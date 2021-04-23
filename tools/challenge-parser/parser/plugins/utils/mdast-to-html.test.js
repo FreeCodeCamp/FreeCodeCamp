@@ -1,9 +1,9 @@
 /* global expect*/
-const mdastToHTML = require('./mdast-to-html');
+const leadingInlineHTMLNode = require('./__fixtures__/leading-html-node.json');
 const mdastMixedNodes = require('./__fixtures__/mdast-mixed-nodes.json');
 const mdastWithEmNode = require('./__fixtures__/mdast-with-em.json');
 const singleNode = require('./__fixtures__/non-id-node.json');
-const leadingInlineHTMLNode = require('./__fixtures__/leading-html-node.json');
+const mdastToHTML = require('./mdast-to-html');
 
 describe('mdast-to-html', () => {
   it('should return a string', () => {

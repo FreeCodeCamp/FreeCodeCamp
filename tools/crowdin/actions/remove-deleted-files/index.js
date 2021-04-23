@@ -1,7 +1,6 @@
 require('dotenv').config({ path: `${__dirname}/../../.env` });
-// const core = require('@actions/core');
-const util = require('util');
 const exec = util.promisify(require('child_process').exec);
+const util = require('util');
 
 const { getFiles, deleteFile } = require('../../utils/files');
 

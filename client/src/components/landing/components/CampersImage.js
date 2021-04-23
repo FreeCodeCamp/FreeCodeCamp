@@ -1,9 +1,9 @@
-import React from 'react';
 import PropTypes from 'prop-types';
-import Media from 'react-responsive';
-import { Spacer, ImageLoader } from '../../helpers';
-import wideImg from '../../../assets/images/landing/wide-image.png';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
+import Media from 'react-responsive';
+import wideImg from '../../../assets/images/landing/wide-image.png';
+import { Spacer, ImageLoader } from '../../helpers';
 
 const propTypes = {
   page: PropTypes.string

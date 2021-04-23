@@ -1,31 +1,31 @@
-import React, { Fragment } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { createSelector } from 'reselect';
 import { Grid, Button } from '@freecodecamp/react-bootstrap';
+import PropTypes from 'prop-types';
+import React, { Fragment } from 'react';
 import Helmet from 'react-helmet';
 
+import { useTranslation } from 'react-i18next';
+import { connect } from 'react-redux';
+import { createSelector } from 'reselect';
 import envData from '../../../config/env.json';
+import { createFlashMessage } from '../components/Flash/redux';
+
+import { FullWidthRow, Loader, Spacer } from '../components/helpers';
+import About from '../components/settings/About';
+import Certification from '../components/settings/Certification';
+import DangerZone from '../components/settings/DangerZone';
+import Email from '../components/settings/Email';
+import Honesty from '../components/settings/Honesty';
+import Internet from '../components/settings/Internet';
+import Portfolio from '../components/settings/Portfolio';
+import Privacy from '../components/settings/Privacy';
 import {
   signInLoadingSelector,
   userSelector,
   isSignedInSelector,
   hardGoTo as navigate
 } from '../redux';
-import { submitNewAbout, updateUserFlag, verifyCert } from '../redux/settings';
-import { createFlashMessage } from '../components/Flash/redux';
-import { useTranslation } from 'react-i18next';
-
-import { FullWidthRow, Loader, Spacer } from '../components/helpers';
-import About from '../components/settings/About';
-import Privacy from '../components/settings/Privacy';
-import Email from '../components/settings/Email';
-import Internet from '../components/settings/Internet';
-import Portfolio from '../components/settings/Portfolio';
-import Honesty from '../components/settings/Honesty';
-import Certification from '../components/settings/Certification';
-import DangerZone from '../components/settings/DangerZone';
 import { User } from '../redux/propTypes';
+import { submitNewAbout, updateUserFlag, verifyCert } from '../redux/settings';
 
 const { apiLocation } = envData;
 

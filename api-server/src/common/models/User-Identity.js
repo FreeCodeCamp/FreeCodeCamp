@@ -1,10 +1,10 @@
+import dedent from 'dedent';
 import { Observable } from 'rx';
 // import debug from 'debug';
-import dedent from 'dedent';
 import { isEmail } from 'validator';
 
-import { observeMethod, observeQuery } from '../../server/utils/rx';
 import { wrapHandledError } from '../../server/utils/create-handled-error.js';
+import { observeMethod, observeQuery } from '../../server/utils/rx';
 
 // const log = debug('fcc:models:userIdent');
 

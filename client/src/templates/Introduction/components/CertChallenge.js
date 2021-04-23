@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { navigate } from 'gatsby';
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
+import { withTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
-import { withTranslation } from 'react-i18next';
 
 import CertificationIcon from '../../../assets/icons/CertificationIcon';
-import GreenPass from '../../../assets/icons/GreenPass';
 import GreenNotCompleted from '../../../assets/icons/GreenNotCompleted';
+import GreenPass from '../../../assets/icons/GreenPass';
 import { userSelector } from '../../../redux';
 import { User } from '../../../redux/propTypes';
 import { certMap } from '../../../resources/certAndProjectMap';

@@ -1,5 +1,5 @@
-const { inspect } = require('util');
 const path = require('path');
+const { inspect } = require('util');
 
 const { parseMD } = require('../index');
 

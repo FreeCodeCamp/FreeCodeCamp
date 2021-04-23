@@ -1,17 +1,17 @@
-const { readSync } = require('to-vfile');
-const remark = require('remark-parse');
 const directive = require('remark-directive');
 const frontmatter = require('remark-frontmatter');
-const addTests = require('./plugins/add-tests');
-const restoreDirectives = require('./plugins/restore-directives');
-const replaceImports = require('./plugins/replace-imports');
+const remark = require('remark-parse');
+const { readSync } = require('to-vfile');
+const unified = require('unified');
 const addFrontmatter = require('./plugins/add-frontmatter');
-const addText = require('./plugins/add-text');
-const addVideoQuestion = require('./plugins/add-video-question');
 const addSeed = require('./plugins/add-seed');
 const addSolution = require('./plugins/add-solution');
+const addTests = require('./plugins/add-tests');
+const addText = require('./plugins/add-text');
+const addVideoQuestion = require('./plugins/add-video-question');
+const replaceImports = require('./plugins/replace-imports');
+const restoreDirectives = require('./plugins/restore-directives');
 const tableAndStrikeThrough = require('./plugins/table-and-strikethrough');
-const unified = require('unified');
 
 // by convention, anything that adds to file.data has the name add<name>.
 const processor = unified()

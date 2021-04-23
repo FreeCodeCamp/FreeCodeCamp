@@ -1,10 +1,11 @@
 import { navigate } from 'gatsby';
 import { call, put, takeEvery, take } from 'redux-saga/effects';
 
-import { deleteAccountError, resetProgressError } from './';
-import { resetUserData, fetchUser, types as appTypes } from '../';
-import { postResetProgress, postDeleteAccount } from '../../utils/ajax';
+import { resetUserData, fetchUser } from '../';
 import { createFlashMessage } from '../../components/Flash/redux';
+import { postResetProgress, postDeleteAccount } from '../../utils/ajax';
+import { actionTypes as appTypes } from '../action-types';
+import { deleteAccountError, resetProgressError } from './';
 
 function* deleteAccountSaga() {
   try {

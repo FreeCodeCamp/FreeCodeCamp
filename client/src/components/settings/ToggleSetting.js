@@ -1,13 +1,13 @@
-import React, { Fragment } from 'react';
-import PropTypes from 'prop-types';
 import {
   FormGroup,
   ControlLabel,
   HelpBlock
 } from '@freecodecamp/react-bootstrap';
+import PropTypes from 'prop-types';
+import React, { Fragment } from 'react';
 
-import TB from '../helpers/ToggleButton';
 import { ButtonSpacer } from '../helpers';
+import TB from '../helpers/ToggleButton';
 
 import './toggle-setting.css';
 

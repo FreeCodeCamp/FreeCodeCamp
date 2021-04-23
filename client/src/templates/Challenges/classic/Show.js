@@ -1,29 +1,25 @@
-import React, { Component } from 'react';
+import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
+import React, { Component } from 'react';
+import Helmet from 'react-helmet';
+import { withTranslation } from 'react-i18next';
+import { connect } from 'react-redux';
+import Media from 'react-responsive';
 import { bindActionCreators } from 'redux';
 import { createStructuredSelector } from 'reselect';
-import { connect } from 'react-redux';
-import Helmet from 'react-helmet';
-import { graphql } from 'gatsby';
-import Media from 'react-responsive';
-import { withTranslation } from 'react-i18next';
 
+import { challengeTypes } from '../../../../utils/challengeTypes';
 import LearnLayout from '../../../components/layouts/Learn';
-import MultifileEditor from './MultifileEditor';
-import Preview from '../components/Preview';
-import SidePanel from '../components/Side-Panel';
-import Output from '../components/Output';
+import { ChallengeNode } from '../../../redux/propTypes';
 import CompletionModal from '../components/CompletionModal';
 import HelpModal from '../components/HelpModal';
-import VideoModal from '../components/VideoModal';
-import ResetModal from '../components/ResetModal';
-import MobileLayout from './MobileLayout';
-import DesktopLayout from './DesktopLayout';
 import Hotkeys from '../components/Hotkeys';
+import Output from '../components/Output';
+import Preview from '../components/Preview';
+import ResetModal from '../components/ResetModal';
+import SidePanel from '../components/Side-Panel';
+import VideoModal from '../components/VideoModal';
 
-import { getGuideUrl } from '../utils';
-import { challengeTypes } from '../../../../utils/challengeTypes';
-import { ChallengeNode } from '../../../redux/propTypes';
 import {
   createFiles,
   challengeFilesSelector,
@@ -36,6 +32,10 @@ import {
   executeChallenge,
   cancelTests
 } from '../redux';
+import { getGuideUrl } from '../utils';
+import DesktopLayout from './DesktopLayout';
+import MobileLayout from './MobileLayout';
+import MultifileEditor from './MultifileEditor';
 
 import './classic.css';
 import '../components/test-frame.css';

@@ -1,22 +1,21 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import CalendarHeatMap from '@freecodecamp/react-calendar-heatmap';
 import { Row } from '@freecodecamp/react-bootstrap';
-import ReactTooltip from 'react-tooltip';
+import CalendarHeatMap from '@freecodecamp/react-calendar-heatmap';
 import addDays from 'date-fns/addDays';
 import addMonths from 'date-fns/addMonths';
-import startOfDay from 'date-fns/startOfDay';
 import isEqual from 'date-fns/isEqual';
+import startOfDay from 'date-fns/startOfDay';
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 import { useTranslation } from 'react-i18next';
+import ReactTooltip from 'react-tooltip';
 
+import envData from '../../../../../config/env.json';
+import { langCodes } from '../../../../../config/i18n/all-langs';
 import FullWidthRow from '../../helpers/FullWidthRow';
 import Spacer from '../../helpers/Spacer';
 
 import '@freecodecamp/react-calendar-heatmap/dist/styles.css';
 import './heatmap.css';
-
-import { langCodes } from '../../../../../config/i18n/all-langs';
-import envData from '../../../../../config/env.json';
 
 const { clientLocale } = envData;
 

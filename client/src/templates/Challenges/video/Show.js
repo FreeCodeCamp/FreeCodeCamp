@@ -1,26 +1,26 @@
 // Package Utilities
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { Button, Grid, Col, Row } from '@freecodecamp/react-bootstrap';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import { graphql } from 'gatsby';
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 import Helmet from 'react-helmet';
-import YouTube from 'react-youtube';
-import { createSelector } from 'reselect';
 import { ObserveKeys } from 'react-hotkeys';
 import { withTranslation } from 'react-i18next';
+import { connect } from 'react-redux';
+import YouTube from 'react-youtube';
+import { bindActionCreators } from 'redux';
+import { createSelector } from 'reselect';
 
 // Local Utilities
-import PrismFormatted from '../components/PrismFormatted';
-import { ChallengeNode } from '../../../redux/propTypes';
-import LearnLayout from '../../../components/layouts/Learn';
-import ChallengeTitle from '../components/Challenge-Title';
-import ChallengeDescription from '../components/Challenge-Description';
+import Loader from '../../../components/helpers/Loader';
 import Spacer from '../../../components/helpers/Spacer';
+import LearnLayout from '../../../components/layouts/Learn';
+import { ChallengeNode } from '../../../redux/propTypes';
+import ChallengeDescription from '../components/Challenge-Description';
+import ChallengeTitle from '../components/Challenge-Title';
 import CompletionModal from '../components/CompletionModal';
 import Hotkeys from '../components/Hotkeys';
-import Loader from '../../../components/helpers/Loader';
+import PrismFormatted from '../components/PrismFormatted';
 import {
   isChallengeCompletedSelector,
   challengeMounted,

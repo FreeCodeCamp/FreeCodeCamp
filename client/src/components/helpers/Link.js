@@ -1,6 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import { Link as GatsbyLink } from 'gatsby';
+import PropTypes from 'prop-types';
+import React from 'react';
 
 const propTypes = {
   children: PropTypes.any,

@@ -1,11 +1,11 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 
 import { Link, SkeletonSprite } from '../../helpers';
-import NavLogo from './NavLogo';
 import SearchBar from '../../search/searchBar/SearchBar';
 import MenuButton from './MenuButton';
 import NavLinks from './NavLinks';
+import NavLogo from './NavLogo';
 import './universalNav.css';
 
 export const UniversalNav = ({

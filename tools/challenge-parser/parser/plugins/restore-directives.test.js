@@ -1,10 +1,10 @@
 /* global describe it expect */
 const cloneDeep = require('lodash/cloneDeep');
-const { selectAll } = require('unist-util-select');
 const find = require('unist-util-find');
+const { selectAll } = require('unist-util-select');
 
-const restoreDirectives = require('./restore-directives');
 const directivesOriginalAST = require('../__fixtures__/ast-directives.json');
+const restoreDirectives = require('./restore-directives');
 
 describe('restore-directives', () => {
   let directivesAST;

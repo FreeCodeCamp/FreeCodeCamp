@@ -1,12 +1,12 @@
-import passport from 'passport';
 // eslint-disable-next-line
 import {
   // prettier ignore
   PassportConfigurator
 } from '@freecodecamp/loopback-component-passport';
 import dedent from 'dedent';
+import passport from 'passport';
 
-import { getUserById } from './utils/user-stats';
+import { jwtSecret } from '../../../config/secrets';
 import passportProviders from './passport-providers';
 import { setAccessTokenToResponse } from './utils/getSetAccessToken';
 import {
@@ -15,7 +15,7 @@ import {
   getRedirectParams,
   isRootPath
 } from './utils/redirection';
-import { jwtSecret } from '../../../config/secrets';
+import { getUserById } from './utils/user-stats';
 
 const passportOptions = {
   emailOptional: true,

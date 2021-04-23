@@ -1,7 +1,7 @@
 /* global expect */
 
-const { toSortedArray } = require('./sort-files');
 const { challengeFiles } = require('./__fixtures__/challenges');
+const { toSortedArray } = require('./sort-files');
 
 describe('sort-files', () => {
   describe('toSortedArray', () => {

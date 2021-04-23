@@ -1,18 +1,18 @@
 /* eslint-disable camelcase */
 
-import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import React, { Component } from 'react';
+import { withTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
-import PayPalButtonScriptLoader from './PayPalButtonScriptLoader';
-import { withTranslation } from 'react-i18next';
 
-import envData from '../../../../config/env.json';
 import {
   paypalConfigurator,
   paypalConfigTypes
 } from '../../../../config/donation-settings';
+import envData from '../../../../config/env.json';
 import { signInLoadingSelector, userSelector } from '../../redux';
+import PayPalButtonScriptLoader from './PayPalButtonScriptLoader';
 
 const { paypalClientId, deploymentEnv } = envData;
 export class PaypalButton extends Component {

@@ -1,11 +1,11 @@
 /* global expect jest */
 
-import React from 'react';
-import { useStaticQuery } from 'gatsby';
 import { render } from '@testing-library/react';
+import { useStaticQuery } from 'gatsby';
+import React from 'react';
 
-import { Map } from './';
 import mockChallengeNodes from '../../__mocks__/challenge-nodes';
+import { Map } from './';
 
 beforeEach(() => {
   useStaticQuery.mockImplementationOnce(() => ({

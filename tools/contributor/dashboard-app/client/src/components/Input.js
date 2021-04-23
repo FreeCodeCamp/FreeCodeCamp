@@ -7,7 +7,7 @@ const Container = styled.input`
 
 const Input = React.forwardRef((props, ref) => (
   <Container
-    type="text"
+    type='text'
     onChange={props.onInputEvent}
     onKeyPress={props.onInputEvent}
     value={props.value}

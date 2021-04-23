@@ -1,6 +1,6 @@
 /* global describe beforeEach expect it */
-import inMemoryCache from './in-memory-cache';
 import sinon from 'sinon';
+import inMemoryCache from './in-memory-cache';
 
 describe('InMemoryCache', () => {
   let reportErrorStub;

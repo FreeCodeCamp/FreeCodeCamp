@@ -5,18 +5,31 @@
  *
  */
 
+import badwordFilter from 'bad-words';
+import debugFactory from 'debug';
+import dedent from 'dedent';
+import _ from 'lodash';
+import moment from 'moment';
+import generate from 'nanoid/generate';
 import { Observable } from 'rx';
 import uuid from 'uuid/v4';
-import moment from 'moment';
-import dedent from 'dedent';
-import debugFactory from 'debug';
 import { isEmail } from 'validator';
-import _ from 'lodash';
-import generate from 'nanoid/generate';
-import badwordFilter from 'bad-words';
 
 import { apiLocation } from '../../../../config/env';
 
+import { blocklistedUsernames } from '../../server/utils/constants.js';
+import { wrapHandledError } from '../../server/utils/create-handled-error.js';
+import {
+  setAccessTokenToResponse,
+  removeCookies
+} from '../../server/utils/getSetAccessToken';
+import {
+  normaliseUserFields,
+  getProgress,
+  publicUserProps
+} from '../../server/utils/publicUserProps';
+import { saveUser, observeMethod } from '../../server/utils/rx.js';
+import { getEmailSender } from '../../server/utils/url-utils';
 import {
   fixCompletedChallengeItem,
   getEncodedEmail,
@@ -25,20 +38,6 @@ import {
   renderSignUpEmail,
   renderSignInEmail
 } from '../utils';
-
-import { blocklistedUsernames } from '../../server/utils/constants.js';
-import { wrapHandledError } from '../../server/utils/create-handled-error.js';
-import { saveUser, observeMethod } from '../../server/utils/rx.js';
-import { getEmailSender } from '../../server/utils/url-utils';
-import {
-  normaliseUserFields,
-  getProgress,
-  publicUserProps
-} from '../../server/utils/publicUserProps';
-import {
-  setAccessTokenToResponse,
-  removeCookies
-} from '../../server/utils/getSetAccessToken';
 
 const log = debugFactory('fcc:models:user');
 const BROWNIEPOINTS_TIMEOUT = [1, 'hour'];

@@ -1,13 +1,13 @@
 /* global expect jest */
 const {
+  ENGLISH_CHALLENGE_NO_FILES
+} = require('./__fixtures__/challenge-objects');
+const { SIMPLE_TRANSLATION } = require('./__mocks__/mock-comments');
+const {
   translateComments,
   translateCommentsInChallenge,
   translateGeneric
 } = require('.');
-const {
-  ENGLISH_CHALLENGE_NO_FILES
-} = require('./__fixtures__/challenge-objects');
-const { SIMPLE_TRANSLATION } = require('./__mocks__/mock-comments');
 
 let logSpy;
 

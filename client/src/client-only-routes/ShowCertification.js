@@ -1,17 +1,23 @@
 /* eslint-disable react/jsx-sort-props */
-import React, { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import { createSelector } from 'reselect';
 import { Grid, Row, Col, Image, Button } from '@freecodecamp/react-bootstrap';
+import { isEmpty } from 'lodash';
+import PropTypes from 'prop-types';
+import React, { useEffect, useState } from 'react';
+import { Trans, useTranslation } from 'react-i18next';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { createSelector } from 'reselect';
 
-import ShowProjectLinks from './ShowProjectLinks';
+import envData from '../../../config/env.json';
+import { langCodes } from '../../../config/i18n/all-langs';
+import { certMap } from '../../src/resources/certAndProjectMap';
 import FreeCodeCampLogo from '../assets/icons/FreeCodeCampLogo';
 // eslint-disable-next-line max-len
 import DonateForm from '../components/Donation/DonateForm';
-import { Trans, useTranslation } from 'react-i18next';
 
+import { createFlashMessage } from '../components/Flash/redux';
+import RedirectHome from '../components/RedirectHome';
+import { Loader, Spacer } from '../components/helpers';
 import {
   showCertSelector,
   showCertFetchStateSelector,
@@ -23,16 +29,10 @@ import {
   userByNameSelector,
   fetchProfileForUser
 } from '../redux';
-import { certMap } from '../../src/resources/certAndProjectMap';
-import { createFlashMessage } from '../components/Flash/redux';
-import standardErrorMessage from '../utils/standardErrorMessage';
 import reallyWeirdErrorMessage from '../utils/reallyWeirdErrorMessage';
-import { langCodes } from '../../../config/i18n/all-langs';
-import envData from '../../../config/env.json';
+import standardErrorMessage from '../utils/standardErrorMessage';
 
-import RedirectHome from '../components/RedirectHome';
-import { Loader, Spacer } from '../components/helpers';
-import { isEmpty } from 'lodash';
+import ShowProjectLinks from './ShowProjectLinks';
 
 const { clientLocale } = envData;
 

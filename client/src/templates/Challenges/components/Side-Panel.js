@@ -1,16 +1,16 @@
-import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import ChallengeTitle from './Challenge-Title';
-import ChallengeDescription from './Challenge-Description';
-import ToolPanel from './Tool-Panel';
-import TestSuite from './Test-Suite';
-
-import { challengeTestsSelector, isChallengeCompletedSelector } from '../redux';
 import { createSelector } from 'reselect';
-import './side-panel.css';
 import { mathJaxScriptLoader } from '../../../utils/scriptLoaders';
+import { challengeTestsSelector, isChallengeCompletedSelector } from '../redux';
+import ChallengeDescription from './Challenge-Description';
+import ChallengeTitle from './Challenge-Title';
+import TestSuite from './Test-Suite';
+import ToolPanel from './Tool-Panel';
+
+import './side-panel.css';
 
 const mapStateToProps = createSelector(
   isChallengeCompletedSelector,

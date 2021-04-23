@@ -1,18 +1,18 @@
-import React, { Component, Fragment } from 'react';
-import PropTypes from 'prop-types';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import SectionHeader from '../components/settings/SectionHeader';
-import IntroDescription from '../components/Intro/components/IntroDescription';
-import { withTranslation } from 'react-i18next';
-
 import { Row, Col, Button, Grid } from '@freecodecamp/react-bootstrap';
+import PropTypes from 'prop-types';
+import React, { Component, Fragment } from 'react';
 import Helmet from 'react-helmet';
-import { createSelector } from 'reselect';
+import { withTranslation } from 'react-i18next';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
-import { ButtonSpacer, Spacer } from '../components/helpers';
-import { acceptTerms, userSelector } from '../redux';
+import { createSelector } from 'reselect';
+import IntroDescription from '../components/Intro/components/IntroDescription';
 import createRedirect from '../components/createRedirect';
+import { ButtonSpacer, Spacer } from '../components/helpers';
+import SectionHeader from '../components/settings/SectionHeader';
+
+import { acceptTerms, userSelector } from '../redux';
 
 import './email-sign-up.css';
 

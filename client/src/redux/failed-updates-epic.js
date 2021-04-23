@@ -1,3 +1,4 @@
+import { ofType } from 'redux-observable';
 import { merge, empty } from 'rxjs';
 import {
   tap,
@@ -7,19 +8,14 @@ import {
   switchMap,
   catchError
 } from 'rxjs/operators';
-import { ofType } from 'redux-observable';
 import store from 'store';
 import uuid from 'uuid/v4';
 
-import {
-  types,
-  onlineStatusChange,
-  isOnlineSelector,
-  isSignedInSelector
-} from './';
-import postUpdate$ from '../templates/Challenges/utils/postUpdate$';
-import { isGoodXHRStatus } from '../templates/Challenges/utils';
 import { backEndProject } from '../../utils/challengeTypes';
+import { isGoodXHRStatus } from '../templates/Challenges/utils';
+import postUpdate$ from '../templates/Challenges/utils/postUpdate$';
+import { actionTypes } from './action-types';
+import { onlineStatusChange, isOnlineSelector, isSignedInSelector } from './';
 
 const key = 'fcc-failed-updates';
 
@@ -33,7 +29,7 @@ const isSubmitable = failure =>
 
 function failedUpdateEpic(action$, state$) {
   const storeUpdates = action$.pipe(
-    ofType(types.updateFailed),
+    ofType(actionTypes.updateFailed),
     tap(({ payload = {} }) => {
       if ('endpoint' in payload && 'payload' in payload) {
         const failures = store.get(key) || [];
@@ -45,7 +41,7 @@ function failedUpdateEpic(action$, state$) {
   );
 
   const flushUpdates = action$.pipe(
-    ofType(types.fetchUserComplete, types.updateComplete),
+    ofType(actionTypes.fetchUserComplete, actionTypes.updateComplete),
     filter(() => isSignedInSelector(state$.value)),
     filter(() => store.get(key)),
     filter(() => isOnlineSelector(state$.value)),

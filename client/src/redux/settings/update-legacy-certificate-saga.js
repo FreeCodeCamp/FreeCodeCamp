@@ -1,8 +1,8 @@
 import { takeEvery, call, put } from 'redux-saga/effects';
 
-import { putUpdateLegacyCert } from '../../utils/ajax';
 import { submitComplete } from '../';
 import { createFlashMessage } from '../../components/Flash/redux';
+import { putUpdateLegacyCert } from '../../utils/ajax';
 import reallyWeirdErrorMessage from '../../utils/reallyWeirdErrorMessage';
 import { updateLegacyCertError } from './';
 

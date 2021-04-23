@@ -1,15 +1,15 @@
 import { isEmpty } from 'lodash';
 
-import { getUserById as _getUserById } from '../utils/user-stats';
+import { jwtSecret as _jwtSecret } from '../../../../config/secrets';
+
+import { wrapHandledError } from '../utils/create-handled-error';
 import {
   getAccessTokenFromRequest,
   errorTypes,
   authHeaderNS
 } from '../utils/getSetAccessToken';
-import { jwtSecret as _jwtSecret } from '../../../../config/secrets';
-
-import { wrapHandledError } from '../utils/create-handled-error';
 import { getRedirectParams } from '../utils/redirection';
+import { getUserById as _getUserById } from '../utils/user-stats';
 
 const authRE = /^\/auth\//;
 const confirmEmailRE = /^\/confirm-email$/;

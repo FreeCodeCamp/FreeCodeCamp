@@ -1,18 +1,22 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import noop from 'lodash/noop';
-import { connect } from 'react-redux';
-import { createSelector } from 'reselect';
 import { Button, Modal } from '@freecodecamp/react-bootstrap';
 import { useStaticQuery, graphql } from 'gatsby';
+import noop from 'lodash/noop';
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 import { withTranslation } from 'react-i18next';
+import { connect } from 'react-redux';
+import { createSelector } from 'reselect';
 
-import Login from '../../../components/Header/components/Login';
-import CompletionModalBody from './CompletionModalBody';
 import { dasherize } from '../../../../../utils/slugs';
+import Login from '../../../components/Header/components/Login';
 
 import './completion-modal.css';
 
+import {
+  isSignedInSelector,
+  executeGA,
+  allowBlockDonationRequests
+} from '../../../redux';
 import {
   closeModal,
   submitChallenge,
@@ -23,11 +27,7 @@ import {
   challengeMetaSelector
 } from '../redux';
 
-import {
-  isSignedInSelector,
-  executeGA,
-  allowBlockDonationRequests
-} from '../../../redux';
+import CompletionModalBody from './CompletionModalBody';
 
 const mapStateToProps = createSelector(
   challengeFilesSelector,

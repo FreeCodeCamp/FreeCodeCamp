@@ -1,7 +1,7 @@
-const path = require('path');
-const webpack = require('webpack');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
 const { writeFileSync } = require('fs');
+const path = require('path');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const webpack = require('webpack');
 
 module.exports = (env = {}) => {
   const __DEV__ = env.production !== true;
