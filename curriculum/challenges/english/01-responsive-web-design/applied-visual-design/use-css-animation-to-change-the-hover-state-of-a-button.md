@@ -27,7 +27,7 @@ Here's an example of changing the width of an image on hover:
   }
 </style>
 
-<img src="https://bit.ly/smallgooglelogo" alt="Google's Logo" />
+<img src="https://freecodecamp.s3.amazonaws.com/google-logo.png" alt="Google's Logo" />
 ```
 
 # --instructions--

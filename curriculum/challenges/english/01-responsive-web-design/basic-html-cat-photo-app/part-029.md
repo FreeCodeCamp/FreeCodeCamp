@@ -35,7 +35,7 @@ The Cats `img` element should be nested in the `figure` element.
 const catsImg = document.querySelectorAll('figure > img')[1];
 assert(
   catsImg &&
-    catsImg.getAttribute('src').toLowerCase() === 'https://bit.ly/fcc-cats'
+    catsImg.getAttribute('src').toLowerCase() === 'https://freecodecamp.s3.amazonaws.com/cats.jpg'
 );
 ```
 
@@ -64,7 +64,7 @@ assert(
         <h2>Cat Photos</h2>
         <!-- TODO: Add link to cat photos -->
         <p>Click here to view more <a target="_blank" href="https://freecatphotoapp.com">cat photos</a>.</p>
-        <a href="https://freecatphotoapp.com"><img src="https://bit.ly/fcc-relaxing-cat" alt="A cute orange cat lying on its back."></a>
+        <a href="https://freecatphotoapp.com"><img src="https://freecodecamp.s3.amazonaws.com/relaxing-cat.jpg" alt="A cute orange cat lying on its back."></a>
       </section>
       <section>
         <h2>Cat Lists</h2>
@@ -75,7 +75,7 @@ assert(
           <li>lasagna</li>
         </ul>
         <figure>
-          <img src="https://bit.ly/fcc-lasagna" alt="A slice of lasagna on a plate.">
+          <img src="https://freecodecamp.s3.amazonaws.com/lasagna.jpg" alt="A slice of lasagna on a plate.">
           <figcaption>Cats <em>love</em> lasagna.</figcaption>  
         </figure>
         <h3>Top 3 things cats hate:</h3>
@@ -86,7 +86,7 @@ assert(
         </ol>
         <figure>
 --fcc-editable-region--
-          <img src="https://bit.ly/fcc-cats">
+          <img src="https://freecodecamp.s3.amazonaws.com/cats.jpg">
 --fcc-editable-region--
         </figure>
       </section>

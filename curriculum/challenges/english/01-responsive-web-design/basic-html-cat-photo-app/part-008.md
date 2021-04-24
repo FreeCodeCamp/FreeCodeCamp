@@ -9,7 +9,7 @@ dashedName: part-8
 
 HTML <dfn>attributes</dfn> are special words used inside the opening tag of an element to control the element's behavior. The `src` attribute in an `img` element specifies the image's URL (where the image is located). An example of an `img` element using an `src` attribute: `<img src="https://www.your-image-source.com/your-image.jpg">`.
 
-Add an `src` attribute to the existing `img` element that is set to the following URL: `https://bit.ly/fcc-relaxing-cat`.
+Add an `src` attribute to the existing `img` element that is set to the following URL: `https://freecodecamp.s3.amazonaws.com/relaxing-cat.jpg`.
 
 # --hints--
 
@@ -25,16 +25,16 @@ Your `img` element should have an `src` attribute. You have either omitted the a
 assert(document.querySelector('img').src);
 ```
 
-Your `img` element's `src` attribute should be set to '`https://bit.ly/fcc-relaxing-cat`'. You have either omitted the URL or have a typo. The case of the URL is important.
+Your `img` element's `src` attribute should be set to '`https://freecodecamp.s3.amazonaws.com/relaxing-cat.jpg`'. You have either omitted the URL or have a typo. The case of the URL is important.
 
 ```js
-assert(document.querySelector('img').src === 'https://bit.ly/fcc-relaxing-cat');
+assert(document.querySelector('img').src === 'https://freecodecamp.s3.amazonaws.com/relaxing-cat.jpg');
 ```
 
 Although you have set the `img` element's `src` to the correct URL, it is recommended to always surround the value of an attribute with quotation marks.
 
 ```js
-assert(!/\<img\s+src\s*=\s*https:\/\/bit\.ly\/fcc-relaxing-cat/.test(code));
+assert(!/\<img\s+src\s*=\s*https:\/\/freecodecamp\.s3\.amazonaws\.\/relaxing-cat\.jpg/.test(code));
 ```
 
 # --seed--
