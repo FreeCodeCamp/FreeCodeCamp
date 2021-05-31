@@ -144,6 +144,7 @@ const waitForFrame = ctx => {
   });
 };
 
+// TODO: try replacing with frame.documentElement.innerHTML = content;
 function writeToFrame(content, frame) {
   frame.open();
   frame.write(content);
