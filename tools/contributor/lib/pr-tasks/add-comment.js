@@ -14,7 +14,7 @@ const addComment = async (number, comment) => {
       number,
       body: comment
     })
-    .catch(err => {
+    .catch((err) => {
       console.log(`PR #${number} had an error when trying to add a comment\n`);
       console.log(err);
     });

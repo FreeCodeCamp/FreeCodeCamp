@@ -1,24 +1,23 @@
-"project_id_env": "CROWDIN_PROJECT_ID"
-"api_token_env": "CROWDIN_PERSONAL_TOKEN"
-"base_path_env": "CROWDIN_BASE_PATH"
-"base_url_env": "CROWDIN_BASE_URL"
+'project_id_env': 'CROWDIN_PROJECT_ID'
+'api_token_env': 'CROWDIN_PERSONAL_TOKEN'
+'base_path_env': 'CROWDIN_BASE_PATH'
+'base_url_env': 'CROWDIN_BASE_URL'
 
-"preserve_hierarchy": true
+'preserve_hierarchy': true
 
-files: [
- {
-  "source" : "/curriculum/challenges/english/**/*.md",
-  "translation" : "/curriculum/challenges/%language%/**/%original_file_name%",
-  "ignore": [
-    "/**/part-[0-9][0-9][0-9].md"
+files:
+  [
+    {
+      'source': '/curriculum/challenges/english/**/*.md',
+      'translation': '/curriculum/challenges/%language%/**/%original_file_name%',
+      'ignore': ['/**/part-[0-9][0-9][0-9].md']
+    },
+    {
+      'source': '/curriculum/challenges/english/12-certificates/**/*.yml',
+      'translation': '/curriculum/challenges/%language%/12-certificates/**/%original_file_name%'
+    },
+    {
+      'source': '/curriculum/dictionaries/english/comments.json',
+      'translation': '/curriculum/dictionaries/%language%/%original_file_name%'
+    }
   ]
- },
- {
-  "source" : "/curriculum/challenges/english/12-certificates/**/*.yml",
-  "translation" : "/curriculum/challenges/%language%/12-certificates/**/%original_file_name%",
- },
- {
-  "source" : "/curriculum/dictionaries/english/comments.json",
-  "translation" : "/curriculum/dictionaries/%language%/%original_file_name%"
- },
-]

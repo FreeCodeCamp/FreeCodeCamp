@@ -17,8 +17,8 @@ const getRepos = async () => {
 
   const repos = await octokit.paginate(octokit.repos.listForOrg, methodProps);
   const otherRepos = repos
-    .filter(repo => !repo.archived && repo.name !== owner)
-    .map(repo => repo.name);
+    .filter((repo) => !repo.archived && repo.name !== owner)
+    .map((repo) => repo.name);
 
   const reposToAdd = [];
   for (let repo of otherRepos) {

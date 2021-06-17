@@ -1,96 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Contribution Guidelines | freeCodeCamp.org</title>
+    <link rel="icon" href="images/branding/favicon.ico" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="description" content="Description" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <!--social-->
+    <meta content="freeCodeCamp.org" name="og:title" />
+    <meta content="Learn to code — for free." name="og:description" />
+    <meta
+      content="https://cdn.freecodecamp.org/platform/universal/fcc_meta_1920x1080-indigo.png"
+      property="og:image"
+    />
 
-<head>
-  <meta charset="UTF-8">
-  <title>Contribution Guidelines | freeCodeCamp.org</title>
-  <link rel="icon" href="images/branding/favicon.ico">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <meta name="description" content="Description">
-  <meta name="viewport"
-    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <!--social-->
-  <meta content='freeCodeCamp.org' name='og:title' />
-  <meta content='Learn to code — for free.' name='og:description' />
-  <meta content='https://cdn.freecodecamp.org/platform/universal/fcc_meta_1920x1080-indigo.png' property='og:image' />
+    <meta
+      content="summary_large_image"
+      key="twitter:card"
+      name="twitter:card"
+    />
+    <meta
+      content="https://cdn.freecodecamp.org/platform/universal/fcc_meta_1920x1080-indigo.png"
+      name="twitter:image:src"
+    />
+    <meta content="freeCodeCamp.org" name="twitter:title" />
+    <meta content="Learn to code — for free." name="twitter:description" />
 
-  <meta content='summary_large_image' key='twitter:card' name='twitter:card' />
-  <meta content='https://cdn.freecodecamp.org/platform/universal/fcc_meta_1920x1080-indigo.png'
-    name='twitter:image:src' />
-  <meta content='freeCodeCamp.org' name='twitter:title' />
-  <meta content='Learn to code — for free.' name='twitter:description' />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+      crossorigin="anonymous"
+    />
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-    integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
-    crossorigin="anonymous" />
+    <!-- Theme -->
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-simple.css"> -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/docsify/themes/vue.css"
+    />
+    <!-- Custom theme stylesheet -->
+    <link rel="stylesheet" href="_theme.css" />
+  </head>
 
-  <!-- Theme -->
-  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-simple.css"> -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify/themes/vue.css">
-  <!-- Custom theme stylesheet -->
-  <link rel="stylesheet" href="_theme.css">
+  <body class="close">
+    <!-- Navigation (we are using a div, instead of nav to avoid conflict with docsify's nav) -->
+    <div class="universal-nav">
+      <a class="app-name-link" data-nosearch="" href="/">
+        <img alt="freeCodeCamp.org" src="images/branding/primary_logo.svg" />
+      </a>
+      <a class="translations-link" data-nosearch="" href="/#/i18n">
+        Translations
+      </a>
+    </div>
 
-</head>
+    <!-- App with its own nav, search and sidebar -->
+    <div id="app"></div>
+    <script>
+      window.$docsify = {
+        homepage: 'index',
 
-<body class="close">
-  <!-- Navigation (we are using a div, instead of nav to avoid conflict with docsify's nav) -->
-  <div class='universal-nav'>
-    <a class="app-name-link" data-nosearch="" href="/">
-      <img alt="freeCodeCamp.org" src="images/branding/primary_logo.svg">
-    </a>
-    <a class="translations-link" data-nosearch="" href="/#/i18n">
-      Translations
-    </a>
-  </div>
+        relativePath: true,
+        // common aliases
+        alias: {
+          '.*/_navbar.md': '/_navbar.md',
+          '/i18n/?': '/_translations.md'
+        },
 
-  <!-- App with its own nav, search and sidebar -->
-  <div id="app"></div>
-  <script>
-    window.$docsify = {
+        // break the caching
+        requestHeaders: {
+          'cache-control': 'no-cache'
+        },
 
-      homepage: 'index',
+        // Cover Page
+        coverpage: true,
+        onlyCover: true,
 
-      relativePath: true,
-      // common aliases
-      alias: {
-        '.*/_navbar.md': '/_navbar.md',
-        '/i18n/?': '/_translations.md'
-      },
+        // Navigation
+        autoHeader: true,
+        auto2top: true,
 
+        loadSidebar: true,
+        maxLevel: 2,
+        subMaxLevel: 2,
 
-      // break the caching
-      requestHeaders: {
-        'cache-control': 'no-cache'
-      },
+        topMargin: 90,
 
-      // Cover Page
-      coverpage: true,
-      onlyCover: true,
+        // we do not use the built in navbar other then in mobile view
+        loadNavbar: true,
+        mergeNavbar: true,
 
+        // Plugins
+        search: {
+          depth: 3,
+          noData: 'No results!',
+          placeholder: 'Search...'
+        },
 
-      // Navigation
-      autoHeader: true,
-      auto2top: true,
-
-      loadSidebar: true,
-      maxLevel: 2,
-      subMaxLevel: 2,
-
-      topMargin: 90,
-
-      // we do not use the built in navbar other then in mobile view
-      loadNavbar: true,
-      mergeNavbar: true,
-
-      // Plugins
-      search: {
-        depth: 3,
-        noData: 'No results!',
-        placeholder: 'Search...'
-      },
-
-      // Add languages here for message box translations
-      'flexibleAlerts': {
+        // Add languages here for message box translations
+        flexibleAlerts: {
           note: {
             label: {
               '/i18n/chinese/': '注意',
@@ -121,89 +133,101 @@
           }
         },
 
-      pagination: {
-        crossChapter: true
-      },
+        pagination: {
+          crossChapter: true
+        },
 
-      remoteMarkdown: {
-        tag: 'remote-markdown-url',
-      },
+        remoteMarkdown: {
+          tag: 'remote-markdown-url'
+        },
 
-      plugins: [
-        function (hook, vm) {
+        plugins: [
+          function (hook, vm) {
+            hook.beforeEach(function (markdown) {
+              // -- ignore the translations list page
+              if (vm.route.file === '_translations.md') return markdown;
 
-          hook.beforeEach(function (markdown) {
-
-            // -- ignore the translations list page
-            if (vm.route.file === '_translations.md') return markdown;
-
-            // -- add "Update this translation" link for all i18n language pages
-            if (vm.route.path.search('i18n') !== -1) {
-              var dynamicText =
-                '[<i class="far fa-edit"></i> Update the translation](' +
-                'https://translate.freecodecamp.org/contributing-docs' +
-                ') or [visit the English version](' +
-                '/' + vm.route.path.split('/').pop() +
-                ') of this guide to update instructions.';
-            }
-
-            // -- add "Edit this guide on GitHub" link for all English language pages
-            if (vm.route.path.search('i18n') === -1) {
-              var dynamicText =
-                '[<i class="far fa-edit"></i> Edit this guide on GitHub](' +
-                'https://github.com/freeCodeCamp/freeCodeCamp/blob/main/docs/' +
-                vm.route.file +
-                ')';
-            }
-
-            // Used from https://github.com/ckoliber/docsify-rtl/blob/master/build/docsify-rtl.js,
-            // Currently this is a hack because can't use the plugin as is.
-            if (vm.route.path.search('Arabic') !== -1 || vm.route.path.search('Hebrew') !== -1) {
-              for (var counter = 0, elements = document.getElementsByClassName("markdown-section"); counter < elements.length; counter++) {
-                var item = elements[counter];
-                item.dir = "rtl";
+              // -- add "Update this translation" link for all i18n language pages
+              if (vm.route.path.search('i18n') !== -1) {
+                var dynamicText =
+                  '[<i class="far fa-edit"></i> Update the translation](' +
+                  'https://translate.freecodecamp.org/contributing-docs' +
+                  ') or [visit the English version](' +
+                  '/' +
+                  vm.route.path.split('/').pop() +
+                  ') of this guide to update instructions.';
               }
-            };
 
-            if (vm.route.path.search('Arabic') === -1 && vm.route.path.search('Hebrew') === -1) {
-              for (var counter = 0, elements = document.getElementsByClassName("markdown-section"); counter < elements.length; counter++) {
-                var item = elements[counter];
-                item.dir = "ltr";
+              // -- add "Edit this guide on GitHub" link for all English language pages
+              if (vm.route.path.search('i18n') === -1) {
+                var dynamicText =
+                  '[<i class="far fa-edit"></i> Edit this guide on GitHub](' +
+                  'https://github.com/freeCodeCamp/freeCodeCamp/blob/main/docs/' +
+                  vm.route.file +
+                  ')';
               }
-            };
 
-            return (
-              markdown +
-              '\n----\n' +
-              dynamicText
-            );
-            // -- do not add logic below this line --
+              // Used from https://github.com/ckoliber/docsify-rtl/blob/master/build/docsify-rtl.js,
+              // Currently this is a hack because can't use the plugin as is.
+              if (
+                vm.route.path.search('Arabic') !== -1 ||
+                vm.route.path.search('Hebrew') !== -1
+              ) {
+                for (
+                  var counter = 0,
+                    elements =
+                      document.getElementsByClassName('markdown-section');
+                  counter < elements.length;
+                  counter++
+                ) {
+                  var item = elements[counter];
+                  item.dir = 'rtl';
+                }
+              }
 
-          });
-        }
-      ]
+              if (
+                vm.route.path.search('Arabic') === -1 &&
+                vm.route.path.search('Hebrew') === -1
+              ) {
+                for (
+                  var counter = 0,
+                    elements =
+                      document.getElementsByClassName('markdown-section');
+                  counter < elements.length;
+                  counter++
+                ) {
+                  var item = elements[counter];
+                  item.dir = 'ltr';
+                }
+              }
 
-    }
-  </script>
+              return markdown + '\n----\n' + dynamicText;
+              // -- do not add logic below this line --
+            });
+          }
+        ]
+      };
+    </script>
 
-  <script src="https://cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js"></script>
 
-  <!-- Theme -->
-  <!-- <script src="https://cdn.jsdelivr.net/npm/docsify-themeable@0"></script> -->
+    <!-- Theme -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/docsify-themeable@0"></script> -->
 
-  <!-- Plugins -->
-  <script src="https://cdn.jsdelivr.net/npm/docsify/lib/plugins/emoji.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/docsify-copy-code@2"></script>
-  <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/search.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/docsify-plugin-flexible-alerts@1"></script>
+    <!-- Plugins -->
+    <script src="https://cdn.jsdelivr.net/npm/docsify/lib/plugins/emoji.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/docsify-copy-code@2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/search.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/docsify-plugin-flexible-alerts@1"></script>
 
-  <script src="https://unpkg.com/docsify-pagination/dist/docsify-pagination.min.js"></script>
-  <script src="https://unpkg.com/docsify-remote-markdown/dist/docsify-remote-markdown.min.js"></script>
+    <script src="https://unpkg.com/docsify-pagination/dist/docsify-pagination.min.js"></script>
+    <script src="https://unpkg.com/docsify-remote-markdown/dist/docsify-remote-markdown.min.js"></script>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"
-    integrity="sha512-RXf+QSDCUQs5uwRKaDoXt55jygZZm2V++WUZduaU/Ui/9EGp3f/2KZVahFZBKGH0s774sd3HmrhUy+SgOFQLVQ=="
-    crossorigin="anonymous"></script>
-</body>
-
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"
+      integrity="sha512-RXf+QSDCUQs5uwRKaDoXt55jygZZm2V++WUZduaU/Ui/9EGp3f/2KZVahFZBKGH0s774sd3HmrhUy+SgOFQLVQ=="
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>

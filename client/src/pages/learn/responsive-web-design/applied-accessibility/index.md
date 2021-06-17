@@ -3,6 +3,7 @@ title: Introduction to the Applied Accessibility Challenges
 block: Applied Accessibility
 superBlock: Responsive Web Design
 ---
+
 ## Introduction to the Applied Accessibility Challenges
 
 "Accessibility" generally means having web content and a user interface that can be understood, navigated, and interacted with by a broad audience. This includes people with visual, auditory, mobility, or cognitive disabilities.

@@ -49,7 +49,7 @@ We highly recommend installing [Visual Studio Code](https://code.visualstudio.co
 
 Essentially, you will edit and store your code on Ubuntu-18.04 with VS Code installed on Windows.
 
-If you use [IntelliJ Idea](https://www.jetbrains.com/idea/), you may need to update your Node interpreter and Npm package manager to what is installed on your WSL distro. 
+If you use [IntelliJ Idea](https://www.jetbrains.com/idea/), you may need to update your Node interpreter and Npm package manager to what is installed on your WSL distro.
 
 You can check these settings by going to Settings > Languages & Frameworks > Node.js and NPM.
 

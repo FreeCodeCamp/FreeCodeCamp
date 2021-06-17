@@ -5,4 +5,4 @@ services:
     restart: unless-stopped
     ports:
       - '${CLIENT_PORT:-8000}:${CLIENT_PORT:-8000}'
-    command: ["-l", "${CLIENT_PORT:-8000}"]
+    command: ['-l', '${CLIENT_PORT:-8000}']

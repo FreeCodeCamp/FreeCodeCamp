@@ -32,14 +32,14 @@ app.use('/info', info);
 app.use('/all-repos', allRepos);
 
 // 404
-app.use(function(req, res) {
+app.use(function (req, res) {
   const message = 'Route' + req.url + ' Not found.';
   console.log(message);
   return res.status(404).send({ message });
 });
 
 // 500 - Any server error
-app.use(function(err, req, res) {
+app.use(function (err, req, res) {
   console.log('error: ' + err);
   return res.status(500).send({ error: err });
 });
@@ -60,7 +60,7 @@ if (mongoose.connection.readyState === 0) {
         console.log(`server listening on port ${portNum}`);
       });
     })
-    .catch(err => {
+    .catch((err) => {
       console.log(err);
       console.log('MongoDB connection unsuccessful');
     });

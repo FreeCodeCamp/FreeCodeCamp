@@ -3,6 +3,7 @@ title: Introduction to the Functional Programming Challenges
 block: Functional Programming
 superBlock: JavaScript Algorithms and Data Structures
 ---
+
 ## Introduction to the Functional Programming Challenges
 
 Functional programming is an approach to software development based around the evaluation of functions. Like mathematics, functions in programming map input to output to produce a result. You can combine basic functions in many ways to build more and more complex programs.

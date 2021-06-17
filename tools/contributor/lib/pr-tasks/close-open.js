@@ -9,7 +9,7 @@ const { Octokit } = require('@octokit/rest');
 const octokit = new Octokit({ auth: secret });
 
 /* closes and reopens an open PR with applicable comment */
-const closeOpen = async number => {
+const closeOpen = async (number) => {
   await octokit.pulls
     .update({
       owner,
@@ -33,7 +33,7 @@ const closeOpen = async number => {
       const msg = 'Closed/Reopened to resolve a specific Travis build failure.';
       await addComment(number, msg);
     })
-    .catch(async err => {
+    .catch(async (err) => {
       // Octokit stores message as a stringified object
       const { errorMg } = JSON.parse(err.message);
       if (

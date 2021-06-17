@@ -19,12 +19,12 @@ When opening a Pull Request(PR), you can use the below to determine the type, sc
 
 **Type:**
 
-| Type  | When to select                                                               |
-| :---- | :--------------------------------------------------------------------------- |
+| Type  | When to select                                                                   |
+| :---- | :------------------------------------------------------------------------------- |
 | fix   | Changed or updated/improved functionality, tests, the verbiage of a lesson, etc. |
-| feat  | Only if you are adding new functionality, tests, etc.                        |
-| chore | Changes that are not related to code, tests, or verbiage of a lesson.         |
-| docs  | Changes to `/docs` directory or the contributing guidelines, etc.            |
+| feat  | Only if you are adding new functionality, tests, etc.                            |
+| chore | Changes that are not related to code, tests, or verbiage of a lesson.            |
+| docs  | Changes to `/docs` directory or the contributing guidelines, etc.                |
 
 **Scope:**
 
@@ -135,37 +135,37 @@ When you are working on features for our upcoming curriculum `next-*` branches, 
 
    a. Either delete your local branch after taking a backup (if you still have it locally):
 
-      ```console
-      git checkout <pr-branch-name>
+   ```console
+   git checkout <pr-branch-name>
 
-      # example:
-      # git checkout feat/add-numpy-video-question
+   # example:
+   # git checkout feat/add-numpy-video-question
 
-      git checkout -b <backup-branch-name>
+   git checkout -b <backup-branch-name>
 
-      # example:
-      #  git checkout -b backup-feat/add-numpy-video-question
+   # example:
+   #  git checkout -b backup-feat/add-numpy-video-question
 
-      git branch -D <pr-branch-name>
-      ```
+   git branch -D <pr-branch-name>
+   ```
 
    b. Or just a backup of your pr branch (if you do not have it locally):
 
-      ```console
-      git checkout -b <backup-branch-name> origin/<pr-branch-name>
+   ```console
+   git checkout -b <backup-branch-name> origin/<pr-branch-name>
 
-      # example:
-      #  git checkout -b backup-feat/add-numpy-video-question origin/feat/add-numpy-video-question
-      ```
+   # example:
+   #  git checkout -b backup-feat/add-numpy-video-question origin/feat/add-numpy-video-question
+   ```
 
-4. Start off with a clean slate:
+3. Start off with a clean slate:
 
    ```console
    git checkout -b <pr-branch-name> next-python-projects
    git cherry-pick <commit-hash>
    ```
 
-5. Resolve any conflicts, and cleanup, install run tests
+4. Resolve any conflicts, and cleanup, install run tests
 
    ```console
    npm run clean
@@ -179,7 +179,7 @@ When you are working on features for our upcoming curriculum `next-*` branches, 
 
    ```
 
-6. If everything looks good push back to the PR
+5. If everything looks good push back to the PR
 
    ```console
    git push --force origin <pr-branch-name>

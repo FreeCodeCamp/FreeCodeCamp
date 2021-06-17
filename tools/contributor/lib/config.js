@@ -8,9 +8,7 @@ const envVarsSchema = Joi.object({
     .allow(['development', 'production', 'test', 'provision'])
     .default('development'),
   PORT: Joi.number().default(3001),
-  MONGO_HOST: Joi.string()
-    .required()
-    .description('Mongo DB host url'),
+  MONGO_HOST: Joi.string().required().description('Mongo DB host url'),
   GITHUB_USERNAME: Joi.string().required(),
   GITHUB_ACCESS_TOKEN: Joi.string().required(),
   REPOSITORY_OWNER: Joi.string().required(),

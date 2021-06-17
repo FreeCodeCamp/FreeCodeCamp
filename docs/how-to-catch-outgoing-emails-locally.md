@@ -30,6 +30,7 @@ docker stop mailhog
 to stop it.
 
 When the installation completes, you can start [using MailHog](#using-mailhog).
+
 </details>
 
 <details><summary>Installing MailHog on macOS</summary>
@@ -44,6 +45,7 @@ brew services start mailhog
 The above commands will start a mailhog service in the background.
 
 When the installation completes, you can start [using MailHog](#using-mailhog).
+
 </details>
 
 <details><summary>Installing MailHog on Windows</summary>
@@ -55,6 +57,7 @@ When the download completes, click to open the file. A Windows firewall notifica
 Close MailHog by closing the command prompt window. To start MailHog again, click on the MailHog executable (.exe) file that was downloaded initially - it is not necessary to download a new MailHog installation file.
 
 Start [using MailHog](#using-mailhog).
+
 </details>
 
 <details><summary>Installing MailHog on Linux</summary>
@@ -96,6 +99,7 @@ mailhog
 ```
 
 Start [using MailHog](#using-mailhog).
+
 </details>
 
 ## Using MailHog

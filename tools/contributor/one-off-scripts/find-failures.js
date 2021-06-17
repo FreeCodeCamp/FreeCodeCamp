@@ -96,7 +96,7 @@ const errorsToFind = [
     log.finish();
     console.log('Successfully finished finding all specified errors.');
   })
-  .catch(err => {
+  .catch((err) => {
     log.finish();
     console.log(err);
   });

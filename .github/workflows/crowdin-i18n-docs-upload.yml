@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
   schedule:
     # runs everyday at 11:00 AM UTC
-    - cron: "0 11 * * *"
+    - cron: '0 11 * * *'
 
 jobs:
   i18n-upload-docs-files:

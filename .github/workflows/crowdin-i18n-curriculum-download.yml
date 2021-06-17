@@ -56,7 +56,6 @@ jobs:
           CROWDIN_PROJECT_ID: ${{ secrets.CROWDIN_PROJECT_ID_CURRICULUM }}
           CROWDIN_PERSONAL_TOKEN: ${{ secrets.CROWDIN_CAMPERBOT_SERVICE_TOKEN }}
 
-
       # Convert Simplified Chinese to Traditional #
       - name: Generate Translations
         uses: ./tools/crowdin/actions/convert-chinese

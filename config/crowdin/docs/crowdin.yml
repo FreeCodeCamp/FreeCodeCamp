@@ -1,19 +1,21 @@
-"project_id_env": "CROWDIN_PROJECT_ID"
-"api_token_env": "CROWDIN_PERSONAL_TOKEN"
-"base_path_env": "CROWDIN_BASE_PATH"
-"base_url_env": "CROWDIN_BASE_URL"
+'project_id_env': 'CROWDIN_PROJECT_ID'
+'api_token_env': 'CROWDIN_PERSONAL_TOKEN'
+'base_path_env': 'CROWDIN_BASE_PATH'
+'base_url_env': 'CROWDIN_BASE_URL'
 
-"preserve_hierarchy": true
+'preserve_hierarchy': true
 
-files: [
- {
-  "source" : "/docs/*.md",
-  "translation" : "/docs/i18n/%language%/%original_file_name%",
-  "ignore" : [
-    "/docs/_coverpage.md",
-    "/docs/_navbar.md",
-    "/docs/_translations.md",
-    "/docs/README.md",
+files:
+  [
+    {
+      'source': '/docs/*.md',
+      'translation': '/docs/i18n/%language%/%original_file_name%',
+      'ignore':
+        [
+          '/docs/_coverpage.md',
+          '/docs/_navbar.md',
+          '/docs/_translations.md',
+          '/docs/README.md'
+        ]
+    }
   ]
- }
-]

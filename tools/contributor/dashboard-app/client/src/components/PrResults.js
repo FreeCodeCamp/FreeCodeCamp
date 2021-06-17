@@ -34,17 +34,16 @@ const PrResults = ({ searchValue, results, rateLimitMessage }) => {
 
   const showResults = () => {
     if (!rateLimitMessage) {
-      return (results.length ? <h3>Results for PR# {searchValue}</h3> : null) && elements;
+      return (
+        (results.length ? <h3>Results for PR# {searchValue}</h3> : null) &&
+        elements
+      );
     } else {
       return rateLimitMessage;
     }
   };
 
-  return (
-    <FullWidthDiv style={{ width: '100%' }}>
-      {showResults()}
-    </FullWidthDiv>
-  );
+  return <FullWidthDiv style={{ width: '100%' }}>{showResults()}</FullWidthDiv>;
 };
 
 export default PrResults;

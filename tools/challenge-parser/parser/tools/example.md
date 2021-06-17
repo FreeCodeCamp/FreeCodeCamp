@@ -28,7 +28,7 @@ Second hint with <code>code</code>
 // more test code
 ```
 
-Third *hint* with <code>code</code> and `inline code`
+Third _hint_ with <code>code</code> and `inline code`
 
 ```js
 // more test code
@@ -43,8 +43,7 @@ if(let x of xs) {
 
 ```html
 <html>
-  <body>
-  </body>
+  <body></body>
 </html>
 ```
 
@@ -62,15 +61,13 @@ body {
 var x = 'y';
 ```
 
-
 # --solutions--
 
 ![html-key]()
 
 ```html
 <html>
-  <body>
-  </body>
+  <body></body>
 </html>
 ```
 
@@ -82,4 +79,5 @@ body {
 
 ```js
 var x = 'y';
-``
+``;
+```

@@ -72,7 +72,7 @@ Once you open the MongoDB Atlas page, you should sign up for a new account.
 
   - Follow the instructions by clicking on the `Connect` button in the `Sandbox` section.
   - In the pop-up modal, click on **Connect Your Application**, a connection string will be displayed, you can copy that connection string by clicking on the `copy` button.
-  - This will be the final URI that you will use to connect to your db and will look something like `mongodb+srv://<user>:<password>@<cluster#-dbname>.mongodb.net/test?retryWrites=true`.  Notice that the `user` and `cluster#-dbname` fields are already filled out for you, so all you would need to replace is the `password` field with the one that you created in the previous step.
+  - This will be the final URI that you will use to connect to your db and will look something like `mongodb+srv://<user>:<password>@<cluster#-dbname>.mongodb.net/test?retryWrites=true`. Notice that the `user` and `cluster#-dbname` fields are already filled out for you, so all you would need to replace is the `password` field with the one that you created in the previous step.
 
 - That's it! You now have the URI you will add to your application to connect to your database. Keep this URI safe somewhere, so you can use it later!
 - Feel free to create separate databases for different applications if they need a separate database. You just need to create a new project under your current MongoDB Atlas account, build a new cluster, add a new user, whitelist your IP addresses and finally connect to your cluster to obtain the new URI.

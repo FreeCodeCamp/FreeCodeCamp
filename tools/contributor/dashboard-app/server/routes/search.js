@@ -3,7 +3,7 @@ const { PR } = require('../models');
 const { reqLimiter } = require('../req-limiter');
 
 router.get('/', reqLimiter, async (request, response) => {
-  const prs = await PR.find({}).then(data => data);
+  const prs = await PR.find({}).then((data) => data);
   prs.sort((a, b) => a._id - b._id);
   const indices = prs.reduce((obj, { _id }, index) => {
     obj[_id] = index;
@@ -14,7 +14,7 @@ router.get('/', reqLimiter, async (request, response) => {
   if (value) {
     const filesFound = {};
     prs.forEach(({ _id: number, filenames, username, title }) => {
-      filenames.forEach(filename => {
+      filenames.forEach((filename) => {
         if (filename.toLowerCase().includes(value.toLowerCase())) {
           const fileCount = prs[indices[number]].filenames.length;
           const prObj = { number, fileCount, username, title };
@@ -29,7 +29,7 @@ router.get('/', reqLimiter, async (request, response) => {
     });
 
     let results = Object.keys(filesFound)
-      .map(filename => ({ filename, prs: filesFound[filename] }))
+      .map((filename) => ({ filename, prs: filesFound[filename] }))
       .sort((a, b) => {
         if (a.filename === b.filename) {
           return 0;

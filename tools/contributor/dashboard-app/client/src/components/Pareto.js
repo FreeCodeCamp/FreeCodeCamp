@@ -32,7 +32,7 @@ class Pareto extends React.Component {
 
   componentDidMount() {
     fetch(ENDPOINT_PARETO)
-      .then(response => response.json())
+      .then((response) => response.json())
       .then(({ ok, rateLimitMessage, pareto }) => {
         if (ok) {
           if (!pareto.length) {
@@ -43,13 +43,13 @@ class Pareto extends React.Component {
             });
           }
 
-          this.setState(prevState => ({
+          this.setState((prevState) => ({
             data: pareto,
             all: [...pareto],
             options: this.createOptions(pareto)
           }));
         } else if (rateLimitMessage) {
-          this.setState(prevState => ({
+          this.setState((prevState) => ({
             rateLimitMessage
           }));
         }
@@ -58,7 +58,7 @@ class Pareto extends React.Component {
         const pareto = [
           { filename: 'Nothing to show in Pareto Report', count: 0, prs: [] }
         ];
-        this.setState(prevState => ({ data: pareto }));
+        this.setState((prevState) => ({ data: pareto }));
       });
   }
 
@@ -74,9 +74,9 @@ class Pareto extends React.Component {
       return seen;
     }, {});
     return options;
-  }
+  };
 
-  handleFileTypeOptionChange = changeEvent => {
+  handleFileTypeOptionChange = (changeEvent) => {
     let { all, selectedLanguage, options } = this.state;
     const selectedFileType = changeEvent.target.value;
 
@@ -90,70 +90,93 @@ class Pareto extends React.Component {
         if (selectedLanguage === 'all') {
           condition = articleType === selectedFileType;
         } else if (!options[selectedFileType][selectedLanguage]) {
-          condition = articleType === selectedFileType
+          condition = articleType === selectedFileType;
           selectedLanguage = 'all';
         } else {
-          condition = articleType === selectedFileType && language === selectedLanguage
+          condition =
+            articleType === selectedFileType && language === selectedLanguage;
         }
       }
       return condition;
     });
-    this.setState(prevState => ({ data, selectedFileType, selectedLanguage }));
-  }
+    this.setState((prevState) => ({
+      data,
+      selectedFileType,
+      selectedLanguage
+    }));
+  };
 
-  handleLanguageOptionChange = changeEvent => {
+  handleLanguageOptionChange = (changeEvent) => {
     const { all, selectedFileType } = this.state;
     const selectedLanguage = changeEvent.target.value;
     let data = [...all].filter(({ filename }) => {
       const { articleType, language } = this.getFilenameOptions(filename);
       let condition;
       if (selectedLanguage === 'all') {
-        condition = articleType === selectedFileType
+        condition = articleType === selectedFileType;
       } else {
-        condition = language === selectedLanguage && articleType === selectedFileType
+        condition =
+          language === selectedLanguage && articleType === selectedFileType;
       }
       return condition;
     });
-    this.setState(prevState => ({ data, selectedLanguage }));
-  }
+    this.setState((prevState) => ({ data, selectedLanguage }));
+  };
 
-  getFilenameOptions = filename => {
+  getFilenameOptions = (filename) => {
     const filenameReplacement = filename.replace(
-      /^curriculum\/challenges\//, 'curriculum/'
+      /^curriculum\/challenges\//,
+      'curriculum/'
     );
-    const regex = /^(docs|curriculum|guide)(?:\/)(english|arabic|chinese|portuguese|russian|spanish)?\/?/;
+    const regex =
+      /^(docs|curriculum|guide)(?:\/)(english|arabic|chinese|portuguese|russian|spanish)?\/?/;
     // need an array to pass to labelsAdder
     // eslint-disable-next-line
     const [_, articleType, language] = filenameReplacement.match(regex) || [];
     return { articleType, language };
-  }
+  };
 
   render() {
-    const { data, options, selectedFileType, selectedLanguage, rateLimitMessage } = this.state;
+    const {
+      data,
+      options,
+      selectedFileType,
+      selectedLanguage,
+      rateLimitMessage
+    } = this.state;
     const elements = rateLimitMessage
       ? rateLimitMessage
-      : data.map(entry => {
-        const { filename, count, prs } = entry;
-        const prsList = prs.map(({ number, username, title }) => {
-          return <ListItem key={number} number={number} username={username} prTitle={title} />;
+      : data.map((entry) => {
+          const { filename, count, prs } = entry;
+          const prsList = prs.map(({ number, username, title }) => {
+            return (
+              <ListItem
+                key={number}
+                number={number}
+                username={username}
+                prTitle={title}
+              />
+            );
+          });
+          const fileOnMain = `https://github.com/freeCodeCamp/freeCodeCamp/blob/main/${filename}`;
+          return (
+            <Result key={filename}>
+              <span style={filenameTitle}>{filename}</span>{' '}
+              <a href={fileOnMain} rel="noopener noreferrer" target="_blank">
+                (File on Main)
+              </a>
+              <br />
+              <details style={detailsStyle}>
+                <summary># of PRs: {count}</summary>
+                <List>{prsList}</List>
+              </details>
+            </Result>
+          );
         });
-        const fileOnMain = `https://github.com/freeCodeCamp/freeCodeCamp/blob/main/${filename}`;
-        return (
-          <Result key={filename}>
-            <span style={filenameTitle}>{filename}</span>{' '}
-            <a href={fileOnMain} rel="noopener noreferrer" target="_blank">
-              (File on Main)
-          </a>
-            <br />
-            <details style={detailsStyle}>
-              <summary># of PRs: {count}</summary>
-              <List>{prsList}</List>
-            </details>
-          </Result>
-        );
-      });
 
-    let fileTypeOptions = Object.keys(options).map(articleType => articleType);
+    let fileTypeOptions = Object.keys(options).map(
+      (articleType) => articleType
+    );
     const typeOptions = ['all', ...fileTypeOptions].map((type) => (
       <FilterOption
         key={type}
@@ -170,7 +193,7 @@ class Pareto extends React.Component {
     if (selectedFileType !== 'all') {
       let languages = Object.keys(options[selectedFileType]);
       languages = ['all', ...languages.sort()];
-      languageOptions = languages.map(language => (
+      languageOptions = languages.map((language) => (
         <FilterOption
           key={language}
           name="language"
@@ -184,31 +207,28 @@ class Pareto extends React.Component {
     }
     return (
       <FullWidthDiv>
-        {fileTypeOptions.length > 0 &&
-          <strong>Filter Options</strong>
-        }
+        {fileTypeOptions.length > 0 && <strong>Filter Options</strong>}
         <Options>
-          {fileTypeOptions.length > 0 &&
+          {fileTypeOptions.length > 0 && (
             <>
               <fieldset>
                 <legend>File Type:</legend>
                 <div>{typeOptions}</div>
               </fieldset>
             </>
-          }
-          {
-            languageOptions &&
+          )}
+          {languageOptions && (
             <fieldset>
               <legend>Language:</legend>
               <div>{languageOptions}</div>
             </fieldset>
-          }
+          )}
         </Options>
         {rateLimitMessage
           ? rateLimitMessage
           : data.length
-            ? elements
-            : 'Report Loading...'}
+          ? elements
+          : 'Report Loading...'}
       </FullWidthDiv>
     );
   }

@@ -11,8 +11,8 @@ const Info = styled.div`
   padding: 2px;
 `;
 
-const Footer = props => {
-  const localTime = lastUpdate => {
+const Footer = (props) => {
+  const localTime = (lastUpdate) => {
     const newTime = new Date(lastUpdate);
     return newTime.toLocaleString();
   };

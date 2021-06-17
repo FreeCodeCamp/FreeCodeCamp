@@ -43,7 +43,7 @@ const log = new ProcessingLog('all-locally-tested-labels');
       }
 
       // only adds needed labels which are NOT currently on the PR
-      const newLabels = Object.keys(labelsToAdd).filter(label => {
+      const newLabels = Object.keys(labelsToAdd).filter((label) => {
         return !existingLabels.includes(label);
       });
 
@@ -63,7 +63,7 @@ const log = new ProcessingLog('all-locally-tested-labels');
     log.finish();
     console.log('Successfully completed labeling');
   })
-  .catch(err => {
+  .catch((err) => {
     log.finish();
     console.log(err);
   });

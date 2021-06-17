@@ -104,7 +104,7 @@ log.start();
     log.finish();
     console.log('Finished finding PRs with merge conflicts');
   })
-  .catch(err => {
+  .catch((err) => {
     log.finish();
     console.log(err);
   });

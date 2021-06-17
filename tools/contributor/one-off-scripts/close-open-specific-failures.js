@@ -28,7 +28,7 @@ const getUserInput = async () => {
   const { prs } = await getUserInput(freeCodeCampRepo, defaultBase);
   return prs;
 })()
-  .then(async prs => {
+  .then(async (prs) => {
     for (let { number, errorDesc } of prs) {
       if (errorDesc !== 'unknown error') {
         log.add(number, { number, closedOpened: true, errorDesc });
@@ -45,7 +45,7 @@ const getUserInput = async () => {
     log.finish();
     console.log('closing/reopening of PRs complete');
   })
-  .catch(err => {
+  .catch((err) => {
     log.finish();
     console.log(err);
   });

@@ -4,7 +4,7 @@
 
     /* Basic Options */
     // "incremental": true,                         /* Enable incremental compilation */
-    "target": "ES2020",                                /* Specify ECMAScript target version: 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017', 'ES2018', 'ES2019', 'ES2020', 'ES2021', or 'ESNEXT'. */
+    "target": "ES2020" /* Specify ECMAScript target version: 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017', 'ES2018', 'ES2019', 'ES2020', 'ES2021', or 'ESNEXT'. */,
     // "module": "es2020",                           /* Specify module code generation: 'none', 'commonjs', 'amd', 'system', 'umd', 'es2015', 'es2020', or 'ESNext'. */
     // "lib": [],                                   /* Specify library files to be included in the compilation. */
     // "allowJs": true,                             /* Allow javascript files to be compiled. */
@@ -19,13 +19,13 @@
     // "composite": true,                           /* Enable project compilation */
     // "tsBuildInfoFile": "./",                     /* Specify file to store incremental compilation information */
     // "removeComments": true,                      /* Do not emit comments to output. */
-    "noEmit": true,                              /* Do not emit outputs. */
+    "noEmit": true /* Do not emit outputs. */,
     // "importHelpers": true,                       /* Import emit helpers from 'tslib'. */
     // "downlevelIteration": true,                  /* Provide full support for iterables in 'for-of', spread, and destructuring when targeting 'ES5' or 'ES3'. */
     // "isolatedModules": true,                     /* Transpile each file as a separate module (similar to 'ts.transpileModule'). */
 
     /* Strict Type-Checking Options */
-    "strict": true,                                 /* Enable all strict type-checking options. */
+    "strict": true /* Enable all strict type-checking options. */,
     // "noImplicitAny": true,                       /* Raise error on expressions and declarations with an implied 'any' type. */
     // "strictNullChecks": true,                    /* Enable strict null checks. */
     // "strictFunctionTypes": true,                 /* Enable strict checking of function types. */
@@ -44,15 +44,15 @@
     // "noPropertyAccessFromIndexSignature": true,  /* Require undeclared properties from index signatures to use element accesses. */
 
     /* Module Resolution Options */
-    "moduleResolution": "node",                  /* Specify module resolution strategy: 'node' (Node.js) or 'classic' (TypeScript pre-1.6). */
+    "moduleResolution": "node" /* Specify module resolution strategy: 'node' (Node.js) or 'classic' (TypeScript pre-1.6). */,
     // "baseUrl": "./",                             /* Base directory to resolve non-absolute module names. */
     // "paths": {},                                 /* A series of entries which re-map imports to lookup locations relative to the 'baseUrl'. */
     // "rootDirs": [],                              /* List of root folders whose combined content represents the structure of the project at runtime. */
     // "typeRoots": [],                             /* List of folders to include type definitions from. */
     // "types": [],                                 /* Type declaration files to be included in compilation. */
     // "allowSyntheticDefaultImports": true,        /* Allow default imports from modules with no default export. This does not affect code emit, just typechecking. */
-    "esModuleInterop": true,                        /* Enables emit interoperability between CommonJS and ES Modules via creation of namespace objects for all imports. Implies 'allowSyntheticDefaultImports'. */
-    "resolveJsonModule": true,                      /* Enables direct import of json files */
+    "esModuleInterop": true /* Enables emit interoperability between CommonJS and ES Modules via creation of namespace objects for all imports. Implies 'allowSyntheticDefaultImports'. */,
+    "resolveJsonModule": true /* Enables direct import of json files */,
     // "preserveSymlinks": true,                    /* Do not resolve the real path of symlinks. */
     // "allowUmdGlobalAccess": true,                /* Allow accessing UMD globals from modules. */
 
@@ -67,7 +67,7 @@
     // "emitDecoratorMetadata": true,               /* Enables experimental support for emitting type metadata for decorators. */
 
     /* Advanced Options */
-    "skipLibCheck": true,                           /* Skip type checking of declaration files. */
-    "forceConsistentCasingInFileNames": true        /* Disallow inconsistently-cased references to the same file. */
+    "skipLibCheck": true /* Skip type checking of declaration files. */,
+    "forceConsistentCasingInFileNames": true /* Disallow inconsistently-cased references to the same file. */
   }
 }

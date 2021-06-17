@@ -11,7 +11,7 @@ const addLabels = (number, labels, log) => {
     .then(() => {
       console.log(`PR #${number} added ${JSON.stringify(labels)}\n`);
     })
-    .catch(err => {
+    .catch((err) => {
       console.log(
         `PR #${number} had an error when trying to labels: ${JSON.stringify(
           labels

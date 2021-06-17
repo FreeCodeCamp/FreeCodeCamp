@@ -45,7 +45,7 @@ const labeler = async (
   const existingLabels = currentLabels.map(({ name }) => name);
 
   /* only adds needed labels which are NOT currently on the PR. */
-  const newLabels = Object.keys(labelsToAdd).filter(label => {
+  const newLabels = Object.keys(labelsToAdd).filter((label) => {
     return !existingLabels.includes(label);
   });
   if (newLabels.length) {
@@ -151,7 +151,7 @@ const guideFolderChecks = async (number, prFiles, user) => {
     log.finish();
     console.log('Successfully completed frontmatter checks');
   })
-  .catch(err => {
+  .catch((err) => {
     log.finish();
     console.log(err);
   });

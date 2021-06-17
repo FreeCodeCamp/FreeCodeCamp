@@ -24,7 +24,7 @@ db.then(async () => {
   await ALL_REPOS.insertMany(reposToAdd);
 
   // update PRs for freeCodeCamp repo
-  const oldPRs = await PR.find({}).then(data => data);
+  const oldPRs = await PR.find({}).then((data) => data);
   const oldIndices = oldPRs.reduce((obj, { _id }, index) => {
     obj[_id] = index;
     return obj;
@@ -85,12 +85,12 @@ db.then(async () => {
       numPRs,
       prRange: `${firstPR}-${lastPR}`
     };
-    await INFO.updateOne({}, info, { upsert: true }).catch(err => {
+    await INFO.updateOne({}, info, { upsert: true }).catch((err) => {
       console.log(err);
     });
     mongoose.connection.close();
   })
-  .catch(err => {
+  .catch((err) => {
     mongoose.connection.close();
     throw err;
   });

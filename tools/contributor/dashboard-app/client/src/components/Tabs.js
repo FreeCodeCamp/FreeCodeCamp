@@ -42,12 +42,16 @@ const Tabs = ({ view, onViewChange }) => {
       <Tab id="tabs-reports" onClick={onViewChange} active={view === 'reports'}>
         Pareto
       </Tab>
-      <Tab id="tabs-boilerplates" onClick={onViewChange} active={view === 'boilerplates'}>
+      <Tab
+        id="tabs-boilerplates"
+        onClick={onViewChange}
+        active={view === 'boilerplates'}
+      >
         Boilerplate PRs
       </Tab>
       <Tab id="tabs-other" onClick={onViewChange} active={view === 'other'}>
         Other Repos' PRs
-      </Tab>        
+      </Tab>
     </Container>
   );
 };

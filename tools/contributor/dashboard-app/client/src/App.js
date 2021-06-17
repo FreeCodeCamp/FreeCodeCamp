@@ -17,7 +17,7 @@ const PageContainer = styled.div`
   justify-content: center;
   align-items: center;
   @media (max-width: 991px) {
-    margin-top: 135px; 
+    margin-top: 135px;
   }
 `;
 
@@ -41,19 +41,18 @@ const AppNavBar = styled.nav`
   top: 0;
   left: 0;
   right: 0;
-  display:flex;
+  display: flex;
   justify-content: space-between;
   align-items: center;
   background: ${({ theme }) => theme.primary};
   @media (max-width: 991px) {
-    flex-direction: column;  
+    flex-direction: column;
   }
 `;
 
 const logoStyle = { paddingLeft: '30px' };
 
 const titleStyle = { margin: '0', padding: '0' };
-
 
 class App extends Component {
   state = {
@@ -63,11 +62,11 @@ class App extends Component {
 
   updateInfo() {
     fetch(ENDPOINT_INFO)
-      .then(response => response.json())
+      .then((response) => response.json())
       .then(({ ok, numPRs, prRange, lastUpdate }) => {
         if (ok) {
           const footerInfo = { numPRs, prRange, lastUpdate };
-          this.setState(prevState => ({ footerInfo }));
+          this.setState((prevState) => ({ footerInfo }));
         }
       })
       .catch(() => {
@@ -77,7 +76,7 @@ class App extends Component {
 
   handleViewChange = ({ target: { id } }) => {
     const view = id.replace('tabs-', '');
-    this.setState(prevState => ({ ...this.clearObj, view }));
+    this.setState((prevState) => ({ ...this.clearObj, view }));
     if (view === 'reports' || view === 'search') {
       this.updateInfo();
     }
@@ -94,30 +93,51 @@ class App extends Component {
     } = this;
     return (
       <>
-      <AppNavBar>
-        <a href="https://www.freecodecamp.org/" target="_blank" rel="noopener noreferrer" style={logoStyle}>
-          <FreeCodeCampLogo />
-        </a>
-        <h1 style={titleStyle}>Contributor Tools</h1>
-        <ul className="app-menu">
-           <li>
-             <a href="https://github.com/freeCodeCamp/freeCodeCamp" target="_blank" rel="noopener noreferrer">GitHub</a>
-           </li>
-        </ul>
-      </AppNavBar> 
-      <PageContainer>
-        
-        <Tabs view={view} onViewChange={handleViewChange} />
-        <Container>
-          {view === 'search' && <Search />}
-          {view === 'reports' && <Pareto />}
-          {view === 'boilerplates' &&
-            <Repos key='boilerplates' dataFilter={repo => repo._id.includes('boilerplate')} />}
-          {view === 'other' &&
-            <Repos key='other' dataFilter={repo => !repo._id.includes('boilerplate') && repo._id !== 'freeCodeCamp'} />}
-        </Container>
-        {footerInfo && <Footer footerInfo={footerInfo} />}
-      </PageContainer>
+        <AppNavBar>
+          <a
+            href="https://www.freecodecamp.org/"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={logoStyle}
+          >
+            <FreeCodeCampLogo />
+          </a>
+          <h1 style={titleStyle}>Contributor Tools</h1>
+          <ul className="app-menu">
+            <li>
+              <a
+                href="https://github.com/freeCodeCamp/freeCodeCamp"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                GitHub
+              </a>
+            </li>
+          </ul>
+        </AppNavBar>
+        <PageContainer>
+          <Tabs view={view} onViewChange={handleViewChange} />
+          <Container>
+            {view === 'search' && <Search />}
+            {view === 'reports' && <Pareto />}
+            {view === 'boilerplates' && (
+              <Repos
+                key="boilerplates"
+                dataFilter={(repo) => repo._id.includes('boilerplate')}
+              />
+            )}
+            {view === 'other' && (
+              <Repos
+                key="other"
+                dataFilter={(repo) =>
+                  !repo._id.includes('boilerplate') &&
+                  repo._id !== 'freeCodeCamp'
+                }
+              />
+            )}
+          </Container>
+          {footerInfo && <Footer footerInfo={footerInfo} />}
+        </PageContainer>
       </>
     );
   }

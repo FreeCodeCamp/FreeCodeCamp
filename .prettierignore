@@ -1,6 +1,9 @@
 **/.cache
 **/public
 client/static
-fixtures
+**/*fixtures*
 curriculum/challenges/_meta/*/*
 curriculum/challenges/**/*
+config/**/*.json
+client/i18n/**/*.json
+docs/i18n

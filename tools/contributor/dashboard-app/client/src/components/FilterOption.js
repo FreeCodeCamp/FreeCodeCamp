@@ -7,18 +7,24 @@ const Container = styled.label`
   }
 `;
 
-const FilterOption = ({ group, children, value, selectedOption, onOptionChange }) => {
+const FilterOption = ({
+  group,
+  children,
+  value,
+  selectedOption,
+  onOptionChange
+}) => {
   return (
-  <Container>
-    <input
-      name={group}
-      type="radio"
-      value={value}
-      checked={selectedOption === value}
-      onChange={onOptionChange}
-    />
-    {children}
-  </Container>
+    <Container>
+      <input
+        name={group}
+        type="radio"
+        value={value}
+        checked={selectedOption === value}
+        onChange={onOptionChange}
+      />
+      {children}
+    </Container>
   );
-}
+};
 export default FilterOption;

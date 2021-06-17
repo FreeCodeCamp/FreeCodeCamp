@@ -8,7 +8,6 @@ The video challenge pages are created by members of the freeCodeCamp team. YouTu
 
 You can help by creating multiple-choice questions related to video sections and adding the questions to the markdown files for the video challenges.
 
-
 ## Challenge Template
 
 Below is a template of what the challenge markdown files look like.
@@ -27,9 +26,7 @@ forumTopicId: 12345
 Challenge description text, in markdown
 
 ```html
-<div>
-  example code
-</div>
+<div>example code</div>
 ```
 
 # --question--
@@ -55,7 +52,6 @@ More answers
 ## --video-solution--
 
 The number for the correct answer goes here.
-
 ````
 
 ## Creating questions for video challenges
@@ -76,6 +72,7 @@ Pick a challenge markdown file from the options above.
 First, find the videoId.
 
 For example, in the following code from the header of a video challenge markdown file, the videoId is "nVAaxZ34khk". On GitHub, the information should be laid out in a table format.
+
 ```
 ---
 id: 5e9a093a74c4063ca6f7c14d
@@ -86,7 +83,7 @@ videoId: nVAaxZ34khk
 ```
 
 Next, access the YouTube video with that `videoId`. The URL for the video will be:
-https://www.youtube.com/watch?v=[videoId]    (replace `videoId` in the URL with the video's ID - without square brackets)
+https://www.youtube.com/watch?v=[videoId] (replace `videoId` in the URL with the video's ID - without square brackets)
 
 In the example above, the URL is https://www.youtube.com/watch?v=nVAaxZ34khk
 
@@ -122,12 +119,14 @@ More answers
 1
 ```
 
-Add/Update the  question text under the part that shows:
+Add/Update the question text under the part that shows:
+
 ```
 # --question--
 
 ## --text--
 ```
+
 Add/Update answers (`Answer 1`, `Answer 2`, and so on) under `## --answers--`. Make sure to update the number under `## --video-solution--` with the correct answer number. You can add more possible answers using the same format. The question and answers can be surrounded with quotation marks.
 
 ### Question examples
@@ -136,14 +135,16 @@ Add/Update answers (`Answer 1`, `Answer 2`, and so on) under `## --answers--`. M
 # --question--
 
 ## --text--
+
 What does this JavaScript code log to the console?
+
 ```js
 console.log('hello world');
 ```
 
 ## --answers--
 
-hello *world*
+hello _world_
 
 ---
 
@@ -156,11 +157,11 @@ hello world
 ---
 
 ## --video-solution--
+
 3
 ````
 
 ````md
-
 # --question--
 
 ## --text--

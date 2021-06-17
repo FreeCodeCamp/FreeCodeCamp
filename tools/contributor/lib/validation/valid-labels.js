@@ -6,7 +6,7 @@ const validLabels = {
   russian: 'language: Russian',
   spanish: 'language: Spanish',
   curriculum: 'scope: curriculum',
-  docs: 'scope: docs',
+  docs: 'scope: docs'
 };
 
 module.exports = { validLabels };

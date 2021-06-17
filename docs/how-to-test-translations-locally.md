@@ -21,7 +21,13 @@ As an example, if you wanted to enable Dothraki as a language, your `all-langs.j
 ```js
 const availableLangs = {
   client: ['english', 'espanol', 'chinese', 'chinese-traditional', 'dothraki'],
-  curriculum: ['english', 'espanol', 'chinese', 'chinese-traditional', 'dothraki']
+  curriculum: [
+    'english',
+    'espanol',
+    'chinese',
+    'chinese-traditional',
+    'dothraki'
+  ]
 };
 
 const i18nextCodes = {
@@ -29,7 +35,7 @@ const i18nextCodes = {
   espanol: 'es',
   chinese: 'zh',
   'chinese-traditional': 'zh-Hant',
-  'dothraki': 'mis',
+  dothraki: 'mis'
 };
 
 const langDisplayNames = {
@@ -37,7 +43,7 @@ const langDisplayNames = {
   espanol: 'Español',
   chinese: '中文（简体字）',
   'chinese-traditional': '中文（繁體字）',
-  'dothraki': 'Dothraki',
+  dothraki: 'Dothraki'
 };
 
 const langCodes = {
@@ -45,7 +51,7 @@ const langCodes = {
   espanol: 'es-419',
   chinese: 'zh',
   'chinese-traditional': 'zh-Hant',
-  'dothraki': 'mis',
+  dothraki: 'mis'
 };
 ```
 
@@ -76,11 +82,11 @@ const algoliaIndices = {
   dothraki: {
     name: 'news',
     searchPage: 'https://www.freecodecamp.org/news/search/'
-  },
+  }
 };
 ```
 
-Next, you will need to tell the client which certifications are translated, and which are still in English. Open the `utils/is-audited.js` file. Within the `auditedCerts`, add a new key with your language's `availableLangs` value. Assign the value of that key to an array containing the *dashed names* for the certifications that have been translated. Refer to the existing data for those dashed names.
+Next, you will need to tell the client which certifications are translated, and which are still in English. Open the `utils/is-audited.js` file. Within the `auditedCerts`, add a new key with your language's `availableLangs` value. Assign the value of that key to an array containing the _dashed names_ for the certifications that have been translated. Refer to the existing data for those dashed names.
 
 Continuing the work to enable Dothraki - we have translated the first three certifications:
 
@@ -106,7 +112,7 @@ const auditedCerts = {
     'apis-and-microservices',
     'quality-assurance'
   ],
-  'dothraki': [
+  dothraki: [
     'responsive-web-design',
     'javascript-algorithms-and-data-structures',
     'front-end-libraries'
@@ -130,4 +136,4 @@ Once you have the files, you will need to place them in the correct directory. F
 Once these are in place, you should be able to run `npm run develop` to view your translated version of freeCodeCamp.
 
 > [!ATTENTION]
-> While you may perform translations locally for the purpose of testing, we remind everyone that translations should *not* be submitted through GitHub and should only be done through Crowdin. Be sure to reset your local codebase after you are done testing.
+> While you may perform translations locally for the purpose of testing, we remind everyone that translations should _not_ be submitted through GitHub and should only be done through Crowdin. Be sure to reset your local codebase after you are done testing.

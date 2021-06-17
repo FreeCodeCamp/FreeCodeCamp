@@ -3,6 +3,7 @@ title: Introduction to the Data Visualization Projects
 block: Data Visualization Projects
 superBlock: Data Visualization
 ---
+
 ## Introduction to the Data Visualization Projects
 
 These challenges let you test your data visualization skills and how to transfer and use data using AJAX technologies.

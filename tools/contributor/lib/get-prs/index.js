@@ -72,12 +72,12 @@ const prsPaginate = async (
 const getUserInput = async (repo, base, rangeType = '') => {
   let data, firstPR, lastPR;
   if (rangeType === 'all') {
-    data = await getRange(repo, base).then(data => data);
+    data = await getRange(repo, base).then((data) => data);
     firstPR = data[0];
     lastPR = data[1];
   } else {
     let [type, start, end] = process.argv.slice(2);
-    data = await getRange(repo, base).then(data => data);
+    data = await getRange(repo, base).then((data) => data);
     firstPR = data[0];
     lastPR = data[1];
     if (type !== 'all' && type !== 'range') {
@@ -106,7 +106,7 @@ const getUserInput = async (repo, base, rangeType = '') => {
   if (firstPR === null || lastPR === null) {
     return { totalPRs: 0, firstPR, lastPR };
   }
-  const totalPRs = await getCount(repo, base).then(data => data);
+  const totalPRs = await getCount(repo, base).then((data) => data);
   return { totalPRs, firstPR, lastPR };
 };
 

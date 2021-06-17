@@ -18,7 +18,7 @@ const getCount = async (repo, base) => {
       page: 1,
       per_page: 1
     })
-    .catch(err => console.log(err));
+    .catch((err) => console.log(err));
   return count;
 };
 

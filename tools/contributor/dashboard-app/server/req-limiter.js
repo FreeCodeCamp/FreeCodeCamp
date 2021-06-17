@@ -1,13 +1,11 @@
-const rateLimit = require("express-rate-limit");
+const rateLimit = require('express-rate-limit');
 
 const limitHandler = (req, res) => {
-  res
-    .status(429)
-    .json({
-      ok: false,
-      rateLimitMessage: 'You have accessed this app\'s pages too quickly.  Please try again in 5 minutes.'
-    }
-  );
+  res.status(429).json({
+    ok: false,
+    rateLimitMessage:
+      "You have accessed this app's pages too quickly.  Please try again in 5 minutes."
+  });
 };
 
 const rateLimitOptions = {

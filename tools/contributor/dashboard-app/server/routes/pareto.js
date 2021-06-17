@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { PR } = require('../models');
 const { reqLimiter } = require('../req-limiter');
 
-const createPareto = reportObj =>
+const createPareto = (reportObj) =>
   Object.keys(reportObj)
     .reduce((arr, filename) => {
       const { count, prs } = reportObj[filename];
@@ -14,11 +14,11 @@ const createPareto = reportObj =>
     .sort((a, b) => b.count - a.count);
 
 router.get('/', reqLimiter, async (reqeust, response) => {
-  const prs = await PR.find({}).then(data => data);
+  const prs = await PR.find({}).then((data) => data);
   prs.sort((a, b) => a._id - b._id);
   const reportObj = prs.reduce((obj, pr) => {
     const { _id: number, filenames, username, title } = pr;
-    filenames.forEach(filename => {
+    filenames.forEach((filename) => {
       if (obj[filename]) {
         const { count, prs } = obj[filename];
         obj[filename] = {

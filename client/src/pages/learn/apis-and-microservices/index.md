@@ -2,6 +2,7 @@
 title: APIs and Microservices
 superBlock: apis-and-microservices
 ---
+
 ## Introduction to APIs and Microservices
 
 This is a stub introduction for APIs and Microservices
@@ -19,7 +20,8 @@ A monolith typically has the three key components of any application - the UI, B
 To overcome some of the issues, one of the suggestions that was made early on was to functionally decompose an application, referred to as the Scale Cube in the book [The Art of Scalability](www.theartofscalability.com). This eventually led to the microservices pattern that we see now. A microservice takes a single bit of functionality and bundles all the layers of technology into it. This means that each microservice has its own UI, business logic and data store. To deliver a larger piece of functionality, microservices talk to one another through common communication methods like APIs or messages.
 
 ## Key benefits
-1. Microservices can be developed and deployed independently of one another, thereby reducing the risk of one wrong piece of code  bringing down an entire application 
+
+1. Microservices can be developed and deployed independently of one another, thereby reducing the risk of one wrong piece of code bringing down an entire application
 2. Easier to isolate and find where issues lie, while debugging
 3. Fits the modern DevOps paradigm, as the architecture is well placed for Continuous Integration/Continuous Deployment
 4. Enables developers to choose a language and data store technology best suited for that bit of functionality
@@ -28,6 +30,7 @@ To overcome some of the issues, one of the suggestions that was made early on wa
 7. Easy to change, as it encapsulates a single piece of business functionality
 
 ## Key drawbacks
+
 1. Additional operational overheads to monitor and manage multiple services
 2. Manage communications between services
 3. Additional effort to build fault tolerance
@@ -35,6 +38,7 @@ To overcome some of the issues, one of the suggestions that was made early on wa
 5. Distributed transaction model comes with its own share of issues regarding data consistency (eventual consistency)
 
 ### Sources
+
 1. Microservices, a definition - by Martin Fowler and James Lewis : https://www.martinfowler.com/articles/microservices.html
 2. Introduction to Microservices - NGINX blog : https://www.nginx.com/blog/introduction-to-microservices/
 3. What are microservices - Smartbear : https://smartbear.com/learn/api-design/what-are-microservices/

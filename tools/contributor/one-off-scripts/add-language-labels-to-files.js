@@ -53,7 +53,7 @@ console.log('Curriculum File language labeler started...');
     log.finish();
     console.log('Labeler complete');
   })
-  .catch(err => {
+  .catch((err) => {
     log.finish();
     console.log(err);
   });

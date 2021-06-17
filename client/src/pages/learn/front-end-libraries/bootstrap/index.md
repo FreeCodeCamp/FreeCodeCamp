@@ -3,6 +3,7 @@ title: Introduction to the Bootstrap Challenges
 block: Bootstrap
 superBlock: Front End Libraries
 ---
+
 ## Introduction to the Bootstrap Challenges
 
 Bootstrap is a front-end framework used to design responsive web pages and web applications. It takes a mobile-first approach to web development. Bootstrap includes pre-built CSS styles and classes, plus some JavaScript functionality.

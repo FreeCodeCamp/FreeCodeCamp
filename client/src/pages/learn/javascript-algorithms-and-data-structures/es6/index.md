@@ -3,6 +3,7 @@ title: Introduction to the ES6 Challenges
 block: ES6
 superBlock: JavaScript Algorithms and Data Structures
 ---
+
 ## Introduction to the ES6 Challenges
 
 ECMAScript is a standardized version of JavaScript with the goal of unifying the language's specifications and features. As all major browsers and JavaScript-runtimes follow this specification, the term _ECMAScript_ is interchangeable with the term _JavaScript_.

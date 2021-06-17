@@ -6,7 +6,7 @@ const {
 
 const octokit = new Octokit({ auth: secret });
 
-const getFiles = async number => {
+const getFiles = async (number) => {
   /* eslint-disable camelcase */
   const methodProps = {
     owner,
@@ -19,7 +19,7 @@ const getFiles = async number => {
   return files;
 };
 
-const getFilenames = async number => {
+const getFilenames = async (number) => {
   const files = await getFiles(number);
   return files.map(({ filename }) => filename);
 };

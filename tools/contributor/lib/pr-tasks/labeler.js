@@ -14,7 +14,8 @@ const labeler = async (number, prFiles, currentLabels) => {
       /^curriculum\/challenges\//,
       'curriculum/'
     );
-    const regex = /^(docs|curriculum)(?:\/)(english|arabic|chinese|portuguese|russian|spanish)?\/?/;
+    const regex =
+      /^(docs|curriculum)(?:\/)(english|arabic|chinese|portuguese|russian|spanish)?\/?/;
     // need an array to pass to labelsAdder
     const match = filenameReplacement.match(regex) || [];
     const articleType = match[1];
@@ -31,7 +32,7 @@ const labeler = async (number, prFiles, currentLabels) => {
   });
 
   // only adds needed labels which are NOT currently on the PR
-  const newLabels = Object.keys(labelsToAdd).filter(label => {
+  const newLabels = Object.keys(labelsToAdd).filter((label) => {
     return !existingLabels.includes(label);
   });
   if (newLabels.length) {

@@ -57,7 +57,7 @@ console.log('Sweeper started...');
     log.finish();
     console.log('Sweeper complete');
   })
-  .catch(err => {
+  .catch((err) => {
     log.finish();
     console.log(err);
   });

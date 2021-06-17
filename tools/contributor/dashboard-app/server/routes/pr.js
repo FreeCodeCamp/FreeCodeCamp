@@ -3,7 +3,7 @@ const { PR } = require('../models');
 const { reqLimiter } = require('../req-limiter');
 
 router.get('/:number', reqLimiter, async (request, response) => {
-  const prs = await PR.find({}).then(data => data);
+  const prs = await PR.find({}).then((data) => data);
   prs.sort((a, b) => a._id - b._id);
   const indices = prs.reduce((obj, { _id }, index) => {
     obj[_id] = index;
@@ -27,7 +27,7 @@ router.get('/:number', reqLimiter, async (request, response) => {
 
   prs.forEach(({ _id: number, filenames, username, title }) => {
     if (number !== +refNumber) {
-      const matchedFilenames = filenames.filter(filename => {
+      const matchedFilenames = filenames.filter((filename) => {
         return refFilenames.includes(filename);
       });
       if (matchedFilenames.length) {

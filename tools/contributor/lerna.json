@@ -1,4 +1,10 @@
 {
-  "packages": ["dashboard-app", "dashboard-app/client", "dashboard-app/server", "lib", "one-off-scripts"],
+  "packages": [
+    "dashboard-app",
+    "dashboard-app/client",
+    "dashboard-app/server",
+    "lib",
+    "one-off-scripts"
+  ],
   "version": "independent"
 }

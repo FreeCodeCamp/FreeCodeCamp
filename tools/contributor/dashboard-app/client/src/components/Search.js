@@ -11,14 +11,14 @@ class Search extends Component {
     searchValue: '',
     selectedOption: 'pr',
     results: [],
-    message: '',
+    message: ''
   };
 
   clearObj = { searchValue: '', results: [] };
 
   inputRef = React.createRef();
 
-  handleInputEvent = event => {
+  handleInputEvent = (event) => {
     const {
       type,
       key,
@@ -28,10 +28,10 @@ class Search extends Component {
     if (type === 'change') {
       if (this.state.selectedOption === 'pr') {
         if (Number(searchValue) || searchValue === '') {
-          this.setState(prevState => ({ searchValue, results: [] }));
+          this.setState((prevState) => ({ searchValue, results: [] }));
         }
       } else {
-        this.setState(prevState => ({ searchValue, results: [] }));
+        this.setState((prevState) => ({ searchValue, results: [] }));
       }
     } else if (type === 'keypress' && key === 'Enter') {
       this.searchPRs(searchValue);
@@ -47,14 +47,14 @@ class Search extends Component {
     }
   };
 
-  handleOptionChange = changeEvent => {
+  handleOptionChange = (changeEvent) => {
     const selectedOption = changeEvent.target.value;
 
-    this.setState(prevState => ({ selectedOption, ...this.clearObj }));
+    this.setState((prevState) => ({ selectedOption, ...this.clearObj }));
     this.inputRef.current.focus();
   };
 
-  searchPRs = value => {
+  searchPRs = (value) => {
     const { selectedOption } = this.state;
 
     const fetchUrl =
@@ -63,18 +63,18 @@ class Search extends Component {
         : `${ENDPOINT_SEARCH}/?value=${value}`;
 
     fetch(fetchUrl)
-      .then(response => response.json())
+      .then((response) => response.json())
       .then(({ ok, message, results, rateLimitMessage }) => {
         if (ok) {
-          this.setState(prevState => ({ message, results }));
+          this.setState((prevState) => ({ message, results }));
         } else if (rateLimitMessage) {
-          this.setState(prevState => ({
+          this.setState((prevState) => ({
             rateLimitMessage
           }));
         }
       })
       .catch(() => {
-        this.setState(prevState => this.clearObj);
+        this.setState((prevState) => this.clearObj);
       });
   };
 
@@ -90,7 +90,8 @@ class Search extends Component {
       handleOptionChange,
       state
     } = this;
-    const { searchValue, message, results, selectedOption, rateLimitMessage } = state;
+    const { searchValue, message, results, selectedOption, rateLimitMessage } =
+      state;
 
     return (
       <>
@@ -118,10 +119,18 @@ class Search extends Component {
         <button onClick={handleButtonClick}>Search</button>
         {message}
         {selectedOption === 'pr' && (
-          <PrResults searchValue={searchValue} results={results} rateLimitMessage={rateLimitMessage} />
+          <PrResults
+            searchValue={searchValue}
+            results={results}
+            rateLimitMessage={rateLimitMessage}
+          />
         )}
         {selectedOption === 'filename' && (
-          <FilenameResults searchValue={searchValue} results={results} rateLimitMessage={rateLimitMessage} />
+          <FilenameResults
+            searchValue={searchValue}
+            results={results}
+            rateLimitMessage={rateLimitMessage}
+          />
         )}
       </>
     );

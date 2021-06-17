@@ -4,7 +4,6 @@ about: Report issues with content on a specific article, like broken links, typo
 title: ''
 labels: 'type: bug, status: waiting triage'
 assignees: ''
-
 ---
 
 <!--
@@ -15,11 +14,8 @@ please follow this link to send an email to our editorial team https://mailxto.c
 
 **Describe your problem and how to reproduce it:**
 
-
 **Add a Link to the page with the problem:**
 
-
 **Recommended fix, suggestions (how would you update it?):**
-
 
 **If possible, add a screenshot here (you can drag and drop, png, jpg, gif, etc. in this box):**

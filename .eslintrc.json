@@ -7,16 +7,11 @@
   },
   "parser": "babel-eslint",
   "root": true,
-  "extends": [
-    "./.eslintrc-base.json",
-    "plugin:prettier/recommended",
-    "plugin:import/typescript"
-  ],
+  "extends": ["./.eslintrc-base.json", "plugin:import/typescript", "prettier"],
   "plugins": [
     "react",
     "import",
     "prefer-object-spread",
-    "prettier",
     "react-hooks",
     "jsx-a11y",
     "jest-dom",
@@ -38,20 +33,25 @@
     },
     "import/ignore": ["node_modules"]
   },
-  "overrides": [{
-    "files": ["**/*.ts?(x)"],
-    "parser": "@typescript-eslint/parser",
-    "parserOptions": {
-      "project": ["./client/tsconfig.json", "./tools/challenge-helper-scripts/tsconfig.json"]
-     },
-    "extends": [
-      "plugin:@typescript-eslint/recommended",
-      "plugin:@typescript-eslint/recommended-requiring-type-checking"
-    ],
-    "plugins": ["@typescript-eslint"]
-  },
-  {
-    "files": ["./tools/ui-components/**/*.test.[jt]s?(x)"],
-    "extends": ["plugin:testing-library/react", "plugin:jest-dom/recommended"]
-  }]
+  "overrides": [
+    {
+      "files": ["**/*.ts?(x)"],
+      "parser": "@typescript-eslint/parser",
+      "parserOptions": {
+        "project": [
+          "./client/tsconfig.json",
+          "./tools/challenge-helper-scripts/tsconfig.json"
+        ]
+      },
+      "extends": [
+        "plugin:@typescript-eslint/recommended",
+        "plugin:@typescript-eslint/recommended-requiring-type-checking"
+      ],
+      "plugins": ["@typescript-eslint"]
+    },
+    {
+      "files": ["./tools/ui-components/**/*.test.[jt]s?(x)"],
+      "extends": ["plugin:testing-library/react", "plugin:jest-dom/recommended"]
+    }
+  ]
 }
