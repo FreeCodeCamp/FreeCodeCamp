@@ -1,7 +1,6 @@
-/* eslint-disable max-len */
+// /* eslint-disable max-len */
 import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
-import { bindActionCreators } from 'redux';
+import { bindActionCreators, Dispatch, AnyAction } from 'redux';
 import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
 import { Modal, Button, Col, Row } from '@freecodecamp/react-bootstrap';
@@ -11,7 +10,6 @@ import Cup from '../../assets/icons/Cup';
 import DonateForm from './DonateForm';
 import { modalDefaultDonation } from '../../../../config/donation-settings';
 import { useTranslation } from 'react-i18next';
-
 import {
   closeDonationModal,
   isDonationModalOpenSelector,
@@ -21,16 +19,18 @@ import {
 
 import './Donation.css';
 
+console.log(closeDonationModal);
+
 const mapStateToProps = createSelector(
   isDonationModalOpenSelector,
   recentlyClaimedBlockSelector,
-  (show, recentlyClaimedBlock) => ({
+  (show: boolean, recentlyClaimedBlock: string) => ({
     show,
     recentlyClaimedBlock
   })
 );
 
-const mapDispatchToProps = dispatch =>
+const mapDispatchToProps = (dispatch: Dispatch<AnyAction>) =>
   bindActionCreators(
     {
       closeDonationModal,
@@ -39,12 +39,12 @@ const mapDispatchToProps = dispatch =>
     dispatch
   );
 
-const propTypes = {
-  activeDonors: PropTypes.number,
-  closeDonationModal: PropTypes.func.isRequired,
-  executeGA: PropTypes.func,
-  recentlyClaimedBlock: PropTypes.string,
-  show: PropTypes.bool
+type DonateModalProps = {
+  activeDonors: number;
+  closeDonationModal: typeof closeDonationModal;
+  executeGA: typeof executeGA;
+  recentlyClaimedBlock: string;
+  show: boolean;
 };
 
 function DonateModal({
@@ -52,10 +52,14 @@ function DonateModal({
   closeDonationModal,
   executeGA,
   recentlyClaimedBlock
-}) {
+}: DonateModalProps): JSX.Element {
   const [closeLabel, setCloseLabel] = React.useState(false);
   const { t } = useTranslation();
-  const handleProcessing = (duration, amount, action) => {
+  const handleProcessing = (
+    duration: string,
+    amount: number,
+    action: string
+  ) => {
     executeGA({
       type: 'event',
       data: {
@@ -98,10 +102,11 @@ function DonateModal({
     }
   };
 
+  const progressDonationCupClass = { className: 'donation-icon' };
   const blockDonationText = (
     <div className=' text-center block-modal-text'>
       <div className='donation-icon-container'>
-        <Cup className='donation-icon' />
+        <Cup {...progressDonationCupClass} />
       </div>
       <Row>
         {!closeLabel && (
@@ -115,10 +120,12 @@ function DonateModal({
     </div>
   );
 
+  const progressDonationHeartClass = { className: 'donation-icon' };
   const progressDonationText = (
     <div className='text-center progress-modal-text'>
       <div className='donation-icon-container'>
-        <Heart className='donation-icon' />
+        {/* <Heart className='donation-icon' /> */}
+        <Heart {...progressDonationHeartClass} />
       </div>
       <Row>
         {!closeLabel && (
@@ -157,6 +164,5 @@ function DonateModal({
 }
 
 DonateModal.displayName = 'DonateModal';
-DonateModal.propTypes = propTypes;
 
 export default connect(mapStateToProps, mapDispatchToProps)(DonateModal);
