@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTranslation, Trans } from 'react-i18next';
 
-export const DonationSupportText = () => {
+export const DonationSupportText = (): JSX.Element => {
   const { t } = useTranslation();
   return (
     <>
@@ -13,7 +13,7 @@ export const DonationSupportText = () => {
   );
 };
 
-export const DonationText = () => {
+export const DonationText = (): JSX.Element => {
   const { t } = useTranslation();
   return (
     <>
@@ -24,7 +24,7 @@ export const DonationText = () => {
   );
 };
 
-export const DonationOptionsText = () => {
+export const DonationOptionsText = (): JSX.Element => {
   const { t } = useTranslation();
   return (
     <>
@@ -42,7 +42,7 @@ export const DonationOptionsText = () => {
   );
 };
 
-export const DonationOptionsAlertText = () => {
+export const DonationOptionsAlertText = (): JSX.Element => {
   const { t } = useTranslation();
   return (
     <p>
