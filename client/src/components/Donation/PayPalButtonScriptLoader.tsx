@@ -2,15 +2,77 @@
 
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import PropTypes from 'prop-types';
 
 import { scriptLoader, scriptRemover } from '../../utils/scriptLoaders';
 import { Loader } from '../helpers';
 
-export class PayPalButtonScriptLoader extends Component {
-  state = { isSdkLoaded: window.paypal && true, isSubscription: true };
+type PayPalButtonScriptLoaderProps = {
+  clientId: string;
+  createOrder: (
+    data: unknown,
+    actions: {
+      order: {
+        create: (arg0: {
+          purchase_units: {
+            amount: { currency_code: string; value: string };
+          }[];
+        }) => unknown;
+      };
+    }
+  ) => unknown;
+  createSubscription: (
+    data: unknown,
+    actions: {
+      subscription: { create: (arg0: { plan_id: string }) => unknown };
+    }
+  ) => unknown;
+  donationAmount: number;
+  donationDuration: string;
+  isSubscription: boolean;
+  onApprove: (data: {
+    [key: string]: unknown;
+    error: string | null;
+  }) => unknown;
+  onCancel: () => unknown;
+  onError: () => unknown;
+  style: unknown;
+  amount: number;
+  plantId: string;
+};
 
-  static getDerivedStateFromProps(props, state) {
+type PayPalButtonScriptLoaderState = {
+  isSdkLoaded: boolean;
+  isSubscription: boolean;
+};
+
+declare global {
+  interface Window {
+    paypal: {
+      Buttons: {
+        driver: (
+          react: string,
+          { React, ReactDOM }: { React: unknown; ReactDOM: unknown }
+        ) => unknown;
+        [key: string]: unknown;
+      };
+      [key: string]: unknown;
+    };
+  }
+}
+
+export class PayPalButtonScriptLoader extends Component<
+  PayPalButtonScriptLoaderProps,
+  PayPalButtonScriptLoaderState
+> {
+  // Lint says that paypal does not exist on window
+  state = { isSdkLoaded: window.paypal ? true : false, isSubscription: true };
+
+  static displayName = 'PayPalButtonScriptLoader';
+
+  static getDerivedStateFromProps(
+    props: PayPalButtonScriptLoaderProps,
+    state: PayPalButtonScriptLoaderState
+  ): { isSubscription: boolean } | null {
     const { isSubscription } = props;
     if (isSubscription !== state.isSubscription) {
       return { isSubscription: isSubscription };
@@ -18,13 +80,16 @@ export class PayPalButtonScriptLoader extends Component {
     return null;
   }
 
-  componentDidMount() {
+  componentDidMount(): void {
     if (!window.paypal) {
-      this.loadScript(this.props.isSubscription);
+      this.loadScript(this.props.isSubscription, false);
     }
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps: {
+    isSubscription: boolean;
+    style: unknown;
+  }): void {
     if (
       prevProps.isSubscription !== this.state.isSubscription ||
       prevProps.style !== this.props.style
@@ -35,7 +100,7 @@ export class PayPalButtonScriptLoader extends Component {
     }
   }
 
-  loadScript(subscription, deleteScript) {
+  loadScript(subscription: boolean, deleteScript: boolean | undefined): void {
     if (deleteScript) scriptRemover('paypal-sdk');
     let queries = `?client-id=${this.props.clientId}&disable-funding=credit,bancontact,blik,eps,giropay,ideal,mybank,p24,sepa,sofort,venmo`;
     if (subscription) queries += '&vault=true&intent=subscription';
@@ -49,18 +114,24 @@ export class PayPalButtonScriptLoader extends Component {
     );
   }
 
-  onScriptLoad = () => {
+  onScriptLoad = (): void => {
     this.setState({ isSdkLoaded: true });
   };
 
-  captureOneTimePayment(data, actions) {
-    return actions.order.capture().then(details => {
+  captureOneTimePayment(
+    data: unknown,
+    actions: { order: { capture: () => Promise<unknown> } }
+  ): unknown {
+    return actions.order.capture().then((details: unknown) => {
       return this.props.onApprove(details, data);
     });
   }
 
-  render() {
-    const { isSdkLoaded, isSubscription } = this.state;
+  render(): JSX.Element {
+    const {
+      isSdkLoaded,
+      isSubscription
+    }: { isSdkLoaded: boolean; isSubscription: boolean } = this.state;
     const {
       onApprove,
       onError,
@@ -83,8 +154,14 @@ export class PayPalButtonScriptLoader extends Component {
         createSubscription={isSubscription ? createSubscription : null}
         onApprove={
           isSubscription
-            ? (data, actions) => onApprove(data, actions)
-            : (data, actions) => this.captureOneTimePayment(data, actions)
+            ? (
+                data: unknown,
+                actions: { order: { capture: () => Promise<unknown> } }
+              ) => onApprove(data, actions)
+            : (
+                data: unknown,
+                actions: { order: { capture: () => Promise<unknown> } }
+              ) => this.captureOneTimePayment(data, actions)
         }
         onCancel={onCancel}
         onError={onError}
@@ -94,20 +171,6 @@ export class PayPalButtonScriptLoader extends Component {
   }
 }
 
-const propTypes = {
-  clientId: PropTypes.string,
-  createOrder: PropTypes.func,
-  createSubscription: PropTypes.func,
-  donationAmount: PropTypes.number,
-  donationDuration: PropTypes.string,
-  isSubscription: PropTypes.bool,
-  onApprove: PropTypes.func,
-  onCancel: PropTypes.func,
-  onError: PropTypes.func,
-  style: PropTypes.object
-};
-
 PayPalButtonScriptLoader.displayName = 'PayPalButtonScriptLoader';
-PayPalButtonScriptLoader.propTypes = propTypes;
 
 export default PayPalButtonScriptLoader;
