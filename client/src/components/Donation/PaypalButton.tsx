@@ -1,7 +1,8 @@
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable camelcase */
 
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
 import PayPalButtonScriptLoader from './PayPalButtonScriptLoader';
@@ -14,19 +15,66 @@ import {
 } from '../../../../config/donation-settings';
 import { signInLoadingSelector, userSelector } from '../../redux';
 
-const { paypalClientId, deploymentEnv } = envData;
-export class PaypalButton extends Component {
-  constructor(props) {
+type PaypalButtonProps = {
+  addDonation: (data: unknown) => unknown;
+  donationAmount: number;
+  donationDuration: string;
+  handleProcessing: (
+    duration: string,
+    amount: number,
+    action: string
+  ) => unknown;
+  isDonating: boolean;
+  onDonationStateChange: ({}: {
+    processing: boolean;
+    success: boolean;
+    error: string | null;
+  }) => unknown;
+  skipAddDonation: boolean;
+  t: (label: string) => string;
+  theme: string;
+};
+
+type PaypalButtonState = {
+  amount: number;
+  duration: string;
+  planId: string;
+};
+
+const {
+  paypalClientId,
+  deploymentEnv
+}: { paypalClientId: string | null; deploymentEnv: string } = envData;
+
+export class PaypalButton extends Component<
+  PaypalButtonProps,
+  PaypalButtonState
+> {
+  static displayName = 'PaypalButton';
+  constructor(props: PaypalButtonProps) {
     super(props);
     this.handleApproval = this.handleApproval.bind(this);
   }
 
-  state = {};
+  // I can't figure out if it is necessary
+  // state = {};
 
-  static getDerivedStateFromProps(props, state) {
+  static getDerivedStateFromProps(
+    props: PaypalButtonProps,
+    state: PaypalButtonState
+  ): {
+    donationAmount: number;
+    donationDuration: string;
+    paypalConfigTypes: unknown;
+  } | null {
     const { donationAmount, donationDuration } = props;
-
-    const configurationObj = paypalConfigurator(
+    // Help Needed
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+    const configurationObj: {
+      donationAmount: number;
+      donationDuration: string;
+      paypalConfigTypes: unknown;
+    } = paypalConfigurator(
       donationAmount,
       donationDuration,
       paypalConfigTypes[deploymentEnv || 'staging']
@@ -37,7 +85,10 @@ export class PaypalButton extends Component {
     return { ...configurationObj };
   }
 
-  handleApproval = (data, isSubscription) => {
+  handleApproval = (
+    data: { error: string | null; [key: string]: unknown },
+    isSubscription: boolean
+  ): void => {
     const { amount, duration } = this.state;
     const { skipAddDonation = false } = this.props;
 
@@ -56,7 +107,7 @@ export class PaypalButton extends Component {
     });
   };
 
-  render() {
+  render(): JSX.Element | null {
     const { duration, planId, amount } = this.state;
     const { t, theme } = this.props;
     const isSubscription = duration !== 'onetime';
@@ -67,10 +118,22 @@ export class PaypalButton extends Component {
 
     return (
       <div className={'paypal-buttons-container'}>
+        {/* help needed */}
         <PayPalButtonScriptLoader
           amount={amount}
           clientId={paypalClientId}
-          createOrder={(data, actions) => {
+          createOrder={(
+            data: unknown,
+            actions: {
+              order: {
+                create: (arg0: {
+                  purchase_units: {
+                    amount: { currency_code: string; value: string };
+                  }[];
+                }) => unknown;
+              };
+            }
+          ) => {
             return actions.order.create({
               purchase_units: [
                 {
@@ -82,13 +145,21 @@ export class PaypalButton extends Component {
               ]
             });
           }}
-          createSubscription={(data, actions) => {
+          createSubscription={(
+            data: unknown,
+            actions: {
+              subscription: { create: (arg0: { plan_id: string }) => unknown };
+            }
+          ) => {
             return actions.subscription.create({
               plan_id: planId
             });
           }}
           isSubscription={isSubscription}
-          onApprove={data => {
+          onApprove={(data: {
+            [key: string]: unknown;
+            error: string | null;
+          }) => {
             this.handleApproval(data, isSubscription);
           }}
           onCancel={() => {
@@ -117,28 +188,15 @@ export class PaypalButton extends Component {
   }
 }
 
-const propTypes = {
-  addDonation: PropTypes.func,
-  donationAmount: PropTypes.number,
-  donationDuration: PropTypes.string,
-  handleProcessing: PropTypes.func,
-  isDonating: PropTypes.bool,
-  onDonationStateChange: PropTypes.func,
-  skipAddDonation: PropTypes.bool,
-  t: PropTypes.func.isRequired,
-  theme: PropTypes.string
-};
-
 const mapStateToProps = createSelector(
   userSelector,
   signInLoadingSelector,
-  ({ isDonating }, showLoading) => ({
+  ({ isDonating }: { isDonating: boolean }, showLoading: boolean) => ({
     isDonating,
     showLoading
   })
 );
 
 PaypalButton.displayName = 'PaypalButton';
-PaypalButton.propTypes = propTypes;
 
 export default connect(mapStateToProps)(withTranslation()(PaypalButton));
