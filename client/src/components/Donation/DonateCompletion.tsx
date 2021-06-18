@@ -1,17 +1,16 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Alert, Button } from '@freecodecamp/react-bootstrap';
 import Spinner from 'react-spinkit';
 import { useTranslation } from 'react-i18next';
 
 import './Donation.css';
 
-const propTypes = {
-  error: PropTypes.string,
-  processing: PropTypes.bool,
-  redirecting: PropTypes.bool,
-  reset: PropTypes.func.isRequired,
-  success: PropTypes.bool
+type DonateCompletionProps = {
+  error: string | null;
+  processing: boolean;
+  redirecting: boolean;
+  reset: () => unknown;
+  success: boolean;
 };
 
 function DonateCompletion({
@@ -20,7 +19,7 @@ function DonateCompletion({
   success,
   redirecting,
   error = null
-}) {
+}: DonateCompletionProps): JSX.Element {
   /* eslint-disable no-nested-ternary */
   const { t } = useTranslation();
   const style =
@@ -68,6 +67,5 @@ function DonateCompletion({
 }
 
 DonateCompletion.displayName = 'DonateCompletion';
-DonateCompletion.propTypes = propTypes;
 
 export default DonateCompletion;
