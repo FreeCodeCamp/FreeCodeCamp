@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 
 import { scriptLoader, scriptRemover } from '../../utils/scriptLoaders';
-import { Loader } from '../../components/helpers';
+import { Loader } from '../helpers';
 
 export class PayPalButtonScriptLoader extends Component {
   state = { isSdkLoaded: window.paypal && true, isSubscription: true };
