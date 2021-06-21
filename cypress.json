@@ -1,5 +1,6 @@
 {
   "projectId": "ke77ns",
   "baseUrl": "http://localhost:8000",
-  "retries": 4
+  "retries": 4,
+  "videoUploadOnPasses": false
 }

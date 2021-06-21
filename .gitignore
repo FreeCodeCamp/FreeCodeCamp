@@ -116,6 +116,10 @@ coverage
 cypress/videos
 cypress/screenshots
 
+### Cypress generated fixtures and tests ###
+cypress/fixtures/path-data
+cypress/integration/challenge-tests/blocks
+
 # Grunt intermediate storage (https://gruntjs.com/creating-plugins#storing-task-files)
 .grunt
 
@@ -179,3 +183,4 @@ api-server/lib/*
 curriculum/dist
 curriculum/build
 client/static/_redirects
+

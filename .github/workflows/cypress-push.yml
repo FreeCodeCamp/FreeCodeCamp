@@ -1,0 +1,91 @@
+name: Cypress - Push 
+on:
+  push:
+    branches-ignore: 
+      - 'renovate/**'
+
+jobs:
+  cypress-run:
+    name: Test
+    runs-on: ubuntu-18.04
+    strategy:
+      fail-fast: false
+      matrix:
+        containers: [1, 2, 3, 4, 5, 6]
+        browsers: [chrome, firefox]
+        node-version: [14.x]
+    services:
+      mongodb:
+        image: mongo:3.6.19
+        ports:
+          - 27017:27017
+      mailhog:
+        image: mailhog/mailhog
+        ports:
+          - 1025:1025
+
+    steps:
+      # We use .npmrc to set the default version to 0, and prevents download during development.
+      # This installs it specifically in the CI runs.
+      - name: Set Action Environment Variables
+        run: |
+          echo "CYPRESS_RECORD_KEY=${{ secrets.CYPRESS_RECORD_KEY }}" >> $GITHUB_ENV
+          echo "GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}" >> $GITHUB_ENV
+          echo "CYPRESS_INSTALL_BINARY=7.1.0" >> $GITHUB_ENV
+
+      - name: Checkout Source Files
+        uses: actions/checkout@v2
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Cache node modules
+        uses: actions/cache@v2
+        env:
+          cache-name: cache-node-modules
+        with:
+          # npm cache files are stored in `~/.npm` on Linux/macOS
+          path: ~/.npm
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+
+      - name: Set freeCodeCamp Environment Variables
+        run: cp sample.env .env
+
+      - name: Install Dependencies
+        run: |
+          npm ci
+          npm run ensure-env
+          npm run build:curriculum
+
+      - name: Seed Database
+        run: npm run seed
+        
+      - name: Generate fixture data
+        run: npm run precypress:gen:fixtures
+
+      - name: Generate Specfiles for challenges
+        run: npm run precypress:gen:test 
+          
+      - name: Cypress run
+        uses: cypress-io/github-action@v2
+        with:
+          parallel: ${{ env.CYPRESS_RECORD_KEY != 0 }}
+          group: ${{ matrix.browsers }}
+          record: ${{ env.CYPRESS_RECORD_KEY != 0 }}
+          build: npm run build
+          # this should mirror the production build, but for now we're using gatsby
+          # serve instead (the npm script serve:client needs updating!)
+          start: npm run start-ci
+          wait-on: http://localhost:8000
+          # the site builds in about 8 minutes, so there is currently 12 minutes of time
+          # left for testing.
+          wait-on-timeout: 1200
+          config: baseUrl=http://localhost:8000
+          browser: ${{ matrix.browsers }}
+          headless: true
