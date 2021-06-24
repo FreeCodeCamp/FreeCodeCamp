@@ -29,10 +29,13 @@ type PayPalButtonScriptLoaderProps = {
   donationAmount: number;
   donationDuration: string;
   isSubscription: boolean;
-  onApprove: (data: {
-    [key: string]: unknown;
-    error: string | null;
-  }) => unknown;
+  onApprove: (
+    data: {
+      [key: string]: unknown;
+      error: string | null;
+    },
+    actions?: { order: { capture: () => Promise<unknown> } }
+  ) => unknown;
   onCancel: () => unknown;
   onError: () => unknown;
   style: unknown;
@@ -155,11 +158,17 @@ export class PayPalButtonScriptLoader extends Component<
         onApprove={
           isSubscription
             ? (
-                data: unknown,
+                data: {
+                  [key: string]: unknown;
+                  error: string | null;
+                },
                 actions: { order: { capture: () => Promise<unknown> } }
               ) => onApprove(data, actions)
             : (
-                data: unknown,
+                data: {
+                  [key: string]: unknown;
+                  error: string | null;
+                },
                 actions: { order: { capture: () => Promise<unknown> } }
               ) => this.captureOneTimePayment(data, actions)
         }

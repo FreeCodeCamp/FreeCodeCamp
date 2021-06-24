@@ -25,14 +25,21 @@ type PaypalButtonProps = {
     action: string
   ) => unknown;
   isDonating: boolean;
-  onDonationStateChange: ({}: {
+  onDonationStateChange: ({
+    redirecting,
+    processing,
+    success,
+    error
+  }: {
+    redirecting: boolean;
     processing: boolean;
     success: boolean;
-    error: string | null;
-  }) => unknown;
-  skipAddDonation: boolean;
+    error: string;
+  }) => void;
+  skipAddDonation?: boolean;
   t: (label: string) => string;
   theme: string;
+  isSubscription?: boolean;
 };
 
 type PaypalButtonState = {
@@ -44,7 +51,8 @@ type PaypalButtonState = {
 const {
   paypalClientId,
   deploymentEnv
-}: { paypalClientId: string | null; deploymentEnv: string } = envData;
+}: { paypalClientId: string | null; deploymentEnv: 'staging' | 'live' } =
+  envData;
 
 export class PaypalButton extends Component<
   PaypalButtonProps,
@@ -60,8 +68,8 @@ export class PaypalButton extends Component<
   // state = {};
 
   static getDerivedStateFromProps(
-    props: PaypalButtonProps,
-    state: PaypalButtonState
+    props: PaypalButtonProps
+    // state: PaypalButtonState
   ): {
     donationAmount: number;
     donationDuration: string;
@@ -79,9 +87,10 @@ export class PaypalButton extends Component<
       donationDuration,
       paypalConfigTypes[deploymentEnv || 'staging']
     );
-    if (state === configurationObj) {
-      return null;
-    }
+    // re-implement it as a deep comparison.
+    // if (state === configurationObj) {
+    //   return null;
+    // }
     return { ...configurationObj };
   }
 
@@ -164,6 +173,7 @@ export class PaypalButton extends Component<
           }}
           onCancel={() => {
             this.props.onDonationStateChange({
+              redirecting: false,
               processing: false,
               success: false,
               error: t('donate.failed-pay')
@@ -171,6 +181,7 @@ export class PaypalButton extends Component<
           }}
           onError={() =>
             this.props.onDonationStateChange({
+              redirecting: false,
               processing: false,
               success: false,
               error: t('donate.try-again')

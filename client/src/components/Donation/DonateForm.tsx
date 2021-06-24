@@ -1,6 +1,9 @@
+/* eslint-disable @typescript-eslint/unbound-method */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-return */
+
 /* eslint-disable no-nested-ternary */
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
 import {
@@ -35,22 +38,44 @@ import {
 
 import './Donation.css';
 
-const numToCommas = num =>
+const numToCommas = (num: number): string =>
   num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
 
-const propTypes = {
-  addDonation: PropTypes.func,
-  defaultTheme: PropTypes.string,
-  donationFormState: PropTypes.object,
-  email: PropTypes.string,
-  handleProcessing: PropTypes.func,
-  isDonating: PropTypes.bool,
-  isMinimalForm: PropTypes.bool,
-  isSignedIn: PropTypes.bool,
-  showLoading: PropTypes.bool.isRequired,
-  t: PropTypes.func.isRequired,
-  theme: PropTypes.string,
-  updateDonationFormState: PropTypes.func
+type DonateFormState = {
+  donationAmount: number;
+  donationDuration: string;
+  processing: boolean;
+  redirecting: boolean;
+  success: boolean;
+  error: string;
+};
+
+type DonateFormProps = {
+  addDonation: (data: unknown) => unknown;
+  defaultTheme: string;
+  email: string;
+  handleProcessing: (
+    duration: string,
+    amount: number,
+    action: string
+  ) => unknown;
+  donationFormState: DonateFormState;
+  isDonating: boolean;
+  isMinimalForm: boolean;
+  isSignedIn: boolean;
+  showLoading: boolean;
+  t: (
+    label: string,
+    { usd, hours }?: { usd?: string | number; hours?: string }
+  ) => string;
+  theme: string;
+  updateDonationFormState: (state: {
+    redirecting: boolean;
+    processing: boolean;
+    success: boolean;
+    error: string;
+  }) => unknown;
+  amounts: { [key: string]: number };
 };
 
 const mapStateToProps = createSelector(
@@ -58,7 +83,12 @@ const mapStateToProps = createSelector(
   isSignedInSelector,
   donationFormStateSelector,
   userSelector,
-  (showLoading, isSignedIn, donationFormState, { email, theme }) => ({
+  (
+    showLoading: DonateFormProps['showLoading'],
+    isSignedIn: DonateFormProps['isSignedIn'],
+    donationFormState: DonateFormState,
+    { email, theme }: { email: string; theme: string }
+  ) => ({
     isSignedIn,
     showLoading,
     donationFormState,
@@ -72,8 +102,12 @@ const mapDispatchToProps = {
   updateDonationFormState
 };
 
-class DonateForm extends Component {
-  constructor(...args) {
+class DonateForm extends Component<DonateFormProps, DonateFormState> {
+  static displayName = 'DonateForm';
+  durations: { month: string; onetime: string };
+  amounts: { month: number[]; onetime: number[] };
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  constructor(...args: any) {
     super(...args);
 
     this.durations = durationsConfig;
@@ -85,7 +119,10 @@ class DonateForm extends Component {
 
     this.state = {
       ...initialAmountAndDuration,
-      processing: false
+      processing: false,
+      redirecting: false,
+      success: false,
+      error: ''
     };
 
     this.onDonationStateChange = this.onDonationStateChange.bind(this);
@@ -101,23 +138,31 @@ class DonateForm extends Component {
     this.resetDonation();
   }
 
-  onDonationStateChange(donationState) {
+  onDonationStateChange(donationState: {
+    redirecting: boolean;
+    processing: boolean;
+    success: boolean;
+    error: string;
+  }) {
     // scroll to top
     window.scrollTo(0, 0);
     this.props.updateDonationFormState(donationState);
   }
 
-  getActiveDonationAmount(durationSelected, amountSelected) {
+  getActiveDonationAmount(
+    durationSelected: 'month' | 'onetime',
+    amountSelected: number
+  ): number {
     return this.amounts[durationSelected].includes(amountSelected)
       ? amountSelected
       : defaultAmount[durationSelected] || this.amounts[durationSelected][0];
   }
 
-  convertToTimeContributed(amount) {
+  convertToTimeContributed(amount: number) {
     return numToCommas((amount / 100) * 50);
   }
 
-  getFormattedAmountLabel(amount) {
+  getFormattedAmountLabel(amount: number): string {
     return `${numToCommas(amount / 100)}`;
   }
 
@@ -141,17 +186,17 @@ class DonateForm extends Component {
     return donationBtnLabel;
   }
 
-  handleSelectDuration(donationDuration) {
+  handleSelectDuration(donationDuration: 'month' | 'onetime') {
     const donationAmount = this.getActiveDonationAmount(donationDuration, 0);
     this.setState({ donationDuration, donationAmount });
   }
 
-  handleSelectAmount(donationAmount) {
+  handleSelectAmount(donationAmount: number) {
     this.setState({ donationAmount });
   }
 
-  renderAmountButtons(duration) {
-    return this.amounts[duration].map(amount => (
+  renderAmountButtons(duration: 'month' | 'onetime') {
+    return this.amounts[duration].map((amount: number) => (
       <ToggleButton
         className='amount-value'
         id={`${this.durations[duration]}-donation-${amount}`}
@@ -224,7 +269,7 @@ class DonateForm extends Component {
     ) : null;
   }
 
-  hideAmountOptionsCB(hide) {
+  hideAmountOptionsCB(hide: boolean) {
     this.setState({ processing: hide });
   }
 
@@ -271,7 +316,13 @@ class DonateForm extends Component {
     return this.props.updateDonationFormState({ ...defaultDonationFormState });
   }
 
-  renderCompletion(props) {
+  renderCompletion(props: {
+    processing: boolean;
+    redirecting: boolean;
+    success: boolean;
+    error: string | null;
+    reset: () => unknown;
+  }) {
     return <DonateCompletion {...props} />;
   }
 
@@ -333,9 +384,7 @@ class DonateForm extends Component {
             reset: this.resetDonation
           })}
         <div className={processing || redirecting ? 'hide' : ''}>
-          {isMinimalForm
-            ? this.renderModalForm(processing)
-            : this.renderPageForm(processing)}
+          {isMinimalForm ? this.renderModalForm() : this.renderPageForm()}
         </div>
       </>
     );
@@ -343,7 +392,6 @@ class DonateForm extends Component {
 }
 
 DonateForm.displayName = 'DonateForm';
-DonateForm.propTypes = propTypes;
 
 export default connect(
   mapStateToProps,
