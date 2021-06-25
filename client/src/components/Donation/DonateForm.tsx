@@ -110,7 +110,10 @@ class DonateForm extends Component<DonateFormProps, DonateFormState> {
   constructor(props: any) {
     super(props);
 
-    this.durations = durationsConfig;
+    this.durations = durationsConfig as {
+      month: 'monthly';
+      onetime: 'one-time';
+    };
     this.amounts = amountsConfig;
 
     const initialAmountAndDuration = this.props.isMinimalForm
