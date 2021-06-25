@@ -41,8 +41,8 @@ const mapDispatchToProps = (dispatch: Dispatch<AnyAction>) =>
 
 type DonateModalProps = {
   activeDonors: number;
-  closeDonationModal: typeof closeDonationModal;
-  executeGA: typeof executeGA;
+  closeDonationModal: () => void;
+  executeGA: () => void;
   recentlyClaimedBlock: string;
   show: boolean;
 };
