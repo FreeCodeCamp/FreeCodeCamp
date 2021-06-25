@@ -34,7 +34,7 @@ type PaypalButtonProps = {
     redirecting: boolean;
     processing: boolean;
     success: boolean;
-    error: string;
+    error: string | null;
   }) => void;
   skipAddDonation?: boolean;
   t: (label: string) => string;
@@ -110,6 +110,7 @@ export class PaypalButton extends Component<
 
     // Show success anytime because the payment has gone through paypal
     this.props.onDonationStateChange({
+      redirecting: false,
       processing: false,
       success: true,
       error: data.error ? data.error : null

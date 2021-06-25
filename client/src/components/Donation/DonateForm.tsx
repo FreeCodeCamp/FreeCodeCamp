@@ -243,30 +243,35 @@ class DonateForm extends Component<DonateFormProps, DonateFormState> {
           id='Duration'
           onSelect={this.handleSelectDuration}
         >
-          {Object.keys(this.durations).map(duration => (
-            <Tab
-              eventKey={duration}
-              key={duration}
-              title={this.durations[duration]}
-            >
-              <Spacer />
-              <h3>{t('donate.gift-amount')}</h3>
-              <div>
-                <ToggleButtonGroup
-                  animation={`false`}
-                  className='amount-values'
-                  name='amounts'
-                  onChange={this.handleSelectAmount}
-                  type='radio'
-                  value={this.getActiveDonationAmount(duration, donationAmount)}
-                >
-                  {this.renderAmountButtons(duration)}
-                </ToggleButtonGroup>
+          {(Object.keys(this.durations) as ['month' | 'onetime']).map(
+            duration => (
+              <Tab
+                eventKey={duration}
+                key={duration}
+                title={this.durations[duration]}
+              >
                 <Spacer />
-                {this.renderDonationDescription()}
-              </div>
-            </Tab>
-          ))}
+                <h3>{t('donate.gift-amount')}</h3>
+                <div>
+                  <ToggleButtonGroup
+                    animation={`false`}
+                    className='amount-values'
+                    name='amounts'
+                    onChange={this.handleSelectAmount}
+                    type='radio'
+                    value={this.getActiveDonationAmount(
+                      duration,
+                      donationAmount
+                    )}
+                  >
+                    {this.renderAmountButtons(duration)}
+                  </ToggleButtonGroup>
+                  <Spacer />
+                  {this.renderDonationDescription()}
+                </div>
+              </Tab>
+            )
+          )}
         </Tabs>
       </div>
     ) : null;
