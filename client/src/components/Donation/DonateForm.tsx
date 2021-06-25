@@ -104,7 +104,7 @@ const mapDispatchToProps = {
 
 class DonateForm extends Component<DonateFormProps, DonateFormState> {
   static displayName = 'DonateForm';
-  durations: { month: string; onetime: string };
+  durations: { month: 'monthly'; onetime: 'one-time' };
   amounts: { month: number[]; onetime: number[] };
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   constructor(props: any) {
