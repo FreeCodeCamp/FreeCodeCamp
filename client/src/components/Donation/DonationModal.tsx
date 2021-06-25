@@ -102,6 +102,7 @@ function DonateModal({
     }
   };
 
+  // TODO: find better way to pass className
   const progressDonationCupClass = { className: 'donation-icon' };
   const blockDonationText = (
     <div className=' text-center block-modal-text'>
