@@ -107,8 +107,8 @@ class DonateForm extends Component<DonateFormProps, DonateFormState> {
   durations: { month: string; onetime: string };
   amounts: { month: number[]; onetime: number[] };
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  constructor(...args: any) {
-    super(...args);
+  constructor(props: any) {
+    super(props);
 
     this.durations = durationsConfig;
     this.amounts = amountsConfig;
