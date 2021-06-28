@@ -251,6 +251,10 @@
       "type": "string",
       "default": "default"
     },
+    "sound": {
+      "type": "boolean",
+      "default": false
+    },
     "profileUI": {
       "type": "object",
       "default": {
@@ -276,9 +280,7 @@
       "default": {}
     },
     "donationEmails": {
-      "type": [
-        "string"
-      ]
+      "type": ["string"]
     },
     "isDonating": {
       "type": "boolean",

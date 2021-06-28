@@ -30,12 +30,13 @@ const { apiLocation } = envData;
 
 // TODO: update types for actions
 interface IShowSettingsProps {
-  createFlashMessage: (paylaod: string[]) => void;
+  createFlashMessage: (payload: { type: string; message: string }) => void;
   isSignedIn: boolean;
   navigate: (location: string) => void;
   showLoading: boolean;
   submitNewAbout: () => void;
   toggleNightMode: (theme: string) => void;
+  toggleSoundMode: (sound: boolean) => void;
   updateInternetSettings: () => void;
   updateIsHonest: () => void;
   updatePortfolio: () => void;
@@ -61,6 +62,7 @@ const mapDispatchToProps = {
   navigate,
   submitNewAbout,
   toggleNightMode: (theme: string) => updateUserFlag({ theme }),
+  toggleSoundMode: (sound: boolean) => updateUserFlag({ sound }),
   updateInternetSettings: updateUserFlag,
   updateIsHonest: updateUserFlag,
   updatePortfolio: updateUserFlag,
@@ -76,6 +78,7 @@ export function ShowSettings(props: IShowSettingsProps): JSX.Element {
     isSignedIn,
     submitNewAbout,
     toggleNightMode,
+    toggleSoundMode,
     user: {
       completedChallenges,
       email,
@@ -102,6 +105,7 @@ export function ShowSettings(props: IShowSettingsProps): JSX.Element {
       picture,
       points,
       theme,
+      sound,
       location,
       name,
       githubProfile,
@@ -144,8 +148,10 @@ export function ShowSettings(props: IShowSettingsProps): JSX.Element {
             name={name}
             picture={picture}
             points={points}
+            sound={sound}
             submitNewAbout={submitNewAbout}
             toggleNightMode={toggleNightMode}
+            toggleSoundMode={toggleSoundMode}
             username={username}
           />
           <Spacer />

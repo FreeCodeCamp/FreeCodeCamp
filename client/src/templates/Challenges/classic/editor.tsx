@@ -8,6 +8,8 @@ import React, {
 import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
 import Loadable from '@loadable/component';
+import * as Tone from 'tone';
+import store from 'store';
 
 import {
   canFocusEditorSelector,
@@ -42,7 +44,10 @@ import type {
 } from 'monaco-editor/esm/vs/editor/editor.api';
 
 import './editor.css';
+import { editorToneOptions } from '../../../utils/tone/editor-config';
+import { editorNotes } from '../../../utils/tone/editor-notes';
 
+// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call
 const MonacoEditor = Loadable(() => import('react-monaco-editor'));
 
 interface EditorProps {
@@ -206,6 +211,16 @@ const Editor = (props: EditorProps): JSX.Element => {
     indexjs: { ...initialData },
     indexjsx: { ...initialData }
   });
+  const player = useRef<{
+    sampler: Tone.Sampler | undefined;
+    noteIndex: number;
+    shouldPlay: boolean;
+  }>({
+    // eslint-disable-next-line no-undefined
+    sampler: undefined,
+    noteIndex: 0,
+    shouldPlay: store.get('fcc-sound') as boolean
+  });
 
   const data = dataRef.current[fileKey];
 
@@ -273,6 +288,12 @@ const Editor = (props: EditorProps): JSX.Element => {
     const editableRegion = getEditableRegion();
 
     if (editableRegion.length === 2) decorateForbiddenRanges(editableRegion);
+
+    if (!player.current.sampler) {
+      player.current.sampler = new Tone.Sampler(
+        editorToneOptions
+      ).toDestination();
+    }
 
     // TODO: do we need to return this?
     return { model };
@@ -584,6 +605,17 @@ const Editor = (props: EditorProps): JSX.Element => {
       editableRegion.startLineNumber - 1,
       editableRegion.endLineNumber + 1
     ];
+
+    if (player.current.sampler?.loaded && player.current.shouldPlay) {
+      if (Tone.context.state !== 'running') Tone.context.resume();
+      player.current.sampler.triggerAttack(
+        editorNotes[player.current.noteIndex]
+      );
+      player.current.noteIndex++;
+      if (player.current.noteIndex >= editorNotes.length) {
+        player.current.noteIndex = 0;
+      }
+    }
     updateFile({ key, editorValue, editableRegionBoundaries });
   };
 
@@ -708,8 +740,7 @@ const Editor = (props: EditorProps): JSX.Element => {
     // TODO: handle the case that the editable region reaches the bottom of the
     // editor
     return (
-      data.model?.getDecorationRange(data.endEditDecId)
-        ?.startLineNumber ?? 1
+      data.model?.getDecorationRange(data.endEditDecId)?.startLineNumber ?? 1
     );
   }
 

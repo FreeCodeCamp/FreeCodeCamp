@@ -13,6 +13,8 @@ import { modalDefaultDonation } from '../../../../config/donation-settings';
 import { useTranslation } from 'react-i18next';
 import { goToAnchor } from 'react-scrollable-anchor';
 import { isLocationSuperBlock } from '../../utils/path-parsers';
+import store from 'store';
+import * as Tone from 'tone';
 
 import {
   closeDonationModal,
@@ -77,6 +79,12 @@ function DonateModal({
 
   useEffect(() => {
     if (show) {
+      const playSound = store.get('fcc-sound');
+      const player = new Tone.Player(
+        'https://cdn.nhcarrigan.com/content/audio/donate.mp3'
+      ).toDestination();
+      if (Tone.context.state !== 'running') Tone.context.resume();
+      player.autostart = playSound;
       executeGA({ type: 'modal', data: '/donation-modal' });
       executeGA({
         type: 'event',
