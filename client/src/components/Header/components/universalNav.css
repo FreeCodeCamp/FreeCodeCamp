@@ -245,6 +245,14 @@
   display: inherit;
   text-align: left;
   margin-top: calc(-1 * var(--header-height));
+  max-height: calc(100vh - var(--header-height));
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.display-menu::-webkit-scrollbar {
+  display: none;
 }
 
 .toggle-button-nav {
@@ -334,6 +342,10 @@
 
   .ais-Hits {
     min-width: calc(100% - 30px);
+  }
+
+  .display-menu {
+    max-height: calc(100vh - var(--header-height) * 2);
   }
 }
 
