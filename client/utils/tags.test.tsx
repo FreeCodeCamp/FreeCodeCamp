@@ -1,8 +1,9 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { injectConditionalTags } from './tags';
 
 describe('Tags', () => {
   it('injectConditionalTags should inject gap dev homelocation', () => {
-    let injectedTags = injectConditionalTags(
+    const injectedTags = injectConditionalTags(
       [],
       'https://www.freecodecamp.dev'
     );
@@ -10,7 +11,7 @@ describe('Tags', () => {
     expect(injectedTags[0].props.id === 'gap-dev').toBeTruthy();
   });
   it('injectConditionalTags should inject gap for english homeLocation', () => {
-    let injectedTags = injectConditionalTags(
+    const injectedTags = injectConditionalTags(
       [],
       'https://www.freecodecamp.org'
     );
@@ -18,7 +19,7 @@ describe('Tags', () => {
     expect(injectedTags[0].props.id === 'gap-org').toBeTruthy();
   });
   it('injectConditionalTags should inject gap for espanol homeLocation', () => {
-    let injectedTags = injectConditionalTags(
+    const injectedTags = injectConditionalTags(
       [],
       'https://www.freecodecamp.org/espanol'
     );
@@ -26,7 +27,7 @@ describe('Tags', () => {
     expect(injectedTags[0].props.id === 'gap-org').toBeTruthy();
   });
   it('injectConditionalTags should inject cap and chinese gap for chinese homeLocation', () => {
-    let injectedTags = injectConditionalTags(
+    const injectedTags = injectConditionalTags(
       [],
       'https://chinese.freecodecamp.org'
     );
@@ -35,7 +36,7 @@ describe('Tags', () => {
     expect(injectedTags[1].props.id === 'gap-org-chinese').toBeTruthy();
   });
   it('injectConditionalTags should not inject tags for localhost homeLocation', () => {
-    let injectedTags = injectConditionalTags([], 'http://localhost:8000/');
+    const injectedTags = injectConditionalTags([], 'http://localhost:8000/');
     expect(injectedTags.length === 0).toBeTruthy();
   });
 });
