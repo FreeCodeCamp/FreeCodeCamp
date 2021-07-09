@@ -1,6 +1,6 @@
 import { getTransformers } from '../rechallenge/transformers';
 import { cssToHtml, jsToHtml, concatHtml } from '../rechallenge/builders.js';
-import { challengeTypes } from '../../../../utils/challengeTypes';
+import { challengeTypes } from '../../../../utils/challenge-types';
 import createWorker from './worker-executor';
 import {
   createTestFramer,

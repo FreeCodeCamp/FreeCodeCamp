@@ -8,7 +8,7 @@ import {
   backEndProject,
   frontEndProject,
   pythonProject
-} from '../../../../utils/challengeTypes';
+} from '../../../../utils/challenge-types';
 
 interface SubmitProps {
   isShouldCompletionModalOpen: boolean;

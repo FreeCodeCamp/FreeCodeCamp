@@ -50,7 +50,7 @@ const {
 const MongoIds = require('./utils/mongoIds');
 const ChallengeTitles = require('./utils/challengeTitles');
 const { challengeSchemaValidator } = require('../schema/challengeSchema');
-const { challengeTypes } = require('../../client/utils/challengeTypes');
+const { challengeTypes } = require('../../client/utils/challenge-types');
 
 const { toSortedArray } = require('../../utils/sort-files');
 

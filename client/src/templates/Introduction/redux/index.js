@@ -1,5 +1,5 @@
 import { createAction, handleActions } from 'redux-actions';
-import { createTypes } from '../../../../utils/stateManagement';
+import { createTypes } from '../../../../utils/state-management';
 
 export const ns = 'curriculumMap';
 

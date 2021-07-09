@@ -1,6 +1,6 @@
 import { createAction, handleActions } from 'redux-actions';
 
-import { createTypes } from '../../../../utils/stateManagement';
+import { createTypes } from '../../../../utils/state-management';
 
 import { createPoly } from '../../../../../utils/polyvinyl';
 import { getLines } from '../../../../../utils/get-lines';
@@ -11,7 +11,7 @@ import codeStorageEpic from './code-storage-epic';
 
 import { createExecuteChallengeSaga } from './execute-challenge-saga';
 import { createCurrentChallengeSaga } from './current-challenge-saga';
-import { challengeTypes } from '../../../../utils/challengeTypes';
+import { challengeTypes } from '../../../../utils/challenge-types';
 import { getTargetEditor } from '../utils/getTargetEditor';
 import { completedChallengesSelector } from '../../../redux';
 import { isEmpty } from 'lodash-es';

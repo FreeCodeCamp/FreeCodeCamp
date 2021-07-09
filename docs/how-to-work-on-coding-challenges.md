@@ -39,7 +39,7 @@ The practice projects have some additional tooling to help create new projects a
 ---
 id: Unique identifier (alphanumerical, MongoDB_id)
 title: 'Challenge Title'
-challengeType: Integer, defined in `client/utils/challengeTypes.js`
+challengeType: Integer, defined in `client/utils/challenge-types.ts`
 videoUrl: 'url of video explanation'
 forumTopicId: 12345
 ---
@@ -488,6 +488,6 @@ Once you have verified that each challenge you've worked on passes the tests, [p
 
 Creating and Editing Challenges:
 
-1. [Challenge types](https://github.com/freeCodeCamp/freeCodeCamp/blob/main/client/utils/challengeTypes.js#L1-L13) - what the numeric challenge type values mean (enum).
+1. [Challenge types](https://github.com/freeCodeCamp/freeCodeCamp/blob/main/client/utils/challenge-types.ts#L1-L13) - what the numeric challenge type values mean (enum).
 
 2. [Contributing to FreeCodeCamp - Writing ES6 Challenge Tests](https://www.youtube.com/watch?v=iOdD84OSfAE#t=2h49m55s) - a video following [Ethan Arrowood](https://twitter.com/ArrowoodTech) as he contributes to the old version of the curriculum.

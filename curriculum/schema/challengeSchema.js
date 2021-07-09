@@ -1,7 +1,7 @@
 const Joi = require('joi');
 Joi.objectId = require('joi-objectid')(Joi);
 
-const { challengeTypes } = require('../../client/utils/challengeTypes');
+const { challengeTypes } = require('../../client/utils/challenge-types');
 
 const slugRE = new RegExp('^[a-z0-9-]+$');
 

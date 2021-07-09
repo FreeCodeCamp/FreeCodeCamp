@@ -19,7 +19,7 @@ import {
 } from './';
 import postUpdate$ from '../templates/Challenges/utils/postUpdate$';
 import { isGoodXHRStatus } from '../templates/Challenges/utils';
-import { backEndProject } from '../../utils/challengeTypes';
+import { backEndProject } from '../../utils/challenge-types';
 
 const key = 'fcc-failed-updates';
 
