@@ -136,6 +136,7 @@
     "@types/loadable__component": "5.13.4",
     "@types/lodash-es": "4.17.4",
     "@types/prismjs": "1.16.6",
+    "@types/psl": "^1.1.0",
     "@types/react-dom": "17.0.9",
     "@types/react-helmet": "6.1.2",
     "@types/react-instantsearch-dom": "6.10.2",
