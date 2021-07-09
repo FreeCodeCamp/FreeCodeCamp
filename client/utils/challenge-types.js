@@ -1,19 +1,25 @@
 const html = 0;
 const js = 1;
-export const backend = 2;
+const backend = 2;
 const zipline = 3;
-export const frontEndProject = 3;
-export const backEndProject = 4;
+const frontEndProject = 3;
+const backEndProject = 4;
 const bonfire = 5;
 const modern = 6;
 const step = 7;
 const quiz = 8;
 const invalid = 9;
-export const pythonProject = 10;
+const pythonProject = 10;
 const video = 11;
 const codeally = 12;
 
-export const challengeTypes = {
+// individual exports
+exports.backend = backend;
+exports.frontEndProject = frontEndProject;
+exports.backEndProject = backEndProject;
+exports.pythonProject = pythonProject;
+
+exports.challengeTypes = {
   html,
   js,
   backend,
@@ -31,14 +37,13 @@ export const challengeTypes = {
 };
 
 // turn challengeType to file ext
-export const pathsMap = {
+exports.pathsMap = {
   [html]: 'html',
   [js]: 'js',
   [bonfire]: 'js'
 };
-
 // determine the component to view for each challenge
-export const viewTypes = {
+exports.viewTypes = {
   [html]: 'classic',
   [js]: 'classic',
   [bonfire]: 'classic',
@@ -54,7 +59,7 @@ export const viewTypes = {
 };
 
 // determine the type of submit function to use for the challenge on completion
-export const submitTypes = {
+exports.submitTypes = {
   [html]: 'tests',
   [js]: 'tests',
   [bonfire]: 'tests',
@@ -74,4 +79,4 @@ export const submitTypes = {
 };
 
 // determine which help forum questions should be posted to
-export { default as helpCategoryMap } from './help-category-map.json';
+exports.helpCategoryMap = require('./help-category-map.json');
