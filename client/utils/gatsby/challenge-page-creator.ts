@@ -1,7 +1,12 @@
-const path = require('path');
-const { dasherize } = require('../../../utils/slugs');
+import path from 'path';
+import { dasherize } from '../../../utils/slugs';
 
-const { viewTypes } = require('../challengeTypes');
+import { viewTypes } from '../challenge-types';
+
+import type {
+  ChallengeNode,
+  ChallengeMetaType
+} from '../../src/redux/prop-types';
 
 const backend = path.resolve(
   __dirname,
@@ -42,21 +47,54 @@ const views = {
   // quiz: Quiz
 };
 
-const getNextChallengePath = (node, index, nodeArray) => {
+interface Node {
+  node: ChallengeNode;
+}
+
+const getNextChallengePath = (
+  _node: ChallengeNode,
+  index: number,
+  nodeArray: Node[]
+): string => {
   const next = nodeArray[index + 1];
   return next ? next.node.fields.slug : '/learn';
 };
 
-const getPrevChallengePath = (node, index, nodeArray) => {
+const getPrevChallengePath = (
+  _node: ChallengeNode,
+  index: number,
+  nodeArray: Node[]
+): string => {
   const prev = nodeArray[index - 1];
   return prev ? prev.node.fields.slug : '/learn';
 };
 
-const getTemplateComponent = challengeType => views[viewTypes[challengeType]];
+function getTemplateComponent(challengeType: number): string {
+  return views[
+    viewTypes[challengeType as keyof typeof viewTypes] as keyof typeof views
+  ];
+}
 
-exports.createChallengePages =
-  createPage =>
-  ({ node }, index, thisArray) => {
+// TODO: Fix this
+interface CreatePageNodeKwarg {
+  path: string;
+  component: string;
+  context: {
+    challengeMeta: Omit<
+      ChallengeMetaType,
+      'introPath' | 'removeComments' | 'helpCategory'
+    > &
+      Pick<ChallengeNode, 'template'> & {
+        required: ChallengeNode['required'] | [];
+      };
+    slug: string;
+  };
+}
+
+export function createChallengePages(
+  createPage: (kwarg: CreatePageNodeKwarg) => void
+): (kwarg: Node, index: number, thisArray: Node[]) => void {
+  return function ({ node }: Node, index: number, thisArray: Node[]): void {
     const {
       superBlock,
       block,
@@ -69,7 +107,7 @@ exports.createChallengePages =
     // TODO: challengeType === 7 and isPrivate are the same, right? If so, we
     // should remove one of them.
 
-    return createPage({
+    createPage({
       path: slug,
       component: getTemplateComponent(challengeType),
       context: {
@@ -86,35 +124,64 @@ exports.createChallengePages =
       }
     });
   };
+}
 
-exports.createBlockIntroPages = createPage => edge => {
-  const {
-    fields: { slug },
-    frontmatter: { block }
-  } = edge.node;
+interface Edge {
+  node: {
+    fields: { slug: string };
+    frontmatter: {
+      block: string;
+      superBlock: string;
+    };
+  };
+}
 
-  return createPage({
-    path: slug,
-    component: intro,
-    context: {
-      block: dasherize(block),
-      slug
-    }
-  });
-};
+interface CreatePageEdgeKwarg {
+  path: string;
+  component: string;
+  context: {
+    block?: string;
+    superBlock?: string;
+    slug: string;
+  };
+}
 
-exports.createSuperBlockIntroPages = createPage => edge => {
-  const {
-    fields: { slug },
-    frontmatter: { superBlock }
-  } = edge.node;
+export function createBlockIntroPages(
+  createPage: (kwarg: CreatePageEdgeKwarg) => void
+): (edge: Edge) => void {
+  return function (edge: Edge) {
+    const {
+      fields: { slug },
+      frontmatter: { block }
+    } = edge.node;
 
-  return createPage({
-    path: slug,
-    component: superBlockIntro,
-    context: {
-      superBlock,
-      slug
-    }
-  });
-};
+    createPage({
+      path: slug,
+      component: intro,
+      context: {
+        block: dasherize(block),
+        slug
+      }
+    });
+  };
+}
+
+export function createSuperBlockIntroPages(
+  createPage: (kwarg: CreatePageEdgeKwarg) => void
+): (edge: Edge) => void {
+  return function (edge: Edge) {
+    const {
+      fields: { slug },
+      frontmatter: { superBlock }
+    } = edge.node;
+
+    createPage({
+      path: slug,
+      component: superBlockIntro,
+      context: {
+        superBlock,
+        slug
+      }
+    });
+  };
+}
