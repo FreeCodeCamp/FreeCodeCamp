@@ -66,24 +66,15 @@
       },
       "basic-html-cat-photo-app": {
         "title": "基礎 HTML 貓圖應用",
-        "intro": [
-          "",
-          ""
-        ]
+        "intro": ["", ""]
       },
       "basic-css-cafe-menu": {
         "title": "基礎 CSS 咖啡菜單",
-        "intro": [
-          "",
-          ""
-        ]
+        "intro": ["", ""]
       },
       "css-variables-skyline": {
         "title": "CSS 變量 Skyline",
-        "intro": [
-          "",
-          ""
-        ]
+        "intro": ["", ""]
       }
     }
   },
@@ -170,28 +161,19 @@
       },
       "basic-javascript-rpg-game": {
         "title": "基礎 JavaScript RPG 遊戲",
-        "intro": [
-          "",
-          ""
-        ]
+        "intro": ["", ""]
       },
       "intermediate-javascript-calorie-counter": {
         "title": "中級 JavaScript 卡路里計算器",
-        "intro": [
-          "",
-          ""
-        ]
+        "intro": ["", ""]
       },
       "functional-programming-spreadsheet": {
         "title": "函數式編程電子表格",
-        "intro": [
-          "",
-          ""
-        ]
+        "intro": ["", ""]
       }
     }
   },
-  "front-end-libraries": {
+  "front-end-development-libraries": {
     "title": "前端開發庫",
     "intro": [
       "你已經熟悉了 HTML、CSS 和 JavaScript。現在學習行業中一些流行的前端庫來提升你的技能吧。",
@@ -245,7 +227,7 @@
           "你已經知道了如何使用 Redux 管理共享數據流，是時候將這些知識與 React 結合起來了。在 React 和 Redux 課程中，你將構建一個 React 組件，並學習如何使用 Redux 在組件級別本地管理狀態，以及在整個應用程序中管理狀態。"
         ]
       },
-      "front-end-libraries-projects": {
+      "front-end-development-libraries-projects": {
         "title": "前端開發庫項目",
         "intro": [
           "現在是時候應用你的前端開發庫技術進行測試。用 Bootstrap、jQuery、Sass、React、和 Redux 構建 5 個項目，測試你到現在所學到的知識。",
@@ -289,28 +271,21 @@
       },
       "d3-dashboard": {
         "title": "D3 面板",
-        "intro": [
-          "",
-          ""
-        ]
+        "intro": ["", ""]
       }
     }
   },
   "relational-databases": {
     "title": "關係型數據庫",
-    "intro": [
-      "佔位符"
-    ],
+    "intro": ["佔位符"],
     "blocks": {
       "learn-relational-databases": {
         "title": "學習關係型數據庫",
-        "intro": [
-          "佔位符"
-        ]
+        "intro": ["佔位符"]
       }
     }
   },
-  "apis-and-microservices": {
+  "back-end-development-and-apis": {
     "title": "APIs 和 微服務",
     "intro": [
       "在這之前，你只是在前端使用 JavaScript 來給頁面添加交互、解決算法挑戰，或構建一個 SP。但 JavaScript 也可以用於後端或者服務器來構建整個 web 應用程序。",
@@ -343,7 +318,7 @@
           "在 MongoDB 和 Mongoose 課程中，你將學習使用的基本知識，包括如何建立模型，保存、刪除並在數據庫中查找文檔。"
         ]
       },
-      "apis-and-microservices-projects": {
+      "back-end-development-and-apis-projects": {
         "title": "API 和微服務項目",
         "intro": [
           "你之前用過 API，但是現在你知道 npm、Node、Express、MongoDB 和 Mongoose，是時候創建應用 了。用你到現在所學的所有知識來創建 5 個不同的微服務，這些微服務是使用範圍有限的小應用。",

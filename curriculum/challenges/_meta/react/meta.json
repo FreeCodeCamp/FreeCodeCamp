@@ -13,7 +13,7 @@
       "src": "https://unpkg.com/react-dom@16.4.0/umd/react-dom.production.min.js"
     }
   ],
-  "superBlock": "front-end-libraries",
+  "superBlock": "front-end-development-libraries",
   "superOrder": 3,
   "challengeOrder": [
     [

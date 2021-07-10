@@ -1,0 +1,32 @@
+{
+  "name": "Front End Development Libraries Projects",
+  "isUpcomingChange": false,
+  "dashedName": "front-end-development-libraries-projects",
+  "order": 8,
+  "time": "150 hours",
+  "template": "",
+  "required": [],
+  "superBlock": "front-end-development-libraries",
+  "superOrder": 3,
+  "challengeOrder": [
+    [
+      "bd7158d8c442eddfaeb5bd13",
+      "Build a Random Quote Machine"
+    ],
+    [
+      "bd7157d8c242eddfaeb5bd13",
+      "Build a Markdown Previewer"
+    ],
+    [
+      "587d7dbc367417b2b2512bae",
+      "Build a Drum Machine"
+    ],
+    [
+      "bd7158d8c442eddfaeb5bd17",
+      "Build a JavaScript Calculator"
+    ],
+    [
+      "bd7158d8c442eddfaeb5bd0f",
+      "Build a 25 + 5 Clock"
+    ]
+  ]}

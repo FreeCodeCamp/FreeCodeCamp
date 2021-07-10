@@ -2,7 +2,7 @@
 
 const locations = {
   index:
-    'learn/apis-and-microservices/managing-packages-with-npm/' +
+    'learn/back-end-development-and-apis/managing-packages-with-npm/' +
     'how-to-use-package-json-the-core-of-any-node-js-project-or-npm-package'
 };
 

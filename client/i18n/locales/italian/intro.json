@@ -66,24 +66,15 @@
       },
       "basic-html-cat-photo-app": {
         "title": "HTML base: App per Foto di Gatti",
-        "intro": [
-          "",
-          ""
-        ]
+        "intro": ["", ""]
       },
       "basic-css-cafe-menu": {
         "title": "CSS base: Menu Caffetteria",
-        "intro": [
-          "",
-          ""
-        ]
+        "intro": ["", ""]
       },
       "css-variables-skyline": {
         "title": "Variabili CSS: Skyline",
-        "intro": [
-          "",
-          ""
-        ]
+        "intro": ["", ""]
       }
     }
   },
@@ -170,28 +161,19 @@
       },
       "basic-javascript-rpg-game": {
         "title": "Gioco RPG di base in Javascript",
-        "intro": [
-          "",
-          ""
-        ]
+        "intro": ["", ""]
       },
       "intermediate-javascript-calorie-counter": {
         "title": "Contatore Calorie in Javascript Intermedio",
-        "intro": [
-          "",
-          ""
-        ]
+        "intro": ["", ""]
       },
       "functional-programming-spreadsheet": {
         "title": "Foglio di calcolo in Programmazione Funzionale",
-        "intro": [
-          "",
-          ""
-        ]
+        "intro": ["", ""]
       }
     }
   },
-  "front-end-libraries": {
+  "front-end-development-libraries": {
     "title": "Librerie di sviluppo Front End",
     "intro": [
       "Ora che hai familiarità con HTML, CSS, e JavaScript, aumenta le tue competenze conoscendo alcune delle più popolari librerie di front-end del settore.",
@@ -245,7 +227,7 @@
           "Ora che sai come gestire il flusso di dati condivisi con Redux, è il momento di combinare tale conoscenza con React. Nei corsi React e Redux, costruirai un componente React e imparerai a gestire lo stato localmente al livello dei componenti e in tutta l'applicazione con Redux."
         ]
       },
-      "front-end-libraries-projects": {
+      "front-end-development-libraries-projects": {
         "title": "Progetti sulle Librerie di Sviluppo Front-End",
         "intro": [
           "È tempo di mettere alla prova le tue capacità di sviluppo con le librerie di sviluppo del front-end. Usa Bootstrap, jQuery, Sass, React e Redux per costruire 5 progetti che testeranno tutto quello che hai imparato fino a questo punto.",
@@ -289,28 +271,21 @@
       },
       "d3-dashboard": {
         "title": "Dashboard D3",
-        "intro": [
-          "",
-          ""
-        ]
+        "intro": ["", ""]
       }
     }
   },
   "relational-databases": {
     "title": "Database relazionali",
-    "intro": [
-      "segnaposto"
-    ],
+    "intro": ["segnaposto"],
     "blocks": {
       "learn-relational-databases": {
         "title": "Conosci i Database Relazionali",
-        "intro": [
-          "segnaposto"
-        ]
+        "intro": ["segnaposto"]
       }
     }
   },
-  "apis-and-microservices": {
+  "back-end-development-and-apis": {
     "title": "API e Microservizi",
     "intro": [
       "Fino a questo punto, hai usato solo JavaScript sul front-end per aggiungere interattività a una pagina, risolvere sfide algoritmiche o costruire una Single Page Application. Ma JavaScript può essere utilizzato anche nel backend (cioè lato server), per costruire intere applicazioni web.",
@@ -343,7 +318,7 @@
           "Nei corsi di MongoDB e Mongoose, imparerai i fondamenti di come si lavora con dati persistenti, incluso come impostare un modello, e salvare, cancellare e trovare documenti nel database."
         ]
       },
-      "apis-and-microservices-projects": {
+      "back-end-development-and-apis-projects": {
         "title": "Progetti di API e Microservizi",
         "intro": [
           "Hai già lavorato con le API prima, ma ora che conosci npm, Node, Express, MongoDB e Mongoose, è ora di costruirle. Costruisci su tutto quello che hai imparato fino a questo punto per creare 5 diversi microservizi, che sono applicazioni più piccole, con un ambito di applicazione ristretto.",

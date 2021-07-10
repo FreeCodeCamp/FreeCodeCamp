@@ -111,9 +111,9 @@ const ShowProjectLinks = (props: IShowProjectLinksProps): JSX.Element => {
       const legacyCerts = [
         { title: 'Responsive Web Design' },
         { title: 'JavaScript Algorithms and Data Structures' },
-        { title: 'Front End Libraries' },
+        { title: 'Front End Development Libraries' },
         { title: 'Data Visualization' },
-        { title: 'APIs and Microservices' },
+        { title: 'Back End Development and APIs' },
         { title: 'Legacy Information Security and Quality Assurance' }
       ];
       return legacyCerts.map((cert, ind) => {

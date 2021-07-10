@@ -20,7 +20,13 @@ Per esempio, se vuoi attivare la lingua Dothraki, il tuo oggetto `all-langs.js` 
 ```js
 const availableLangs = {
   client: ['english', 'espanol', 'chinese', 'chinese-traditional', 'dothraki'],
-  curriculum: ['english', 'espanol', 'chinese', 'chinese-traditional', 'dothraki']
+  curriculum: [
+    'english',
+    'espanol',
+    'chinese',
+    'chinese-traditional',
+    'dothraki'
+  ]
 };
 
 const i18nextCodes = {
@@ -28,7 +34,7 @@ const i18nextCodes = {
   espanol: 'es',
   chinese: 'zh',
   'chinese-traditional': 'zh-Hant',
-  'dothraki': 'mis',
+  dothraki: 'mis'
 };
 
 const langDisplayNames = {
@@ -36,7 +42,7 @@ const langDisplayNames = {
   espanol: 'Español',
   chinese: '中文（简体字）',
   'chinese-traditional': '中文（繁體字）',
-  'dothraki': 'Dothraki',
+  dothraki: 'Dothraki'
 };
 
 const langCodes = {
@@ -44,7 +50,7 @@ const langCodes = {
   espanol: 'es-419',
   chinese: 'zh',
   'chinese-traditional': 'zh-Hant',
-  'dothraki': 'mis',
+  dothraki: 'mis'
 };
 ```
 
@@ -75,11 +81,11 @@ const algoliaIndices = {
   dothraki: {
     name: 'news',
     searchPage: 'https://www.freecodecamp.org/news/search/'
-  },
+  }
 };
 ```
 
-Quindi, devi dire al client quali certificazioni sono tradotte e quali sono ancora in inglese. Apri il file `utils/is-audited.js`. Aggiungi a `auditedCerts` una nuova chiave con il valore della tua lingua in `availableLangs`. Assegna a quella chiave un array contenente i *nomi con trattino* per le certificazioni che sono state tradotte. Riferisciti ai dati esistenti per i nomi con trattino.
+Quindi, devi dire al client quali certificazioni sono tradotte e quali sono ancora in inglese. Apri il file `utils/is-audited.js`. Aggiungi a `auditedCerts` una nuova chiave con il valore della tua lingua in `availableLangs`. Assegna a quella chiave un array contenente i _nomi con trattino_ per le certificazioni che sono state tradotte. Riferisciti ai dati esistenti per i nomi con trattino.
 
 Continuando il lavoro per attivare Dothraki, abbiamo tradotto le prime tre certificazioni:
 
@@ -92,23 +98,23 @@ const auditedCerts = {
   chinese: [
     'responsive-web-design',
     'javascript-algorithms-and-data-structures',
-    'front-end-libraries',
+    'front-end-development-libraries',
     'data-visualization',
-    'apis-and-microservices',
+    'back-end-development-and-apis',
     'quality-assurance'
   ],
   'chinese-traditional': [
     'responsive-web-design',
     'javascript-algorithms-and-data-structures',
-    'front-end-libraries',
+    'front-end-development-libraries',
     'data-visualization',
-    'apis-and-microservices',
+    'back-end-development-and-apis',
     'quality-assurance'
   ],
-  'dothraki': [
+  dothraki: [
     'responsive-web-design',
     'javascript-algorithms-and-data-structures',
-    'front-end-libraries'
+    'front-end-development-libraries'
   ]
 };
 ```
@@ -128,4 +134,4 @@ Una volta che avrai i file, li dovrai mettere nelle cartelle giuste. Per le sfid
 
 Una volta che questi saranno in posizione, dovresti essere in grado di eseguire `npm run develop` per vedere la versione tradotta di freeCodeCamp.
 
-> [!ATTENTION] Anche se puoi farei delle traduzioni localmente per i test, ricordiamo che le traduzioni *non* devono essere inviate attraverso GitHub ma solo tramite Crowdin. Assicurati di resettare il tuo codebase locale dopo che avrai finito con i test.
+> [!ATTENTION] Anche se puoi farei delle traduzioni localmente per i test, ricordiamo che le traduzioni _non_ devono essere inviate attraverso GitHub ma solo tramite Crowdin. Assicurati di resettare il tuo codebase locale dopo che avrai finito con i test.

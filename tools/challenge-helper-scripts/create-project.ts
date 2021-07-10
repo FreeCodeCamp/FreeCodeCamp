@@ -10,9 +10,9 @@ import { blockNameify } from '../../utils/block-nameify';
 const superBlocks = [
   'responsive-web-design',
   'javascript-algorithms-and-data-structures',
-  'front-end-libraries',
+  'front-end-development-libraries',
   'data-visualization',
-  'apis-and-microservices',
+  'back-end-development-and-apis',
   'quality-assurance',
   'scientific-computing-with-python',
   'data-analysis-with-python',

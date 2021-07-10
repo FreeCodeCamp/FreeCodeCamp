@@ -36,6 +36,12 @@ jobs:
       - name: Checkout Source Files
         uses: actions/checkout@v2
 
+      - name: Checkout client config
+        uses: actions/checkout@v2
+        with:
+          repository: freeCodeCamp/client-config
+          path: client-config
+
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v2
         with:
@@ -50,6 +56,11 @@ jobs:
           npm ci
           npm run ensure-env
           npm run build:curriculum
+
+      - name: Move serve.json to client
+        run: |
+          mkdir -p client/public
+          cp client-config/serve.json client/public/serve.json
 
       - name: Seed Database
         run: npm run seed

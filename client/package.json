@@ -31,6 +31,7 @@
     "format:utils": "prettier-eslint --write --trailing-comma none --single-quote './utils/**/*.js'",
     "lint": "node ./i18n/schema-validation.js",
     "serve": "gatsby serve -p 8000",
+    "serve-ci": "serve -l 8000 -c ../serve.json public",
     "prestand-alone": "npm run prebuild",
     "stand-alone": "gatsby develop",
     "validate-keys": "node ./i18n/validate-keys.js"
@@ -159,6 +160,7 @@
     "react-test-renderer": "16.14.0",
     "redux-saga-test-plan": "4.0.1",
     "webpack": "5.44.0",
+    "serve": "^12.0.0",
     "webpack-cli": "4.7.2"
   }
 }

@@ -4,7 +4,7 @@
   "dashedName": "basic-node-and-express",
   "order": 2,
   "time": "5 hours",
-  "superBlock": "apis-and-microservices",
+  "superBlock": "back-end-development-and-apis",
   "superOrder": 5,
   "challengeOrder": [
     [

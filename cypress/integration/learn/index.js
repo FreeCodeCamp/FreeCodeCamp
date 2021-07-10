@@ -13,7 +13,7 @@ const superBlockNames = [
   'JavaScript Algorithms and Data Structures Certification',
   'Front End Development Libraries Certification',
   'Data Visualization Certification',
-  'APIs and Microservices Certification',
+  'Back End Development and APIs Certification',
   'Quality Assurance Certification',
   'Scientific Computing with Python Certification',
   'Data Analysis with Python Certification',

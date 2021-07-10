@@ -1,0 +1,31 @@
+{
+  "name": "Back End Development and APIs Projects",
+  "isUpcomingChange": false,
+  "dashedName": "back-end-development-and-apis-projects",
+  "order": 4,
+  "time": "150 hours",
+  "superBlock": "back-end-development-and-apis",
+  "superOrder": 5,
+  "challengeOrder": [
+    [
+      "bd7158d8c443edefaeb5bdef",
+      "Timestamp Microservice"
+    ],
+    [
+      "bd7158d8c443edefaeb5bdff",
+      "Request Header Parser Microservice"
+    ],
+    [
+      "bd7158d8c443edefaeb5bd0e",
+      "URL Shortener Microservice"
+    ],
+    [
+      "5a8b073d06fa14fcfde687aa",
+      "Exercise Tracker"
+    ],
+    [
+      "bd7158d8c443edefaeb5bd0f",
+      "File Metadata Microservice"
+    ]
+  ]
+}

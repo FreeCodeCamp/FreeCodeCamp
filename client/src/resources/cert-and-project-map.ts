@@ -3,12 +3,13 @@ const responsiveWebBase =
 const jsAlgoBase =
   '/learn/javascript-algorithms-and-data-structures/' +
   'javascript-algorithms-and-data-structures-projects';
-const feLibsBase = '/learn/front-end-libraries/front-end-libraries-projects';
+const feLibsBase =
+  '/learn/front-end-development-libraries/front-end-development-libraries-projects';
 const dataVisBase = '/learn/data-visualization/data-visualization-projects';
 const relationalDatabasesBase =
   '/learn/relational-databases/learn-relational-databases';
 const apiMicroBase =
-  '/learn/apis-and-microservices/apis-and-microservices-projects';
+  '/learn/back-end-development-and-apis/back-end-development-and-apis-projects';
 const qaBase = '/learn/quality-assurance/quality-assurance-projects';
 const infoSecBase = '/learn/information-security/information-security-projects';
 const sciCompPyBase =
@@ -363,39 +364,39 @@ const certMap = [
   },
   {
     id: '561acd10cb82ac38a17513bc',
-    title: 'Front End Libraries',
-    certSlug: 'front-end-libraries',
+    title: 'Front End Development Libraries',
+    certSlug: 'front-end-development-libraries',
     flag: 'isFrontEndLibsCert',
     projects: [
       {
         id: 'bd7158d8c442eddfaeb5bd13',
         title: 'Build a Random Quote Machine',
         link: `${feLibsBase}/build-a-random-quote-machine`,
-        certSlug: 'front-end-libraries'
+        certSlug: 'front-end-development-libraries'
       },
       {
         id: 'bd7157d8c242eddfaeb5bd13',
         title: 'Build a Markdown Previewer',
         link: `${feLibsBase}/build-a-markdown-previewer`,
-        certSlug: 'front-end-libraries'
+        certSlug: 'front-end-development-libraries'
       },
       {
         id: '587d7dbc367417b2b2512bae',
         title: 'Build a Drum Machine',
         link: `${feLibsBase}/build-a-drum-machine`,
-        certSlug: 'front-end-libraries'
+        certSlug: 'front-end-development-libraries'
       },
       {
         id: 'bd7158d8c442eddfaeb5bd17',
         title: 'Build a JavaScript Calculator',
         link: `${feLibsBase}/build-a-javascript-calculator`,
-        certSlug: 'front-end-libraries'
+        certSlug: 'front-end-development-libraries'
       },
       {
         id: 'bd7158d8c442eddfaeb5bd0f',
         title: 'Build a 25 + 5 Clock',
         link: `${feLibsBase}/build-a-25--5-clock`,
-        certSlug: 'front-end-libraries'
+        certSlug: 'front-end-development-libraries'
       }
     ]
   },
@@ -477,39 +478,39 @@ const certMap = [
   },
   {
     id: '561add10cb82ac38a17523bc',
-    title: 'APIs and Microservices',
-    certSlug: 'apis-and-microservices',
+    title: 'Back End Development and APIs',
+    certSlug: 'back-end-development-and-apis',
     flag: 'isApisMicroservicesCert',
     projects: [
       {
         id: 'bd7158d8c443edefaeb5bdef',
         title: 'Timestamp Microservice',
         link: `${apiMicroBase}/timestamp-microservice`,
-        certSlug: 'apis-and-microservices'
+        certSlug: 'back-end-development-and-apis'
       },
       {
         id: 'bd7158d8c443edefaeb5bdff',
         title: 'Request Header Parser Microservice',
         link: `${apiMicroBase}/request-header-parser-microservice`,
-        certSlug: 'apis-and-microservices'
+        certSlug: 'back-end-development-and-apis'
       },
       {
         id: 'bd7158d8c443edefaeb5bd0e',
         title: 'URL Shortener Microservice',
         link: `${apiMicroBase}/url-shortener-microservice`,
-        certSlug: 'apis-and-microservices'
+        certSlug: 'back-end-development-and-apis'
       },
       {
         id: '5a8b073d06fa14fcfde687aa',
         title: 'Exercise Tracker',
         link: `${apiMicroBase}/exercise-tracker`,
-        certSlug: 'apis-and-microservices'
+        certSlug: 'back-end-development-and-apis'
       },
       {
         id: 'bd7158d8c443edefaeb5bd0f',
         title: 'File Metadata Microservice',
         link: `${apiMicroBase}/file-metadata-microservice`,
-        certSlug: 'apis-and-microservices'
+        certSlug: 'back-end-development-and-apis'
       }
     ]
   },
