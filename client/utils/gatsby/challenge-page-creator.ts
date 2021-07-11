@@ -51,23 +51,23 @@ interface Node {
   node: ChallengeNode;
 }
 
-const getNextChallengePath = (
+function getNextChallengePath(
   _node: ChallengeNode,
   index: number,
   nodeArray: Node[]
-): string => {
+): string {
   const next = nodeArray[index + 1];
   return next ? next.node.fields.slug : '/learn';
-};
+}
 
-const getPrevChallengePath = (
+function getPrevChallengePath(
   _node: ChallengeNode,
   index: number,
   nodeArray: Node[]
-): string => {
+): string {
   const prev = nodeArray[index - 1];
   return prev ? prev.node.fields.slug : '/learn';
-};
+}
 
 function getTemplateComponent(challengeType: number): string {
   return views[
