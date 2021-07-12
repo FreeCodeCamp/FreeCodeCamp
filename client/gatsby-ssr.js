@@ -5,7 +5,7 @@ import { I18nextProvider } from 'react-i18next';
 
 import i18n from './i18n/config';
 import { createStore } from './src/redux/createStore';
-import layoutSelector from './utils/gatsby/layoutSelector';
+import layoutSelector from './utils/gatsby/layout-selector';
 import { getheadTagComponents, getPostBodyComponents } from './utils/tags';
 
 const store = createStore();

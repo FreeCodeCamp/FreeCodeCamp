@@ -1,8 +1,9 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import React from 'react';
 import { Provider } from 'react-redux';
 import ShallowRenderer from 'react-test-renderer/shallow';
 
-import layoutSelector from './layoutSelector';
+import layoutSelector from './layout-selector';
 import { createStore } from '../../src/redux/createStore';
 import FourOhFourPage from '../../src/pages/404';
 import Learn from '../../src/pages/learn';
@@ -11,10 +12,18 @@ import Certification from '../../src/pages/certification';
 jest.mock('../../src/analytics');
 
 const store = createStore();
-function getComponentNameAndProps(elementType, pathname) {
-  const shallow = new ShallowRenderer();
+
+interface NameAndProps {
+  props: Record<string, unknown>;
+  name: string;
+}
+function getComponentNameAndProps(
+  elementType: React.JSXElementConstructor<never>,
+  pathname: string
+): NameAndProps {
+  const shallow = ShallowRenderer.createRenderer();
   const LayoutReactComponent = layoutSelector({
-    element: { type: elementType },
+    element: { type: elementType, props: {}, key: '' },
     props: {
       location: {
         pathname
@@ -24,8 +33,12 @@ function getComponentNameAndProps(elementType, pathname) {
   shallow.render(<Provider store={store}>{LayoutReactComponent}</Provider>);
   const renderedComponent = shallow.getRenderOutput();
   return {
-    props: renderedComponent.props,
+    props: renderedComponent.props as Record<string, unknown>,
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     name: renderedComponent.type.WrappedComponent.displayName
+    // Not really sure what to do with .WrappedComponent here
   };
 }
 

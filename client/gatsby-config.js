@@ -4,7 +4,7 @@ const {
   buildChallenges,
   replaceChallengeNode,
   localeChallengesRootDir
-} = require('./utils/buildChallenges');
+} = require('./utils/build-challenges');
 
 const { clientLocale, curriculumLocale, homeLocation } = envData;
 

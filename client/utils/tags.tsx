@@ -6,13 +6,13 @@ import env from '../../config/env.json';
 
 const { homeLocation } = env;
 
-export const getheadTagComponents = () => {
+export function getheadTagComponents(): JSX.Element[] {
   const socialImage =
     'https://cdn.freecodecamp.org/platform/universal/fcc_meta_1920X1080-indigo.png';
 
   const pathToBootstrap = withPrefix('/css/bootstrap.min.css');
 
-  let headTags = [
+  const headTags = [
     <link
       as='style'
       href={pathToBootstrap}
@@ -54,24 +54,33 @@ export const getheadTagComponents = () => {
     />
   ];
   return injectConditionalTags(headTags, homeLocation);
-};
+}
 
 // strips subpath and protocol
 
-export const injectConditionalTags = (tagsArray, homeLocation) => {
+export function injectConditionalTags(
+  tagsArray: JSX.Element[],
+  homeLocation: string
+): JSX.Element[] {
   if (homeLocation.includes('localhost')) return tagsArray;
 
-  const parsedHomeUrl = psl.parse(new URL(homeLocation).host);
+  const parsedHomeUrl = psl.parse(
+    new URL(homeLocation).host
+  ) as psl.ParsedDomain;
 
   // inject gap all production languages except Chinese
   if (parsedHomeUrl.subdomain === 'www' && parsedHomeUrl.tld === 'org') {
     tagsArray.push(
       <script
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
         href={withPrefix('/misc/gap-org.js')}
         id='gap-org'
         key='gap-org'
         rel='stylesheet'
       />
+      // Invalid href and rel attributes for a <script>
+      // Is this supposed to be a <link>?
     );
   }
 
@@ -79,6 +88,8 @@ export const injectConditionalTags = (tagsArray, homeLocation) => {
   if (parsedHomeUrl.subdomain === 'www' && parsedHomeUrl.tld === 'dev') {
     tagsArray.push(
       <script
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
         href={withPrefix('/misc/gap-dev.js')}
         id='gap-dev'
         key='gap-dev'
@@ -90,13 +101,17 @@ export const injectConditionalTags = (tagsArray, homeLocation) => {
   // inject cap and Chinese gap for production Chinese
   if (parsedHomeUrl.subdomain === 'chinese' && parsedHomeUrl.tld === 'org') {
     tagsArray.push(
-      <scripts
+      <script
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
         href={withPrefix('/misc/cap.js')}
         id='cap'
         key='cap'
         rel='stylesheet'
       />,
       <script
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
         href={withPrefix('/misc/gap-org-chinese.js')}
         id='gap-org-chinese'
         key='gap-org-chinese'
@@ -105,10 +120,10 @@ export const injectConditionalTags = (tagsArray, homeLocation) => {
     );
   }
   return tagsArray;
-};
+}
 
-export const getPostBodyComponents = pathname => {
-  let scripts = [];
+export function getPostBodyComponents(pathname: string): JSX.Element[] {
+  const scripts = [];
   const mathJaxScriptElement = (
     <script
       async={false}
@@ -127,4 +142,4 @@ export const getPostBodyComponents = pathname => {
   }
 
   return scripts.filter(Boolean);
-};
+}

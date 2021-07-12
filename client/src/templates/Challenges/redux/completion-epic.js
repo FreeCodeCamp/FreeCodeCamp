@@ -28,7 +28,7 @@ import {
 } from '../../../redux';
 
 import postUpdate$ from '../utils/postUpdate$';
-import { challengeTypes, submitTypes } from '../../../../utils/challengeTypes';
+import { challengeTypes, submitTypes } from '../../../../utils/challenge-types';
 
 function postChallenge(update, username) {
   const saveChallenge = postUpdate$(update).pipe(

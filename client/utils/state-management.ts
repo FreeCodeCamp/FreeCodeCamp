@@ -1,4 +1,7 @@
-export function createTypes(types = [], ns = 'annon') {
+export function createTypes(
+  types: string[] = [],
+  ns = 'annon'
+): Record<string, string> {
   return types.reduce(
     (types, action) => ({
       ...types,

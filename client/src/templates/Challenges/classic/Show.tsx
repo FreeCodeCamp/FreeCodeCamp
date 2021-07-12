@@ -26,7 +26,7 @@ import DesktopLayout from './DesktopLayout';
 import Hotkeys from '../components/Hotkeys';
 import { getGuideUrl } from '../utils';
 import store from 'store';
-import { challengeTypes } from '../../../../utils/challengeTypes';
+import { challengeTypes } from '../../../../utils/challenge-types';
 import { isContained } from '../../../utils/is-contained';
 import {
   ChallengeNodeType,

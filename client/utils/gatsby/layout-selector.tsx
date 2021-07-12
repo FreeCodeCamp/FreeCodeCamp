@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import {
   CertificationLayout,
@@ -8,7 +7,14 @@ import {
 import FourOhFourPage from '../../src/pages/404';
 import { isChallenge } from '../../src/utils/path-parsers';
 
-export default function layoutSelector({ element, props }) {
+interface LayoutSelectorProps {
+  element: JSX.Element;
+  props: { location: { pathname: string } };
+}
+export default function layoutSelector({
+  element,
+  props
+}: LayoutSelectorProps): JSX.Element {
   const {
     location: { pathname }
   } = props;
@@ -37,9 +43,3 @@ export default function layoutSelector({ element, props }) {
     );
   }
 }
-
-layoutSelector.propTypes = {
-  element: PropTypes.any,
-  location: PropTypes.objectOf({ pathname: PropTypes.string }),
-  props: PropTypes.any
-};

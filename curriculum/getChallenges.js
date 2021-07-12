@@ -14,7 +14,7 @@ const {
 const { isAuditedCert } = require('../utils/is-audited');
 const { dasherize } = require('../utils/slugs');
 const { createPoly } = require('../utils/polyvinyl');
-const { helpCategoryMap } = require('../client/utils/challengeTypes');
+const { helpCategoryMap } = require('../client/utils/challenge-types');
 const { curriculum: curriculumLangs } =
   require('../config/i18n/all-langs').availableLangs;
 
