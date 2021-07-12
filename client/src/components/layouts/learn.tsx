@@ -3,13 +3,7 @@ import { createSelector } from 'reselect';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import { Loader } from '../../components/helpers';
-import {
-  userSelector,
-  userFetchStateSelector,
-  isSignedInSelector,
-  tryToShowDonationModal
-} from '../../redux';
-import createRedirect from '../create-redirect';
+import { tryToShowDonationModal, userFetchStateSelector } from '../../redux';
 import DonateModal from '../Donation/DonationModal';
 
 import './prism.css';
@@ -23,18 +17,10 @@ type FetchState = {
   errored: boolean;
 };
 
-type User = {
-  acceptedPrivacyTerms: boolean;
-};
-
 const mapStateToProps = createSelector(
   userFetchStateSelector,
-  isSignedInSelector,
-  userSelector,
-  (fetchState: FetchState, isSignedIn, user: User) => ({
-    fetchState,
-    isSignedIn,
-    user
+  (fetchState: FetchState) => ({
+    fetchState
   })
 );
 
@@ -42,14 +28,10 @@ const mapDispatchToProps = {
   tryToShowDonationModal
 };
 
-const RedirectEmailSignUp = createRedirect('/email-sign-up');
-
 type LearnLayoutProps = {
-  isSignedIn?: boolean;
-  fetchState: FetchState;
-  user: User;
-  tryToShowDonationModal: () => void;
   children?: React.ReactNode;
+  fetchState: FetchState;
+  tryToShowDonationModal: () => void;
 };
 
 class LearnLayout extends Component<LearnLayoutProps> {
@@ -69,17 +51,11 @@ class LearnLayout extends Component<LearnLayoutProps> {
   render() {
     const {
       fetchState: { pending, complete },
-      isSignedIn,
-      user: { acceptedPrivacyTerms },
       children
     } = this.props;
 
     if (pending && !complete) {
       return <Loader fullScreen={true} />;
-    }
-
-    if (isSignedIn && !acceptedPrivacyTerms) {
-      return <RedirectEmailSignUp />;
     }
 
     return (

@@ -1,0 +1,444 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<EmailSignUp /> Logged in users it should render correctly 1`] = `
+Array [
+  <div
+    className="spacer"
+    style={
+      Object {
+        "height": "1px",
+        "padding": "15px 0",
+      }
+    }
+  />,
+  <div
+    className="container"
+  >
+    <div
+      className="row"
+    >
+      <div
+        className="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12"
+      >
+        <h1>
+          misc.email-signup
+        </h1>
+      </div>
+    </div>
+  </div>,
+  <div
+    className="spacer"
+    style={
+      Object {
+        "height": "1px",
+        "padding": "15px 0",
+      }
+    }
+  />,
+  <section
+    className="email-sign-up"
+  >
+    <div
+      className="container"
+    >
+      <div
+        className="row"
+      >
+        <div
+          className="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12"
+        >
+          <strong>
+            misc.quincy
+          </strong>
+          <div
+            className="spacer"
+            style={
+              Object {
+                "height": "1px",
+                "padding": "15px 0",
+              }
+            }
+          />
+          <p>
+            misc.email-blast
+          </p>
+        </div>
+        <div
+          className="col-md-4 col-md-offset-2 col-sm-5 col-sm-offset-1 col-xs-12"
+        >
+          <button
+            className="btn btn-lg btn-primary btn-block"
+            data-testid="accept_newsletter"
+            disabled={false}
+            onClick={[Function]}
+            type="button"
+          >
+            buttons.yes-please
+          </button>
+          <div
+            className="button-spacer"
+            style={
+              Object {
+                "padding": "5px 0",
+              }
+            }
+          />
+        </div>
+        <div
+          className="col-md-4 col-sm-5 col-xs-12"
+        >
+          <button
+            className="btn btn-lg btn-primary btn-block"
+            data-testid="decline_newsletter"
+            disabled={false}
+            onClick={[Function]}
+            type="button"
+          >
+            buttons.no-thanks
+          </button>
+        </div>
+        <div
+          className="col-xs-12"
+        >
+          <div
+            className="spacer"
+            style={
+              Object {
+                "height": "1px",
+                "padding": "15px 0",
+              }
+            }
+          />
+          <div
+            className="spacer"
+            style={
+              Object {
+                "height": "1px",
+                "padding": "15px 0",
+              }
+            }
+          />
+        </div>
+      </div>
+    </div>
+  </section>,
+  <section>
+    <div
+      className="container"
+    >
+      <div
+        className="row"
+      >
+        <div
+          className="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12"
+        >
+          <div
+            className="intro-description"
+          >
+            <strong>
+              learn.read-this.heading
+            </strong>
+            <div
+              className="spacer"
+              style={
+                Object {
+                  "height": "1px",
+                  "padding": "15px 0",
+                }
+              }
+            />
+            <p>
+              learn.read-this.p1
+            </p>
+            <p>
+              learn.read-this.p2
+            </p>
+            <p>
+              learn.read-this.p3
+            </p>
+            <p>
+              learn.read-this.p4
+            </p>
+            <p>
+              learn.read-this.p5
+            </p>
+            <p>
+              learn.read-this.p6
+            </p>
+            <p>
+              learn.read-this.p7
+            </p>
+            <p>
+              learn.read-this.p8
+            </p>
+            <p>
+              <a
+                className="inline"
+                href="https://youtube.com/freecodecamp"
+                rel="noopener noreferrer"
+                target="_blank"
+              />
+            </p>
+            <p>
+              learn.read-this.p10
+            </p>
+            <p>
+              <a
+                className="inline"
+                href="https://forum.freecodecamp.org"
+                rel="noopener noreferrer"
+                target="_blank"
+              />
+            </p>
+            <p>
+              learn.read-this.p12
+            </p>
+          </div>
+        </div>
+        <div
+          className="col-xs-12"
+        >
+          <div
+            className="spacer"
+            style={
+              Object {
+                "height": "1px",
+                "padding": "15px 0",
+              }
+            }
+          />
+        </div>
+        <div
+          className="col-md-3 col-md-offset-2 col-sm-4 col-sm-offset-1 col-xs-12"
+        >
+          <a
+            className="btn link-btn btn-lg"
+            href="/learn"
+          >
+            buttons.curriculum
+            <svg
+              aria-hidden="true"
+              fill="inherit"
+              height="20px"
+              version="1.1"
+              viewBox="0 0 16 20"
+              width="18px"
+              xmlns="http://www.w3.org/2000/svg"
+              xmlnsXlink="http://www.w3.org/1999/xlink"
+            >
+              <g>
+                <polygon
+                  points="-2.68014473e-15 -1.06357708e-13 2.01917516 -1.06357708e-13 8.99824941 9.00746464 2.01917516 18.0149293 -2.66453526e-15 18.0149293 7.00955027 9"
+                />
+                <polygon
+                  points="7.99971435 -1.06357708e-13 10.0188895 -1.06357708e-13 16.9979638 9.00746464 10.0188895 18.0149293 7.99971435 18.0149293 15.0092646 9"
+                />
+              </g>
+            </svg>
+          </a>
+        </div>
+        <div
+          className="col-xs-12"
+        >
+          <div
+            className="spacer"
+            style={
+              Object {
+                "height": "1px",
+                "padding": "15px 0",
+              }
+            }
+          />
+          <div
+            className="spacer"
+            style={
+              Object {
+                "height": "1px",
+                "padding": "15px 0",
+              }
+            }
+          />
+        </div>
+      </div>
+    </div>
+  </section>,
+]
+`;
+
+exports[`<EmailSignUp /> Not logged in users it should render correctly 1`] = `
+Array [
+  <div
+    className="spacer"
+    style={
+      Object {
+        "height": "1px",
+        "padding": "15px 0",
+      }
+    }
+  />,
+  <div
+    className="container"
+  >
+    <div
+      className="row"
+    >
+      <div
+        className="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12"
+      >
+        <h1>
+          misc.email-signup
+        </h1>
+      </div>
+    </div>
+  </div>,
+  <div
+    className="spacer"
+    style={
+      Object {
+        "height": "1px",
+        "padding": "15px 0",
+      }
+    }
+  />,
+  <section>
+    <div
+      className="container"
+    >
+      <div
+        className="row"
+      >
+        <div
+          className="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12"
+        >
+          <div
+            className="intro-description"
+          >
+            <strong>
+              learn.read-this.heading
+            </strong>
+            <div
+              className="spacer"
+              style={
+                Object {
+                  "height": "1px",
+                  "padding": "15px 0",
+                }
+              }
+            />
+            <p>
+              learn.read-this.p1
+            </p>
+            <p>
+              learn.read-this.p2
+            </p>
+            <p>
+              learn.read-this.p3
+            </p>
+            <p>
+              learn.read-this.p4
+            </p>
+            <p>
+              learn.read-this.p5
+            </p>
+            <p>
+              learn.read-this.p6
+            </p>
+            <p>
+              learn.read-this.p7
+            </p>
+            <p>
+              learn.read-this.p8
+            </p>
+            <p>
+              <a
+                className="inline"
+                href="https://youtube.com/freecodecamp"
+                rel="noopener noreferrer"
+                target="_blank"
+              />
+            </p>
+            <p>
+              learn.read-this.p10
+            </p>
+            <p>
+              <a
+                className="inline"
+                href="https://forum.freecodecamp.org"
+                rel="noopener noreferrer"
+                target="_blank"
+              />
+            </p>
+            <p>
+              learn.read-this.p12
+            </p>
+          </div>
+        </div>
+        <div
+          className="col-xs-12"
+        >
+          <div
+            className="spacer"
+            style={
+              Object {
+                "height": "1px",
+                "padding": "15px 0",
+              }
+            }
+          />
+        </div>
+        <div
+          className="col-md-3 col-md-offset-2 col-sm-4 col-sm-offset-1 col-xs-12"
+        >
+          <a
+            className="btn link-btn btn-lg"
+            href="/learn"
+          >
+            buttons.curriculum
+            <svg
+              aria-hidden="true"
+              fill="inherit"
+              height="20px"
+              version="1.1"
+              viewBox="0 0 16 20"
+              width="18px"
+              xmlns="http://www.w3.org/2000/svg"
+              xmlnsXlink="http://www.w3.org/1999/xlink"
+            >
+              <g>
+                <polygon
+                  points="-2.68014473e-15 -1.06357708e-13 2.01917516 -1.06357708e-13 8.99824941 9.00746464 2.01917516 18.0149293 -2.66453526e-15 18.0149293 7.00955027 9"
+                />
+                <polygon
+                  points="7.99971435 -1.06357708e-13 10.0188895 -1.06357708e-13 16.9979638 9.00746464 10.0188895 18.0149293 7.99971435 18.0149293 15.0092646 9"
+                />
+              </g>
+            </svg>
+          </a>
+        </div>
+        <div
+          className="col-xs-12"
+        >
+          <div
+            className="spacer"
+            style={
+              Object {
+                "height": "1px",
+                "padding": "15px 0",
+              }
+            }
+          />
+          <div
+            className="spacer"
+            style={
+              Object {
+                "height": "1px",
+                "padding": "15px 0",
+              }
+            }
+          />
+        </div>
+      </div>
+    </div>
+  </section>,
+]
+`;
