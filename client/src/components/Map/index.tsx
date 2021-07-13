@@ -1,23 +1,29 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { graphql, useStaticQuery } from 'gatsby';
 import i18next from 'i18next';
-import { generateIconComponent } from '../../assets/icons';
+import { generateIconComponent, SuperBlock } from '../../assets/icons';
 
 import { Link, Spacer } from '../helpers';
 import LinkButton from '../../assets/icons/link-button';
 import './map.css';
 import { isAuditedCert } from '../../../../utils/is-audited';
 import envData from '../../../../config/env.json';
+import { ChallengeNodeType } from '../../redux/prop-types';
 
 const { curriculumLocale } = envData;
 
-const propTypes = {
-  currentSuperBlock: PropTypes.string,
-  forLanding: PropTypes.bool
-};
+interface MapProps {
+  currentSuperBlock?: string;
+  forLanding?: boolean;
+}
 
-function createSuperBlockTitle(superBlock) {
+interface MapData {
+  allChallengeNode: {
+    nodes: ChallengeNodeType[];
+  };
+}
+
+function createSuperBlockTitle(superBlock: string) {
   const superBlockTitle = i18next.t(`intro:${superBlock}.title`);
   return superBlock === 'coding-interview-prep'
     ? i18next.t('learn.cert-map-estimates.coding-prep', {
@@ -32,7 +38,7 @@ const linkSpacingStyle = {
   alignItems: 'center'
 };
 
-function renderLandingMap(nodes) {
+function renderLandingMap(nodes: ChallengeNodeType[]) {
   nodes = nodes.filter(node => node.superBlock !== 'coding-interview-prep');
   return (
     <ul data-test-label='certifications'>
@@ -43,7 +49,7 @@ function renderLandingMap(nodes) {
             to={`/learn/${node.superBlock}/`}
           >
             <div style={linkSpacingStyle}>
-              {generateIconComponent(node.superBlock, 'map-icon')}
+              {generateIconComponent(node.superBlock as SuperBlock, 'map-icon')}
               {i18next.t(`intro:${node.superBlock}.title`)}
             </div>
             <LinkButton />
@@ -54,7 +60,7 @@ function renderLandingMap(nodes) {
   );
 }
 
-function renderLearnMap(nodes, currentSuperBlock = '') {
+function renderLearnMap(nodes: ChallengeNodeType[], currentSuperBlock = '') {
   nodes = nodes.filter(node => node.superBlock !== currentSuperBlock);
   return curriculumLocale === 'english' ? (
     <ul data-test-label='learn-curriculum-map'>
@@ -65,7 +71,7 @@ function renderLearnMap(nodes, currentSuperBlock = '') {
             to={`/learn/${node.superBlock}/`}
           >
             <div style={linkSpacingStyle}>
-              {generateIconComponent(node.superBlock, 'map-icon')}
+              {generateIconComponent(node.superBlock as SuperBlock, 'map-icon')}
               {createSuperBlockTitle(node.superBlock)}
             </div>
           </Link>
@@ -83,7 +89,10 @@ function renderLearnMap(nodes, currentSuperBlock = '') {
               to={`/learn/${node.superBlock}/`}
             >
               <div style={linkSpacingStyle}>
-                {generateIconComponent(node.superBlock, 'map-icon')}
+                {generateIconComponent(
+                  node.superBlock as SuperBlock,
+                  'map-icon'
+                )}
                 {createSuperBlockTitle(node.superBlock)}
               </div>
             </Link>
@@ -110,7 +119,10 @@ function renderLearnMap(nodes, currentSuperBlock = '') {
               to={`/learn/${node.superBlock}/`}
             >
               <div style={linkSpacingStyle}>
-                {generateIconComponent(node.superBlock, 'map-icon')}
+                {generateIconComponent(
+                  node.superBlock as SuperBlock,
+                  'map-icon'
+                )}
                 {createSuperBlockTitle(node.superBlock)}
               </div>
             </Link>
@@ -120,13 +132,16 @@ function renderLearnMap(nodes, currentSuperBlock = '') {
   );
 }
 
-export function Map({ forLanding = false, currentSuperBlock = '' }) {
+export function Map({
+  forLanding = false,
+  currentSuperBlock = ''
+}: MapProps): React.ReactElement {
   /*
    * this query gets the first challenge from each block and the second block
    * from each superblock, leaving you with one challenge from each
    * superblock
    */
-  const data = useStaticQuery(graphql`
+  const data: MapData = useStaticQuery(graphql`
     query SuperBlockNodes {
       allChallengeNode(
         sort: { fields: [superOrder] }
@@ -140,7 +155,7 @@ export function Map({ forLanding = false, currentSuperBlock = '' }) {
     }
   `);
 
-  let nodes = data.allChallengeNode.nodes;
+  const nodes = data.allChallengeNode.nodes;
 
   return (
     <div className='map-ui' data-test-label='learn-curriculum-map'>
@@ -152,6 +167,5 @@ export function Map({ forLanding = false, currentSuperBlock = '' }) {
 }
 
 Map.displayName = 'Map';
-Map.propTypes = propTypes;
 
 export default Map;
