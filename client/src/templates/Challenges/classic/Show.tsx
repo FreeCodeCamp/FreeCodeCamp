@@ -119,7 +119,7 @@ class ShowClassic extends Component<ShowClassicProps, ShowClassicState> {
   static displayName: string;
   containerRef: React.RefObject<unknown>;
   editorRef: React.RefObject<unknown>;
-  instructionsPanelRef: React.RefObject<HTMLElement>;
+  instructionsPanelRef: React.RefObject<HTMLDivElement>;
   resizeProps: ResizePropsType;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   layoutState: any;
