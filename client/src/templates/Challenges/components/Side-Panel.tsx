@@ -1,12 +1,18 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators, Dispatch } from 'redux';
 
 import ChallengeTitle from './challenge-title';
 import ChallengeDescription from './Challenge-Description';
 import ToolPanel from './Tool-Panel';
 import TestSuite from './Test-Suite';
 
-import { challengeTestsSelector, isChallengeCompletedSelector } from '../redux';
+import {
+  challengeTestsSelector,
+  isChallengeCompletedSelector,
+  openModal,
+  executeChallenge
+} from '../redux';
 import { createSelector } from 'reselect';
 import './side-panel.css';
 import { mathJaxScriptLoader } from '../../../utils/script-loaders';
@@ -19,6 +25,17 @@ const mapStateToProps = createSelector(
     tests
   })
 );
+
+const mapDispatchToProps = (dispatch: Dispatch) =>
+  bindActionCreators(
+    {
+      executeChallenge,
+      openHelpModal: () => openModal('help'),
+      openVideoModal: () => openModal('video'),
+      openResetModal: () => openModal('reset')
+    },
+    dispatch
+  );
 
 interface SidePanelProps {
   block: string;
@@ -33,6 +50,10 @@ interface SidePanelProps {
   title: string;
   translationPending: boolean;
   videoUrl?: string;
+  openHelpModal: () => void;
+  openResetModal: () => void;
+  openVideoModal: () => void;
+  executeChallenge: () => void;
 }
 
 export function SidePanel({
@@ -47,7 +68,11 @@ export function SidePanel({
   tests,
   title,
   translationPending,
-  videoUrl
+  videoUrl,
+  openHelpModal,
+  openResetModal,
+  openVideoModal,
+  executeChallenge
 }: SidePanelProps): JSX.Element {
   useEffect(() => {
     const MathJax = global.MathJax;
@@ -100,7 +125,16 @@ export function SidePanel({
           instructions={instructions}
         />
       </div>
-      {showToolPanel && <ToolPanel guideUrl={guideUrl} videoUrl={videoUrl} />}
+      {showToolPanel && (
+        <ToolPanel
+          executeChallenge={executeChallenge}
+          guideUrl={guideUrl}
+          openHelpModal={openHelpModal}
+          openResetModal={openResetModal}
+          openVideoModal={openVideoModal}
+          videoUrl={videoUrl}
+        />
+      )}
       <TestSuite tests={tests} />
     </div>
   );
@@ -108,4 +142,4 @@ export function SidePanel({
 
 SidePanel.displayName = 'SidePanel';
 
-export default connect(mapStateToProps)(SidePanel);
+export default connect(mapStateToProps, mapDispatchToProps)(SidePanel);
