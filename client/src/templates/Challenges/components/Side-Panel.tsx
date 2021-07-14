@@ -38,11 +38,12 @@ const mapDispatchToProps = (dispatch: Dispatch) =>
   );
 
 interface SidePanelProps {
+  className: string;
   block: string;
   description?: string;
   guideUrl?: string;
   instructions?: string;
-  instructionsPanelRef: React.LegacyRef<HTMLDivElement>;
+  instructionsPanelRef: React.RefObject<HTMLDivElement>;
   isChallengeCompleted: boolean;
   showToolPanel?: boolean;
   superBlock: string;
@@ -58,6 +59,7 @@ interface SidePanelProps {
 
 export function SidePanel({
   block,
+  className,
   description,
   guideUrl,
   instructions,
@@ -105,7 +107,7 @@ export function SidePanel({
 
   return (
     <div
-      className='instructions-panel'
+      className={`${className} instructions-panel`}
       ref={instructionsPanelRef}
       role='complementary'
       tabIndex={-1}
