@@ -1,6 +1,5 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { bindActionCreators } from 'redux';
+import React from 'react';
+import { bindActionCreators, Dispatch } from 'redux';
 import { connect } from 'react-redux';
 import { Button, Modal } from '@freecodecamp/react-bootstrap';
 import { Trans, withTranslation } from 'react-i18next';
@@ -11,78 +10,79 @@ import envData from '../../../../../config/env.json';
 
 import './help-modal.css';
 
+interface HelpModalProps {
+  closeHelpModal: () => void;
+  createQuestion: () => void;
+  executeGA: (attributes: { type: string; data: string }) => void;
+  isOpen?: boolean;
+  t: (text: string) => string;
+}
+
 const { forumLocation } = envData;
 
-const mapStateToProps = state => ({ isOpen: isHelpModalOpenSelector(state) });
-const mapDispatchToProps = dispatch =>
+const mapStateToProps = (state: unknown) => ({
+  isOpen: isHelpModalOpenSelector(state) as boolean
+});
+const mapDispatchToProps = (dispatch: Dispatch) =>
   bindActionCreators(
     { createQuestion, executeGA, closeHelpModal: () => closeModal('help') },
     dispatch
   );
 
-const propTypes = {
-  closeHelpModal: PropTypes.func.isRequired,
-  createQuestion: PropTypes.func.isRequired,
-  executeGA: PropTypes.func,
-  isOpen: PropTypes.bool,
-  t: PropTypes.func.isRequired
-};
-
 const RSA = forumLocation + '/t/19514';
 
-export class HelpModal extends Component {
-  render() {
-    const { isOpen, closeHelpModal, createQuestion, executeGA, t } = this.props;
-    if (isOpen) {
-      executeGA({ type: 'modal', data: '/help-modal' });
-    }
-    return (
-      <Modal dialogClassName='help-modal' onHide={closeHelpModal} show={isOpen}>
-        <Modal.Header
-          className='help-modal-header fcc-modal'
-          closeButton={true}
-        >
-          <Modal.Title className='text-center'>
-            {t('buttons.ask-for-help')}
-          </Modal.Title>
-        </Modal.Header>
-        <Modal.Body className='help-modal-body text-center'>
-          <h3>
-            <Trans i18nKey='learn.tried-rsa'>
-              <a
-                href={RSA}
-                rel='noopener noreferrer'
-                target='_blank'
-                title={t('learn.rsa')}
-              >
-                placeholder
-              </a>
-            </Trans>
-          </h3>
-          <Button
-            block={true}
-            bsSize='lg'
-            bsStyle='primary'
-            onClick={createQuestion}
-          >
-            {t('buttons.create-post')}
-          </Button>
-          <Button
-            block={true}
-            bsSize='lg'
-            bsStyle='primary'
-            onClick={closeHelpModal}
-          >
-            {t('buttons.cancel')}
-          </Button>
-        </Modal.Body>
-      </Modal>
-    );
+export function HelpModal({
+  closeHelpModal,
+  createQuestion,
+  executeGA,
+  isOpen,
+  t
+}: HelpModalProps): JSX.Element {
+  if (isOpen) {
+    executeGA({ type: 'modal', data: '/help-modal' });
   }
+  return (
+    <Modal dialogClassName='help-modal' onHide={closeHelpModal} show={isOpen}>
+      <Modal.Header className='help-modal-header fcc-modal' closeButton={true}>
+        <Modal.Title className='text-center'>
+          {t('buttons.ask-for-help')}
+        </Modal.Title>
+      </Modal.Header>
+      <Modal.Body className='help-modal-body text-center'>
+        <h3>
+          <Trans i18nKey='learn.tried-rsa'>
+            <a
+              href={RSA}
+              rel='noopener noreferrer'
+              target='_blank'
+              title={t('learn.rsa')}
+            >
+              placeholder
+            </a>
+          </Trans>
+        </h3>
+        <Button
+          block={true}
+          bsSize='lg'
+          bsStyle='primary'
+          onClick={createQuestion}
+        >
+          {t('buttons.create-post')}
+        </Button>
+        <Button
+          block={true}
+          bsSize='lg'
+          bsStyle='primary'
+          onClick={closeHelpModal}
+        >
+          {t('buttons.cancel')}
+        </Button>
+      </Modal.Body>
+    </Modal>
+  );
 }
 
 HelpModal.displayName = 'HelpModal';
-HelpModal.propTypes = propTypes;
 
 export default connect(
   mapStateToProps,
