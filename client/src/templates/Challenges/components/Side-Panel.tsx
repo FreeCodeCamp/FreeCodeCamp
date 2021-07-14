@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import ChallengeTitle from './challenge-title';
@@ -15,34 +14,46 @@ import { mathJaxScriptLoader } from '../../../utils/script-loaders';
 const mapStateToProps = createSelector(
   isChallengeCompletedSelector,
   challengeTestsSelector,
-  (isChallengeCompleted, tests) => ({
+  (isChallengeCompleted: boolean, tests: Record<string, unknown>[]) => ({
     isChallengeCompleted,
     tests
   })
 );
 
-const propTypes = {
-  block: PropTypes.string,
-  description: PropTypes.string,
-  guideUrl: PropTypes.string,
-  instructions: PropTypes.string,
-  instructionsPanelRef: PropTypes.any.isRequired,
-  isChallengeCompleted: PropTypes.bool,
-  showToolPanel: PropTypes.bool,
-  superBlock: PropTypes.string,
-  tests: PropTypes.arrayOf(PropTypes.object),
-  title: PropTypes.string,
-  translationPending: PropTypes.bool.isRequired,
-  videoUrl: PropTypes.string
-};
+interface SidePanelProps {
+  block: string;
+  description?: string;
+  guideUrl?: string;
+  instructions?: string;
+  instructionsPanelRef: React.LegacyRef<HTMLDivElement>;
+  isChallengeCompleted: boolean;
+  showToolPanel?: boolean;
+  superBlock: string;
+  tests?: Record<string, unknown>[];
+  title: string;
+  translationPending: boolean;
+  videoUrl?: string;
+}
 
-export class SidePanel extends Component {
-  componentDidMount() {
+export function SidePanel({
+  block,
+  description,
+  guideUrl,
+  instructions,
+  instructionsPanelRef,
+  isChallengeCompleted,
+  showToolPanel,
+  superBlock,
+  tests,
+  title,
+  translationPending,
+  videoUrl
+}: SidePanelProps): JSX.Element {
+  useEffect(() => {
     const MathJax = global.MathJax;
     const mathJaxMountPoint = document.querySelector('#mathjax');
     const mathJaxChallenge =
-      this.props.block === 'rosetta-code' ||
-      this.props.block === 'project-euler';
+      block === 'rosetta-code' || block === 'project-euler';
     if (MathJax) {
       // Configure MathJax when it's loaded and
       // users navigate from another challenge
@@ -65,53 +76,36 @@ export class SidePanel extends Component {
     } else if (!mathJaxMountPoint && mathJaxChallenge) {
       mathJaxScriptLoader();
     }
-  }
+  }, [block]);
 
-  render() {
-    const {
-      block,
-      title,
-      description,
-      instructions,
-      instructionsPanelRef,
-      isChallengeCompleted,
-      guideUrl,
-      tests,
-      showToolPanel,
-      superBlock,
-      translationPending,
-      videoUrl
-    } = this.props;
-    return (
-      <div
-        className='instructions-panel'
-        ref={instructionsPanelRef}
-        role='complementary'
-        tabIndex='-1'
-      >
-        <div>
-          <ChallengeTitle
-            block={block}
-            isCompleted={isChallengeCompleted}
-            superBlock={superBlock}
-            translationPending={translationPending}
-          >
-            {title}
-          </ChallengeTitle>
-          <ChallengeDescription
-            block={block}
-            description={description}
-            instructions={instructions}
-          />
-        </div>
-        {showToolPanel && <ToolPanel guideUrl={guideUrl} videoUrl={videoUrl} />}
-        <TestSuite tests={tests} />
+  return (
+    <div
+      className='instructions-panel'
+      ref={instructionsPanelRef}
+      role='complementary'
+      tabIndex={-1}
+    >
+      <div>
+        <ChallengeTitle
+          block={block}
+          isCompleted={isChallengeCompleted}
+          superBlock={superBlock}
+          translationPending={translationPending}
+        >
+          {title}
+        </ChallengeTitle>
+        <ChallengeDescription
+          block={block}
+          description={description}
+          instructions={instructions}
+        />
       </div>
-    );
-  }
+      {showToolPanel && <ToolPanel guideUrl={guideUrl} videoUrl={videoUrl} />}
+      <TestSuite tests={tests} />
+    </div>
+  );
 }
 
 SidePanel.displayName = 'SidePanel';
-SidePanel.propTypes = propTypes;
 
 export default connect(mapStateToProps)(SidePanel);
