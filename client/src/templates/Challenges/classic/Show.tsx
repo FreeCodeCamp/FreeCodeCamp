@@ -14,12 +14,12 @@ import { withTranslation } from 'react-i18next';
 // Local Utilities
 import LearnLayout from '../../../components/layouts/learn';
 import MultifileEditor from './MultifileEditor';
-import Preview from '../components/Preview';
-import SidePanel from '../components/Side-Panel';
+import Preview from '../components/preview';
+import SidePanel from '../components/side-panel';
 import Output from '../components/output';
 import CompletionModal from '../components/completion-modal';
-import HelpModal from '../components/HelpModal';
-import VideoModal from '../components/VideoModal';
+import HelpModal from '../components/help-modal';
+import VideoModal from '../components/video-modal';
 import ResetModal from '../components/ResetModal';
 import MobileLayout from './MobileLayout';
 import DesktopLayout from './DesktopLayout';
