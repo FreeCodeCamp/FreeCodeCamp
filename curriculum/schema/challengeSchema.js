@@ -63,6 +63,14 @@ const schema = Joi.object()
       is: challengeTypes.video,
       then: Joi.string().required()
     }),
+    videoLocaleIds: Joi.when('challengeType', {
+      is: challengeTypes.video,
+      then: Joi.object().keys({
+        espanol: Joi.string(),
+        italian: Joi.string(),
+        portuguese: Joi.string()
+      })
+    }),
     bilibiliIds: Joi.when('challengeType', {
       is: challengeTypes.video,
       then: Joi.object().keys({
