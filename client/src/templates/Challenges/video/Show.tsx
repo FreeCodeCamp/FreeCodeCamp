@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { graphql } from 'gatsby';
 import Helmet from 'react-helmet';
-import YouTube from 'react-youtube';
 import { createSelector } from 'reselect';
 import { ObserveKeys } from 'react-hotkeys';
 import { withTranslation } from 'react-i18next';
@@ -31,6 +30,8 @@ import {
   openModal,
   updateSolutionFormValues
 } from '../redux';
+
+import VideoPlayer from '../components/VideoPlayer';
 
 // Styles
 import './show.css';
@@ -161,7 +162,7 @@ class ShowVideo extends Component<ShowVideoProps, ShowVideoState> {
     });
   };
 
-  videoIsReady = () => {
+  onVideoLoad = () => {
     this.setState({
       videoIsLoaded: true
     });
@@ -224,37 +225,11 @@ class ShowVideo extends Component<ShowVideoProps, ShowVideoState> {
                       <Loader />
                     </div>
                   ) : null}
-                  <YouTube
-                    className={
-                      this.state.videoIsLoaded
-                        ? 'display-youtube-video'
-                        : 'hide-youtube-video'
-                    }
-                    onReady={this.videoIsReady}
-                    opts={{
-                      playerVars: {
-                        rel: 0
-                      },
-                      width: 'auto',
-                      height: 'auto'
-                    }}
-                    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+                  <VideoPlayer
+                    onVideoLoad={this.onVideoLoad}
                     videoId={videoId}
+                    videoIsLoaded={this.state.videoIsLoaded}
                   />
-                  <i>
-                    <a
-                      href={
-                        'https://www.youtube.com/timedtext_editor?action_mde_edit_form=1&v=' +
-                        videoId +
-                        '&lang=en&bl=watch&ui=hd&ref=wt&tab=captions'
-                      }
-                      rel='noopener noreferrer'
-                      target='_blank'
-                    >
-                      {t('learn.add-subtitles')}
-                    </a>
-                    .
-                  </i>
                 </div>
               </Col>
               <Col md={8} mdOffset={2} sm={10} smOffset={1} xs={12}>
