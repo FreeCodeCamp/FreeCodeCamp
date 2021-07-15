@@ -227,7 +227,7 @@ export type ChallengeNodeType = {
   url: string;
   videoId: string;
   videoLocaleIds?: VideoLocaleIds;
-  bilibiliIds: BilibiliIds;
+  bilibiliIds?: BilibiliIds;
   videoUrl: string;
 };
 

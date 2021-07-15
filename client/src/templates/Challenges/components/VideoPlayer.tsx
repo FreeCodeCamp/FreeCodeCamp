@@ -21,7 +21,7 @@ interface VideoPlayerProps {
   videoLocaleIds?: VideoLocaleIds;
   onVideoLoad: () => void;
   videoIsLoaded: boolean;
-  bilibiliIds: BilibiliIds | null;
+  bilibiliIds?: BilibiliIds;
   title: string;
 }
 
@@ -38,7 +38,7 @@ function VideoPlayer({
   let bilibiliSrc = null;
 
   if (
-    bilibiliIds !== null &&
+    bilibiliIds &&
     ['chinese', 'chinese-traditional'].includes(clientLocale)
   ) {
     const { aid, bvid, cid } = bilibiliIds;
