@@ -169,6 +169,13 @@ export type MarkdownRemarkType = {
     words: number;
   };
 };
+
+export interface BilibiliIds {
+  aid: string;
+  bvid: string;
+  cid: string;
+}
+
 export type ChallengeNodeType = {
   block: string;
   challengeOrder: number;
@@ -213,6 +220,7 @@ export type ChallengeNodeType = {
   translationPending: boolean;
   url: string;
   videoId: string;
+  bilibiliIds: BilibiliIds;
   videoUrl: string;
 };
 
