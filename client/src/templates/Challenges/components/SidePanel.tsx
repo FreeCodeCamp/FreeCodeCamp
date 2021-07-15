@@ -45,7 +45,7 @@ interface SidePanelProps {
   instructions?: string;
   instructionsPanelRef: React.RefObject<HTMLDivElement>;
   isChallengeCompleted: boolean;
-  showToolPanel?: boolean;
+  showToolPanel: boolean;
   superBlock: string;
   tests?: Record<string, unknown>[];
   title: string;
@@ -65,7 +65,7 @@ export function SidePanel({
   instructions,
   instructionsPanelRef,
   isChallengeCompleted,
-  showToolPanel,
+  showToolPanel = false,
   superBlock,
   tests,
   title,
