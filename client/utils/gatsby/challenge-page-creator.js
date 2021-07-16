@@ -1,12 +1,7 @@
-import path from 'path';
-import { dasherize } from '../../../utils/slugs';
+const path = require('path');
+const { dasherize } = require('../../../utils/slugs');
 
-import { viewTypes } from '../challenge-types';
-
-import type {
-  ChallengeNode,
-  ChallengeMetaType
-} from '../../src/redux/prop-types';
+const { viewTypes } = require('../challenge-types');
 
 const backend = path.resolve(
   __dirname,
@@ -47,54 +42,22 @@ const views = {
   // quiz: Quiz
 };
 
-interface Node {
-  node: ChallengeNode;
-}
-
-function getNextChallengePath(
-  _node: ChallengeNode,
-  index: number,
-  nodeArray: Node[]
-): string {
+function getNextChallengePath(_node, index, nodeArray) {
   const next = nodeArray[index + 1];
   return next ? next.node.fields.slug : '/learn';
 }
 
-function getPrevChallengePath(
-  _node: ChallengeNode,
-  index: number,
-  nodeArray: Node[]
-): string {
+function getPrevChallengePath(_node, index, nodeArray) {
   const prev = nodeArray[index - 1];
   return prev ? prev.node.fields.slug : '/learn';
 }
 
-function getTemplateComponent(challengeType: number): string {
-  return views[
-    viewTypes[challengeType as keyof typeof viewTypes] as keyof typeof views
-  ];
+function getTemplateComponent(challengeType) {
+  return views[viewTypes[challengeType]];
 }
 
-// TODO: Fix this
-interface CreatePageNodeKwarg {
-  path: string;
-  component: string;
-  context: {
-    challengeMeta: Omit<
-      ChallengeMetaType,
-      'introPath' | 'removeComments' | 'helpCategory'
-    > &
-      Pick<ChallengeNode, 'template'> & {
-        required: ChallengeNode['required'] | [];
-      };
-    slug: string;
-  };
-}
-
-export function createChallengePages(
-  createPage: (kwarg: CreatePageNodeKwarg) => void
-): (kwarg: Node, index: number, thisArray: Node[]) => void {
-  return function ({ node }: Node, index: number, thisArray: Node[]): void {
+exports.createChallengePages = function (createPage) {
+  return function ({ node }, index, thisArray) {
     const {
       superBlock,
       block,
@@ -124,32 +87,10 @@ export function createChallengePages(
       }
     });
   };
-}
+};
 
-interface Edge {
-  node: {
-    fields: { slug: string };
-    frontmatter: {
-      block: string;
-      superBlock: string;
-    };
-  };
-}
-
-interface CreatePageEdgeKwarg {
-  path: string;
-  component: string;
-  context: {
-    block?: string;
-    superBlock?: string;
-    slug: string;
-  };
-}
-
-export function createBlockIntroPages(
-  createPage: (kwarg: CreatePageEdgeKwarg) => void
-): (edge: Edge) => void {
-  return function (edge: Edge) {
+exports.createBlockIntroPages = function (createPage) {
+  return function (edge) {
     const {
       fields: { slug },
       frontmatter: { block }
@@ -164,12 +105,10 @@ export function createBlockIntroPages(
       }
     });
   };
-}
+};
 
-export function createSuperBlockIntroPages(
-  createPage: (kwarg: CreatePageEdgeKwarg) => void
-): (edge: Edge) => void {
-  return function (edge: Edge) {
+exports.createSuperBlockIntroPages = function (createPage) {
+  return function (edge) {
     const {
       fields: { slug },
       frontmatter: { superBlock }
@@ -184,4 +123,4 @@ export function createSuperBlockIntroPages(
       }
     });
   };
-}
+};
