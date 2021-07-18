@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
+import React, { useEffect, useRef } from 'react';
+import type { ReactNode } from 'react';
 import { Location } from '@reach/router';
-import PropTypes from 'prop-types';
+import type { WindowLocation } from '@reach/router';
 import { connect } from 'react-redux';
 import { InstantSearch, Configure } from 'react-instantsearch-dom';
 import qs from 'query-string';
@@ -27,50 +28,85 @@ const DEBOUNCE_TIME = 100;
 const searchClient =
   algoliaAppId && algoliaAPIKey
     ? algoliasearch(algoliaAppId, algoliaAPIKey)
-    : { search: () => {} };
-
-const propTypes = {
-  children: PropTypes.any,
-  isDropdownEnabled: PropTypes.bool,
-  location: PropTypes.object.isRequired,
-  query: PropTypes.string,
-  toggleSearchDropdown: PropTypes.func.isRequired,
-  updateSearchQuery: PropTypes.func.isRequired
-};
+    : {
+        // eslint-disable-next-line @typescript-eslint/no-empty-function
+        search: () => {}
+      };
 
 const mapStateToProps = createSelector(
   searchQuerySelector,
   isSearchDropdownEnabledSelector,
-  (query, isDropdownEnabled) => ({ query, isDropdownEnabled })
+  function (
+    query: string,
+    isDropdownEnabled: boolean
+  ): { query: string; isDropdownEnabled: boolean } {
+    return { query, isDropdownEnabled };
+  }
 );
 const mapDispatchToProps = {
   toggleSearchDropdown,
   updateSearchQuery
 };
 
-const searchStateToUrl = ({ pathname }, query) =>
-  `${pathname}${query ? `?${qs.stringify({ query })}` : ''}`;
+function searchStateToUrl(
+  { pathname }: { pathname: string },
+  query: string
+): string {
+  return `${pathname}${query ? `?${qs.stringify({ query })}` : ''}`;
+}
+function urlToSearchState({ search }: WindowLocation): { query: string } {
+  return qs.parse(search.slice(1)) as { query: string };
+}
 
-const urlToSearchState = ({ search }) => qs.parse(search.slice(1));
-
-class InstantSearchRoot extends Component {
-  componentDidMount() {
-    const { toggleSearchDropdown } = this.props;
-    toggleSearchDropdown(!this.isSearchPage());
-    this.setQueryFromURL();
+interface InstantSearchRootProps {
+  isDropdownEnabled: boolean;
+  location: WindowLocation<{ query: string }>;
+  query: string;
+  toggleSearchDropdown: (toggle: boolean) => void;
+  updateSearchQuery: (query: string) => void;
+  children: ReactNode;
+}
+function InstantSearchRoot({
+  isDropdownEnabled,
+  location,
+  query,
+  toggleSearchDropdown,
+  updateSearchQuery,
+  children
+}: InstantSearchRootProps) {
+  function isSearchPage(): boolean {
+    return location.pathname.startsWith('/search');
   }
 
-  componentDidUpdate(prevProps) {
-    const { location, toggleSearchDropdown, isDropdownEnabled } = this.props;
+  function setQueryFromURL(): void {
+    if (isSearchPage()) {
+      const { query: queryFromURL } = urlToSearchState(location);
+      if (query !== queryFromURL) {
+        updateSearchQuery(queryFromURL);
+      }
+    }
+  }
 
-    const enableDropdown = !this.isSearchPage();
+  useEffect(() => {
+    toggleSearchDropdown(!isSearchPage());
+    setQueryFromURL();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // https://reactjs.org/docs/hooks-faq.html#how-to-get-the-previous-props-or-state
+  const prevLocationRef = useRef<InstantSearchRootProps['location']>();
+  useEffect(() => {
+    prevLocationRef.current = location;
+  });
+  const prevLocation = prevLocationRef.current;
+  useEffect(() => {
+    const enableDropdown = !isSearchPage();
     if (isDropdownEnabled !== enableDropdown) {
       toggleSearchDropdown(enableDropdown);
     }
 
-    if (location !== prevProps.location) {
-      const { query, updateSearchQuery } = this.props;
-      if (this.isSearchPage()) {
+    if (location !== prevLocation) {
+      if (isSearchPage()) {
         if (
           location.state &&
           typeof location.state === 'object' &&
@@ -78,9 +114,9 @@ class InstantSearchRoot extends Component {
         ) {
           updateSearchQuery(location.state.query);
         } else if (location.search) {
-          this.setQueryFromURL();
+          setQueryFromURL();
         } else {
-          navigate(searchStateToUrl(this.props.location, query), {
+          void navigate(searchStateToUrl(location, query), {
             state: { query },
             replace: true
           });
@@ -89,90 +125,84 @@ class InstantSearchRoot extends Component {
         updateSearchQuery('');
       }
     }
-  }
+  });
 
-  isSearchPage = () => this.props.location.pathname.startsWith('/search');
+  const debouncedSetState = useRef<ReturnType<typeof setTimeout>>(
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
+    setTimeout(() => {})
+  );
+  function updateBrowserHistory(query: string): void {
+    if (isSearchPage()) {
+      clearTimeout(debouncedSetState.current);
 
-  setQueryFromURL = () => {
-    if (this.isSearchPage()) {
-      const { updateSearchQuery, location, query } = this.props;
-      const { query: queryFromURL } = urlToSearchState(location);
-      if (query !== queryFromURL) {
-        updateSearchQuery(queryFromURL);
-      }
-    }
-  };
-
-  onSearchStateChange = ({ query }) => {
-    const { updateSearchQuery, query: propsQuery } = this.props;
-    if (propsQuery === query || typeof query === 'undefined') {
-      return;
-    }
-    updateSearchQuery(query);
-    this.updateBrowserHistory(query);
-  };
-
-  updateBrowserHistory = query => {
-    if (this.isSearchPage()) {
-      clearTimeout(this.debouncedSetState);
-
-      this.debouncedSetState = setTimeout(() => {
-        if (this.isSearchPage()) {
-          navigate(searchStateToUrl(this.props.location, query), {
+      debouncedSetState.current = setTimeout(() => {
+        if (isSearchPage()) {
+          void navigate(searchStateToUrl(location, query), {
             state: { query }
           });
         }
       }, DEBOUNCE_TIME);
     }
-  };
-
-  render() {
-    const { query } = this.props;
-    const MAX_MOBILE_HEIGHT = 768;
-    return (
-      <InstantSearch
-        indexName={newsIndex}
-        onSearchStateChange={this.onSearchStateChange}
-        searchClient={searchClient}
-        searchState={{ query }}
-      >
-        {this.isSearchPage() ? (
-          <Configure hitsPerPage={15} />
-        ) : (
-          <>
-            <Media maxHeight={MAX_MOBILE_HEIGHT}>
-              <Configure hitsPerPage={5} />
-            </Media>
-            <Media minHeight={MAX_MOBILE_HEIGHT + 1}>
-              <Configure hitsPerPage={8} />
-            </Media>
-          </>
-        )}
-        {this.props.children}
-      </InstantSearch>
-    );
   }
+
+  const propsQuery = query;
+  function onSearchStateChange({ query }: { query: string | undefined }): void {
+    if (propsQuery === query || typeof query === 'undefined') {
+      return;
+    }
+    updateSearchQuery(query);
+    updateBrowserHistory(query);
+  }
+
+  const MAX_MOBILE_HEIGHT = 768;
+  return (
+    <InstantSearch
+      indexName={newsIndex}
+      onSearchStateChange={onSearchStateChange}
+      searchClient={searchClient}
+      searchState={{ query }}
+    >
+      {isSearchPage() ? (
+        <Configure hitsPerPage={15} />
+      ) : (
+        <>
+          <Media maxHeight={MAX_MOBILE_HEIGHT}>
+            <Configure hitsPerPage={5} />
+          </Media>
+          <Media minHeight={MAX_MOBILE_HEIGHT + 1}>
+            <Configure hitsPerPage={8} />
+          </Media>
+        </>
+      )}
+      {children}
+    </InstantSearch>
+  );
 }
 
 InstantSearchRoot.displayName = 'InstantSearchRoot';
-InstantSearchRoot.propTypes = propTypes;
 
 const InstantSearchRootConnected = connect(
   mapStateToProps,
   mapDispatchToProps
 )(InstantSearchRoot);
 
-const WithInstantSearch = ({ children }) => (
-  <Location>
-    {({ location }) => (
-      <InstantSearchRootConnected location={location}>
-        {children}
-      </InstantSearchRootConnected>
-    )}
-  </Location>
-);
+interface WithInstantSearchProps {
+  children: ReactNode;
+}
+function WithInstantSearch({ children }: WithInstantSearchProps): JSX.Element {
+  return (
+    <Location>
+      {({ location }) => (
+        <InstantSearchRootConnected
+          location={location as InstantSearchRootProps['location']}
+        >
+          {children}
+        </InstantSearchRootConnected>
+      )}
+    </Location>
+  );
+}
 
 WithInstantSearch.displayName = 'WithInstantSearch';
-WithInstantSearch.propTypes = { children: PropTypes.any };
 
 export default WithInstantSearch;
