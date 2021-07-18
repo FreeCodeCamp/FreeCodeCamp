@@ -8,7 +8,7 @@ import { isEqual } from 'lodash-es';
 import { withTranslation } from 'react-i18next';
 import { searchPageUrl } from '../../../utils/algolia-locale-setup';
 
-import WithInstantSearch from '../WithInstantSearch';
+import WithInstantSearch from '../with-instant-search';
 
 import { Hit } from 'react-instantsearch-core';
 import {
