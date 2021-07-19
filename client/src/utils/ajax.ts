@@ -152,10 +152,6 @@ export function putUpdateUserFlag(
   return put('/update-user-flag', update);
 }
 
-export function putUserAcceptsTerms(quincyEmails: boolean): Promise<void> {
-  return put('/update-privacy-terms', { quincyEmails });
-}
-
 export function putUserUpdateEmail(email: string): Promise<void> {
   return put('/update-my-email', { email });
 }

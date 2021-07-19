@@ -158,6 +158,7 @@
     "jest-json-schema-extended": "1.0.0",
     "monaco-editor-webpack-plugin": "4.1.1",
     "react-test-renderer": "16.14.0",
+    "redux-mock-store": "^1.5.4",
     "redux-saga-test-plan": "4.0.3",
     "webpack": "5.45.1",
     "webpack-cli": "4.7.2"

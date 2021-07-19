@@ -1,112 +1,127 @@
-import React, { useEffect } from 'react';
+import React, { useState } from 'react';
 import { bindActionCreators } from 'redux';
 import type { Dispatch } from 'redux';
 import { connect } from 'react-redux';
-import SectionHeader from '../components/settings/section-header';
-import IntroDescription from '../components/Intro/components/IntroDescription';
-import { withTranslation } from 'react-i18next';
-
-import { Row, Col, Button, Grid } from '@freecodecamp/react-bootstrap';
-import Helmet from 'react-helmet';
 import { createSelector } from 'reselect';
+import { withTranslation } from 'react-i18next';
+import Helmet from 'react-helmet';
+import { Row, Col, Button, Grid } from '@freecodecamp/react-bootstrap';
 
-import { ButtonSpacer, Spacer } from '../components/helpers';
-import { acceptTerms, userSelector } from '../redux';
-import createRedirect from '../components/create-redirect';
+import LinkButton from '../assets/icons/link-button';
+import { ButtonSpacer, Link, Spacer } from '../components/helpers';
+import { isSignedInSelector } from '../redux';
+import { updateUserFlag } from '../redux/settings';
+import IntroDescription from '../components/Intro/components/IntroDescription';
 
 import './email-sign-up.css';
 
-interface AcceptPrivacyTermsProps {
-  acceptTerms: (accept: boolean | null) => void;
-  acceptedPrivacyTerms: boolean;
+interface EmailSignUpProps {
+  isSignedIn: boolean;
   t: (s: string) => string;
+  updateUserFlag: (options: { sendQuincyEmail: boolean }) => void;
 }
 
 const mapStateToProps = createSelector(
-  userSelector,
-  ({ acceptedPrivacyTerms }: { acceptedPrivacyTerms: boolean }) => ({
-    acceptedPrivacyTerms
+  isSignedInSelector,
+  (isSignedIn: boolean) => ({
+    isSignedIn
   })
 );
+
 const mapDispatchToProps = (dispatch: Dispatch) =>
-  bindActionCreators({ acceptTerms }, dispatch);
-const RedirectToLearn = createRedirect('/learn');
+  bindActionCreators({ updateUserFlag }, dispatch);
 
-function AcceptPrivacyTerms({
-  acceptTerms,
-  acceptedPrivacyTerms,
-  t
-}: AcceptPrivacyTermsProps) {
-  // if a user navigates away from here we should set acceptedPrivacyTerms
-  // to true (so they do not get pulled back) without changing their email
-  // preferences (hence the null payload)
-  // This ensures the user has to click the checkbox and then click the
-  // 'Continue...' button to sign up.
-  useEffect(() => {
-    return () => {
-      if (!acceptedPrivacyTerms) {
-        acceptTerms(null);
-      }
-    };
-  }, [acceptTerms, acceptedPrivacyTerms]);
+function EmailSignUp({
+  isSignedIn,
+  t,
+  updateUserFlag
+}: EmailSignUpProps): JSX.Element {
+  const [isNewsLetterInteracted, setIsNewsLetterInteracted] = useState(false);
 
-  function onClick(isWeeklyEmailAccepted: boolean) {
-    acceptTerms(isWeeklyEmailAccepted);
+  function setNewsletterSelection(accept: boolean): void {
+    setIsNewsLetterInteracted(true);
+    updateUserFlag({
+      sendQuincyEmail: accept
+    });
   }
 
-  return acceptedPrivacyTerms ? (
-    <RedirectToLearn />
-  ) : (
+  return (
     <>
-      <Helmet>
-        <title>{t('misc.email-signup')} | freeCodeCamp.org</title>
-      </Helmet>
-      <Grid className='default-page-wrapper email-sign-up'>
-        <SectionHeader>{t('misc.email-signup')}</SectionHeader>
+      <Helmet title={`${t('misc.email-signup')} | freeCodeCamp.org`} />
+      <Spacer />
+      <Grid>
         <Row>
-          <IntroDescription />
           <Col md={8} mdOffset={2} sm={10} smOffset={1} xs={12}>
-            <strong>{t('misc.quincy')}</strong>
-            {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
-            {/* @ts-ignore */}
-            <Spacer />
-            <p>{t('misc.email-blast')}</p>
-            {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
-            {/* @ts-ignore */}
-            <Spacer />
-          </Col>
-
-          <Col md={4} mdOffset={2} sm={5} smOffset={1} xs={12}>
-            <Button
-              block={true}
-              bsSize='lg'
-              bsStyle='primary'
-              className='big-cta-btn'
-              onClick={() => onClick(true)}
-            >
-              {t('buttons.yes-please')}
-            </Button>
-            <ButtonSpacer />
-          </Col>
-          <Col md={4} sm={5} xs={12}>
-            <Button
-              block={true}
-              bsSize='lg'
-              bsStyle='primary'
-              className='big-cta-btn'
-              onClick={() => onClick(false)}
-            >
-              {t('buttons.no-thanks')}
-            </Button>
-            <ButtonSpacer />
-          </Col>
-          <Col xs={12}>
-            {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
-            {/* @ts-ignore */}
-            <Spacer />
+            <h1>{t('misc.email-signup')}</h1>
           </Col>
         </Row>
       </Grid>
+      <Spacer />
+      {/* TODO: update how to handle if user is not logged in */}
+      {isSignedIn && !isNewsLetterInteracted && (
+        <section className='email-sign-up'>
+          {/* TODO: make newsletter subscription a reusable component so it is
+          used here and in other places such as user settings */}
+          <Grid>
+            <Row>
+              <>
+                <Col md={8} mdOffset={2} sm={10} smOffset={1} xs={12}>
+                  <strong>{t('misc.quincy')}</strong>
+                  <Spacer />
+                  <p>{t('misc.email-blast')}</p>
+                </Col>
+                <Col md={4} mdOffset={2} sm={5} smOffset={1} xs={12}>
+                  <Button
+                    block={true}
+                    bsSize='lg'
+                    bsStyle='primary'
+                    data-testid='accept_newsletter'
+                    onClick={() => setNewsletterSelection(true)}
+                  >
+                    {t('buttons.yes-please')}
+                  </Button>
+                  <ButtonSpacer />
+                </Col>
+                <Col md={4} sm={5} xs={12}>
+                  <Button
+                    block={true}
+                    bsSize='lg'
+                    bsStyle='primary'
+                    data-testid='decline_newsletter'
+                    onClick={() => setNewsletterSelection(false)}
+                  >
+                    {t('buttons.no-thanks')}
+                  </Button>
+                </Col>
+                <Col xs={12}>
+                  <Spacer size={2} />
+                </Col>
+              </>
+            </Row>
+          </Grid>
+        </section>
+      )}
+      <section>
+        <Grid>
+          <Row>
+            <Col md={8} mdOffset={2} sm={10} smOffset={1} xs={12}>
+              <IntroDescription />
+            </Col>
+            <Col xs={12}>
+              <Spacer />
+            </Col>
+            <Col md={3} mdOffset={2} sm={4} smOffset={1} xs={12}>
+              <Link className='btn link-btn btn-lg' to='/learn'>
+                {t('buttons.curriculum')}
+                <LinkButton />
+              </Link>
+            </Col>
+            <Col xs={12}>
+              <Spacer size={2} />
+            </Col>
+          </Row>
+        </Grid>
+      </section>
     </>
   );
 }
@@ -114,4 +129,4 @@ function AcceptPrivacyTerms({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(withTranslation()(AcceptPrivacyTerms));
+)(withTranslation()(EmailSignUp));

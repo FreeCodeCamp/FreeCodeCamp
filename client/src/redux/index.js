@@ -4,7 +4,6 @@ import store from 'store';
 
 import { createTypes, createAsyncTypes } from '../utils/create-types';
 import { createFetchUserSaga } from './fetch-user-saga';
-import { createAcceptTermsSaga } from './accept-terms-saga';
 import { createAppMountSaga } from './app-mount-saga';
 import { createReportUserSaga } from './report-user-saga';
 import { createShowCertSaga } from './show-cert-saga';
@@ -83,7 +82,6 @@ export const types = createTypes(
     ...createAsyncTypes('fetchUser'),
     ...createAsyncTypes('addDonation'),
     ...createAsyncTypes('fetchProfileForUser'),
-    ...createAsyncTypes('acceptTerms'),
     ...createAsyncTypes('showCert'),
     ...createAsyncTypes('reportUser')
   ],
@@ -93,7 +91,6 @@ export const types = createTypes(
 export const epics = [hardGoToEpic, failedUpdatesEpic, updateCompleteEpic];
 
 export const sagas = [
-  ...createAcceptTermsSaga(types),
   ...createAppMountSaga(types),
   ...createDonationSaga(types),
   ...createGaSaga(types),
@@ -137,10 +134,6 @@ export const hardGoTo = createAction(types.hardGoTo);
 export const submitComplete = createAction(types.submitComplete);
 export const updateComplete = createAction(types.updateComplete);
 export const updateFailed = createAction(types.updateFailed);
-
-export const acceptTerms = createAction(types.acceptTerms);
-export const acceptTermsComplete = createAction(types.acceptTermsComplete);
-export const acceptTermsError = createAction(types.acceptTermsError);
 
 export const fetchUser = createAction(types.fetchUser);
 export const fetchUserComplete = createAction(types.fetchUserComplete);
@@ -384,27 +377,6 @@ function spreadThePayloadOnUser(state, payload) {
 
 export const reducer = handleActions(
   {
-    [types.acceptTermsComplete]: (state, { payload }) => {
-      const { appUsername } = state;
-      return {
-        ...state,
-        user: {
-          ...state.user,
-          [appUsername]: {
-            ...state.user[appUsername],
-            // TODO: the user accepts the privacy terms in practice during auth
-            // however, it's currently being used to track if they've accepted
-            // or rejected the newsletter. Ideally this should be migrated,
-            // since they can't sign up without accepting the terms.
-            acceptedPrivacyTerms: true,
-            sendQuincyEmail:
-              payload === null
-                ? state.user[appUsername].sendQuincyEmail
-                : payload
-          }
-        }
-      };
-    },
     [types.allowBlockDonationRequests]: (state, { payload }) => {
       return {
         ...state,
