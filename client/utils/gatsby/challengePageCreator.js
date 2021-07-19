@@ -9,7 +9,7 @@ const backend = path.resolve(
 );
 const classic = path.resolve(
   __dirname,
-  '../../src/templates/Challenges/classic/Show.tsx'
+  '../../src/templates/Challenges/classic/show.tsx'
 );
 const frontend = path.resolve(
   __dirname,

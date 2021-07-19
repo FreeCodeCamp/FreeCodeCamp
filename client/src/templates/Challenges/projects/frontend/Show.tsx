@@ -31,7 +31,7 @@ import Spacer from '../../../../components/helpers/spacer';
 import SolutionForm from '../solution-form';
 import ProjectToolPanel from '../tool-panel';
 import CompletionModal from '../../components/completion-modal';
-import HelpModal from '../../components/HelpModal';
+import HelpModal from '../../components/help-modal';
 import Hotkeys from '../../components/Hotkeys';
 
 // Redux Setup
