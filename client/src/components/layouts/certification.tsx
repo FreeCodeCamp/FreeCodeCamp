@@ -7,16 +7,15 @@ import Helmet from 'react-helmet';
 
 interface CertificationProps {
   children?: React.ReactNode;
-  executeGA?: (args: { type: string, data: string }) => void;
+  executeGA?: (args: { type: string; data: string }) => void;
   fetchUser: () => void;
   isSignedIn?: boolean;
-  pathname: string
+  pathname: string;
 }
 
 const mapStateToProps = createSelector(isSignedInSelector, isSignedIn => ({
   isSignedIn
 }));
-
 
 const mapDispatchToProps = { fetchUser, executeGA };
 
