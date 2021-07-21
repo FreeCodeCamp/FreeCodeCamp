@@ -1,38 +1,27 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-nocheck
-/**
- * TODO:
- * Passing incomplete objects here is causing TS to be angry.
- * We should either make the expected properties optional, or reevaluate
- * these tests.
- */
 import toLearnPath from './to-learn-path';
-import { withPrefix } from 'gatsby';
 
-describe('toLearnPath', () => {
-  it('should return a string', () => {
-    expect(typeof toLearnPath({})).toBe('string');
-  });
+describe('To learn path utility (toLearnPath)', () => {
   it('should include /learn', () => {
-    expect(toLearnPath({})).toMatch(withPrefix('/learn'));
+    expect(toLearnPath({})).toMatch('/learn');
   });
+
   it('should include superBlock after learn', () => {
-    expect(toLearnPath({ superBlock: 'testSuper' })).toBe(
-      withPrefix('/learn/testSuper')
-    );
+    expect(toLearnPath({ superBlock: 'testSuper' })).toBe('/learn/testSuper');
   });
+
   it('should include superBlock, then block after learn', () => {
-    expect(toLearnPath({ superBlock: 'testSuper', block: 'testBlock' })).toBe(
-      withPrefix('/learn/testSuper/testBlock')
+    expect(toLearnPath({ block: 'testBlock', superBlock: 'testSuper' })).toBe(
+      '/learn/testSuper/testBlock'
     );
   });
+
   it('should include superBlock, block, then challenge after learn', () => {
     expect(
       toLearnPath({
-        superBlock: 'testSuper',
         block: 'testBlock',
-        challenge: 'testChallenge'
+        challenge: 'testChallenge',
+        superBlock: 'testSuper'
       })
-    ).toBe(withPrefix('/learn/testSuper/testBlock/testChallenge'));
+    ).toBe('/learn/testSuper/testBlock/testChallenge');
   });
 });
