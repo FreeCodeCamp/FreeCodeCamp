@@ -19,7 +19,7 @@ const mapStateToProps = createSelector(isSignedInSelector, isSignedIn => ({
 
 const mapDispatchToProps = { fetchUser, executeGA };
 
-class CertificationLayout extends Component <CertificationProps> {
+class CertificationLayout extends Component<CertificationProps> {
   static displayName = 'CertificationLayout';
   componentDidMount() {
     const { isSignedIn, fetchUser, pathname } = this.props;
