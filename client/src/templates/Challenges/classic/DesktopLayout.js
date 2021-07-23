@@ -13,6 +13,7 @@ const paneType = {
 };
 
 const propTypes = {
+  block: PropTypes.string,
   challengeFiles: PropTypes.object,
   editor: PropTypes.element,
   hasEditableBoundries: PropTypes.bool,
@@ -30,6 +31,7 @@ const propTypes = {
     onStopResize: PropTypes.func,
     onResize: PropTypes.func
   }),
+  superBlock: PropTypes.string,
   testOutput: PropTypes.element
 };
 
@@ -68,7 +70,9 @@ class DesktopLayout extends Component {
       hasPreview,
       layoutState,
       preview,
-      hasEditableBoundries
+      hasEditableBoundries,
+      superBlock,
+      block
     } = this.props;
 
     const { showPreview, showConsole } = this.state;
@@ -85,7 +89,12 @@ class DesktopLayout extends Component {
     return (
       <ReflexContainer className='desktop-layout' orientation='horizontal'>
         {projectBasedChallenge && (
-          <ActionRow switchDisplayTab={this.switchDisplayTab} {...this.state} />
+          <ActionRow
+            block={block}
+            switchDisplayTab={this.switchDisplayTab}
+            {...this.state}
+            superBlock={superBlock}
+          />
         )}
         <ReflexElement flex={8} {...reflexProps} {...resizeProps}>
           <ReflexContainer orientation='vertical'>

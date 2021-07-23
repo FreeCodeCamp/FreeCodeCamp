@@ -67,6 +67,7 @@ interface EditorProps {
   submitChallenge: () => void;
   tests: TestType[];
   theme: string;
+  title: string;
   updateFile: (objest: {
     key: FileKeyTypes;
     editorValue: string;
@@ -493,7 +494,9 @@ const Editor = (props: EditorProps): JSX.Element => {
 
   function createDescription(editor: editor.IStandaloneCodeEditor) {
     if (data.descriptionNode) return data.descriptionNode;
-    const { description } = props;
+    const { description, title } = props;
+    const jawHeading = document.createElement('h3');
+    jawHeading.innerText = title;
     // TODO: var was used here. Should it?
     const domNode = document.createElement('div');
     const desc = document.createElement('div');
@@ -501,6 +504,7 @@ const Editor = (props: EditorProps): JSX.Element => {
     descContainer.classList.add('description-container');
     domNode.classList.add('editor-upper-jaw');
     domNode.appendChild(descContainer);
+    descContainer.appendChild(jawHeading);
     descContainer.appendChild(desc);
     desc.innerHTML = description;
     // desc.style.background = 'white';
@@ -708,8 +712,7 @@ const Editor = (props: EditorProps): JSX.Element => {
     // TODO: handle the case that the editable region reaches the bottom of the
     // editor
     return (
-      data.model?.getDecorationRange(data.endEditDecId)
-        ?.startLineNumber ?? 1
+      data.model?.getDecorationRange(data.endEditDecId)?.startLineNumber ?? 1
     );
   }
 

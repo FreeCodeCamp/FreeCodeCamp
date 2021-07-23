@@ -16,10 +16,7 @@
 
 .breadcrumbs-demo {
   font-size: 16px;
-}
-
-.breadcrumbs-demo span {
-  font-weight: bold;
+  margin: 0 0 1.2rem;
 }
 
 .tabs-row {

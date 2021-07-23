@@ -43,6 +43,7 @@ const propTypes = {
   setAccessibilityMode: PropTypes.func.isRequired,
   setEditorFocusability: PropTypes.func,
   theme: PropTypes.string,
+  title: PropTypes.string,
   updateFile: PropTypes.func.isRequired,
   visibleEditors: PropTypes.shape({
     indexjs: PropTypes.bool,
@@ -98,6 +99,7 @@ class MultifileEditor extends Component {
       editorRef,
       theme,
       resizeProps,
+      title,
       visibleEditors: { indexcss, indexhtml, indexjs, indexjsx }
     } = this.props;
     const editorTheme = theme === 'night' ? 'vs-dark-custom' : 'vs-custom';
@@ -155,6 +157,7 @@ class MultifileEditor extends Component {
                   key='indexjsx'
                   resizeProps={resizeProps}
                   theme={editorTheme}
+                  title={title}
                 />
               </ReflexElement>
             )}
@@ -174,6 +177,7 @@ class MultifileEditor extends Component {
                   key='indexhtml'
                   resizeProps={resizeProps}
                   theme={editorTheme}
+                  title={title}
                 />
               </ReflexElement>
             )}
@@ -191,6 +195,7 @@ class MultifileEditor extends Component {
                   key='indexcss'
                   resizeProps={resizeProps}
                   theme={editorTheme}
+                  title={title}
                 />
               </ReflexElement>
             )}
@@ -209,6 +214,7 @@ class MultifileEditor extends Component {
                   key='indexjs'
                   resizeProps={resizeProps}
                   theme={editorTheme}
+                  title={title}
                 />
               </ReflexElement>
             )}

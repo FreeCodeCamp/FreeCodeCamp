@@ -19,6 +19,7 @@
   font-size: 16px;
   border: 1px solid var(--quaternary-background);
   height: 25px;
+  text-align: center;
 }
 
 .breadcrumb-left {
@@ -30,7 +31,6 @@
   overflow: hidden;
   text-overflow: ellipsis;
   max-height: 25px;
-  word-wrap: none;
   white-space: nowrap;
   flex-grow: 1;
   flex-shrink: 2;
@@ -57,7 +57,6 @@
   min-width: 50px;
   flex-grow: 2;
   flex-shrink: 1;
-  word-wrap: none;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -86,7 +85,6 @@
   overflow: hidden;
   text-overflow: ellipsis;
   max-height: fit-content;
-  word-wrap: none;
   white-space: pre-line;
   flex-grow: 1;
   flex-shrink: 1;
