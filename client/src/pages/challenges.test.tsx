@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import { navigate } from 'gatsby';
+import { navigate, withPrefix } from 'gatsby';
 import '@testing-library/jest-dom/extend-expect';
 import {
   createHistory,
@@ -29,31 +29,34 @@ describe('Challenges', () => {
     };
   }
 
-  it('should handle redirect to /learn', () => {
-    renderWithRouterWrapper({ route: '/challenges' });
+  const challenges = withPrefix('/challenges');
+  const learn = withPrefix('/learn');
 
-    expect(navigate).toHaveBeenLastCalledWith('/learn');
+  it('should handle redirect to /learn', () => {
+    renderWithRouterWrapper({ route: challenges });
+
+    expect(navigate).toHaveBeenLastCalledWith(learn);
   });
 
   it('should handle redirect to /learn/:super-block', () => {
-    renderWithRouterWrapper({ route: '/challenges/super-block' });
+    renderWithRouterWrapper({ route: `${challenges}/super-block` });
 
-    expect(navigate).toHaveBeenLastCalledWith('/learn/super-block');
+    expect(navigate).toHaveBeenLastCalledWith(`${learn}/super-block`);
   });
 
   it('should handle redirect to /learn/:super-block/:block', () => {
-    renderWithRouterWrapper({ route: '/challenges/super-block/block' });
+    renderWithRouterWrapper({ route: `${challenges}/super-block/block` });
 
-    expect(navigate).toHaveBeenLastCalledWith('/learn/super-block/block');
+    expect(navigate).toHaveBeenLastCalledWith(`${learn}/super-block/block`);
   });
 
   it('should handle redirect to /learn/:super-block/:block/:challenge', () => {
     renderWithRouterWrapper({
-      route: '/challenges/super-block/block/challenge'
+      route: `${challenges}/super-block/block/challenge`
     });
 
     expect(navigate).toHaveBeenLastCalledWith(
-      '/learn/super-block/block/challenge'
+      `${learn}/super-block/block/challenge`
     );
   });
 });
