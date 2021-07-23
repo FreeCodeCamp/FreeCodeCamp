@@ -8,9 +8,9 @@ dashedName: problem-325-stone-game-ii
 
 # --description--
 
-A game is played with two piles of stones and two players. At her turn, a player removes a number of stones from the larger pile. The number of stones she removes must be a positive multiple of the number of stones in the smaller pile.
+A game is played with two piles of stones and two players. On each player's turn, the player may removes a number of stones from the larger pile. The number of stones removes must be a positive multiple of the number of stones in the smaller pile.
 
-E.g., let the ordered pair(6,14) describe a configuration with 6 stones in the smaller pile and 14 stones in the larger pile, then the first player can remove 6 or 12 stones from the larger pile.
+E.g., let the ordered pair (6,14) describe a configuration with 6 stones in the smaller pile and 14 stones in the larger pile, then the first player can remove 6 or 12 stones from the larger pile.
 
 The player taking all the stones from a pile wins the game.
 
@@ -18,16 +18,16 @@ A winning configuration is one where the first player can force a win. For examp
 
 A losing configuration is one where the second player can force a win, no matter what the first player does. For example, (2,3) and (3,4) are losing configurations: any legal move leaves a winning configuration for the second player.
 
-Define S(N) as the sum of (xi+yi) for all losing configurations (xi,yi), 0 &lt; xi &lt; yi ≤ N. We can verify that S(10) = 211 and S(104) = 230312207313.
+Define $S(N)$ as the sum of ($x_i + y_i$) for all losing configurations ($x_i$, $y_i$), $0 &lt; x_i &lt; y_i ≤ N$. We can verify that $S(10) = 211$ and $S({10}^4) = 230\\,312\\,207\\,313$.
 
-Find S(1016) mod 710.
+Find $S({10}^{16})\bmod 7^{10}$.
 
 # --hints--
 
-`euler325()` should return 54672965.
+`stoneGameTwo()` should return `54672965`.
 
 ```js
-assert.strictEqual(euler325(), 54672965);
+assert.strictEqual(stoneGameTwo(), 54672965);
 ```
 
 # --seed--
@@ -35,12 +35,12 @@ assert.strictEqual(euler325(), 54672965);
 ## --seed-contents--
 
 ```js
-function euler325() {
+function stoneGameTwo() {
 
   return true;
 }
 
-euler325();
+stoneGameTwo();
 ```
 
 # --solutions--

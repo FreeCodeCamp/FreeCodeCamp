@@ -8,24 +8,25 @@ dashedName: problem-323-bitwise-or-operations-on-random-integers
 
 # --description--
 
-Let y0, y1, y2,... be a sequence of random unsigned 32 bit integers
+Let $y_0, y_1, y_2, \ldots$ be a sequence of random unsigned 32 bit integers
 
-(i.e. 0 ≤ yi &lt; 232, every value equally likely).
+(i.e. $0 ≤ y_i &lt; 2^{32}$, every value equally likely).
 
-For the sequence xi the following recursion is given:x0 = 0 and
+For the sequence $x_i$ the following recursion is given:
 
-xi = xi-1| yi-1, for i > 0. ( | is the bitwise-OR operator)
+- $x_0 = 0$ and
+- $x_i = x_{i - 1} \mathbf{|} y_{i - 1}$, for $i > 0$. ($\mathbf{|}$ is the bitwise-OR operator)
 
-It can be seen that eventually there will be an index N such that xi = 232 -1 (a bit-pattern of all ones) for all i ≥ N.
+It can be seen that eventually there will be an index $N$ such that $x_i = 2^{32} - 1$ (a bit-pattern of all ones) for all $i ≥ N$.
 
-Find the expected value of N. Give your answer rounded to 10 digits after the decimal point.
+Find the expected value of $N$. Give your answer rounded to 10 digits after the decimal point.
 
 # --hints--
 
-`euler323()` should return 6.3551758451.
+`bitwiseOrOnRandomIntegers()` should return `6.3551758451`.
 
 ```js
-assert.strictEqual(euler323(), 6.3551758451);
+assert.strictEqual(bitwiseOrOnRandomIntegers(), 6.3551758451);
 ```
 
 # --seed--
@@ -33,12 +34,12 @@ assert.strictEqual(euler323(), 6.3551758451);
 ## --seed-contents--
 
 ```js
-function euler323() {
+function bitwiseOrOnRandomIntegers() {
 
   return true;
 }
 
-euler323();
+bitwiseOrOnRandomIntegers();
 ```
 
 # --solutions--

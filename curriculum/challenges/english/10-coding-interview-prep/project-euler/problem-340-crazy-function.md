@@ -8,24 +8,25 @@ dashedName: problem-340-crazy-function
 
 # --description--
 
-For fixed integers a, b, c, define the crazy function F(n) as follows:
+For fixed integers $a$, $b$, $c$, define the crazy function $F(n)$ as follows:
 
-F(n) = n - c for all n > b
+$$\begin{align}
+  & F(n) = n - c \\;\text{ for all } n > b \\\\
+  & F(n) = F(a + F(a + F(a + F(a + n)))) \\;\text{ for all } n ≤ b.
+\end{align}$$
 
-F(n) = F(a + F(a + F(a + F(a + n)))) for all n ≤ b.
+Also, define $S(a, b, c) = \displaystyle\sum_{n = 0}^b F(n)$.
 
-Also, define S(a, b, c) = .
+For example, if $a = 50$, $b = 2000$ and $c = 40$, then $F(0) = 3240$ and $F(2000) = 2040$. Also, $S(50, 2000, 40) = 5\\,204\\,240$.
 
-For example, if a = 50, b = 2000 and c = 40, then F(0) = 3240 and F(2000) = 2040. Also, S(50, 2000, 40) = 5204240.
-
-Find the last 9 digits of S(217, 721, 127).
+Find the last 9 digits of $S({21}^7, 7^{21}, {12}^7)$.
 
 # --hints--
 
-`euler340()` should return 291504964.
+`crazyFunction()` should return `291504964`.
 
 ```js
-assert.strictEqual(euler340(), 291504964);
+assert.strictEqual(crazyFunction(), 291504964);
 ```
 
 # --seed--
@@ -33,12 +34,12 @@ assert.strictEqual(euler340(), 291504964);
 ## --seed-contents--
 
 ```js
-function euler340() {
+function crazyFunction() {
 
   return true;
 }
 
-euler340();
+crazyFunction();
 ```
 
 # --solutions--
