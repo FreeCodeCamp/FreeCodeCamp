@@ -120,6 +120,7 @@ export const User = PropTypes.shape({
     })
   ),
   sendQuincyEmail: PropTypes.bool,
+  sound: PropTypes.bool,
   theme: PropTypes.string,
   twitter: PropTypes.string,
   username: PropTypes.string,
@@ -280,6 +281,7 @@ export type UserType = {
   };
   progressTimestamps: Array<unknown>;
   sendQuincyEmail: boolean;
+  sound: boolean;
   theme: string;
   twitter: string;
   username: string;

@@ -13,6 +13,8 @@ import {
 import { channel } from 'redux-saga';
 import { escape } from 'lodash-es';
 import i18next from 'i18next';
+import * as Tone from 'tone';
+import store from 'store';
 
 import {
   challengeDataSelector,
@@ -100,8 +102,18 @@ export function* executeChallengeSaga({
     yield put(updateTests(testResults));
 
     const challengeComplete = testResults.every(test => test.pass && !test.err);
+    const playSound = store.get('fcc-sound');
     if (challengeComplete && isShouldCompletionModalOpen) {
+      const player = new Tone.Player(
+        'https://cdn.nhcarrigan.com/content/audio/chal-comp.mp3'
+      ).toDestination();
+      player.autostart = playSound;
       yield put(openModal('completion'));
+    } else {
+      const player = new Tone.Player(
+        'https://cdn.nhcarrigan.com/content/audio/try-again.mp3'
+      ).toDestination();
+      player.autostart = playSound;
     }
 
     yield put(updateConsole(i18next.t('learn.tests-completed')));
