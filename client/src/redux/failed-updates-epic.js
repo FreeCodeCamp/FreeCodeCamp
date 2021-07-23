@@ -20,6 +20,7 @@ import {
 import postUpdate$ from '../templates/Challenges/utils/postUpdate$';
 import { isGoodXHRStatus } from '../templates/Challenges/utils';
 import { backEndProject } from '../../utils/challengeTypes';
+import { createFlashMessage } from '../components/Flash/redux';
 
 const key = 'fcc-failed-updates';
 
@@ -41,7 +42,15 @@ function failedUpdateEpic(action$, state$) {
         store.set(key, [...failures, payload]);
       }
     }),
-    map(() => onlineStatusChange(false))
+    map(({ payload }) => {
+      if (payload?.type === 'error') {
+        return createFlashMessage({
+          type: 'danger',
+          message: payload.message
+        });
+      }
+      return onlineStatusChange(false);
+    })
   );
 
   const flushUpdates = action$.pipe(

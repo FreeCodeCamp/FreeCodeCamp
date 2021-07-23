@@ -185,7 +185,7 @@ class Project extends Component<ProjectProps> {
                   description={description}
                   // eslint-disable-next-line @typescript-eslint/unbound-method
                   onSubmit={this.handleSubmit}
-                  updateSolutionForm={updateSolutionFormValues}
+                  updateSolutionFormValues={updateSolutionFormValues}
                 />
                 <ProjectToolPanel
                   guideUrl={getGuideUrl({ forumTopicId, title })}

@@ -18,7 +18,7 @@ interface FormProps extends WithTranslation {
   challengeType: number;
   description?: string;
   onSubmit: (arg0: SubmitProps) => void;
-  updateSolutionForm: (arg0: Record<string, unknown>) => void;
+  updateSolutionFormValues: (arg0: Record<string, unknown>) => void;
 }
 
 interface ValidatedValues {
@@ -34,14 +34,14 @@ export class SolutionForm extends Component<FormProps> {
   }
 
   componentDidMount(): void {
-    this.props.updateSolutionForm({});
+    this.props.updateSolutionFormValues({});
   }
 
   handleSubmit = (validatedValues: ValidatedValues): void => {
     // Do not execute challenge, if errors
     if (validatedValues.errors.length === 0) {
       // updates values on store
-      this.props.updateSolutionForm(validatedValues.values);
+      this.props.updateSolutionFormValues({}); // validatedValues.values);
       if (validatedValues.invalidValues.length === 0) {
         this.props.onSubmit({ isShouldCompletionModalOpen: true });
       } else {

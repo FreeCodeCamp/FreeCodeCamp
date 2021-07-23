@@ -25,7 +25,8 @@ import {
   submitComplete,
   updateComplete,
   updateFailed,
-  usernameSelector
+  usernameSelector,
+  types as challengeActionTypes
 } from '../../../redux';
 
 import postUpdate$ from '../utils/postUpdate$';
@@ -35,17 +36,24 @@ import { getVerifyCanClaimCert } from '../../../utils/ajax';
 function postChallenge(update, username) {
   const saveChallenge = postUpdate$(update).pipe(
     retry(3),
-    switchMap(({ points }) =>
-      of(
-        submitComplete({
-          username,
-          points,
-          ...update.payload
-        }),
-        updateComplete()
-      )
-    ),
-    catchError(() => of(updateFailed(update)))
+    switchMap(value => {
+      if (value.type === 'error') {
+        return of(updateFailed(value));
+      } else {
+        return of(
+          submitComplete({
+            username,
+            points: value.points,
+            ...update.payload
+          }),
+          updateComplete()
+        );
+      }
+    }),
+    catchError((err, caught) => {
+      console.log(err, caught);
+      return of(updateFailed(update));
+    })
   );
   return saveChallenge;
 }
@@ -97,7 +105,13 @@ function submitProject(type, state) {
     payload: challengeInfo
   };
   return postChallenge(update, username).pipe(
-    concat(of(updateSolutionFormValues({})))
+    switchMap(project => {
+      const { type, payload } = project;
+      if (type === challengeActionTypes.updateFailed) {
+        return of(updateFailed(payload));
+      }
+      return of(updateSolutionFormValues({}));
+    })
   );
 }
 
@@ -162,9 +176,16 @@ export default function completionEpic(action$, state$) {
       };
 
       return submitter(type, state).pipe(
-        concat(closeChallengeModal),
-        filter(Boolean),
-        finalize(async () => navigate(await pathToNavigateTo()))
+        switchMap(({ type, payload }) => {
+          if (payload.type === 'error') {
+            return of({ type, payload }).pipe(concat(closeChallengeModal));
+          }
+          return of({ type, payload }).pipe(
+            concat(closeChallengeModal),
+            filter(Boolean),
+            finalize(async () => navigate(await pathToNavigateTo()))
+          );
+        })
       );
     })
   );
