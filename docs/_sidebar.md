@@ -19,6 +19,7 @@
   - [Work on localized client web app](how-to-work-on-localized-client-webapp.md)
   - [Catch outgoing emails locally](how-to-catch-outgoing-emails-locally.md)
   - [Test translations locally](how-to-test-translations-locally.md)
+  - [Understand the Curriculum File Structure](curriculum-file-structure.md)
 
 ---
 
