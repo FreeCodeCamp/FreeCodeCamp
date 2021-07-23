@@ -1,7 +1,7 @@
 import { createAction, handleActions } from 'redux-actions';
+import { isEmpty } from 'lodash-es';
 
-import { createTypes } from '../../../../utils/stateManagement';
-
+import { createTypes } from '../../../utils/create-types';
 import { createPoly } from '../../../../../utils/polyvinyl';
 import { getLines } from '../../../../../utils/get-lines';
 import completionEpic from './completion-epic';
@@ -14,7 +14,6 @@ import { createCurrentChallengeSaga } from './current-challenge-saga';
 import { challengeTypes } from '../../../../utils/challengeTypes';
 import { getTargetEditor } from '../utils/getTargetEditor';
 import { completedChallengesSelector } from '../../../redux';
-import { isEmpty } from 'lodash-es';
 
 export const ns = 'challenge';
 export const backendNS = 'backendChallenge';
