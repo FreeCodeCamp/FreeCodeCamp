@@ -16,10 +16,10 @@ What's the expected number of steps until all seeds have been dropped in the top
 
 # --hints--
 
-`euler280()` should return 430.088247.
+`antAndSeeds()` should return `430.088247`.
 
 ```js
-assert.strictEqual(euler280(), 430.088247);
+assert.strictEqual(antAndSeeds(), 430.088247);
 ```
 
 # --seed--
@@ -27,12 +27,12 @@ assert.strictEqual(euler280(), 430.088247);
 ## --seed-contents--
 
 ```js
-function euler280() {
+function antAndSeeds() {
 
   return true;
 }
 
-euler280();
+antAndSeeds();
 ```
 
 # --solutions--

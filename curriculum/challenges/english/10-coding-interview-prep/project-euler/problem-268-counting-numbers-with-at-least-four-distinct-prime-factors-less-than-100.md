@@ -13,14 +13,14 @@ dashedName: >-
 
 It can be verified that there are 23 positive integers less than 1000 that are divisible by at least four distinct primes less than 100.
 
-Find how many positive integers less than 1016 are divisible by at least four distinct primes less than 100.
+Find how many positive integers less than ${10}^{16}$ are divisible by at least four distinct primes less than 100.
 
 # --hints--
 
-`euler268()` should return 785478606870985.
+`fourDistinctPrimeFactors()` should return `785478606870985`.
 
 ```js
-assert.strictEqual(euler268(), 785478606870985);
+assert.strictEqual(fourDistinctPrimeFactors(), 785478606870985);
 ```
 
 # --seed--
@@ -28,12 +28,12 @@ assert.strictEqual(euler268(), 785478606870985);
 ## --seed-contents--
 
 ```js
-function euler268() {
+function fourDistinctPrimeFactors() {
 
   return true;
 }
 
-euler268();
+fourDistinctPrimeFactors();
 ```
 
 # --solutions--

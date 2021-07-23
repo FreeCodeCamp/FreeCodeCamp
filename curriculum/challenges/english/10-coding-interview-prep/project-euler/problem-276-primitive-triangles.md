@@ -8,18 +8,18 @@ dashedName: problem-276-primitive-triangles
 
 # --description--
 
-Consider the triangles with integer sides a, b and c with a ≤ b ≤ c.
+Consider the triangles with integer sides $a$, $b$ and $c$ with $a ≤ b ≤ c$.
 
-An integer sided triangle (a,b,c) is called primitive if gcd(a,b,c)=1.
+An integer sided triangle $(a,b,c)$ is called primitive if $gcd(a,b,c) = 1$.
 
-How many primitive integer sided triangles exist with a perimeter not exceeding 10 000 000?
+How many primitive integer sided triangles exist with a perimeter not exceeding $10\\,000\\,000$?
 
 # --hints--
 
-`euler276()` should return 5777137137739633000.
+`primitiveTriangles()` should return `5777137137739633000`.
 
 ```js
-assert.strictEqual(euler276(), 5777137137739633000);
+assert.strictEqual(primitiveTriangles(), 5777137137739633000);
 ```
 
 # --seed--
@@ -27,12 +27,12 @@ assert.strictEqual(euler276(), 5777137137739633000);
 ## --seed-contents--
 
 ```js
-function euler276() {
+function primitiveTriangles() {
 
   return true;
 }
 
-euler276();
+primitiveTriangles();
 ```
 
 # --solutions--
