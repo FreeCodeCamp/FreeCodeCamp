@@ -46,11 +46,11 @@ module.exports = Object.assign(locations, {
   environment: process.env.FREECODECAMP_NODE_ENV || 'development',
   algoliaAppId:
     !algoliaAppId || algoliaAppId === 'app_id_from_algolia_dashboard'
-      ? null
+      ? ''
       : algoliaAppId,
   algoliaAPIKey:
     !algoliaAPIKey || algoliaAPIKey === 'api_key_from_algolia_dashboard'
-      ? null
+      ? ''
       : algoliaAPIKey,
   paypalClientId:
     !paypalClientId || paypalClientId === 'id_from_paypal_dashboard'
