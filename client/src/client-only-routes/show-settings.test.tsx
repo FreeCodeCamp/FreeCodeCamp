@@ -3,12 +3,14 @@
 import React from 'react';
 import ShallowRenderer from 'react-test-renderer/shallow';
 import envData from '../../../config/env.json';
+import { navigate } from '@reach/router';
 
 import { ShowSettings } from './show-settings';
 
 const { apiLocation } = envData as Record<string, string>;
 
 jest.mock('../analytics');
+jest.mock('@reach/router');
 
 describe('<ShowSettings />', () => {
   it('renders to the DOM when user is logged in', () => {
@@ -34,12 +36,9 @@ describe('<ShowSettings />', () => {
   });
 });
 
-const navigate = jest.fn();
 const loggedInProps = {
   createFlashMessage: jest.fn(),
-  hardGoTo: jest.fn(),
   isSignedIn: true,
-  navigate: navigate,
   showLoading: false,
   submitNewAbout: jest.fn(),
   toggleNightMode: jest.fn(),

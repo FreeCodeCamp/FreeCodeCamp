@@ -12,7 +12,6 @@ import { createNightModeSaga } from './night-mode-saga';
 import { createDonationSaga } from './donation-saga';
 import { createGaSaga } from './ga-saga';
 
-import hardGoToEpic from './hard-go-to-epic';
 import failedUpdatesEpic from './failed-updates-epic';
 import updateCompleteEpic from './update-complete-epic';
 
@@ -65,7 +64,6 @@ const initialState = {
 export const types = createTypes(
   [
     'appMount',
-    'hardGoTo',
     'allowBlockDonationRequests',
     'closeDonationModal',
     'preventBlockDonationRequests',
@@ -90,7 +88,7 @@ export const types = createTypes(
   ns
 );
 
-export const epics = [hardGoToEpic, failedUpdatesEpic, updateCompleteEpic];
+export const epics = [failedUpdatesEpic, updateCompleteEpic];
 
 export const sagas = [
   ...createAcceptTermsSaga(types),
@@ -127,12 +125,6 @@ export const updateDonationFormState = createAction(
 );
 
 export const onlineStatusChange = createAction(types.onlineStatusChange);
-
-// TODO: re-evaluate this since /internal is no longer used.
-// `hardGoTo` is used to hit the API server directly
-// without going through /internal
-// used for things like /signin and /signout
-export const hardGoTo = createAction(types.hardGoTo);
 
 export const submitComplete = createAction(types.submitComplete);
 export const updateComplete = createAction(types.updateComplete);

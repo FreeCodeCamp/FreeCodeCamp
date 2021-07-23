@@ -3,13 +3,13 @@ import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
 import { Grid } from '@freecodecamp/react-bootstrap';
 import Helmet from 'react-helmet';
+import { navigate } from '@reach/router';
 
 import envData from '../../../config/env.json';
 import {
   signInLoadingSelector,
   userSelector,
-  isSignedInSelector,
-  hardGoTo as navigate
+  isSignedInSelector
 } from '../redux';
 import { submitNewAbout, updateUserFlag, verifyCert } from '../redux/settings';
 import { createFlashMessage } from '../components/Flash/redux';
@@ -32,7 +32,6 @@ const { apiLocation } = envData;
 interface IShowSettingsProps {
   createFlashMessage: (paylaod: string[]) => void;
   isSignedIn: boolean;
-  navigate: (location: string) => void;
   showLoading: boolean;
   submitNewAbout: () => void;
   toggleNightMode: (theme: string) => void;
@@ -58,7 +57,6 @@ const mapStateToProps = createSelector(
 
 const mapDispatchToProps = {
   createFlashMessage,
-  navigate,
   submitNewAbout,
   toggleNightMode: (theme: string) => updateUserFlag({ theme }),
   updateInternetSettings: updateUserFlag,
@@ -110,7 +108,6 @@ export function ShowSettings(props: IShowSettingsProps): JSX.Element {
       website,
       portfolio
     },
-    navigate,
     showLoading,
     updateQuincyEmail,
     updateInternetSettings,
@@ -124,7 +121,7 @@ export function ShowSettings(props: IShowSettingsProps): JSX.Element {
   }
 
   if (!isSignedIn) {
-    navigate(`${apiLocation}/signin`);
+    void navigate(`${apiLocation}/signin`);
     return <Loader fullScreen={true} />;
   }
 
