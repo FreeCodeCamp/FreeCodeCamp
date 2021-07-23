@@ -42,10 +42,10 @@ assert.deepEqual(addTogether(23, 30), 53);
 assert.deepEqual(addTogether(5)(7), 12);
 ```
 
-`addTogether("http://bit.ly/IqT6zt")` should return `undefined`.
+`addTogether("https://www.youtube.com/watch?v=dQw4w9WgXcQ")` should return `undefined`.
 
 ```js
-assert.isUndefined(addTogether('http://bit.ly/IqT6zt'));
+assert.isUndefined(addTogether('https://www.youtube.com/watch?v=dQw4w9WgXcQ'));
 ```
 
 `addTogether(2, "3")` should return `undefined`.
