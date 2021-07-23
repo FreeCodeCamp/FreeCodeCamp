@@ -1,0 +1,370 @@
+{
+  "name": "CSS Picasso Painting",
+  "isUpcomingChange": true,
+  "dashedName": "css-picasso-painting",
+  "order": 11,
+  "time": "5 hours",
+  "template": "",
+  "required": [],
+  "superBlock": "responsive-web-design",
+  "superOrder": 1,
+  "isBeta": true,
+  "challengeOrder": [
+    [
+      "60b69a66b6ddb80858c51578",
+      "Part 1"
+    ],
+    [
+      "60b69a66b6ddb80858c51579",
+      "Part 2"
+    ],
+    [
+      "60b80da8676fb3227967a731",
+      "Part 3"
+    ],
+    [
+      "60b69a66b6ddb80858c5157a",
+      "Part 4"
+    ],
+    [
+      "60b69a66b6ddb80858c5157b",
+      "Part 5"
+    ],
+    [
+      "60b69a66b6ddb80858c5157c",
+      "Part 6"
+    ],
+    [
+      "60b69a66b6ddb80858c5157d",
+      "Part 7"
+    ],
+    [
+      "60b69a66b6ddb80858c5157e",
+      "Part 8"
+    ],
+    [
+      "60b69a66b6ddb80858c5157f",
+      "Part 9"
+    ],
+    [
+      "60b69a66b6ddb80858c51580",
+      "Part 10"
+    ],
+    [
+      "60b69a66b6ddb80858c51581",
+      "Part 11"
+    ],
+    [
+      "60b69a66b6ddb80858c51582",
+      "Part 12"
+    ],
+    [
+      "60b69a66b6ddb80858c51583",
+      "Part 13"
+    ],
+    [
+      "60b69a66b6ddb80858c51584",
+      "Part 14"
+    ],
+    [
+      "60b69a66b6ddb80858c51585",
+      "Part 15"
+    ],
+    [
+      "60b69a66b6ddb80858c51586",
+      "Part 16"
+    ],
+    [
+      "60b69a66b6ddb80858c51587",
+      "Part 17"
+    ],
+    [
+      "60b69a66b6ddb80858c51588",
+      "Part 18"
+    ],
+    [
+      "60b69a66b6ddb80858c51589",
+      "Part 19"
+    ],
+    [
+      "60b69a66b6ddb80858c5158a",
+      "Part 20"
+    ],
+    [
+      "60b69a66b6ddb80858c5158b",
+      "Part 21"
+    ],
+    [
+      "60b69a66b6ddb80858c5158c",
+      "Part 22"
+    ],
+    [
+      "60b69a66b6ddb80858c5158d",
+      "Part 23"
+    ],
+    [
+      "60b69a66b6ddb80858c5158e",
+      "Part 24"
+    ],
+    [
+      "60b69a66b6ddb80858c5158f",
+      "Part 25"
+    ],
+    [
+      "60b69a66b6ddb80858c51590",
+      "Part 26"
+    ],
+    [
+      "60b69a66b6ddb80858c51591",
+      "Part 27"
+    ],
+    [
+      "60b69a66b6ddb80858c51592",
+      "Part 28"
+    ],
+    [
+      "60b69a66b6ddb80858c51593",
+      "Part 29"
+    ],
+    [
+      "60b69a66b6ddb80858c51594",
+      "Part 30"
+    ],
+    [
+      "60b69a66b6ddb80858c51595",
+      "Part 31"
+    ],
+    [
+      "60b69a66b6ddb80858c51596",
+      "Part 32"
+    ],
+    [
+      "60b69a66b6ddb80858c51597",
+      "Part 33"
+    ],
+    [
+      "60b69a66b6ddb80858c51598",
+      "Part 34"
+    ],
+    [
+      "60b69a66b6ddb80858c51599",
+      "Part 35"
+    ],
+    [
+      "60b69a66b6ddb80858c5159a",
+      "Part 36"
+    ],
+    [
+      "60b69a66b6ddb80858c5159b",
+      "Part 37"
+    ],
+    [
+      "60b69a66b6ddb80858c5159c",
+      "Part 38"
+    ],
+    [
+      "60b69a66b6ddb80858c5159d",
+      "Part 39"
+    ],
+    [
+      "60b69a66b6ddb80858c5159e",
+      "Part 40"
+    ],
+    [
+      "60bad32219ebcb4a8810ac6a",
+      "Part 41"
+    ],
+    [
+      "60b69a66b6ddb80858c5159f",
+      "Part 42"
+    ],
+    [
+      "60b69a66b6ddb80858c515a0",
+      "Part 43"
+    ],
+    [
+      "60b69a66b6ddb80858c515a1",
+      "Part 44"
+    ],
+    [
+      "60b69a66b6ddb80858c515a2",
+      "Part 45"
+    ],
+    [
+      "60b69a66b6ddb80858c515a3",
+      "Part 46"
+    ],
+    [
+      "60b69a66b6ddb80858c515a4",
+      "Part 47"
+    ],
+    [
+      "60b69a66b6ddb80858c515a5",
+      "Part 48"
+    ],
+    [
+      "60b69a66b6ddb80858c515a6",
+      "Part 49"
+    ],
+    [
+      "60b69a66b6ddb80858c515a7",
+      "Part 50"
+    ],
+    [
+      "60b69a66b6ddb80858c515a8",
+      "Part 51"
+    ],
+    [
+      "60b69a66b6ddb80858c515a9",
+      "Part 52"
+    ],
+    [
+      "60b69a66b6ddb80858c515aa",
+      "Part 53"
+    ],
+    [
+      "60b69a66b6ddb80858c515ab",
+      "Part 54"
+    ],
+    [
+      "60b69a66b6ddb80858c515ac",
+      "Part 55"
+    ],
+    [
+      "60b69a66b6ddb80858c515ad",
+      "Part 56"
+    ],
+    [
+      "60b69a66b6ddb80858c515ae",
+      "Part 57"
+    ],
+    [
+      "60b69a66b6ddb80858c515af",
+      "Part 58"
+    ],
+    [
+      "60b69a66b6ddb80858c515b0",
+      "Part 59"
+    ],
+    [
+      "60b69a66b6ddb80858c515b1",
+      "Part 60"
+    ],
+    [
+      "60b69a66b6ddb80858c515b2",
+      "Part 61"
+    ],
+    [
+      "60b69a66b6ddb80858c515b3",
+      "Part 62"
+    ],
+    [
+      "60b69a66b6ddb80858c515b4",
+      "Part 63"
+    ],
+    [
+      "60b69a66b6ddb80858c515b5",
+      "Part 64"
+    ],
+    [
+      "60b69a66b6ddb80858c515b6",
+      "Part 65"
+    ],
+    [
+      "60b69a66b6ddb80858c515b7",
+      "Part 66"
+    ],
+    [
+      "60b69a66b6ddb80858c515b8",
+      "Part 67"
+    ],
+    [
+      "60b69a66b6ddb80858c515b9",
+      "Part 68"
+    ],
+    [
+      "60b69a66b6ddb80858c515ba",
+      "Part 69"
+    ],
+    [
+      "60b69a66b6ddb80858c515bc",
+      "Part 70"
+    ],
+    [
+      "60ba8914bab51f0fb8228e9c",
+      "Part 71"
+    ],
+    [
+      "60ba89146b25080f99ab54ad",
+      "Part 72"
+    ],
+    [
+      "60ba8913f1704c0f7a8906b8",
+      "Part 73"
+    ],
+    [
+      "60ba89123a445e0f5c9e4022",
+      "Part 74"
+    ],
+    [
+      "60ba890832b4940f24d1936b",
+      "Part 75"
+    ],
+    [
+      "60ba929345ab0714a3743655",
+      "Part 76"
+    ],
+    [
+      "60ba9296d4d6b414c1b10995",
+      "Part 77"
+    ],
+    [
+      "60ba92987c1e4914dfa7a0b9",
+      "Part 78"
+    ],
+    [
+      "60b69a66b6ddb80858c515bd",
+      "Part 79"
+    ],
+    [
+      "60b69a66b6ddb80858c515be",
+      "Part 80"
+    ],
+    [
+      "60b69a66b6ddb80858c515bf",
+      "Part 81"
+    ],
+    [
+      "60b69a66b6ddb80858c515c0",
+      "Part 82"
+    ],
+    [
+      "60b69a66b6ddb80858c515c1",
+      "Part 83"
+    ],
+    [
+      "60b69a66b6ddb80858c515c2",
+      "Part 84"
+    ],
+    [
+      "60b69a66b6ddb80858c515c3",
+      "Part 85"
+    ],
+    [
+      "60b69a66b6ddb80858c515c4",
+      "Part 86"
+    ],
+    [
+      "60b69a66b6ddb80858c515c5",
+      "Part 87"
+    ],
+    [
+      "60b69a66b6ddb80858c515c6",
+      "Part 88"
+    ],
+    [
+      "60b69a66b6ddb80858c515c7",
+      "Part 89"
+    ]
+  ]
+}

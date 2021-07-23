@@ -75,6 +75,10 @@
       "css-variables-skyline": {
         "title": "CSS Variables Skyline",
         "intro": ["", ""]
+      },
+      "css-picasso-painting": {
+        "title": "CSS Picasso Painting",
+        "intro": ["", ""]
       }
     }
   },
