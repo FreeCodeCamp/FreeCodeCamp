@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { graphql } from 'gatsby';
 import Helmet from 'react-helmet';
-import YouTube from 'react-youtube';
 import { createSelector } from 'reselect';
 import { ObserveKeys } from 'react-hotkeys';
 import { TFunction, withTranslation } from 'react-i18next';
@@ -31,6 +30,8 @@ import {
   openModal,
   updateSolutionFormValues
 } from '../redux';
+
+import VideoPlayer from '../components/VideoPlayer';
 
 // Styles
 import './show.css';
@@ -161,7 +162,7 @@ class ShowVideo extends Component<ShowVideoProps, ShowVideoState> {
     });
   };
 
-  videoIsReady = () => {
+  onVideoLoad = () => {
     this.setState({
       videoIsLoaded: true
     });
@@ -178,6 +179,8 @@ class ShowVideo extends Component<ShowVideoProps, ShowVideoState> {
           block,
           translationPending,
           videoId,
+          videoLocaleIds,
+          bilibiliIds,
           question: { text, answers, solution }
         }
       },
@@ -205,8 +208,6 @@ class ShowVideo extends Component<ShowVideoProps, ShowVideoState> {
           />
           <Grid>
             <Row>
-              {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
-              {/* @ts-ignore */}
               <Spacer />
               <ChallengeTitle
                 block={block}
@@ -224,30 +225,19 @@ class ShowVideo extends Component<ShowVideoProps, ShowVideoState> {
                       <Loader />
                     </div>
                   ) : null}
-                  <YouTube
-                    className={
-                      this.state.videoIsLoaded
-                        ? 'display-youtube-video'
-                        : 'hide-youtube-video'
-                    }
-                    onReady={this.videoIsReady}
-                    opts={{
-                      playerVars: {
-                        rel: 0
-                      },
-                      width: 'auto',
-                      height: 'auto'
-                    }}
-                    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+                  <VideoPlayer
+                    bilibiliIds={bilibiliIds}
+                    onVideoLoad={this.onVideoLoad}
+                    title={title}
                     videoId={videoId}
+                    videoIsLoaded={this.state.videoIsLoaded}
+                    videoLocaleIds={videoLocaleIds}
                   />
                 </div>
               </Col>
               <Col md={8} mdOffset={2} sm={10} smOffset={1} xs={12}>
                 <ChallengeDescription description={description} />
                 <PrismFormatted className={'line-numbers'} text={text} />
-                {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
-                {/* @ts-ignore */}
                 <Spacer />
                 <ObserveKeys>
                   <div className='video-quiz-options'>
@@ -277,8 +267,6 @@ class ShowVideo extends Component<ShowVideoProps, ShowVideoState> {
                     ))}
                   </div>
                 </ObserveKeys>
-                {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
-                {/* @ts-ignore */}
                 <Spacer />
                 <div
                   style={{
@@ -291,8 +279,6 @@ class ShowVideo extends Component<ShowVideoProps, ShowVideoState> {
                     <span>{t('learn.check-answer')}</span>
                   )}
                 </div>
-                {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
-                {/* @ts-ignore */}
                 <Spacer />
                 <Button
                   block={true}
@@ -304,8 +290,6 @@ class ShowVideo extends Component<ShowVideoProps, ShowVideoState> {
                 >
                   {t('buttons.check-answer')}
                 </Button>
-                {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
-                {/* @ts-ignore */}
                 <Spacer size={2} />
               </Col>
               <CompletionModal
@@ -332,6 +316,16 @@ export const query = graphql`
   query VideoChallenge($slug: String!) {
     challengeNode(fields: { slug: { eq: $slug } }) {
       videoId
+      videoLocaleIds {
+        espanol
+        italian
+        portuguese
+      }
+      bilibiliIds {
+        aid
+        bvid
+        cid
+      }
       title
       description
       challengeType

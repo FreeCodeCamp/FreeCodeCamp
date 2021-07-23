@@ -3,6 +3,10 @@ id: 5e7b9f070b6c005b0e76f061
 title: Intermediate Strings
 challengeType: 11
 videoId: KgT_fYLXnyk
+videoLocaleIds:
+  espanol: ''
+  italian: ''
+  portuguese: ''
 dashedName: intermediate-strings
 ---
 

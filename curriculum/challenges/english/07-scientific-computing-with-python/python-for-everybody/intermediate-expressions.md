@@ -3,6 +3,10 @@ id: 5e7b9f050b6c005b0e76f057
 title: Intermediate Expressions
 challengeType: 11
 videoId: dKgUaIa5ATg
+bilibiliIds:
+  aid: 461676654
+  bvid: BV1pL411H7kt
+  cid: 368826552
 dashedName: intermediate-expressions
 ---
 

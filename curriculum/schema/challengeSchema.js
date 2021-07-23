@@ -63,6 +63,22 @@ const schema = Joi.object()
       is: challengeTypes.video,
       then: Joi.string().required()
     }),
+    videoLocaleIds: Joi.when('challengeType', {
+      is: challengeTypes.video,
+      then: Joi.object().keys({
+        espanol: Joi.string(),
+        italian: Joi.string(),
+        portuguese: Joi.string()
+      })
+    }),
+    bilibiliIds: Joi.when('challengeType', {
+      is: challengeTypes.video,
+      then: Joi.object().keys({
+        aid: Joi.number().required(),
+        bvid: Joi.string().required(),
+        cid: Joi.number().required()
+      })
+    }),
     question: Joi.object().keys({
       text: Joi.string().required(),
       answers: Joi.array().items(Joi.string()).required(),
