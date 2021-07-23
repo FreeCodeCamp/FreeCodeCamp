@@ -257,9 +257,9 @@ class DonateForm extends Component {
             donationAmount={donationAmount}
             donationDuration={donationDuration}
             handleProcessing={handleProcessing}
+            isSignedIn={isSignedIn}
             isSubscription={isOneTime ? false : true}
             onDonationStateChange={this.onDonationStateChange}
-            skipAddDonation={!isSignedIn}
             theme={defaultTheme ? defaultTheme : theme}
           />
         </div>
@@ -277,7 +277,8 @@ class DonateForm extends Component {
 
   renderModalForm() {
     const { donationAmount, donationDuration } = this.state;
-    const { handleProcessing, addDonation, defaultTheme, theme } = this.props;
+    const { handleProcessing, addDonation, defaultTheme, theme, isSignedIn } =
+      this.props;
     return (
       <Row>
         <Col lg={8} lgOffset={2} sm={10} smOffset={1} xs={12}>
@@ -289,6 +290,7 @@ class DonateForm extends Component {
             donationAmount={donationAmount}
             donationDuration={donationDuration}
             handleProcessing={handleProcessing}
+            isSignedIn={isSignedIn}
             onDonationStateChange={this.onDonationStateChange}
             theme={defaultTheme ? defaultTheme : theme}
           />

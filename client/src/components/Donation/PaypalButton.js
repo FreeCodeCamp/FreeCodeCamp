@@ -39,10 +39,10 @@ export class PaypalButton extends Component {
 
   handleApproval = (data, isSubscription) => {
     const { amount, duration } = this.state;
-    const { skipAddDonation = false } = this.props;
+    const { isSignedIn } = this.props;
 
-    // Skip the api if user is not signed in or if its a one-time donation
-    if (!skipAddDonation || isSubscription) {
+    // Hit the API only when user is signed in and making a subscription donation
+    if (isSignedIn && isSubscription) {
       this.props.addDonation(data);
     }
 
@@ -123,8 +123,8 @@ const propTypes = {
   donationDuration: PropTypes.string,
   handleProcessing: PropTypes.func,
   isDonating: PropTypes.bool,
+  isSignedIn: PropTypes.bool,
   onDonationStateChange: PropTypes.func,
-  skipAddDonation: PropTypes.bool,
   t: PropTypes.func.isRequired,
   theme: PropTypes.string
 };
