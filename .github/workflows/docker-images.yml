@@ -1,0 +1,65 @@
+name: Generate Docker Images
+# TODO: it's triggered on PRs for QA, but it'll be on pushes to master when it's
+# done.
+on: [pull_request, push]
+
+jobs:
+  client:
+    name: Client
+    runs-on: ubuntu-20.04
+    # TODO uncomment below when QA is done
+    # if: github.repository == 'freeCodeCamp/freeCodeCamp'
+
+    steps:
+      - name: Checkout Source Files
+        uses: actions/checkout@v2
+      - name: Build Client Image
+      # TODO: hardcoding the .env vars for testing - replace with env or repo
+      # secrets when done?
+        run: |
+          DOCKER_BUILDKIT=1 docker build \
+          --build-arg FREECODECAMP_NODE_ENV=development \
+          --build-arg STRIPE_PUBLIC_KEY=pk_from_stripe_dashboard \
+          --build-arg HOME_LOCATION=http://localhost:8000 \
+          --build-arg API_LOCATION=http://localhost:3000 \
+          --build-arg FORUM_LOCATION=https://forum.freecodecamp.org \
+          --build-arg NEWS_LOCATION=https://www.freecodecamp.org/news \
+          --build-arg CLIENT_LOCALE=english \
+          --build-arg CURRICULUM_LOCALE=english \
+          --build-arg SHOW_UPCOMING_CHANGES=false \
+          --build-arg ALGOLIA_APP_ID=app_id_from_algolia_dashboard \
+          --build-arg ALGOLIA_API_KEY=api_key_from_algolia_dashboard \
+          --build-arg PAYPAL_CLIENT_ID=id_from_paypal_dashboard \
+          --build-arg DEPLOYMENT_ENV=staging \
+          -t fcc_client -f client.Dockerfile .
+          mkdir client-artifact
+          cp docker-compose.client.yml client-artifact/docker-compose.yml
+          cd client-artifact
+          docker save fcc_client | gzip > fcc_client.tar.gz
+      - name: Upload Client Image
+        uses: actions/upload-artifact@v2
+        with:
+          name: fcc-client-image
+          path: client-artifact
+
+  api:
+    name: Api Server
+    runs-on: ubuntu-20.04
+    # TODO uncomment below when QA is done
+    # if: github.repository == 'freeCodeCamp/freeCodeCamp'
+
+    steps:
+      - name: Checkout Source Files
+        uses: actions/checkout@v2
+      - name: Build Api Server Image
+        run: |
+          DOCKER_BUILDKIT=1 docker build -t fcc_api -f server.Dockerfile .
+          mkdir api-artifact
+          cp docker-compose.api.yml api-artifact/docker-compose.yml
+          cd api-artifact
+          docker save fcc_api | gzip > fcc_api.tar.gz
+      - name: Upload Api Server Image
+        uses: actions/upload-artifact@v2
+        with:
+          name: fcc-api-image
+          path: api-artifact
