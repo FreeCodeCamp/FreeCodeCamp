@@ -21,7 +21,7 @@ import { types as challengeTypes } from '../templates/Challenges/redux/';
 // eslint-disable-next-line max-len
 import { CURRENT_CHALLENGE_KEY } from '../templates/Challenges/redux/current-challenge-saga';
 
-export const ns = 'app';
+export const MainApp = 'app';
 
 export const defaultFetchState = {
   pending: true,
@@ -87,7 +87,7 @@ export const types = createTypes(
     ...createAsyncTypes('showCert'),
     ...createAsyncTypes('reportUser')
   ],
-  ns
+  MainApp
 );
 
 export const epics = [hardGoToEpic, failedUpdatesEpic, updateCompleteEpic];
@@ -174,8 +174,9 @@ export const updateCurrentChallengeId = createAction(
 
 export const completedChallengesSelector = state =>
   userSelector(state).completedChallenges || [];
-export const completionCountSelector = state => state[ns].completionCount;
-export const currentChallengeIdSelector = state => state[ns].currentChallengeId;
+export const completionCountSelector = state => state[MainApp].completionCount;
+export const currentChallengeIdSelector = state =>
+  state[MainApp].currentChallengeId;
 export const stepsToClaimSelector = state => {
   const user = userSelector(state);
   const currentCerts = certificatesByNameSelector(user.username)(
@@ -190,20 +191,23 @@ export const stepsToClaimSelector = state => {
   };
 };
 export const isDonatingSelector = state => userSelector(state).isDonating;
-export const isOnlineSelector = state => state[ns].isOnline;
-export const isSignedInSelector = state => !!state[ns].appUsername;
-export const isDonationModalOpenSelector = state => state[ns].showDonationModal;
+export const isOnlineSelector = state => state[MainApp].isOnline;
+export const isSignedInSelector = state => !!state[MainApp].appUsername;
+export const isDonationModalOpenSelector = state =>
+  state[MainApp].showDonationModal;
 export const recentlyClaimedBlockSelector = state =>
-  state[ns].recentlyClaimedBlock;
-export const donationFormStateSelector = state => state[ns].donationFormState;
+  state[MainApp].recentlyClaimedBlock;
+export const donationFormStateSelector = state =>
+  state[MainApp].donationFormState;
 export const signInLoadingSelector = state =>
   userFetchStateSelector(state).pending;
-export const showCertSelector = state => state[ns].showCert;
-export const showCertFetchStateSelector = state => state[ns].showCertFetchState;
+export const showCertSelector = state => state[MainApp].showCert;
+export const showCertFetchStateSelector = state =>
+  state[MainApp].showCertFetchState;
 export const shouldRequestDonationSelector = state => {
   const completedChallenges = completedChallengesSelector(state);
   const completionCount = completionCountSelector(state);
-  const canRequestProgressDonation = state[ns].canRequestProgressDonation;
+  const canRequestProgressDonation = state[MainApp].canRequestProgressDonation;
   const isDonating = isDonatingSelector(state);
   const recentlyClaimedBlock = recentlyClaimedBlockSelector(state);
 
@@ -227,7 +231,7 @@ export const shouldRequestDonationSelector = state => {
 };
 
 export const userByNameSelector = username => state => {
-  const { user } = state[ns];
+  const { user } = state[MainApp];
   // TODO: Why return a string or empty objet literal?
   return username in user ? user[username] : {};
 };
@@ -357,17 +361,17 @@ export const certificatesByNameSelector = username => state => {
   };
 };
 
-export const userFetchStateSelector = state => state[ns].userFetchState;
+export const userFetchStateSelector = state => state[MainApp].userFetchState;
 export const userProfileFetchStateSelector = state =>
-  state[ns].userProfileFetchState;
-export const usernameSelector = state => state[ns].appUsername;
+  state[MainApp].userProfileFetchState;
+export const usernameSelector = state => state[MainApp].appUsername;
 export const userSelector = state => {
   const username = usernameSelector(state);
 
-  return state[ns].user[username] || {};
+  return state[MainApp].user[username] || {};
 };
 
-export const sessionMetaSelector = state => state[ns].sessionMeta;
+export const sessionMetaSelector = state => state[MainApp].sessionMeta;
 
 function spreadThePayloadOnUser(state, payload) {
   return {

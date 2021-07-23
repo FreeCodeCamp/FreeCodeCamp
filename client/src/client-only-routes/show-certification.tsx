@@ -47,7 +47,7 @@ interface IShowCertificationProps {
   cert: CertType;
   certDashedName: string;
   certSlug: string;
-  createFlashMessage: (payload: typeof standardErrorMessage) => void;
+  createFlashMessage: typeof createFlashMessage;
   executeGA: (payload: Record<string, unknown>) => void;
   fetchProfileForUser: (username: string) => void;
   fetchState: {

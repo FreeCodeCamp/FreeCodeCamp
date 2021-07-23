@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
 
-import { reducer as app, ns as appNameSpace } from './';
+import { reducer as app, MainApp as appNameSpace } from './';
 import {
   reducer as flash,
-  ns as flashNameSpace
+  FlashApp as flashNameSpace
 } from '../components/Flash/redux';
 import { reducer as settings, ns as settingsNameSpace } from './settings';
 import {

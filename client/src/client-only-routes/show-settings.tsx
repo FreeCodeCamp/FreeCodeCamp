@@ -30,7 +30,7 @@ const { apiLocation } = envData;
 
 // TODO: update types for actions
 interface IShowSettingsProps {
-  createFlashMessage: (paylaod: string[]) => void;
+  createFlashMessage: typeof createFlashMessage;
   isSignedIn: boolean;
   navigate: (location: string) => void;
   showLoading: boolean;
