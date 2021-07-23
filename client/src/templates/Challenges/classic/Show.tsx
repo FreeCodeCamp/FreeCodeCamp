@@ -93,6 +93,7 @@ interface ShowClassicProps {
 }
 
 interface ShowClassicState {
+  layout: IReflexLayout | string;
   resizing: boolean;
 }
 
@@ -121,8 +122,6 @@ class ShowClassic extends Component<ShowClassicProps, ShowClassicState> {
   editorRef: React.RefObject<unknown>;
   instructionsPanelRef: React.RefObject<HTMLElement>;
   resizeProps: ResizePropsType;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  layoutState: any;
 
   constructor(props: ShowClassicProps) {
     super(props);
@@ -132,15 +131,15 @@ class ShowClassic extends Component<ShowClassicProps, ShowClassicState> {
       onResize: this.onResize.bind(this)
     };
 
+    // layout: Holds the information of the panes sizes for desktop view
     this.state = {
+      layout: this.getLayoutState(),
       resizing: false
     };
 
     this.containerRef = React.createRef();
     this.editorRef = React.createRef();
     this.instructionsPanelRef = React.createRef();
-    // Holds the information of the panes sizes for desktop view
-    this.layoutState = this.getLayoutState();
   }
 
   getLayoutState(): IReflexLayout | string {
@@ -161,23 +160,36 @@ class ShowClassic extends Component<ShowClassicProps, ShowClassicState> {
   }
 
   onResize() {
-    this.setState({ resizing: true });
+    this.setState(state => ({ ...state, resizing: true }));
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   onStopResize(event: any) {
     const { name, flex } = event.component.props;
 
-    this.setState({ resizing: false });
+    this.setState(state => ({ ...state, resizing: false }));
 
     // Only interested in tracking layout updates for ReflexElement's
     if (!name) {
       return;
     }
 
-    this.layoutState[name].flex = flex;
+    // Forcing a state update with the value of each panel since on stop resize
+    // is executed per each panel.
+    const newLayout =
+      typeof this.state.layout === 'object'
+        ? {
+            ...this.state.layout,
+            [name]: { flex }
+          }
+        : this.state.layout;
 
-    store.set(REFLEX_LAYOUT, this.layoutState);
+    this.setState(state => ({
+      ...state,
+      layout: newLayout
+    }));
+
+    store.set(REFLEX_LAYOUT, this.state.layout);
   }
 
   componentDidMount() {
@@ -391,7 +403,7 @@ class ShowClassic extends Component<ShowClassicProps, ShowClassicState> {
               instructions={this.renderInstructionsPanel({
                 showToolPanel: true
               })}
-              layoutState={this.layoutState}
+              layoutState={this.state.layout}
               preview={this.renderPreview()}
               resizeProps={this.resizeProps}
               testOutput={this.renderTestOutput()}
