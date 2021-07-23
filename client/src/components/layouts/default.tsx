@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import { AnyAction, bindActionCreators, Dispatch } from 'redux';
 import { createSelector } from 'reselect';
 import Helmet from 'react-helmet';
 import fontawesome from '@fortawesome/fontawesome';
-import { withTranslation } from 'react-i18next';
+import { withTranslation, TFunction } from 'react-i18next';
 
 import {
   fetchUser,
@@ -17,7 +16,11 @@ import {
   usernameSelector,
   executeGA
 } from '../../redux';
-import { flashMessageSelector, removeFlashMessage } from '../Flash/redux';
+import {
+  flashMessageSelector,
+  removeFlashMessage,
+  FlashMessage
+} from '../Flash/redux';
 
 import { isBrowser } from '../../../utils';
 
@@ -26,46 +29,56 @@ import Flash from '../Flash';
 import Header from '../Header';
 import Footer from '../Footer';
 // preload common fonts
+// @ts-expect-error ignore font import
 import latoLightURL from '../../../static/fonts/lato/Lato-Light.woff';
+// @ts-expect-error ignore font import
 import latoRegularURL from '../../../static/fonts/lato/Lato-Regular.woff';
+// @ts-expect-error ignore font import
 import latoBoldURL from '../../../static/fonts/lato/Lato-Bold.woff';
-// eslint-disable-next-line max-len
+// @ts-expect-error ignore font import
 import robotoRegularURL from '../../../static/fonts/roboto-mono/RobotoMono-Regular.woff';
-// eslint-disable-next-line max-len
+// @ts-expect-error ignore font import
 import robotoBoldURL from '../../../static/fonts/roboto-mono/RobotoMono-Bold.woff';
-// eslint-disable-next-line max-len
+// @ts-expect-error ignore font import
 import robotoItalicURL from '../../../static/fonts/roboto-mono/RobotoMono-Italic.woff';
 
 import './fonts.css';
 import './global.css';
 import './variables.css';
 
+// @ts-expect-error ignore fontawsome
 fontawesome.config = {
   autoAddCss: false
 };
 
-const propTypes = {
-  children: PropTypes.node.isRequired,
-  executeGA: PropTypes.func,
-  fetchState: PropTypes.shape({ pending: PropTypes.bool }),
-  fetchUser: PropTypes.func.isRequired,
-  flashMessage: PropTypes.shape({
-    id: PropTypes.string,
-    type: PropTypes.string,
-    message: PropTypes.string
-  }),
-  hasMessage: PropTypes.bool,
-  isOnline: PropTypes.bool.isRequired,
-  isSignedIn: PropTypes.bool,
-  onlineStatusChange: PropTypes.func.isRequired,
-  pathname: PropTypes.string.isRequired,
-  removeFlashMessage: PropTypes.func.isRequired,
-  showFooter: PropTypes.bool,
-  signedInUserName: PropTypes.string,
-  t: PropTypes.func.isRequired,
-  theme: PropTypes.string,
-  useTheme: PropTypes.bool,
-  user: PropTypes.object
+type FetchState = {
+  pending: boolean;
+};
+
+type ExecuteGAParams = {
+  type: string;
+  data: string;
+};
+
+type User = Record<string, unknown>;
+
+type DefaultLayoutProps = {
+  hasMessage?: boolean;
+  showFooter?: boolean;
+  theme?: string;
+  useTheme?: boolean;
+  isOnline: boolean;
+  isSignedIn: boolean;
+  pathname: string;
+  user: User;
+  flashMessage: FlashMessage;
+  fetchState: FetchState;
+  executeGA: (executeGAParams: ExecuteGAParams) => void;
+  fetchUser: () => void;
+  onlineStatusChange: (status: boolean) => void;
+  t: TFunction<'translation'>;
+  removeFlashMessage: () => void;
+  children: React.ReactNode;
 };
 
 const mapStateToProps = createSelector(
@@ -75,7 +88,13 @@ const mapStateToProps = createSelector(
   userFetchStateSelector,
   userSelector,
   usernameSelector,
-  (isSignedIn, flashMessage, isOnline, fetchState, user) => ({
+  (
+    isSignedIn: boolean,
+    flashMessage: FlashMessage,
+    isOnline: boolean,
+    fetchState: FetchState,
+    user: User
+  ) => ({
     isSignedIn,
     flashMessage,
     hasMessage: !!flashMessage.message,
@@ -86,13 +105,15 @@ const mapStateToProps = createSelector(
   })
 );
 
-const mapDispatchToProps = dispatch =>
+const mapDispatchToProps = (dispatch: Dispatch<AnyAction>) =>
   bindActionCreators(
     { fetchUser, removeFlashMessage, onlineStatusChange, executeGA },
     dispatch
   );
 
-class DefaultLayout extends Component {
+class DefaultLayout extends Component<DefaultLayoutProps> {
+  static displayName = 'DefaultLayout';
+
   componentDidMount() {
     const { isSignedIn, fetchUser, pathname, executeGA } = this.props;
     if (!isSignedIn) {
@@ -104,7 +125,7 @@ class DefaultLayout extends Component {
     window.addEventListener('offline', this.updateOnlineStatus);
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps: DefaultLayoutProps) {
     const { pathname, executeGA } = this.props;
     const { pathname: prevPathname } = prevProps;
     if (pathname !== prevPathname) {
@@ -139,7 +160,6 @@ class DefaultLayout extends Component {
       user,
       useTheme = true
     } = this.props;
-
     return (
       <div className='page-wrapper'>
         <Helmet
@@ -159,6 +179,7 @@ class DefaultLayout extends Component {
           <link
             as='font'
             crossOrigin='anonymous'
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
             href={latoRegularURL}
             rel='preload'
             type='font/woff'
@@ -166,6 +187,7 @@ class DefaultLayout extends Component {
           <link
             as='font'
             crossOrigin='anonymous'
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
             href={latoLightURL}
             rel='preload'
             type='font/woff'
@@ -173,6 +195,7 @@ class DefaultLayout extends Component {
           <link
             as='font'
             crossOrigin='anonymous'
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
             href={latoBoldURL}
             rel='preload'
             type='font/woff'
@@ -180,6 +203,7 @@ class DefaultLayout extends Component {
           <link
             as='font'
             crossOrigin='anonymous'
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
             href={robotoRegularURL}
             rel='preload'
             type='font/woff'
@@ -187,6 +211,7 @@ class DefaultLayout extends Component {
           <link
             as='font'
             crossOrigin='anonymous'
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
             href={robotoBoldURL}
             rel='preload'
             type='font/woff'
@@ -194,6 +219,7 @@ class DefaultLayout extends Component {
           <link
             as='font'
             crossOrigin='anonymous'
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
             href={robotoItalicURL}
             rel='preload'
             type='font/woff'
@@ -213,9 +239,6 @@ class DefaultLayout extends Component {
     );
   }
 }
-
-DefaultLayout.displayName = 'DefaultLayout';
-DefaultLayout.propTypes = propTypes;
 
 export default connect(
   mapStateToProps,

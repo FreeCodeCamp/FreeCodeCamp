@@ -5,6 +5,13 @@ import { createTypes } from '../../../utils/create-types';
 
 export const ns = 'flash';
 
+export interface FlashMessage {
+  type: string;
+  message: string;
+  id: string;
+  variables: Record<string, unknown>;
+}
+
 const initialState = {
   message: {}
 };
@@ -24,7 +31,7 @@ export const removeFlashMessage = createAction(types.removeFlashMessage);
 
 // TODO: Once state is typed, add here, remove disable.
 // eslint-disable-next-line
-export const flashMessageSelector = (state: any): string => state[ns].message;
+export const flashMessageSelector = (state: any): FlashMessage => state[ns].message;
 
 export const reducer = handleActions(
   {
