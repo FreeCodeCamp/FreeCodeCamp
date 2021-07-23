@@ -21,6 +21,13 @@ import { types as challengeTypes } from '../templates/Challenges/redux/';
 // eslint-disable-next-line max-len
 import { CURRENT_CHALLENGE_KEY } from '../templates/Challenges/redux/current-challenge-saga';
 
+// TODO: REMOVE envdata once
+// cypress/integration/learn/responsive-web-design/claim-cert-from-learn.js is
+// reliable
+import envData from '../../../config/env.json';
+
+const { environment } = envData;
+
 export const ns = 'app';
 
 export const defaultFetchState = {
@@ -206,6 +213,14 @@ export const shouldRequestDonationSelector = state => {
   const canRequestProgressDonation = state[ns].canRequestProgressDonation;
   const isDonating = isDonatingSelector(state);
   const recentlyClaimedBlock = recentlyClaimedBlockSelector(state);
+
+  if (environment === 'development') {
+    console.log('completedChallenges', completedChallenges);
+    console.log('completionCount', completionCount);
+    console.log('canRequestProgressDonation', canRequestProgressDonation);
+    console.log('isDonating', isDonating);
+    console.log('recentlyClaimedBlock', recentlyClaimedBlock);
+  }
 
   // don't request donation if already donating
   if (isDonating) return false;
