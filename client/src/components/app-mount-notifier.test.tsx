@@ -6,7 +6,7 @@ import { Provider } from 'react-redux';
 import { i18nextCodes } from '../../../config/i18n/all-langs';
 import AppMountNotifier from './app-mount-notifier';
 import { createStore } from '../redux/createStore';
-import i18nTestConfig from '../../i18n/configForTests';
+import i18nTestConfig from '../../i18n/config-for-tests';
 
 jest.mock('react-ga');
 jest.unmock('react-i18next');

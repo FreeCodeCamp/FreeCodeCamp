@@ -1,10 +1,10 @@
-/* eslint-disable no-unused-vars */
+/* eslint-disable import/unambiguous */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable no-undef */
-const React = require('react');
+import React from 'react';
+import envData from '../../../config/env.json';
 
 const gatsby = jest.requireActual('gatsby');
-
-const envData = require('../../../config/env.json');
 
 const { clientLocale } = envData;
 
@@ -30,12 +30,12 @@ module.exports = {
         href: to
       })
   ),
-  withPrefix: jest.fn().mockImplementation(path => {
+  withPrefix: jest.fn().mockImplementation((path: string) => {
     const pathPrefix =
       clientLocale === 'english' || clientLocale === 'chinese'
         ? ''
         : '/' + clientLocale;
-    return pathPrefix + path;
+    return `${pathPrefix}${path}`;
   }),
   StaticQuery: jest.fn(),
   useStaticQuery: jest.fn()

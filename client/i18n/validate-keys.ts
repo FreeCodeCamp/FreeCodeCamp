@@ -1,5 +1,11 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable import/unambiguous */
+import * as path from 'path';
+
 const fs = require('fs');
-const path = require('path');
 const translationsObject = require('./locales/english/translations.json');
 const introObject = require('./locales/english/intro.json');
 const metaObject = require('./locales/english/meta-tags.json');
@@ -14,15 +20,18 @@ const linksObject = require('./locales/english/links.json');
  * @param {Object} obj
  * @param {string} namespace
  */
-const flattenAnObject = (obj, namespace = '') => {
-  const flattened = {};
+const flattenAnObject = (obj: Record<string, unknown>, namespace = '') => {
+  const flattened = {} as Record<string, unknown>;
   Object.keys(obj).forEach(key => {
     if (Array.isArray(obj[key])) {
       flattened[namespace ? `${namespace}.${key}` : key] = obj[key];
     } else if (typeof obj[key] === 'object') {
       Object.assign(
         flattened,
-        flattenAnObject(obj[key], namespace ? `${namespace}.${key}` : key)
+        flattenAnObject(
+          obj[key] as Record<string, unknown>,
+          namespace ? `${namespace}.${key}` : key
+        )
       );
     } else {
       flattened[namespace ? `${namespace}.${key}` : key] = obj[key];
@@ -44,12 +53,12 @@ const linksKeys = Object.keys(flattenAnObject(linksObject));
  * to one string.
  * @param {String} filePath
  */
-const readComponentCode = filePath => {
+const readComponentCode = (filePath: string) => {
   let code = '';
   const isItFolder = fs.lstatSync(filePath).isDirectory();
   if (isItFolder) {
     const contents = fs.readdirSync(filePath);
-    contents.forEach(file => {
+    contents.forEach((file: string) => {
       code += readComponentCode(path.join(filePath + '/' + file));
     });
   } else {

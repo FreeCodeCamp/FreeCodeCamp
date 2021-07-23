@@ -1,4 +1,10 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 /* global preval */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-var-requires */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/no-floating-promises */
 
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
@@ -19,6 +25,7 @@ i18n.use(initReactI18next).init({
   // english, we simply export nothing from the preval
   resources: {
     [i18nextCode]: {
+      // @ts-ignore
       translations: preval`
       const envData = require('../../config/env.json');
       const { clientLocale } = envData;
@@ -26,6 +33,7 @@ i18n.use(initReactI18next).init({
         module.exports = require('./locales/' + clientLocale + '/translations.json');
       }
     `,
+      // @ts-ignore
       trending: preval`
       const envData = require('../../config/env.json');
       const { clientLocale } = envData;
@@ -33,6 +41,7 @@ i18n.use(initReactI18next).init({
         module.exports = require('./locales/' + clientLocale + '/trending.json');
       }
     `,
+      // @ts-ignore
       intro: preval`
       const envData = require('../../config/env.json');
       const { clientLocale } = envData;
@@ -40,6 +49,7 @@ i18n.use(initReactI18next).init({
         module.exports = require('./locales/' + clientLocale + '/intro.json');
       }
     `,
+      // @ts-ignore
       metaTags: preval`
       const envData = require('../../config/env.json');
       const { clientLocale } = envData;
@@ -47,6 +57,7 @@ i18n.use(initReactI18next).init({
         module.exports = require('./locales/' + clientLocale + '/meta-tags.json');
       }
     `,
+      // @ts-ignore
       links: preval`
       const envData = require('../../config/env.json');
       const { clientLocale } = envData;
@@ -56,10 +67,15 @@ i18n.use(initReactI18next).init({
     `
     },
     en: {
+      // @ts-ignore
       translations: preval`module.exports = require('./locales/english/translations.json')`,
+      // @ts-ignore
       trending: preval`module.exports = require('./locales/english/trending.json')`,
+      // @ts-ignore
       intro: preval`module.exports = require('./locales/english/intro.json')`,
+      // @ts-ignore
       metaTags: preval`module.exports = require('./locales/english/meta-tags.json')`,
+      // @ts-ignore
       links: preval`module.exports = require('./locales/english/links.json')`
     }
   },

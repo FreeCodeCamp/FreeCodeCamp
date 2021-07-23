@@ -17,5 +17,8 @@
   },
   "homepage": "https://github.com/freeCodeCamp/freeCodeCamp#readme",
   "author": "freeCodeCamp <team@freecodecamp.org>",
-  "main": "none"
+  "main": "none",
+  "devDependencies": {
+    "@types/node": "^16.3.2"
+  }
 }
