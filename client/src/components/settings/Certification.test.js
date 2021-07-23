@@ -241,7 +241,7 @@ const defaultTestProps = {
 
 const contents = 'This is not JS';
 const ext = 'js';
-const key = 'indexjs';
+const fileKey = 'indexjs';
 const name = 'index';
 const path = 'index.js';
 
@@ -259,11 +259,11 @@ const propsForOnlySolution = {
     },
     {
       id: '5e46f7f8ac417301a38fb92a',
-      files: [
+      challengeFiles: [
         {
           contents,
           ext,
-          key,
+          fileKey,
           name,
           path
         }

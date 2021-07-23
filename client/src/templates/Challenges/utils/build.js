@@ -50,7 +50,7 @@ const applyFunction = fn =>
 const composeFunctions = (...fns) =>
   fns.map(applyFunction).reduce((f, g) => x => f(x).then(g));
 
-function buildSourceMap(files) {
+function buildSourceMap(challengeFiles) {
   // TODO: concatenating the source/contents is a quick hack for multi-file
   // editing. It is used because all the files (js, html and css) end up with
   // the same name 'index'. This made the last file the only file to  appear in
@@ -58,22 +58,27 @@ function buildSourceMap(files) {
   // A better solution is to store and handle them separately. Perhaps never
   // setting the name to 'index'. Use 'contents' instead?
   // TODO: is file.source ever defined?
-  return files.reduce(
-    (sources, file) => {
-      sources[file.name] += file.source || file.contents;
-      sources.editableContents += file.editableContents || '';
+
+  // TODO: Does not look correct @ShaunSHamilton
+  return challengeFiles.reduce(
+    (sources, challengeFile) => {
+      sources[challengeFile.name] +=
+        challengeFile.source || challengeFile.contents;
+      sources.editableContents += challengeFile.editableContents || '';
       return sources;
     },
     { index: '', editableContents: '' }
   );
 }
 
-function checkFilesErrors(files) {
-  const errors = files.filter(({ error }) => error).map(({ error }) => error);
+function checkFilesErrors(challengeFiles) {
+  const errors = challengeFiles
+    .filter(({ error }) => error)
+    .map(({ error }) => error);
   if (errors.length) {
     throw errors;
   }
-  return files;
+  return challengeFiles;
 }
 
 const buildFunctions = {
@@ -141,41 +146,48 @@ async function getDOMTestRunner(buildData, { proxyLogger }, document) {
     runTestInTestFrame(document, testString, testTimeout);
 }
 
-export function buildDOMChallenge({ files, required = [], template = '' }) {
+export function buildDOMChallenge({
+  challengeFiles,
+  required = [],
+  template = ''
+}) {
   const finalRequires = [...globalRequires, ...required, ...frameRunner];
-  const loadEnzyme = Object.keys(files).some(key => files[key].ext === 'jsx');
+  const loadEnzyme = challengeFiles.some(
+    challengeFile => challengeFile.ext === 'jsx'
+  );
   const toHtml = [jsToHtml, cssToHtml];
   const pipeLine = composeFunctions(...getTransformers(), ...toHtml);
-  const finalFiles = Object.keys(files)
-    .map(key => files[key])
-    .map(pipeLine);
+  const finalFiles = challengeFiles.map(pipeLine);
   return Promise.all(finalFiles)
     .then(checkFilesErrors)
-    .then(files => ({
+    .then(challengeFiles => ({
       challengeType: challengeTypes.html,
-      build: concatHtml({ required: finalRequires, template, files }),
-      sources: buildSourceMap(files),
+      build: concatHtml({ required: finalRequires, template, challengeFiles }),
+      sources: buildSourceMap(challengeFiles),
       loadEnzyme
     }));
 }
 
-export function buildJSChallenge({ files }, options) {
+export function buildJSChallenge({ challengeFiles }, options) {
   const pipeLine = composeFunctions(...getTransformers(options));
 
-  const finalFiles = Object.keys(files)
-    .map(key => files[key])
-    .map(pipeLine);
+  const finalFiles = challengeFiles.map(pipeLine);
   return Promise.all(finalFiles)
     .then(checkFilesErrors)
-    .then(files => ({
+    .then(challengeFiles => ({
       challengeType: challengeTypes.js,
-      build: files
+      build: challengeFiles
         .reduce(
-          (body, file) => [...body, file.head, file.contents, file.tail],
+          (body, challengeFile) => [
+            ...body,
+            challengeFile.head,
+            challengeFile.contents,
+            challengeFile.tail
+          ],
           []
         )
         .join('\n'),
-      sources: buildSourceMap(files)
+      sources: buildSourceMap(challengeFiles)
     }));
 }
 

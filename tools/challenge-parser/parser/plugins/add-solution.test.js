@@ -33,16 +33,18 @@ describe('add solution plugin', () => {
     expect(file.data.solutions.every(el => isObject(el))).toBe(true);
   });
 
-  it('adds solution objects to the files array following a schema', () => {
+  it('adds solution objects to the challengeFiles array following a schema', () => {
     expect.assertions(15);
     plugin(mockAST, file);
     const {
       data: { solutions }
     } = file;
-    const testObject = solutions[0].indexjs;
+    const testObject = solutions[0].find(
+      solution => solution.fileKey === 'indexjs'
+    );
     expect(Object.keys(testObject).length).toEqual(7);
-    expect(testObject).toHaveProperty('key');
-    expect(typeof testObject['key']).toBe('string');
+    expect(testObject).toHaveProperty('fileKey');
+    expect(typeof testObject['fileKey']).toBe('string');
     expect(testObject).toHaveProperty('ext');
     expect(typeof testObject['ext']).toBe('string');
     expect(testObject).toHaveProperty('name');
@@ -64,16 +66,24 @@ describe('add solution plugin', () => {
       data: { solutions }
     } = file;
     expect(solutions.length).toBe(3);
-    expect(solutions[0].indexjs.contents).toBe("var x = 'y';");
-    expect(solutions[1].indexhtml.contents).toBe(`<html>
+    expect(
+      solutions[0].find(solution => solution.fileKey === 'indexjs').contents
+    ).toBe("var x = 'y';");
+    expect(
+      solutions[1].find(solution => solution.fileKey === 'indexhtml').contents
+    ).toBe(`<html>
   <body>
   solution number two
   </body>
 </html>`);
-    expect(solutions[1].indexcss.contents).toBe(`body {
+    expect(
+      solutions[1].find(solution => solution.fileKey === 'indexcss').contents
+    ).toBe(`body {
   background: white;
 }`);
-    expect(solutions[2].indexjs.contents).toBe("var x = 'y3';");
+    expect(
+      solutions[2].find(solution => solution.fileKey === 'indexjs').contents
+    ).toBe("var x = 'y3';");
   });
 
   it('should reject solutions with editable region markers', () => {

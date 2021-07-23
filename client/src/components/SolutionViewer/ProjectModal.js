@@ -5,15 +5,16 @@ import { Button, Modal } from '@freecodecamp/react-bootstrap';
 import { useTranslation } from 'react-i18next';
 
 const propTypes = {
-  files: PropTypes.arrayOf(
-    PropTypes.shape({
-      contents: PropTypes.string,
-      ext: PropTypes.string,
-      key: PropTypes.string,
-      name: PropTypes.string,
-      path: PropTypes.string
-    })
-  ),
+  challengeFiles: PropTypes.array,
+  // TODO: removed once refactored to TS
+  //   PropTypes.shape({
+  //     contents: PropTypes.string,
+  //     ext: PropTypes.string,
+  //     key: PropTypes.string,
+  //     name: PropTypes.string,
+  //     path: PropTypes.string
+  //   })
+  // ),
   handleSolutionModalHide: PropTypes.func,
   isOpen: PropTypes.bool,
   projectTitle: PropTypes.string,
@@ -21,8 +22,13 @@ const propTypes = {
 };
 
 const ProjectModal = props => {
-  const { isOpen, projectTitle, files, solution, handleSolutionModalHide } =
-    props;
+  const {
+    isOpen,
+    projectTitle,
+    challengeFiles,
+    solution,
+    handleSolutionModalHide
+  } = props;
   const { t } = useTranslation();
   return (
     <Modal
@@ -39,7 +45,7 @@ const ProjectModal = props => {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <SolutionViewer files={files} solution={solution} />
+        <SolutionViewer challengeFiles={challengeFiles} solution={solution} />
       </Modal.Body>
       <Modal.Footer>
         <Button onClick={handleSolutionModalHide}>{t('buttons.close')}</Button>

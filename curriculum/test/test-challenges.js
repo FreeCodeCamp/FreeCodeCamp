@@ -319,15 +319,15 @@ function populateTestsForLang({ lang, challenges, meta }) {
             }
 
             // If no .files, then no seed:
-            if (!challenge.files) return;
+            if (!challenge.challengeFiles) return;
 
             // - None of the translatable comments should appear in the
             //   translations. While this is a crude check, no challenges
             //   currently have the text of a comment elsewhere. If that happens
             //   we can handle that challenge separately.
             TRANSLATABLE_COMMENTS.forEach(comment => {
-              Object.values(challenge.files).forEach(file => {
-                if (file.contents.includes(comment))
+              challenge.challengeFiles.forEach(challengeFile => {
+                if (challengeFile.contents.includes(comment))
                   throw Error(
                     `English comment '${comment}' should be replaced with its translation`
                   );
@@ -336,14 +336,17 @@ function populateTestsForLang({ lang, challenges, meta }) {
 
             // - None of the translated comment texts should appear *outside* a
             //   comment
-            Object.values(challenge.files).forEach(file => {
+            // TODO: Does not look correct @ShaunSHamilton
+            challenge.challengeFiles.forEach(challengeFile => {
               let comments = {};
 
               // We get all the actual comments using the appropriate parsers
-              if (file.ext === 'html') {
+              if (challengeFile.ext === 'html') {
                 const commentTypes = ['css', 'html', 'scriptJs'];
                 for (let type of commentTypes) {
-                  const newComments = commentExtractors[type](file.contents);
+                  const newComments = commentExtractors[type](
+                    challengeFile.contents
+                  );
                   for (const [key, value] of Object.entries(newComments)) {
                     comments[key] = comments[key]
                       ? comments[key] + value
@@ -351,7 +354,9 @@ function populateTestsForLang({ lang, challenges, meta }) {
                   }
                 }
               } else {
-                comments = commentExtractors[file.ext](file.contents);
+                comments = commentExtractors[challengeFile.ext](
+                  challengeFile.contents
+                );
               }
 
               // Then we compare the number of times each comment appears in the
@@ -420,7 +425,7 @@ ${inspect(commentMap)}
             try {
               testRunner = await createTestRunner(
                 challenge,
-                '',
+                [],
                 buildChallenge
               );
             } catch {
@@ -459,12 +464,13 @@ ${inspect(commentMap)}
             // TODO: can this be dried out, ideally by removing the redux
             // handler?
             if (nextChallenge) {
-              const solutionFiles = cloneDeep(nextChallenge.files);
-              Object.keys(solutionFiles).forEach(key => {
-                const file = solutionFiles[key];
-                file.editableContents = getLines(
-                  file.contents,
-                  challenge.files[key].editableRegionBoundaries
+              const solutionFiles = cloneDeep(nextChallenge.challengeFiles);
+              solutionFiles.forEach(challengeFile => {
+                challengeFile.editableContents = getLines(
+                  challengeFile.contents,
+                  challenge.challengeFiles.find(
+                    x => x.fileKey === challengeFile.fileKey
+                  ).editableRegionBoundaries
                 );
               });
               solutions = [solutionFiles];
@@ -481,7 +487,9 @@ ${inspect(commentMap)}
 
           const filteredSolutions = solutionsAsArrays.filter(solution => {
             return !isEmpty(
-              solution.filter(file => !noSolution.test(file.contents))
+              solution.filter(
+                challengeFile => !noSolution.test(challengeFile.contents)
+              )
             );
           });
 
@@ -516,21 +524,24 @@ ${inspect(commentMap)}
 
 async function createTestRunner(
   challenge,
-  solution,
+  solutionFiles,
   buildChallenge,
   solutionFromNext
 ) {
   const { required = [], template, removeComments } = challenge;
   // we should avoid modifying challenge, as it gets reused:
-  const files = cloneDeep(challenge.files);
-
-  Object.keys(solution).forEach(key => {
-    files[key].contents = solution[key].contents;
-    files[key].editableContents = solution[key].editableContents;
+  const challengeFiles = cloneDeep(challenge.challengeFiles);
+  // const solutions = cloneDeep(challenge.solutions);
+  solutionFiles.forEach(solutionFile => {
+    const challengeFile = challengeFiles.find(
+      x => x.fileKey === solutionFile.fileKey
+    );
+    challengeFile.contents = solutionFile.contents;
+    challengeFile.editableContents = solutionFile.editableContents;
   });
 
   const { build, sources, loadEnzyme } = await buildChallenge({
-    files,
+    challengeFiles,
     required,
     template
   });

@@ -10,7 +10,7 @@ import ProjectModal from '../components/SolutionViewer/ProjectModal';
 import { find, first } from 'lodash-es';
 import { Trans, useTranslation } from 'react-i18next';
 import {
-  ChallengeFileType,
+  ChallengeFile,
   CompletedChallenge,
   UserType
 } from '../redux/prop-types';
@@ -23,14 +23,14 @@ interface IShowProjectLinksProps {
 
 type SolutionStateType = {
   projectTitle: string;
-  files?: ChallengeFileType[] | null;
+  challengeFiles: ChallengeFile[] | null;
   solution: CompletedChallenge['solution'];
   isOpen: boolean;
 };
 
 const initSolutionState: SolutionStateType = {
   projectTitle: '',
-  files: null,
+  challengeFiles: null,
   solution: null,
   isOpen: false
 };
@@ -55,16 +55,16 @@ const ShowProjectLinks = (props: IShowProjectLinksProps): JSX.Element => {
       return null;
     }
 
-    const { solution, githubLink, files } = completedProject;
+    const { solution, githubLink, challengeFiles } = completedProject;
     const onClickHandler = () =>
       setSolutionState({
         projectTitle,
-        files,
+        challengeFiles,
         solution,
         isOpen: true
       });
 
-    if (files?.length) {
+    if (challengeFiles?.length) {
       return (
         <button
           className='project-link-button-override'
@@ -162,7 +162,7 @@ const ShowProjectLinks = (props: IShowProjectLinksProps): JSX.Element => {
     name,
     user: { username }
   } = props;
-  const { files, isOpen, projectTitle, solution } = solutionState;
+  const { challengeFiles, isOpen, projectTitle, solution } = solutionState;
   return (
     <div>
       {t(
@@ -176,7 +176,7 @@ const ShowProjectLinks = (props: IShowProjectLinksProps): JSX.Element => {
       <Spacer />
       {isOpen ? (
         <ProjectModal
-          files={files}
+          challengeFiles={challengeFiles}
           handleSolutionModalHide={handleSolutionModalHide}
           isOpen={isOpen}
           projectTitle={projectTitle}

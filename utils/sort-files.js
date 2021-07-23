@@ -1,5 +1,5 @@
 exports.toSortedArray = function toSortedArray(challengeFiles) {
-  const xs = Object.values(challengeFiles);
+  const xs = challengeFiles;
   // TODO: refactor this to use an ext array ['html', 'js', 'css'] and loop over
   // that.
   xs.sort((a, b) => {

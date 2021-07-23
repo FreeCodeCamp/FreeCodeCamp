@@ -13,7 +13,7 @@ a container directive
 :::</p>
 </section>",
   "solutions": Array [
-    Object {},
+    Array [],
   ],
   "tests": Array [],
 }
@@ -44,7 +44,7 @@ Object {
 </code></pre>",
   },
   "solutions": Array [
-    Object {},
+    Array [],
   ],
   "tests": Array [],
 }
@@ -52,38 +52,33 @@ Object {
 
 exports[`challenge parser should import md from other files 1`] = `
 Object {
-  "description": "<section id=\\"description\\">
-<p>Paragraph 1</p>
-<pre><code class=\\"language-html\\">code example
-</code></pre>
-</section>",
-  "files": Object {
-    "indexcss": Object {
-      "contents": "body {
-  background: green;
-}",
-      "editableRegionBoundaries": Array [],
-      "ext": "css",
-      "head": "",
-      "id": "",
-      "key": "indexcss",
-      "name": "index",
-      "tail": "",
-    },
-    "indexhtml": Object {
+  "challengeFiles": Array [
+    Object {
       "contents": "<html>
   <body>
   </body>
 </html>",
       "editableRegionBoundaries": Array [],
       "ext": "html",
+      "fileKey": "indexhtml",
       "head": "",
       "id": "",
-      "key": "indexhtml",
       "name": "index",
       "tail": "",
     },
-    "indexjs": Object {
+    Object {
+      "contents": "body {
+  background: green;
+}",
+      "editableRegionBoundaries": Array [],
+      "ext": "css",
+      "fileKey": "indexcss",
+      "head": "",
+      "id": "",
+      "name": "index",
+      "tail": "",
+    },
+    Object {
       "contents": "var x = 'y';
 for (let index = 0; index < array.length; index++) {
   const element = array[index];
@@ -91,20 +86,25 @@ for (let index = 0; index < array.length; index++) {
 }",
       "editableRegionBoundaries": Array [],
       "ext": "js",
+      "fileKey": "indexjs",
       "head": "",
       "id": "custom-name",
-      "key": "indexjs",
       "name": "index",
       "tail": "",
     },
-  },
+  ],
+  "description": "<section id=\\"description\\">
+<p>Paragraph 1</p>
+<pre><code class=\\"language-html\\">code example
+</code></pre>
+</section>",
   "instructions": "<section id=\\"instructions\\">
 <p>Paragraph 0</p>
 <pre><code class=\\"language-html\\">code example 0
 </code></pre>
 </section>",
   "solutions": Array [
-    Object {},
+    Array [],
   ],
   "tests": Array [
     Object {
@@ -121,6 +121,43 @@ for (let index = 0; index < array.length; index++) {
 
 exports[`challenge parser should not mix other YAML with the frontmatter 1`] = `
 Object {
+  "challengeFiles": Array [
+    Object {
+      "contents": "<html>
+  <body>
+  </body>
+</html>",
+      "editableRegionBoundaries": Array [],
+      "ext": "html",
+      "fileKey": "indexhtml",
+      "head": "",
+      "id": "",
+      "name": "index",
+      "tail": "",
+    },
+    Object {
+      "contents": "body {
+  background: green;
+}",
+      "editableRegionBoundaries": Array [],
+      "ext": "css",
+      "fileKey": "indexcss",
+      "head": "",
+      "id": "",
+      "name": "index",
+      "tail": "",
+    },
+    Object {
+      "contents": "var x = 'y';",
+      "editableRegionBoundaries": Array [],
+      "ext": "js",
+      "fileKey": "indexjs",
+      "head": "",
+      "id": "",
+      "name": "index",
+      "tail": "",
+    },
+  ],
   "description": "<section id=\\"description\\">
 <p>Paragraph 1</p>
 <pre><code class=\\"language-html\\">code example
@@ -130,50 +167,13 @@ Object {
     anothersubkey: another value
 </code></pre>
 </section>",
-  "files": Object {
-    "indexcss": Object {
-      "contents": "body {
-  background: green;
-}",
-      "editableRegionBoundaries": Array [],
-      "ext": "css",
-      "head": "",
-      "id": "",
-      "key": "indexcss",
-      "name": "index",
-      "tail": "",
-    },
-    "indexhtml": Object {
-      "contents": "<html>
-  <body>
-  </body>
-</html>",
-      "editableRegionBoundaries": Array [],
-      "ext": "html",
-      "head": "",
-      "id": "",
-      "key": "indexhtml",
-      "name": "index",
-      "tail": "",
-    },
-    "indexjs": Object {
-      "contents": "var x = 'y';",
-      "editableRegionBoundaries": Array [],
-      "ext": "js",
-      "head": "",
-      "id": "",
-      "key": "indexjs",
-      "name": "index",
-      "tail": "",
-    },
-  },
   "instructions": "<section id=\\"instructions\\">
 <p>Paragraph 0</p>
 <pre><code class=\\"language-html\\">code example 0
 </code></pre>
 </section>",
   "solutions": Array [
-    Object {},
+    Array [],
   ],
   "tests": Array [
     Object {
@@ -190,42 +190,8 @@ Object {
 
 exports[`challenge parser should parse a more realistic md file 1`] = `
 Object {
-  "description": "<section id=\\"description\\">
-<p>When you add a lower rank heading element to the page, it's implied that you're starting a new subsection.</p>
-<p>After the last <code>h2</code> element of the second <code>section</code> element, add an <code>h3</code> element with the text <code>Things cats love:</code>.</p>
-<blockquote>
-  <p>Some text in a blockquote</p>
-  <p>
-    Some text in a blockquote, with <code>code</code>
-  </p>
-</blockquote>
-</section>",
-  "files": Object {
-    "indexcss": Object {
-      "contents": "body {
-  background: white;
-}
-
-h1 {
-  font-size: 20px;
-}
-
-
-a {
-  color: green;
-}",
-      "editableRegionBoundaries": Array [
-        7,
-        9,
-      ],
-      "ext": "css",
-      "head": "",
-      "id": "",
-      "key": "indexcss",
-      "name": "index",
-      "tail": "",
-    },
-    "indexhtml": Object {
+  "challengeFiles": Array [
+    Object {
       "contents": "<html>
   <body>
     <h1>CatPhotoApp</h1>
@@ -256,32 +222,14 @@ a {
         23,
       ],
       "ext": "html",
+      "fileKey": "indexhtml",
       "head": "",
       "id": "html-key",
-      "key": "indexhtml",
       "name": "index",
       "tail": "",
     },
-    "indexjs": Object {
-      "contents": "var x = 'y';",
-      "editableRegionBoundaries": Array [],
-      "ext": "js",
-      "head": "  // this runs before the user's code is evaluated.",
-      "id": "final-key",
-      "key": "indexjs",
-      "name": "index",
-      "tail": "",
-    },
-  },
-  "instructions": "<section id=\\"instructions\\">
-<p>Do something with the <code>code</code>.</p>
-<p>To test that adjacent tags are handled correctly:</p>
-<p>a bit of <code>code</code> <tag>with more after a space</tag> and another pair of <strong>elements</strong> <em>with a space</em></p>
-</section>",
-  "solutions": Array [
     Object {
-      "indexcss": Object {
-        "contents": "body {
+      "contents": "body {
   background: white;
 }
 
@@ -293,14 +241,46 @@ h1 {
 a {
   color: green;
 }",
-        "ext": "css",
-        "head": "",
-        "id": "",
-        "key": "indexcss",
-        "name": "index",
-        "tail": "",
-      },
-      "indexhtml": Object {
+      "editableRegionBoundaries": Array [
+        7,
+        9,
+      ],
+      "ext": "css",
+      "fileKey": "indexcss",
+      "head": "",
+      "id": "",
+      "name": "index",
+      "tail": "",
+    },
+    Object {
+      "contents": "var x = 'y';",
+      "editableRegionBoundaries": Array [],
+      "ext": "js",
+      "fileKey": "indexjs",
+      "head": "  // this runs before the user's code is evaluated.",
+      "id": "final-key",
+      "name": "index",
+      "tail": "",
+    },
+  ],
+  "description": "<section id=\\"description\\">
+<p>When you add a lower rank heading element to the page, it's implied that you're starting a new subsection.</p>
+<p>After the last <code>h2</code> element of the second <code>section</code> element, add an <code>h3</code> element with the text <code>Things cats love:</code>.</p>
+<blockquote>
+  <p>Some text in a blockquote</p>
+  <p>
+    Some text in a blockquote, with <code>code</code>
+  </p>
+</blockquote>
+</section>",
+  "instructions": "<section id=\\"instructions\\">
+<p>Do something with the <code>code</code>.</p>
+<p>To test that adjacent tags are handled correctly:</p>
+<p>a bit of <code>code</code> <tag>with more after a space</tag> and another pair of <strong>elements</strong> <em>with a space</em></p>
+</section>",
+  "solutions": Array [
+    Array [
+      Object {
         "contents": "<html>
   <body>
     <h1>CatPhotoApp</h1>
@@ -327,22 +307,42 @@ a {
   </body>
 </html>",
         "ext": "html",
+        "fileKey": "indexhtml",
         "head": "",
         "id": "html-key",
-        "key": "indexhtml",
         "name": "index",
         "tail": "",
       },
-      "indexjs": Object {
+      Object {
+        "contents": "body {
+  background: white;
+}
+
+h1 {
+  font-size: 20px;
+}
+
+
+a {
+  color: green;
+}",
+        "ext": "css",
+        "fileKey": "indexcss",
+        "head": "",
+        "id": "",
+        "name": "index",
+        "tail": "",
+      },
+      Object {
         "contents": "var x = 'y';",
         "ext": "js",
+        "fileKey": "indexjs",
         "head": "",
         "id": "final-key",
-        "key": "indexjs",
         "name": "index",
         "tail": "",
       },
-    },
+    ],
   ],
   "tests": Array [
     Object {
@@ -385,89 +385,89 @@ assert(
 
 exports[`challenge parser should parse a simple md file 1`] = `
 Object {
-  "description": "<section id=\\"description\\">
-<p>Paragraph 1</p>
-<pre><code class=\\"language-html\\">code example
-</code></pre>
-</section>",
-  "files": Object {
-    "indexcss": Object {
-      "contents": "body {
-  background: green;
-}",
-      "editableRegionBoundaries": Array [],
-      "ext": "css",
-      "head": "",
-      "id": "",
-      "key": "indexcss",
-      "name": "index",
-      "tail": "",
-    },
-    "indexhtml": Object {
+  "challengeFiles": Array [
+    Object {
       "contents": "<html>
   <body>
   </body>
 </html>",
       "editableRegionBoundaries": Array [],
       "ext": "html",
+      "fileKey": "indexhtml",
       "head": "",
       "id": "",
-      "key": "indexhtml",
       "name": "index",
       "tail": "",
     },
-    "indexjs": Object {
+    Object {
+      "contents": "body {
+  background: green;
+}",
+      "editableRegionBoundaries": Array [],
+      "ext": "css",
+      "fileKey": "indexcss",
+      "head": "",
+      "id": "",
+      "name": "index",
+      "tail": "",
+    },
+    Object {
       "contents": "var x = 'y';",
       "editableRegionBoundaries": Array [],
       "ext": "js",
+      "fileKey": "indexjs",
       "head": "",
       "id": "",
-      "key": "indexjs",
       "name": "index",
       "tail": "",
     },
-  },
+  ],
+  "description": "<section id=\\"description\\">
+<p>Paragraph 1</p>
+<pre><code class=\\"language-html\\">code example
+</code></pre>
+</section>",
   "instructions": "<section id=\\"instructions\\">
 <p>Paragraph 0</p>
 <pre><code class=\\"language-html\\">code example 0
 </code></pre>
 </section>",
   "solutions": Array [
-    Object {
-      "indexcss": Object {
-        "contents": "body {
-  background: white;
-}",
-        "ext": "css",
-        "head": "",
-        "id": "",
-        "key": "indexcss",
-        "name": "index",
-        "tail": "",
-      },
-      "indexhtml": Object {
+    Array [
+      Object {
         "contents": "<html>
   <body>
   </body>
 </html>",
         "ext": "html",
+        "fileKey": "indexhtml",
         "head": "",
         "id": "html-key",
-        "key": "indexhtml",
         "name": "index",
         "tail": "",
       },
-      "indexjs": Object {
+      Object {
+        "contents": "body {
+  background: white;
+}",
+        "ext": "css",
+        "fileKey": "indexcss",
+        "head": "",
+        "id": "",
+        "name": "index",
+        "tail": "",
+      },
+      Object {
         "contents": "var x = 'y';
 \`\`",
         "ext": "js",
+        "fileKey": "indexjs",
         "head": "",
         "id": "",
-        "key": "indexjs",
         "name": "index",
         "tail": "",
       },
-    },
+    ],
   ],
   "tests": Array [
     Object {
@@ -491,54 +491,54 @@ if(let x of xs) {
 
 exports[`challenge parser should parse frontmatter 1`] = `
 Object {
-  "challengeType": 0,
-  "description": "<section id=\\"description\\">
-<p>Paragraph 1</p>
-<pre><code class=\\"language-html\\">code example
-</code></pre>
-</section>",
-  "files": Object {
-    "indexcss": Object {
-      "contents": "body {
-  background: green;
-}",
-      "editableRegionBoundaries": Array [],
-      "ext": "css",
-      "head": "",
-      "id": "",
-      "key": "indexcss",
-      "name": "index",
-      "tail": "",
-    },
-    "indexhtml": Object {
+  "challengeFiles": Array [
+    Object {
       "contents": "<html>
   <body>
   </body>
 </html>",
       "editableRegionBoundaries": Array [],
       "ext": "html",
+      "fileKey": "indexhtml",
       "head": "",
       "id": "",
-      "key": "indexhtml",
       "name": "index",
       "tail": "",
     },
-    "indexjs": Object {
+    Object {
+      "contents": "body {
+  background: green;
+}",
+      "editableRegionBoundaries": Array [],
+      "ext": "css",
+      "fileKey": "indexcss",
+      "head": "",
+      "id": "",
+      "name": "index",
+      "tail": "",
+    },
+    Object {
       "contents": "var x = 'y';",
       "editableRegionBoundaries": Array [],
       "ext": "js",
+      "fileKey": "indexjs",
       "head": "",
       "id": "",
-      "key": "indexjs",
       "name": "index",
       "tail": "",
     },
-  },
+  ],
+  "challengeType": 0,
+  "description": "<section id=\\"description\\">
+<p>Paragraph 1</p>
+<pre><code class=\\"language-html\\">code example
+</code></pre>
+</section>",
   "forumTopicId": 18276,
   "id": "bd7123c8c441eddfaeb5bdef",
   "isHidden": false,
   "solutions": Array [
-    Object {},
+    Array [],
   ],
   "tests": Array [
     Object {
@@ -557,6 +557,43 @@ Object {
 
 exports[`challenge parser should parse gfm strikethrough and frontmatter 1`] = `
 Object {
+  "challengeFiles": Array [
+    Object {
+      "contents": "<html>
+  <body>
+  </body>
+</html>",
+      "editableRegionBoundaries": Array [],
+      "ext": "html",
+      "fileKey": "indexhtml",
+      "head": "",
+      "id": "",
+      "name": "index",
+      "tail": "",
+    },
+    Object {
+      "contents": "body {
+  background: green;
+}",
+      "editableRegionBoundaries": Array [],
+      "ext": "css",
+      "fileKey": "indexcss",
+      "head": "",
+      "id": "",
+      "name": "index",
+      "tail": "",
+    },
+    Object {
+      "contents": "var x = 'y';",
+      "editableRegionBoundaries": Array [],
+      "ext": "js",
+      "fileKey": "indexjs",
+      "head": "",
+      "id": "",
+      "name": "index",
+      "tail": "",
+    },
+  ],
   "description": "<section id=\\"description\\">
 <p>Paragraph 1 <del>Strikethrough text</del>. https://should.not.be.autolinked</p>
 <pre><code class=\\"language-html\\">code example
@@ -576,84 +613,47 @@ Object {
 </tbody>
 </table>
 </section>",
-  "files": Object {
-    "indexcss": Object {
-      "contents": "body {
-  background: green;
-}",
-      "editableRegionBoundaries": Array [],
-      "ext": "css",
-      "head": "",
-      "id": "",
-      "key": "indexcss",
-      "name": "index",
-      "tail": "",
-    },
-    "indexhtml": Object {
-      "contents": "<html>
-  <body>
-  </body>
-</html>",
-      "editableRegionBoundaries": Array [],
-      "ext": "html",
-      "head": "",
-      "id": "",
-      "key": "indexhtml",
-      "name": "index",
-      "tail": "",
-    },
-    "indexjs": Object {
-      "contents": "var x = 'y';",
-      "editableRegionBoundaries": Array [],
-      "ext": "js",
-      "head": "",
-      "id": "",
-      "key": "indexjs",
-      "name": "index",
-      "tail": "",
-    },
-  },
   "instructions": "<section id=\\"instructions\\">
 <p>Paragraph 0</p>
 <pre><code class=\\"language-html\\">code example 0
 </code></pre>
 </section>",
   "solutions": Array [
-    Object {
-      "indexcss": Object {
-        "contents": "body {
-  background: white;
-}",
-        "ext": "css",
-        "head": "",
-        "id": "",
-        "key": "indexcss",
-        "name": "index",
-        "tail": "",
-      },
-      "indexhtml": Object {
+    Array [
+      Object {
         "contents": "<html>
   <body>
   </body>
 </html>",
         "ext": "html",
+        "fileKey": "indexhtml",
         "head": "",
         "id": "html-key",
-        "key": "indexhtml",
         "name": "index",
         "tail": "",
       },
-      "indexjs": Object {
+      Object {
+        "contents": "body {
+  background: white;
+}",
+        "ext": "css",
+        "fileKey": "indexcss",
+        "head": "",
+        "id": "",
+        "name": "index",
+        "tail": "",
+      },
+      Object {
         "contents": "var x = 'y';
 \`\`",
         "ext": "js",
+        "fileKey": "indexjs",
         "head": "",
         "id": "",
-        "key": "indexjs",
         "name": "index",
         "tail": "",
       },
-    },
+    ],
   ],
   "tests": Array [
     Object {

@@ -3,41 +3,41 @@
 exports[`add solution plugin should have an output to match the snapshot 1`] = `
 Object {
   "solutions": Array [
-    Object {
-      "indexcss": Object {
-        "contents": "body {
-  background: white;
-}",
-        "ext": "css",
-        "head": "",
-        "id": "",
-        "key": "indexcss",
-        "name": "index",
-        "tail": "",
-      },
-      "indexhtml": Object {
+    Array [
+      Object {
         "contents": "<html>
   <body>
   </body>
 </html>",
         "ext": "html",
+        "fileKey": "indexhtml",
         "head": "",
         "id": "html-key",
-        "key": "indexhtml",
         "name": "index",
         "tail": "",
       },
-      "indexjs": Object {
+      Object {
+        "contents": "body {
+  background: white;
+}",
+        "ext": "css",
+        "fileKey": "indexcss",
+        "head": "",
+        "id": "",
+        "name": "index",
+        "tail": "",
+      },
+      Object {
         "contents": "var x = 'y';
 \`\`",
         "ext": "js",
+        "fileKey": "indexjs",
         "head": "",
         "id": "",
-        "key": "indexjs",
         "name": "index",
         "tail": "",
       },
-    },
+    ],
   ],
 }
 `;

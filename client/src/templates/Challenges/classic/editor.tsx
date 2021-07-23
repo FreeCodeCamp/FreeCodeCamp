@@ -24,12 +24,12 @@ import {
 import { userSelector, isDonationModalOpenSelector } from '../../../redux';
 import { Loader } from '../../../components/helpers';
 import {
-  ChallengeFileType,
+  ChallengeFile,
   DimensionsType,
   ExtTypes,
   FileKeyTypes,
   ResizePropsType,
-  TestType
+  Tests
 } from '../../../redux/prop-types';
 
 // eslint-disable-next-line import/no-duplicates
@@ -47,7 +47,7 @@ const MonacoEditor = Loadable(() => import('react-monaco-editor'));
 
 interface EditorProps {
   canFocus: boolean;
-  challengeFiles: ChallengeFileType;
+  challengeFiles: ChallengeFile[];
   containerRef: RefObject<HTMLElement>;
   contents: string;
   description: string;
@@ -65,10 +65,10 @@ interface EditorProps {
   setAccessibilityMode: (isAccessible: boolean) => void;
   setEditorFocusability: (isFocusable: boolean) => void;
   submitChallenge: () => void;
-  tests: TestType[];
+  tests: Tests[];
   theme: string;
   updateFile: (objest: {
-    key: FileKeyTypes;
+    fileKey: FileKeyTypes;
     editorValue: string;
     editableRegionBoundaries: number[] | null;
   }) => void;
@@ -249,7 +249,9 @@ const Editor = (props: EditorProps): JSX.Element => {
 
   const getEditableRegion = () => {
     const { challengeFiles, fileKey } = props;
-    const edRegBounds = challengeFiles[fileKey]?.editableRegionBoundaries;
+    const edRegBounds = challengeFiles.find(
+      challengeFile => challengeFile?.fileKey === fileKey
+    )?.editableRegionBoundaries;
     return edRegBounds ? [...edRegBounds] : [];
   };
 
@@ -263,11 +265,14 @@ const Editor = (props: EditorProps): JSX.Element => {
     // swap and reuse models, we have to create our own models to prevent
     // disposal.
 
+    const challengeFile = challengeFiles.find(
+      challengeFile => challengeFile?.fileKey === fileKey
+    );
     const model =
       data.model ||
       monaco.editor.createModel(
-        challengeFiles[fileKey]?.contents ?? '',
-        modeMap[challengeFiles[fileKey]?.ext ?? 'html']
+        challengeFile?.contents ?? '',
+        modeMap[challengeFile?.ext ?? 'html']
       );
     data.model = model;
     const editableRegion = getEditableRegion();
@@ -284,7 +289,9 @@ const Editor = (props: EditorProps): JSX.Element => {
     const { challengeFiles, fileKey } = props;
     const { model } = dataRef.current[fileKey];
 
-    const newContents = challengeFiles[fileKey]?.contents;
+    const newContents = challengeFiles.find(
+      challengeFile => challengeFile?.fileKey === fileKey
+    )?.contents;
     if (model?.getValue() !== newContents) {
       model?.setValue(newContents ?? '');
     }
@@ -573,7 +580,7 @@ const Editor = (props: EditorProps): JSX.Element => {
   const onChange = (editorValue: string) => {
     const { updateFile } = props;
     // TODO: use fileKey everywhere?
-    const { fileKey: key } = props;
+    const { fileKey } = props;
     // TODO: now that we have getCurrentEditableRegion, should the overlays
     // follow that directly? We could subscribe to changes to that and redraw if
     // those imply that the positions have changed (i.e. if the content height
@@ -584,7 +591,7 @@ const Editor = (props: EditorProps): JSX.Element => {
       editableRegion.startLineNumber - 1,
       editableRegion.endLineNumber + 1
     ];
-    updateFile({ key, editorValue, editableRegionBoundaries });
+    updateFile({ fileKey, editorValue, editableRegionBoundaries });
   };
 
   function showEditableRegion(editableBoundaries: number[]) {
@@ -708,8 +715,7 @@ const Editor = (props: EditorProps): JSX.Element => {
     // TODO: handle the case that the editable region reaches the bottom of the
     // editor
     return (
-      data.model?.getDecorationRange(data.endEditDecId)
-        ?.startLineNumber ?? 1
+      data.model?.getDecorationRange(data.endEditDecId)?.startLineNumber ?? 1
     );
   }
 

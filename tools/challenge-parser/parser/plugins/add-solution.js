@@ -30,7 +30,7 @@ function createPlugin() {
       );
 
       visitForContents(solutionTree);
-      solutions.push(solution);
+      solutions.push(Object.values(solution));
     });
 
     file.data = {

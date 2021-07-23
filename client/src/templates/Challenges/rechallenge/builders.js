@@ -56,19 +56,25 @@ export const cssToHtml = cond([
   [stubTrue, identity]
 ]);
 
-export function findIndexHtml(files) {
-  const filtered = files.filter(file => wasHtmlFile(file));
+export function findIndexHtml(challengeFiles) {
+  const filtered = challengeFiles.filter(challengeFile =>
+    wasHtmlFile(challengeFile)
+  );
   if (filtered.length > 1) {
     throw new Error('Too many html blocks in the challenge seed');
   }
   return filtered[0];
 }
 
-function wasHtmlFile(file) {
-  return file.history[0] === 'index.html';
+function wasHtmlFile(challengeFile) {
+  return challengeFile.history[0] === 'index.html';
 }
 
-export function concatHtml({ required = [], template, files = [] } = {}) {
+export function concatHtml({
+  required = [],
+  template,
+  challengeFiles = []
+} = {}) {
   const createBody = template ? _template(template) : defaultTemplate;
   const head = required
     .map(({ link, src }) => {
@@ -87,15 +93,15 @@ A required file can not have both a src and a link: src = ${src}, link = ${link}
     })
     .reduce((head, element) => head.concat(element));
 
-  const indexHtml = findIndexHtml(files);
+  const indexHtml = findIndexHtml(challengeFiles);
 
-  const source = files.reduce((source, file) => {
-    if (!indexHtml) return source.concat(file.contents, htmlCatch);
+  const source = challengeFiles.reduce((source, challengeFile) => {
+    if (!indexHtml) return source.concat(challengeFile.contents, htmlCatch);
     if (
-      indexHtml.importedFiles.includes(file.history[0]) ||
-      wasHtmlFile(file)
+      indexHtml.importedFiles.includes(challengeFile.history[0]) ||
+      wasHtmlFile(challengeFile)
     ) {
-      return source.concat(file.contents, htmlCatch);
+      return source.concat(challengeFile.contents, htmlCatch);
     } else {
       return source;
     }

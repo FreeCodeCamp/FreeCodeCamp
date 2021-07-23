@@ -13,7 +13,7 @@ const paneType = {
 };
 
 const propTypes = {
-  challengeFiles: PropTypes.object,
+  challengeFiles: PropTypes.array,
   editor: PropTypes.element,
   hasEditableBoundries: PropTypes.bool,
   hasPreview: PropTypes.bool,
@@ -56,7 +56,7 @@ class DesktopLayout extends Component {
 
   getChallengeFile() {
     const { challengeFiles } = this.props;
-    return first(Object.keys(challengeFiles).map(key => challengeFiles[key]));
+    return first(challengeFiles);
   }
 
   render() {
@@ -112,7 +112,7 @@ class DesktopLayout extends Component {
                 !hasEditableBoundries && <EditorTabs />}
               {challengeFile && (
                 <ReflexContainer
-                  key={challengeFile.key}
+                  key={challengeFile.fileKey}
                   orientation='horizontal'
                 >
                   <ReflexElement

@@ -12,7 +12,7 @@ const supportedLanguages = ['js', 'css', 'html', 'jsx', 'py'];
 
 function defaultFile(lang, id) {
   return {
-    key: `index${lang}`,
+    fileKey: `index${lang}`,
     ext: lang,
     name: 'index',
     contents: '',
@@ -43,21 +43,21 @@ function codeToData(node, seeds, seedKey, validate) {
  Please use one of js, css, html, jsx or py
 `);
 
-  const key = `index${lang}`;
-  const id = seeds[key] ? seeds[key].id : '';
+  const fileKey = `index${lang}`;
+  const id = seeds[fileKey] ? seeds[fileKey].id : '';
   // the contents will be missing if there is an id preceding this code
   // block.
-  if (!seeds[key]) {
-    seeds[key] = defaultFile(lang, id);
+  if (!seeds[fileKey]) {
+    seeds[fileKey] = defaultFile(lang, id);
   }
   if (isEmpty(node.value) && seedKey !== 'contents') {
     const section = keyToSection[seedKey];
     throw Error(`Empty code block in --${section}-- section`);
   }
 
-  seeds[key][seedKey] = isEmpty(seeds[key][seedKey])
+  seeds[fileKey][seedKey] = isEmpty(seeds[fileKey][seedKey])
     ? node.value
-    : seeds[key][seedKey] + '\n' + node.value;
+    : seeds[fileKey][seedKey] + '\n' + node.value;
 }
 
 function idToData(node, index, parent, seeds) {
@@ -73,9 +73,9 @@ function idToData(node, index, parent, seeds) {
   }
   const codeNode = parent.children[index + 1];
   if (codeNode && is(codeNode, 'code')) {
-    const key = `index${codeNode.lang}`;
-    if (seeds[key]) throw Error('::id{#id}s must come before code blocks');
-    seeds[key] = defaultFile(codeNode.lang, id);
+    const fileKey = `index${codeNode.lang}`;
+    if (seeds[fileKey]) throw Error('::id{#id}s must come before code blocks');
+    seeds[fileKey] = defaultFile(codeNode.lang, id);
   } else {
     throw Error('::id{#id}s must come before code blocks');
   }

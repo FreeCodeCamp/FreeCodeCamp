@@ -22,7 +22,7 @@ import Editor from './editor';
 const propTypes = {
   canFocus: PropTypes.bool,
   // TODO: use shape
-  challengeFiles: PropTypes.object,
+  challengeFiles: PropTypes.array,
   containerRef: PropTypes.any.isRequired,
   contents: PropTypes.string,
   description: PropTypes.string,

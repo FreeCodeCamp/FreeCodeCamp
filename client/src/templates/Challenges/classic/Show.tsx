@@ -1,6 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 // Package Utilities
 import React, { Component } from 'react';
 import { bindActionCreators, Dispatch } from 'redux';
@@ -30,9 +27,9 @@ import { challengeTypes } from '../../../../utils/challengeTypes';
 import { isContained } from '../../../utils/is-contained';
 import {
   ChallengeNodeType,
-  ChallengeFileType,
+  ChallengeFile,
   ChallengeMetaType,
-  TestType,
+  Tests,
   ResizePropsType
 } from '../../../redux/prop-types';
 import {
@@ -54,7 +51,7 @@ import '../components/test-frame.css';
 
 // Redux Setup
 const mapStateToProps = createStructuredSelector({
-  files: challengeFilesSelector,
+  challengeFiles: challengeFilesSelector,
   tests: challengeTestsSelector,
   output: consoleOutputSelector
 });
@@ -77,18 +74,18 @@ const mapDispatchToProps = (dispatch: Dispatch) =>
 interface ShowClassicProps {
   cancelTests: () => void;
   challengeMounted: (arg0: string) => void;
-  createFiles: (arg0: ChallengeFileType) => void;
+  createFiles: (arg0: ChallengeFile[]) => void;
   data: { challengeNode: ChallengeNodeType };
   executeChallenge: () => void;
-  files: ChallengeFileType;
+  challengeFiles: ChallengeFile[];
   initConsole: (arg0: string) => void;
-  initTests: (tests: TestType[]) => void;
+  initTests: (tests: Tests[]) => void;
   output: string[];
   pageContext: {
     challengeMeta: ChallengeMetaType;
   };
   t: TFunction;
-  tests: TestType[];
+  tests: Tests[];
   updateChallengeMeta: (arg0: ChallengeMetaType) => void;
 }
 
@@ -96,7 +93,7 @@ interface ShowClassicState {
   resizing: boolean;
 }
 
-interface IReflexLayout {
+interface ReflexLayout {
   codePane: { flex: number };
   editorPane: { flex: number };
   instructionPane: { flex: number };
@@ -143,8 +140,9 @@ class ShowClassic extends Component<ShowClassicProps, ShowClassicState> {
     this.layoutState = this.getLayoutState();
   }
 
-  getLayoutState(): IReflexLayout | string {
-    const reflexLayout: IReflexLayout | string = store.get(REFLEX_LAYOUT);
+  getLayoutState(): ReflexLayout | string {
+    // eslint-disable-next-line
+    const reflexLayout: ReflexLayout | string = store.get(REFLEX_LAYOUT);
 
     // Validate if user has not done any resize of the panes
     if (!reflexLayout) return BASE_LAYOUT;
@@ -164,8 +162,9 @@ class ShowClassic extends Component<ShowClassicProps, ShowClassicState> {
     this.setState({ resizing: true });
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  onStopResize(event: any) {
+  onStopResize(event: unknown) {
+    /* eslint-disable */
+    // @ts-expect-error TODO: typing
     const { name, flex } = event.component.props;
 
     this.setState({ resizing: false });
@@ -178,6 +177,7 @@ class ShowClassic extends Component<ShowClassicProps, ShowClassicState> {
     this.layoutState[name].flex = flex;
 
     store.set(REFLEX_LAYOUT, this.layoutState);
+    /* eslint-enable */
   }
 
   componentDidMount() {
@@ -220,7 +220,7 @@ class ShowClassic extends Component<ShowClassicProps, ShowClassicState> {
       updateChallengeMeta,
       data: {
         challengeNode: {
-          files,
+          challengeFiles,
           fields: { tests },
           challengeType,
           removeComments,
@@ -230,7 +230,7 @@ class ShowClassic extends Component<ShowClassicProps, ShowClassicState> {
       pageContext: { challengeMeta }
     } = this.props;
     initConsole('');
-    createFiles(files);
+    createFiles(challengeFiles ?? []);
     initTests(tests);
     updateChallengeMeta({
       ...challengeMeta,
@@ -244,7 +244,7 @@ class ShowClassic extends Component<ShowClassicProps, ShowClassicState> {
 
   componentWillUnmount() {
     const { createFiles, cancelTests } = this.props;
-    createFiles({});
+    createFiles([]);
     cancelTests();
   }
 
@@ -291,13 +291,13 @@ class ShowClassic extends Component<ShowClassicProps, ShowClassicState> {
   }
 
   renderEditor() {
-    const { files } = this.props;
+    const { challengeFiles } = this.props;
     const { description } = this.getChallenge();
     // eslint-disable-next-line @typescript-eslint/no-unsafe-return
     return (
-      files && (
+      challengeFiles && (
         <MultifileEditor
-          challengeFiles={files}
+          challengeFiles={challengeFiles}
           containerRef={this.containerRef}
           description={description}
           editorRef={this.editorRef}
@@ -329,11 +329,11 @@ class ShowClassic extends Component<ShowClassicProps, ShowClassicState> {
   }
 
   hasEditableBoundries() {
-    const { files } = this.props;
-    return Object.values(files).some(
-      file =>
-        file?.editableRegionBoundaries &&
-        file.editableRegionBoundaries.length === 2
+    const { challengeFiles } = this.props;
+    return (
+      challengeFiles?.some(
+        challengeFile => challengeFile?.editableRegionBoundaries?.length === 2
+      ) ?? false
     );
   }
 
@@ -350,7 +350,7 @@ class ShowClassic extends Component<ShowClassicProps, ShowClassicState> {
       pageContext: {
         challengeMeta: { nextChallengePath, prevChallengePath }
       },
-      files,
+      challengeFiles,
       t
     } = this.props;
 
@@ -384,13 +384,14 @@ class ShowClassic extends Component<ShowClassicProps, ShowClassicState> {
           </Media>
           <Media minWidth={MAX_MOBILE_WIDTH + 1}>
             <DesktopLayout
-              challengeFiles={files}
+              challengeFiles={challengeFiles}
               editor={this.renderEditor()}
               hasEditableBoundries={this.hasEditableBoundries()}
               hasPreview={this.hasPreview()}
               instructions={this.renderInstructionsPanel({
                 showToolPanel: true
               })}
+              // eslint-disable-next-line
               layoutState={this.layoutState}
               preview={this.renderPreview()}
               resizeProps={this.resizeProps}
@@ -447,43 +448,14 @@ export const query = graphql`
         link
         src
       }
-      files {
-        indexcss {
-          key
-          ext
-          name
-          contents
-          head
-          tail
-          editableRegionBoundaries
-        }
-        indexhtml {
-          key
-          ext
-          name
-          contents
-          head
-          tail
-          editableRegionBoundaries
-        }
-        indexjs {
-          key
-          ext
-          name
-          contents
-          head
-          tail
-          editableRegionBoundaries
-        }
-        indexjsx {
-          key
-          ext
-          name
-          contents
-          head
-          tail
-          editableRegionBoundaries
-        }
+      challengeFiles {
+        fileKey
+        ext
+        name
+        contents
+        head
+        tail
+        editableRegionBoundaries
       }
     }
   }

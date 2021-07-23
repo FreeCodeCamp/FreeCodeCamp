@@ -10,7 +10,7 @@ import {
 } from '../redux';
 
 const propTypes = {
-  challengeFiles: PropTypes.object.isRequired,
+  challengeFiles: PropTypes.array.isRequired,
   toggleVisibleEditor: PropTypes.func.isRequired,
   visibleEditors: PropTypes.shape({
     indexjs: PropTypes.bool,
@@ -38,46 +38,17 @@ class EditorTabs extends Component {
     const { challengeFiles, toggleVisibleEditor, visibleEditors } = this.props;
     return (
       <div className='monaco-editor-tabs'>
-        {challengeFiles['indexjsx'] && (
+        {challengeFiles.map(challengeFile => (
           <button
-            aria-selected={visibleEditors.indexjsx}
+            aria-selected={visibleEditors[challengeFile.fileKey]}
             className='monaco-editor-tab'
-            onClick={() => toggleVisibleEditor('indexjsx')}
+            key={challengeFile.fileKey}
+            onClick={() => toggleVisibleEditor(challengeFile.fileKey)}
             role='tab'
           >
-            script.jsx
+            {challengeFile.path}
           </button>
-        )}
-        {challengeFiles['indexhtml'] && (
-          <button
-            aria-selected={visibleEditors.indexhtml}
-            className='monaco-editor-tab'
-            onClick={() => toggleVisibleEditor('indexhtml')}
-            role='tab'
-          >
-            index.html
-          </button>
-        )}
-        {challengeFiles['indexcss'] && (
-          <button
-            aria-selected={visibleEditors.indexcss}
-            className='monaco-editor-tab'
-            onClick={() => toggleVisibleEditor('indexcss')}
-            role='tab'
-          >
-            styles.css
-          </button>
-        )}
-        {challengeFiles['indexjs'] && (
-          <button
-            aria-selected={visibleEditors.indexjs}
-            className='monaco-editor-tab'
-            onClick={() => toggleVisibleEditor('indexjs')}
-            role='tab'
-          >
-            script.js
-          </button>
-        )}
+        ))}
       </div>
     );
   }

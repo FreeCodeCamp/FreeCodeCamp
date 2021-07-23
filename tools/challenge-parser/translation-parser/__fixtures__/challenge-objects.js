@@ -17,7 +17,7 @@ const ENGLISH_CHALLENGE_NO_FILES = {
   solutions: ['solution html string'],
   description: 'description html string',
   instructions: 'instructions html string',
-  files: []
+  challengeFiles: []
 };
 
 exports.ENGLISH_CHALLENGE_NO_FILES = ENGLISH_CHALLENGE_NO_FILES;

@@ -63,11 +63,11 @@ function submitModern(type, state) {
 
     if (type === types.submitChallenge) {
       const { id } = challengeMetaSelector(state);
-      const files = challengeFilesSelector(state);
+      const challengeFiles = challengeFilesSelector(state);
       const { username } = userSelector(state);
       const challengeInfo = {
         id,
-        files
+        challengeFiles
       };
       const update = {
         endpoint: '/modern-challenge-completed',

@@ -2,42 +2,42 @@
 
 exports[`add-seed plugin should have an output to match the snapshot 1`] = `
 Object {
-  "files": Object {
-    "indexcss": Object {
-      "contents": "body {
-  background: green;
-}",
-      "editableRegionBoundaries": Array [],
-      "ext": "css",
-      "head": "",
-      "id": "",
-      "key": "indexcss",
-      "name": "index",
-      "tail": "",
-    },
-    "indexhtml": Object {
+  "challengeFiles": Array [
+    Object {
       "contents": "<html>
   <body>
   </body>
 </html>",
       "editableRegionBoundaries": Array [],
       "ext": "html",
+      "fileKey": "indexhtml",
       "head": "",
       "id": "",
-      "key": "indexhtml",
       "name": "index",
       "tail": "",
     },
-    "indexjs": Object {
+    Object {
+      "contents": "body {
+  background: green;
+}",
+      "editableRegionBoundaries": Array [],
+      "ext": "css",
+      "fileKey": "indexcss",
+      "head": "",
+      "id": "",
+      "name": "index",
+      "tail": "",
+    },
+    Object {
       "contents": "var x = 'y';",
       "editableRegionBoundaries": Array [],
       "ext": "js",
+      "fileKey": "indexjs",
       "head": "",
       "id": "",
-      "key": "indexjs",
       "name": "index",
       "tail": "",
     },
-  },
+  ],
 }
 `;

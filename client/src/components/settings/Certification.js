@@ -32,7 +32,7 @@ const propTypes = {
       githubLink: PropTypes.string,
       challengeType: PropTypes.number,
       completedDate: PropTypes.number,
-      files: PropTypes.array
+      challengeFiles: PropTypes.array
     })
   ),
   createFlashMessage: PropTypes.func.isRequired,
@@ -136,7 +136,7 @@ const honestyInfoMessage = {
 const initialState = {
   solutionViewer: {
     projectTitle: '',
-    files: null,
+    challengeFiles: null,
     solution: null,
     isOpen: false
   }
@@ -167,17 +167,17 @@ export class CertificationSettings extends Component {
     if (!completedProject) {
       return null;
     }
-    const { solution, githubLink, files } = completedProject;
+    const { solution, githubLink, challengeFiles } = completedProject;
     const onClickHandler = () =>
       this.setState({
         solutionViewer: {
           projectTitle,
-          files,
+          challengeFiles,
           solution,
           isOpen: true
         }
       });
-    if (files && files.length) {
+    if (challengeFiles?.length) {
       return (
         <Button
           block={true}
@@ -417,7 +417,7 @@ export class CertificationSettings extends Component {
 
   render() {
     const {
-      solutionViewer: { files, solution, isOpen, projectTitle }
+      solutionViewer: { challengeFiles, solution, isOpen, projectTitle }
     } = this.state;
 
     const { t } = this.props;
@@ -434,7 +434,7 @@ export class CertificationSettings extends Component {
         )}
         {isOpen ? (
           <ProjectModal
-            files={files}
+            challengeFiles={challengeFiles}
             handleSolutionModalHide={this.handleSolutionModalHide}
             isOpen={isOpen}
             projectTitle={projectTitle}

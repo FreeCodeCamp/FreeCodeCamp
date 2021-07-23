@@ -308,15 +308,16 @@ ${getFullPath('english')}
 }
 
 // TODO: tests and more descriptive name.
-function filesToObject(files) {
+// Is this already an object now?
+function filesToObject(challengeFiles) {
   return reduce(
-    files,
-    (map, file) => {
-      map[file.key] = {
-        ...file,
-        head: arrToString(file.head),
-        contents: arrToString(file.contents),
-        tail: arrToString(file.tail)
+    challengeFiles,
+    (map, challengeFile) => {
+      map[challengeFile.fileKey] = {
+        ...challengeFile,
+        head: arrToString(challengeFile.head),
+        contents: arrToString(challengeFile.contents),
+        tail: arrToString(challengeFile.tail)
       };
       return map;
     },
@@ -326,23 +327,22 @@ function filesToObject(files) {
 
 // gets the challenge ready for sourcing into Gatsby
 function prepareChallenge(challenge) {
-  if (challenge.files) {
-    challenge.files = filesToObject(challenge.files);
-    challenge.files = Object.keys(challenge.files)
-      .filter(key => challenge.files[key])
-      .map(key => challenge.files[key])
-      .reduce(
-        (files, file) => ({
-          ...files,
-          [file.key]: {
-            ...createPoly(file),
-            seed: file.contents.slice(0)
+  if (challenge.challengeFiles) {
+    challenge.challengeFiles = challenge.challengeFiles.reduce(
+      (challengeFiles, challengeFile) => {
+        return [
+          ...challengeFiles,
+          {
+            ...createPoly(challengeFile),
+            seed: challengeFile.contents.slice(0)
           }
-        }),
-        {}
-      );
+        ];
+      },
+      []
+    );
   }
-
+  // solutions = [[{fileKey: 'indexhtml'}, {fileKey: 'indexcss'}]]
+  // TODO: I am convinced this does not exist (remove)
   if (challenge.solutionFiles) {
     challenge.solutionFiles = filesToObject(challenge.solutionFiles);
   }

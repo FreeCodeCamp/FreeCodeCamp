@@ -14,16 +14,17 @@ import i18next from 'i18next';
 
 const { forumLocation } = envData;
 
-function filesToMarkdown(files = {}) {
-  const moreThenOneFile = Object.keys(files).length > 1;
-  return Object.keys(files).reduce((fileString, key) => {
-    const file = files[key];
-    if (!file) {
+function filesToMarkdown(challengeFiles = {}) {
+  const moreThenOneFile = challengeFiles?.length > 1;
+  return challengeFiles.reduce((fileString, challengeFile) => {
+    if (!challengeFile) {
       return fileString;
     }
-    const fileName = moreThenOneFile ? `\\ file: ${file.contents}` : '';
-    const fileType = file.ext;
-    return `${fileString}\`\`\`${fileType}\n${fileName}\n${file.contents}\n\`\`\`\n\n`;
+    const fileName = moreThenOneFile
+      ? `\\ file: ${challengeFile.contents}`
+      : '';
+    const fileType = challengeFile.ext;
+    return `${fileString}\`\`\`${fileType}\n${fileName}\n${challengeFile.contents}\n\`\`\`\n\n`;
   }, '\n');
 }
 
@@ -32,7 +33,7 @@ function createQuestionEpic(action$, state$, { window }) {
     ofType(types.createQuestion),
     tap(() => {
       const state = state$.value;
-      const files = challengeFilesSelector(state);
+      const challengeFiles = challengeFilesSelector(state);
       const { title: challengeTitle, helpCategory } =
         challengeMetaSelector(state);
       const {
@@ -64,7 +65,7 @@ function createQuestionEpic(action$, state$, { window }) {
         ${
           projectFormValues
             ?.map(([key, val]) => `${key}: ${transformEditorLink(val)}\n`)
-            ?.join('') || filesToMarkdown(files)
+            ?.join('') || filesToMarkdown(challengeFiles)
         }\n\n
         ${endingText}`);
 
