@@ -1,14 +1,3 @@
-.avatar-container .avatar {
-  height: 180px;
-  width: 180px;
-  object-fit: cover;
-}
-
-.avatar-container {
-  display: flex;
-  justify-content: center;
-}
-
 .username,
 .name,
 .bio,
@@ -16,22 +5,21 @@
   overflow-wrap: break-word;
 }
 
-.avatar-container div {
+.avatar-camper {
+  display: flex;
+  justify-content: center;
+}
+
+.avatar-camper .avatar {
+  height: 180px;
+  width: 180px;
+  object-fit: cover;
+}
+
+.avatar-camper div {
   height: 200px;
 }
 
-.avatar-container .gold-border {
-  border: 10px solid var(--yellow-gold);
-}
-
-.avatar-container .blue-border {
-  border: 10px solid var(--blue-mid);
-}
-
-.avatar-container .purple-border {
-  border: 10px solid var(--purple-mid);
-}
-
-.avatar-container .default-border {
-  border: 10px solid transparent;
+.avatar-camper .avatar-container {
+  border-width: 10px;
 }

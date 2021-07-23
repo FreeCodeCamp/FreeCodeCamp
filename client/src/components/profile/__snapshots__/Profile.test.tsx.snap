@@ -18,7 +18,7 @@ exports[`<Profile/> renders correctly 1`] = `
         class="row"
       >
         <div
-          class="avatar-container col-xs-12"
+          class="avatar-camper col-xs-12"
         >
           <div
             class="avatar-container default-border"

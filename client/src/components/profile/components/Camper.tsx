@@ -90,7 +90,7 @@ function Camper({
   return (
     <div>
       <Row>
-        <Col className='avatar-container' xs={12}>
+        <Col className='avatar-camper' xs={12}>
           <AvatarRenderer
             isDonating={isDonating}
             isTopContributor={yearsTopContributor.length > 0}

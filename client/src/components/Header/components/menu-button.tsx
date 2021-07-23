@@ -30,9 +30,7 @@ const MenuButton = ({
       >
         {t('buttons.menu')}
       </button>
-      <span className='navatar'>
-        <AuthOrProfile user={user} />
-      </span>
+      <AuthOrProfile user={user} />
     </>
   );
 };

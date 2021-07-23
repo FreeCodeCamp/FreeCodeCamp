@@ -1,4 +1,5 @@
 import React from 'react';
+import { create } from 'react-test-renderer';
 import ShallowRenderer from 'react-test-renderer/shallow';
 
 import { UniversalNav } from './components/universal-nav';
@@ -129,10 +130,10 @@ describe('<AuthOrProfile />', () => {
       pathName: '/learn'
     };
 
-    const shallow = new ShallowRenderer();
-    shallow.render(<AuthOrProfile {...defaultUserProps} />);
-    const view = shallow.getRenderOutput();
-    expect(avatarHasClass(view, 'default-border')).toBeTruthy();
+    const componentTree = create(
+      <AuthOrProfile {...defaultUserProps} />
+    ).toJSON();
+    expect(avatarHasClass(componentTree, 'default-border')).toBeTruthy();
   });
 
   it('has avatar with gold border for donating users', () => {
@@ -145,11 +146,11 @@ describe('<AuthOrProfile />', () => {
       pending: false,
       pathName: '/learn'
     };
-    const shallow = new ShallowRenderer();
-    shallow.render(<AuthOrProfile {...donatingUserProps} />);
-    const view = shallow.getRenderOutput();
 
-    expect(avatarHasClass(view, 'gold-border')).toBeTruthy();
+    const componentTree = create(
+      <AuthOrProfile {...donatingUserProps} />
+    ).toJSON();
+    expect(avatarHasClass(componentTree, 'gold-border')).toBeTruthy();
   });
 
   it('has avatar with blue border for top contributors', () => {
@@ -163,12 +164,12 @@ describe('<AuthOrProfile />', () => {
       pathName: '/learn'
     };
 
-    const shallow = new ShallowRenderer();
-    shallow.render(<AuthOrProfile {...topContributorUserProps} />);
-    const view = shallow.getRenderOutput();
-
-    expect(avatarHasClass(view, 'blue-border')).toBeTruthy();
+    const componentTree = create(
+      <AuthOrProfile {...topContributorUserProps} />
+    ).toJSON();
+    expect(avatarHasClass(componentTree, 'blue-border')).toBeTruthy();
   });
+
   it('has avatar with purple border for donating top contributors', () => {
     const topDonatingContributorUserProps = {
       user: {
@@ -180,10 +181,11 @@ describe('<AuthOrProfile />', () => {
       pending: false,
       pathName: '/learn'
     };
-    const shallow = new ShallowRenderer();
-    shallow.render(<AuthOrProfile {...topDonatingContributorUserProps} />);
-    const view = shallow.getRenderOutput();
-    expect(avatarHasClass(view, 'purple-border')).toBeTruthy();
+
+    const componentTree = create(
+      <AuthOrProfile {...topDonatingContributorUserProps} />
+    ).toJSON();
+    expect(avatarHasClass(componentTree, 'purple-border')).toBeTruthy();
   });
 });
 
@@ -194,7 +196,7 @@ const navigationLinks = (component, key) => {
   return target.props;
 };
 
-const profileNavItem = component => component.props.children;
+const profileNavItem = component => component.children[0];
 
 const hasDonateNavItem = component => {
   const { children, to } = navigationLinks(component, 'donate');
@@ -282,9 +284,10 @@ const hasSignOutNavItem = component => {
 const hasSignInButton = component =>
   component.props.children[1].props.children === 'buttons.sign-in';
 */
+
 const avatarHasClass = (componentTree, classes) => {
   return (
     profileNavItem(componentTree).props.className ===
-    'avatar-nav-link ' + classes
+    'avatar-container ' + classes
   );
 };

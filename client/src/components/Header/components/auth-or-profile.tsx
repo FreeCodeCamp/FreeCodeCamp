@@ -3,7 +3,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 // @ts-nocheck
 import React from 'react';
-import { Link, borderColorPicker, AvatarRenderer } from '../../helpers';
+import { Link, AvatarRenderer } from '../../helpers';
 import { useTranslation } from 'react-i18next';
 import Login from './Login';
 
@@ -17,26 +17,20 @@ const AuthOrProfile = ({ user }: AuthOrProfileProps): JSX.Element => {
   const isTopContributor =
     user && user.yearsTopContributor && user.yearsTopContributor.length > 0;
 
-  const badgeColorClass = borderColorPicker(isUserDonating, isTopContributor);
-
   if (!isUserSignedIn) {
     return (
       <Login data-test-label='landing-small-cta'>{t('buttons.sign-in')}</Login>
     );
   } else {
     return (
-      <>
-        <Link
-          className={`avatar-nav-link ${badgeColorClass}`}
-          to={`/${user.username as string}`}
-        >
-          <AvatarRenderer
-            picture={user.picture}
-            size='sm'
-            userName={user.username}
-          />
-        </Link>
-      </>
+      <Link className='avatar-nav-link' to={`/${user.username as string}`}>
+        <AvatarRenderer
+          isDonating={isUserDonating}
+          isTopContributor={isTopContributor}
+          picture={user.picture}
+          userName={user.username}
+        />
+      </Link>
     );
   }
 };
