@@ -72,6 +72,10 @@
         "title": "Basic CSS Cafe Menu",
         "intro": ["", ""]
       },
+      "css-box-model": {
+        "title": "CSS Box Model",
+        "intro": ["", ""]
+      },
       "css-variables-skyline": {
         "title": "CSS Variables Skyline",
         "intro": ["", ""]
